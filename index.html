@@ -274,7 +274,7 @@
 <h1 id="organizations-of-every-size-across-all-industries-and-verticals-face-a-shared-set-of-challenges-in-their-adoption-of-event-driven-architectures-and-enterprise-wide-integration">Organizations of every size, across all industries and verticals, face a <strong>shared set of challenges</strong> in their adoption of event-driven architectures and enterprise-wide integration.</h1>
 <hr />
 <p>Enterprise organizations (and many IBM clients) are at different stages in their event-driven journey. For some, they have only recently embarked on scoping and putting into place an event messaging distribution layer. Others will have already cemented the the foundations for an Apache Kafka-based event distribution layer, and are looking to enrich that with capabilities that boost security, enable governed self-service access, and incorporate event processing.</p>
-<p>Despite the range of industries and use cases that must confront the challenges of event-driven architectures and integration, there are five common themes that regularly emerge in conversations with prospective clients.</p>
+<p>Despite the range of industries and use cases that must confront the challenges of event-driven architectures and integration, there are four common themes that regularly emerge in conversations with prospective clients.</p>
 <hr />
 <ol>
 <li>
@@ -357,9 +357,29 @@
 </li>
 </ol>
 <hr />
-<p>For the purposes of this hands-on demonstration, the material will focus on elements of the first portfolio pillar: <em>Event-led integration</em>, and specifically the <strong>IBM Event Automation</strong> suite. IBM Event Automation provides an open, composable set of capabilities that interoperate with the services and tools that are already part of a client's ecosystem. A fundamental component to IBM Event Automation's architecture is composability. </p>
-<hr />
 <h1 id="_3"></h1>
+<h1 id="using-ibm-event-automation-and-ibm-cloud-pak-for-integration-to-capitalize-on-time-sensitive-revenue-opportunities">Using <strong>IBM Event Automation</strong> and <strong>IBM Cloud Pak for Integration</strong> to capitalize on time-sensitive revenue opportunities.</h1>
+<hr />
+<p><strong>Focus Corporation</strong>, a digital retail company engaged with IBM teams, is highly motivated to derive more revenue from first-time customers to their online storefronts. Focus' marketing department believes that by sending high-value promotions to new customers immediately after making a large purchase can significantly boost such revenue streams. The challenge will be finding a way to capitalize on these <em>time-sensitive</em> revenue opportunities using the real-time transaction data already available (but underutilized) to Focus' IT teams.</p>
+<p>Focus is currently using IBM MQ to exchange customer orders (placed online) between two endpoints: an order management system and the online payment gateway. As part of the hands-on work to be performed, IBM and Focus integration teams will need to tap into IBM MQ communications and publish each order as a Kafka-based "event stream". This will enable business-critical communications originating over MQ to be captured as events within Kafka topics, which can later be shared across the enterprise for fueling more responsive applications.</p>
+<p>Ultimately, Focus' marketing department will be able to use a self-service catalog for inspecting <code>Order</code> and <code>New Customer</code> topics as needed. From there, they will leverage no-code editors to build automated process flows that detect new customer orders totaling over $100 and issue high-value promotions to the customer's inbox immediately following the purchase.</p>
+<hr />
+<p>The hands-on material covered within this lab will focus on elements of the first portfolio pillar: <em>Event-led integration</em>, and specifically the <strong>IBM Event Automation</strong> suite. IBM Event Automation provides an open, composable set of capabilities that interoperate with the services and tools that are already part of a client's ecosystem. A fundamental component to IBM Event Automation's architecture is composability, which will be highlighted through the lab as you incrementally add more capabilities and elements to the demo environment.</p>
+<ul>
+<li>
+<p><strong>Event Endpoint Management</strong>: to facilitate secured exposure of event streams and unite all event streams (including MQ and Kafka) into a single, unified view. Focus' marketing department can discover, subscribe, and generate security credentials for colleagues using the self-service catalog.  Manual processes will be automated and onboarding of users can be expedited.</p>
+</li>
+<li>
+<p><strong>Event Processing</strong>: a no-code editor for allowing developers (of any skill level) to construct processing flows, detect situations across multiple events inside a configurable time-window, and validate flow behavior prior to deploying into production (using historical data.)</p>
+</li>
+<li>
+<p><strong>Event Streams</strong> + <strong>Kafka-IBM MQ connector</strong>: part of the <strong>IBM Cloud Pak for Integration</strong> suite, this connector allows MQ messages to be published into a Kafka-compatible event stream. It provides assurances that all MQ messages are delivered once-and-only-once, without requiring complex or custom code.</p>
+</li>
+</ul>
+<p></br> </p>
+<p>Environments have been prepared ahead of time with the assistance of IBM Technology Zone, which can be reserved for learning and client demonstration purposes at no-charge. Instructions for how to reserve and configure the environment are documented in the Setup module.</p>
+<hr />
+<h1 id="_4"></h1>
 <h1 id="next-steps">Next Steps</h1>
 <p>In the following module, you will receive the necessary pre-requisites and setup instructions for getting started with a hands-on IBM Event Automation environment.</p>
 
