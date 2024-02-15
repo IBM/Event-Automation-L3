@@ -208,6 +208,21 @@
   
   
     <li class="md-nav__item">
+      <a href="setup/" class="md-nav__link">
+        Setup
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="evaluation/" class="md-nav__link">
         Evaluation
       </a>
@@ -365,20 +380,6 @@
 <p>Focus is currently using IBM MQ to exchange customer orders (placed online) between two endpoints: an order management system and the online payment gateway. As part of the hands-on work to be performed, IBM and Focus integration teams will need to tap into IBM MQ communications and publish each order as a Kafka-based "event stream". This will enable business-critical communications originating over MQ to be captured as events within Kafka topics, which can later be shared across the enterprise for fueling more responsive applications.</p>
 <p>Ultimately, Focus' marketing department will be able to use a self-service catalog for inspecting <code>Order</code> and <code>New Customer</code> topics as needed. From there, they will leverage no-code editors to build automated process flows that detect new customer orders totaling over $100 and issue high-value promotions to the customer's inbox immediately following the purchase.</p>
 <hr />
-<p>The hands-on material covered within this lab will focus on elements of the first portfolio pillar: <em>Event-led integration</em>, and specifically the <strong>IBM Event Automation</strong> suite. IBM Event Automation provides an open, composable set of capabilities that interoperate with the services and tools that are already part of a client's ecosystem. A fundamental component to IBM Event Automation's architecture is composability, which will be highlighted through the lab as you incrementally add more capabilities and elements to the demo environment.</p>
-<ul>
-<li>
-<p><strong>Event Endpoint Management</strong>: to facilitate secured exposure of event streams and unite all event streams (including MQ and Kafka) into a single, unified view. Focus' marketing department can discover, subscribe, and generate security credentials for colleagues using the self-service catalog.  Manual processes will be automated and onboarding of users can be expedited.</p>
-</li>
-<li>
-<p><strong>Event Processing</strong>: a no-code editor for allowing developers (of any skill level) to construct processing flows, detect situations across multiple events inside a configurable time-window, and validate flow behavior prior to deploying into production (using historical data.)</p>
-</li>
-<li>
-<p><strong>Event Streams</strong> + <strong>Kafka-IBM MQ connector</strong>: part of the <em>IBM Cloud Pak for Integration</em> suite, this connector allows MQ messages to be published into a Kafka-compatible event stream. It provides assurances that all MQ messages are delivered once-and-only-once, without requiring complex or custom code.</p>
-</li>
-</ul>
-<p>Environments have been prepared ahead of time with the assistance of IBM Technology Zone, which can be reserved for learning and client demonstration purposes at no-charge. Instructions for how to reserve and configure the environment are documented in the Setup module.</p>
-<hr />
 <h1 id="_4"></h1>
 <h1 id="next-steps">Next Steps</h1>
 <p>In the following module, you will receive the necessary pre-requisites and setup instructions for getting started with <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em> environments.</p>
@@ -401,13 +402,13 @@
       
       
         
-        <a href="evaluation/" class="md-footer__link md-footer__link--next" aria-label="Next: Evaluation" rel="next">
+        <a href="setup/" class="md-footer__link md-footer__link--next" aria-label="Next: Setup" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Evaluation
+              Setup
             </div>
           </div>
           <div class="md-footer__button md-icon">
