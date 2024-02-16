@@ -264,6 +264,19 @@
 
 <h1 id="prerequisites-and-setup">Prerequisites and Setup</h1>
 <hr />
+<div class="admonition warning">
+<p class="admonition-title">SUPPORT AND TROUBLESHOOTING</p>
+<p>If you require assistance or run into issues with the hands-on lab, help is available.</p>
+<ul>
+<li>
+<p><strong>Environment Issues</strong>: The lab environment is managed by IBM Technology Zone. <a href="https://techzone.ibm.com/help" target="_blank">Opening a support case ticket</a> is recommended for issues related to the hands-on environment (provisioning, running, and so on.)</p>
+</li>
+<li>
+<p><strong>Documentation Issues</strong>: If there is an error in the lab documentation, or if you require additional support in completing the material, open a thread on the <a href="https://ibm-cloud.slack.com/archives/C0216F39ACU" target="_blank">#platinumdemos-automation-support</a> Slack channel.</p>
+</li>
+</ul>
+</div>
+<p></br> </p>
 <p>The hands-on material covered within this lab will focus on <em>event-led integration</em> solutions, specifically the <strong>IBM Event Automation</strong> suite — as well as elements of the <strong>IBM Cloud Pak for Integration</strong> (IBM MQ-Kafka connector.)</p>
 <p>IBM Event Automation provides an open, composable set of capabilities that interoperate with the services and tools that are already part of a client's ecosystem. A fundamental component to IBM Event Automation's architecture is composability, which will be highlighted through the lab as you incrementally add more capabilities and elements to the demo environment.</p>
 <ul>
@@ -279,6 +292,67 @@
 </ul>
 <p>Environment templates (images) have been defined ahead of time with the assistance of <strong>IBM Technology Zone</strong> (ITZ), which can be reserved for learning and client demonstration purposes at no-charge. Some further configuration of these environments will be required after deployment on ITZ.</p>
 <hr />
+<h1 id="request-an-environment"><strong>REQUEST AN ENVIRONMENT</strong></h1>
+<hr />
+<p>You will require access to the ITZ in order to reserve your environment and complete the hands-on training. If you do not yet have access or an account with the ITZ, <a href="https://techzone.ibm.com/" target="_blank">you will need to register for one</a>.</p>
+<p>The hands-on environment— a combination of services from <em>IBM Cloud Pak for Integration</em> (CPI) and <em>IBM Event Automation</em> (EA) —will be running entirely atop of <strong>Red Hat OpenShift</strong>, making use of containerized deployments of CPI and EA that will be orchestrated across the OpenShift cluster.</p>
+<ol>
+<li>
+<p><strong>Reserve</strong> a Red Hat OpenShift cluster via the IBM Technology Zone from the following template.</p>
+<p><strong>URL:</strong> <a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3</a></p>
+</li>
+<li>
+<p>From the <code>Single environment reservation options:</code> list, select <strong>Reserve now</strong>.</p>
+</li>
+<li>
+<p>A page will load requesting additional details about your ITZ reservation request:</p>
+</li>
+</ol>
+<ul>
+<li>
+<p><strong>Name</strong>: Give your reservation a unique name.</p>
+</li>
+<li>
+<p><strong>Purpose</strong>: Set to <code>Practice / Self-Education</code> and affirm that customer data will not be used with the environment. If you are replicating this hands-on demonstration with a client, you must select Customer Demo and supply a sales opportunity number.</p>
+</li>
+<li>
+<p><strong>Purpose Description</strong>: Provide a brief summary of how the environment will be used.</p>
+</li>
+<li>
+<p><strong>Preferred Geography</strong>: Select the data center region that is closest to your location.</p>
+</li>
+<li>
+<p><strong>End Date &amp; Time</strong>: Select a time and date for when the reservation will expire. The recommended amount is 2 days, although it is possible to finish the hands-on demonstration within a few hours. Additional time extensions are available.</p>
+</li>
+<li>
+<p><strong>OCP/Kubernetes Cluster Network</strong>: Set to default value of <code>10.128.0.0/14</code></p>
+</li>
+<li>
+<p><strong>Enable FIPS Security</strong>: Set to default value of <code>No</code></p>
+</li>
+<li>
+<p><strong>OpenShift Version</strong>: Set to <code>4.14</code></p>
+</li>
+<li>
+<p><strong>Storage</strong>: Set to <code>ODF - 2 TB</code></p>
+</li>
+<li>
+<p><strong>OCP/Kubernetes Service Network</strong>: Set to default value of <code>172.30.0.0/16</code></p>
+</li>
+<li>
+<p><strong>Worker Node Count</strong>: Set to default value of <code>3</code></p>
+</li>
+<li>
+<p><strong>Worker Node Flavor</strong>: Set to <code>16 vCPU x 64 GB - 100 GB ephemeral storage</code></p>
+</li>
+</ul>
+<ol start="4">
+<li>
+<p>When satisfied, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit</strong>.</p>
+<p>Reservations take approximately <strong>60 minutes</strong> to complete from the time that you click submit.</p>
+<p>If you navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ, you can monitor the progress of your reservation. Wait for the ITZ reservation to be marked as "<em>Ready</em>" before attempting to start the lab — accessing it too soon will lead to issues (or an outright failure) when connecting to the OpenShift cluster.</p>
+</li>
+</ol>
 
 
 
