@@ -373,7 +373,7 @@
 <h1 id="_2"></h1>
 <h1 id="tailoring-the-lab-environment">Tailoring the Lab Environment</h1>
 <hr />
-<div class="admonition tip">
+<div class="admonition note">
 <p class="admonition-title">COMMAND LINE ACCESS</p>
 <p>For parts of the hands-on lab, you will be required to establish connections over SSH to remote infrastructure endpoints. It is recommended that users do so via <strong>Terminal</strong> (Mac) or <strong>PuTTY</strong> (Windows). For detailed instructions on how to connect with PuTTY, or if you are using a Windows machine, <a href="https://ibm.box.com/s/d71tn63hutdxrjwh21qdzralrsxlcspe" target="_blank">reference the linked material</a>.</p>
 </div>
@@ -431,18 +431,18 @@
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./deploy.sh
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>!!! tip &quot;DEPLOYMENT TIMES&quot;
+<div class="highlight"><pre><span></span><code>Wait for the full deployment to complete before continuing with the lab documentation. When ready, each of the lab services— IBM Cloud Pak for Integration (&quot;Platform Navigator&quot;), Event Streams, Event Endpoint Management, Event Processing, and IBM MQ —will be listed to the Terminal window. Each listing will be accompanied by a `URL`, `username`, and `password`. **Record** this information to a notepad for reference later.
 
-    The deployment of *IBM Event Automation* and *IBM Cloud Pak for Integration* containers on to the OpenShift cluster is entirely automated using *Red Hat Ansible* scripts. Full deployment and configuration should take approximately **20-45 minutes** to complete.
+!!! tip &quot;DEPLOYMENT TIMES&quot;
 
-Wait for the full deployment to complete before continuing with the lab documentation. When ready, each of the lab services— IBM Cloud Pak for Integration (&quot;Platform Navigator&quot;), Event Streams, Event Endpoint Management, Event Processing, and IBM MQ —will be listed to the Terminal window. Each listing will be accompanied by a `URL`, `username`, and `password`. **Record** this information to a notepad for reference later.
+    The deployment of *IBM Event Automation* and *IBM Cloud Pak for Integration* containers to the OpenShift cluster is entirely automated using *Red Hat Ansible* scripts. Full deployment and configuration should take approximately **20-45 minutes** to complete.
 </code></pre></div>
 <hr />
 <ol start="16">
 <li>
 <p>The <em>Platform Navigator</em> and <em>IBM MQ</em> services utilize the same login details. The password supplied for these two services by the Terminal console in Step 15 is a <em>temporary</em>, <em>one-time-use</em> password.</p>
 <p>Try logging into the <em>IBM MQ</em> environment environment by pasting the <code>URL</code> into a web browser. Then supply the <code>username</code> and temporary <code>password</code> recorded within your notepad. Ignore any <em>This connection is not private</em> warnings you may receive. If the page does not load or stalls, verify that you are connected to the IBM intranet with an active VPN.</p>
-<p>When prompted, create your own password for logging into the environment. Confirm your selection with <strong>Submit</strong> and then update your password records for both the <em>Platform Navigator</em> and <em>IBM MQ</em> services.</p>
+<p>When prompted, create your own password for logging into the environment. Confirm your selection with <strong>Submit</strong> and then update your <code>password</code> records for both the <em>Platform Navigator</em> and <em>IBM MQ</em> services.</p>
 </li>
 </ol>
 <hr />
