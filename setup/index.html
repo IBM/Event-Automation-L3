@@ -378,10 +378,10 @@
 <p>You will be prompted to provide the <strong>Username</strong> and <strong>Password</strong> recorded in <em>Step 5</em>. Click <strong>Log in</strong> to proceed.</p>
 <p><br/>
 <img alt="" src="../_attachments/setup-6.png" /></p>
-<details class="warning">
-<summary>THIS CONNECTION IS NOT PRIVATE</summary>
+<div class="admonition warning">
+<p class="admonition-title">THIS CONNECTION IS NOT PRIVATE</p>
 <p>Depending on your web browser, you may receive a warning about <code>This connection is not private</code> or a similarly phrased message. Disregard these warnings and continue to the intended destination by clicking <em>"visit this website."</em></p>
-</details>
+</div>
 <p>Once authenticated, the web browser will redirect to the main dashboard for the OpenShift Container Platform web interface. You are now ready to proceed with the lab environment customization for <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em>.</p>
 </li>
 </ol>
@@ -440,15 +440,16 @@
 <ol start="12">
 <li>
 <p>Open your command line tool of preference on your local machine, likely either <strong>Terminal</strong> or <strong>PuTTY</strong>. At this stage, the OpenShift CLI (<code>oc</code>) should be available on your machine and ready for remotely connecting to the OpenShift cluster.</p>
-<p>Within the Terminal, paste the full login command recorded in Step 11 and hit <code>Return</code> to commence the login. A prompt similar to the screenshot below will be displayed momentarily, indicating that the Terminal is now successfully connected (remotely) to the OpenShift cluster.</p>
+<p>Within the Terminal, <strong>paste the full login command</strong> recorded in Step 11 and hit <code>Return</code> to commence the login. A prompt similar to the screenshot below will be displayed momentarily, indicating that the Terminal is now successfully connected (remotely) to the OpenShift cluster.</p>
 <p><br/>
 <img alt="" src="../_attachments/setup-12.png" /></p>
 </li>
 </ol>
 <hr />
 <ol start="13">
-<li>To deploy containerized instances of <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em> to the OpenShift cluster, you must first download those container images on to the cluster. Execute the following command within your Terminal console to <code>clone</code> the necessary scripts and images to the OpenShift environment:</li>
+<li>To deploy containerized instances of <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em> to the OpenShift cluster, you must first download those container images on to the cluster.</li>
 </ol>
+<p>Execute the following command within your Terminal console to <code>clone</code> the necessary scripts and images to the OpenShift environment:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git clone https://github.com/IBM/platinum-demo-code-event-automation.git
 </code></pre></div>
 <p><br/>
@@ -480,7 +481,7 @@
 <p>Try logging into the <em>IBM MQ</em> environment environment by pasting the <code>URL</code> into a web browser. Then supply the <code>username</code> and temporary <code>password</code> recorded within your notepad. Ignore any <em>This connection is not private</em> warnings you may receive. If the page does not load or stalls, verify that you are connected to the IBM intranet with an active VPN.</p>
 <p>When prompted, create your own password for logging into the environment. Confirm your selection with <strong>Submit</strong> and then update your <code>password</code> records for both the <em>Platform Navigator</em> and <em>IBM MQ</em> services.</p>
 <p><br/>
-<img alt="" src="../_attachments/setup-16.png" /></p>
+<img alt="" loading="lazy" src="../_attachments/setup-16.png" width="600" /></p>
 </li>
 </ol>
 <hr />
