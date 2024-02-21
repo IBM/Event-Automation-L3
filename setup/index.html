@@ -466,16 +466,15 @@
 <p>The deployment of <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em> containers to the OpenShift cluster is entirely automated using <em>Red Hat Ansible</em> scripts. Full deployment and configuration should take approximately <strong>20-45 minutes</strong> to complete.</p>
 </div>
 <ol start="15">
-<li>
-<p>Execute the following command to kick off the process of deploying and configuring the containerized services: <code>shell
-    ./deploy.sh</code></p>
-<p>Wait for the full deployment to complete before continuing with the lab documentation.</p>
-</li>
+<li>Execute the following command to kick off the process of deploying and configuring the containerized services:</li>
 </ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./deploy.sh
+</code></pre></div>
+<p>Wait for the full deployment to complete before continuing with the lab documentation.</p>
 <hr />
-<div class="highlight"><pre><span></span><code>When ready, each of the lab services— IBM Cloud Pak for Integration (&quot;Platform Navigator&quot;), Event Streams, Event Endpoint Management, Event Processing, and IBM MQ —will be listed to the Terminal window.
-
-&lt;br/&gt;
+<p><br/>
+    When ready, each of the lab services— IBM Cloud Pak for Integration ("Platform Navigator"), Event Streams, Event Endpoint Management, Event Processing, and IBM MQ —will be listed to the Terminal window.</p>
+<div class="highlight"><pre><span></span><code>&lt;br/&gt;
 ![](_attachments/setup-15.png)
 
 Each listing will be accompanied by a `URL`, `username`, and `password`. **Record** this information to a notepad for reference later.
