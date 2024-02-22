@@ -46,7 +46,16 @@
 
     
     
-  </head>
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -357,7 +366,7 @@
 <li>
 <p>From the <code>Single environment reservation options</code> list, select <strong>Reserve now</strong>.</p>
 <p><br/>
-<img alt="" src="../_attachments/setup-2.png" /></p>
+<a class="glightbox" href="../_attachments/setup-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/setup-2.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -405,9 +414,9 @@
 <p></br></p>
 <p>When satisfied, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit</strong>.</p>
 <p><br/>
-<img alt="" src="../_attachments/setup-3a.png" /></p>
+<a class="glightbox" href="../_attachments/setup-3a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/setup-3a.png" /></a></p>
 <p><br/>
-<img alt="" src="../_attachments/setup-3b.png" /></p>
+<a class="glightbox" href="../_attachments/setup-3b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/setup-3b.png" /></a></p>
 <div class="admonition tip">
 <p class="admonition-title">PROVISIONING TIMES</p>
 <p>Reservations take approximately <strong>60 minutes</strong> to complete from the time that you click submit. If you navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ, you can monitor the progress of your reservation. Wait for the ITZ reservation to be marked as "<em>Ready</em>" before attempting to start the lab — accessing it too soon will lead to issues (or an outright failure) when connecting to the OpenShift cluster.</p>
@@ -419,7 +428,7 @@
 <li>
 <p>When the ITZ environment is ready to go, you will receive an email to your inbox (similar to the screenshot below). Click the blue <strong>View My Reservations</strong> at the bottom of the email to open a page with more details about the environment. Alternatively, you can click the <strong>My Reservations</strong> tab from the ITZ home page to drill down into your environment's details.</p>
 <p><br/>
-<img alt="" loading="lazy" src="../_attachments/setup-4.png" width="600" /></p>
+<a class="glightbox" href="../_attachments/setup-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-4.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
@@ -429,7 +438,7 @@
 <p>Record the <strong>Username</strong> (<code>kubeadmin</code>) and <strong>Password</strong> (unique to your environment), as well as the <strong>Desktop URL</strong> just above those two items, to a notepad for reference later.</p>
 <p>Click the blue <strong>Open your IBM Cloud environment</strong> icon to access the OpenShift web dashboard.</p>
 <p><br/>
-<img alt="" src="../_attachments/setup-5.png" /></p>
+<a class="glightbox" href="../_attachments/setup-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/setup-5.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -437,7 +446,7 @@
 <li>
 <p>You will be prompted to provide the <strong>Username</strong> and <strong>Password</strong> recorded in <em>Step 5</em>. Click <strong>Log in</strong> to proceed.</p>
 <p><br/>
-<img alt="" src="../_attachments/setup-6.png" /></p>
+<a class="glightbox" href="../_attachments/setup-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/setup-6.png" /></a></p>
 <div class="admonition warning">
 <p class="admonition-title">THIS CONNECTION IS NOT PRIVATE</p>
 <p>Depending on your web browser, you may receive a warning about <code>This connection is not private</code> or a similarly phrased message. Disregard these warnings and continue to the intended destination by clicking <em>"visit this website."</em></p>
@@ -459,7 +468,7 @@
 <p>In the top-right corner of the OpenShift dashboard, click the <strong>question mark</strong> (<code>?</code>) icon as shown in the screenshot below. This will open a drop-down menu with several options.</p>
 <p>Click the <strong>Command line tools</strong> option from the drop-down menu.</p>
 <p><br/>
-<img alt="" loading="lazy" src="../_attachments/setup-7.png" width="600" /></p>
+<a class="glightbox" href="../_attachments/setup-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-7.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
@@ -468,7 +477,7 @@
 <p>From the <code>oc - OpenShift Command Line Interface (CLI)</code> options, click the download link that matches your local machine's operating system (Mac, Windows, or Linux).</p>
 <p>Once downloaded, execute the installer and proceed with the lab guide once <code>oc</code> is successfully installed.</p>
 <p><br/>
-<img alt="" loading="lazy" src="../_attachments/setup-8.png" width="600" /></p>
+<a class="glightbox" href="../_attachments/setup-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-8.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
@@ -477,7 +486,7 @@
 <p>Return to the OpenShift dashboard landing page. In the far right-hand corner of the interface, click the <strong>kube:admin</strong> button to open another drop-down menu.</p>
 <p>From the options, select <strong>Copy login command</strong> to open a new tab or window with details about remotely accessing the OpenShift cluster.</p>
 <p><br/>
-<img alt="" loading="lazy" src="../_attachments/setup-9.png" width="600" /></p>
+<a class="glightbox" href="../_attachments/setup-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-9.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
@@ -485,7 +494,7 @@
 <li>
 <p>A mostly-blank page will load, with <strong>Display Token</strong> written in blue text in the top-left of the page. Click this link to proceed.</p>
 <p><br/>
-<img alt="" loading="lazy" src="../_attachments/setup-10.png" width="400" /></p>
+<a class="glightbox" href="../_attachments/setup-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-10.png" width="400" /></a></p>
 </li>
 </ol>
 <hr />
@@ -493,7 +502,7 @@
 <li>
 <p>Details about a newly-generated API token will load on screen. Record the full command listed under <strong>Log in with this token</strong> (resembling something similar to <code>oc login --token=sha256...</code>) and save this to your notepad for later reference.</p>
 <p><br/>
-<img alt="" src="../_attachments/setup-11.png" /></p>
+<a class="glightbox" href="../_attachments/setup-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/setup-11.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -502,7 +511,7 @@
 <p>Open your command line tool of preference on your local machine, likely either <strong>Terminal</strong> or <strong>PuTTY</strong>. At this stage, the OpenShift CLI (<code>oc</code>) should be available on your machine and ready for remotely connecting to the OpenShift cluster.</p>
 <p>Within the Terminal, <strong>paste the full login command</strong> recorded in Step 11 and hit <code>Return</code> to commence the login. A prompt similar to the screenshot below will be displayed momentarily, indicating that the Terminal is now successfully connected (remotely) to the OpenShift cluster.</p>
 <p><br/>
-<img alt="" loading="lazy" src="../_attachments/setup-12.png" width="600" /></p>
+<a class="glightbox" href="../_attachments/setup-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-12.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
@@ -512,7 +521,7 @@
 <p>Execute the following command within your Terminal console to <code>clone</code> the necessary scripts and images to your <em>local machine</em>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git clone https://github.com/IBM/platinum-demo-code-event-automation.git
 </code></pre></div>
-<p><img alt="" src="../_attachments/setup-13.png" /></p>
+<p><a class="glightbox" href="../_attachments/setup-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/setup-13.png" /></a></p>
 <hr />
 <ol start="14">
 <li>Navigate to the newly cloned <code>platinum-demo-code-event-automation</code> repository with the following command:</li>
@@ -531,7 +540,7 @@
 </code></pre></div>
 <p>Wait for the full deployment to complete before continuing with the lab documentation. When ready, each of the lab services— IBM Cloud Pak for Integration ("Platform Navigator"), Event Streams, Event Endpoint Management, Event Processing, and IBM MQ —will be listed to the Terminal window.</p>
 <p><br/>
-<img alt="" src="../_attachments/setup-15.png" /></p>
+<a class="glightbox" href="../_attachments/setup-15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/setup-15.png" /></a></p>
 <p>Each listing will be accompanied by a <code>URL</code>, <code>username</code>, and <code>password</code>. <strong>Record</strong> this information to a notepad for reference later.</p>
 <hr />
 <ol start="16">
@@ -544,7 +553,7 @@
 </div>
 <p>When prompted, create your own password for logging into the environment. Confirm your selection with <strong>Submit</strong> and then update your <code>password</code> records for both the <em>Platform Navigator</em> and <em>IBM MQ</em> services.</p>
 <p><br/>
-<img alt="" loading="lazy" src="../_attachments/setup-16.png" width="600" /></p>
+<a class="glightbox" href="../_attachments/setup-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-16.png" width="600" /></a></p>
 <p><br/>
 At this stage, the lab environment is fully configured and ready for hands-on work. </p>
 </li>
@@ -652,5 +661,5 @@ At this stage, the lab environment is fully configured and ready for hands-on wo
       <script src="../assets/javascripts/bundle.9c69f0bc.min.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

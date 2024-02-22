@@ -46,7 +46,16 @@
 
     
     
-  </head>
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -400,7 +409,7 @@
 </ol>
 <hr />
 <h1 id="_2"></h1>
-<h1 id="creating-a-cloned-orders-stream-using-ibm-event-streams">Creating a cloned Orders stream using <strong>IBM Event Streams</strong></h1>
+<h1 id="creating-a-cloned-orders-stream-within-ibm-event-streams">Creating a cloned Orders stream within <strong>IBM Event Streams</strong></h1>
 <hr />
 <p>Focus Corporation's integration team will now need to create an event stream called <code>Orders</code> using <em>IBM Event Streams</em>. This will serve as the repository where messages, cloned from IBM MQ, are published and made available to other parts of the organization.</p>
 <p>The team will need to make decisions about how to replicate the data (with or without modification) and also determine the appropriate retention settings for this data. Given the governance policies in place at Focus Corporation, they will need to retain data for up to 1 week and replicate entries for high availability.</p>
@@ -519,5 +528,5 @@
       <script src="../assets/javascripts/bundle.9c69f0bc.min.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
