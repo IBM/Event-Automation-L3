@@ -335,14 +335,17 @@
 </ol>
 <hr />
 <ol start="4">
-<li>Wait for the Queue creation wizard to load, then select <strong>Local</strong> from the <code>Choose queue type</code> options.</li>
+<li>Wait for the Queue creation wizard to load, then select <strong>Local</strong> from <code>Choose queue type</code>.</li>
 </ol>
 <hr />
 <ol start="5">
 <li>
 <p>The <code>Quick create</code> option should be selected by default.</p>
-<p>Under the <strong>Queue name</strong> field, enter <code>TO.KAFKA</code> (all uppercase). When ready, click <strong>Create</strong>.</p>
-<p>The web browser will refresh back to the <strong>Manage</strong> &gt; <strong>Queues</strong> perspective. From the table at the bottom of the page, confirm that the <code>TO.KAFKA</code> queue is now available. </p>
+<ul>
+<li>Under the <strong>Queue name</strong> field, enter <code>TO.KAFKA</code> (all uppercase). When ready, click <strong>Create</strong>.</li>
+<li>The web browser will refresh back to the <strong>Manage</strong> &gt; <strong>Queues</strong> perspective.</li>
+<li>From the table at the bottom of the page, confirm that the <code>TO.KAFKA</code> queue is now available. </li>
+</ul>
 </li>
 </ol>
 <hr />
@@ -356,9 +359,11 @@
 <ol start="7">
 <li>
 <p>The queue will already have been populated with multiple <em>Messages</em>. Click on any of the <strong>Timestamp</strong> names available in the table (something similar to <code>Feb 21, 2024 at 5:12:00 PM</code>) to pull open a <em>Message Details</em> panel.</p>
-<p>Scroll down within the <em>Message Details</em> panel until you reach the <strong>Application Data</strong> section.</p>
-<p>Inspect the contents of the packet, which is a series of key-value pairs. You should see details about the order <code>id</code>, <code>customer</code>, <code>customerid</code>, <code>description</code>, <code>price</code>, <code>quantity</code>, <code>region</code>, and <code>ordertime</code>.</p>
-<p><strong>Close</strong> the <em>Message Details</em> panel by clicking the <code>X</code> in the top-right corner or the grey <code>Close</code> button.</p>
+<ul>
+<li>Scroll down within the <em>Message Details</em> panel until you reach the <strong>Application Data</strong> section.</li>
+<li>Inspect the contents of the packet, which is a series of key-value pairs. You should see details about the order <code>id</code>, <code>customer</code>, <code>customerid</code>, <code>description</code>, <code>price</code>, <code>quantity</code>, <code>region</code>, and <code>ordertime</code>.</li>
+<li><strong>Close</strong> the <em>Message Details</em> panel by clicking the <code>X</code> in the top-right corner or the grey <code>Close</code> button.</li>
+</ul>
 </li>
 </ol>
 <hr />
@@ -376,9 +381,11 @@
 <ol start="10">
 <li>
 <p>From the tabs on the left side of the page, drill down into <strong>Storage</strong>.</p>
-<p>Scroll down until you reach the <strong>Streaming queue name</strong> field and change the value to <code>TO.KAFKA</code>.</p>
-<p>This will direct <em>IBM MQ</em> to clone messages from the <code>PAYMENT.QUE</code> queue into the <code>TO.KAFKA</code> streaming queue created in Step 5.</p>
-<p>When satisfied, click the blue <strong>Save</strong> button in the top-right of the page to confirm the configuration changes.</p>
+<ul>
+<li>Scroll down until you reach the <strong>Streaming queue name</strong> field and change the value to <code>TO.KAFKA</code>.</li>
+<li>This will direct IBM MQ to clone messages from the <code>PAYMENT.QUE</code> queue into the <code>TO.KAFKA</code> streaming queue created in Step 5.</li>
+<li>When satisfied, click the blue <strong>Save</strong> button in the top-right of the page to confirm the configuration changes.</li>
+</ul>
 </li>
 </ol>
 <hr />
@@ -394,14 +401,13 @@
 </ol>
 <hr />
 <h1 id="_2"></h1>
-<h1 id="creating-an-orders-event-stream-using-ibm-event-streams">Creating an Orders event stream using IBM Event Streams</h1>
+<h1 id="creating-an-orders-stream-using-ibm-event-streams">Creating an Orders stream using IBM Event Streams</h1>
 <hr />
-<ol start="13">
-<li>
-<p>Open the <strong>IBM Event Streams</strong> tab using your web browser.</p>
 <p>Focus Corporation's integration team will now need to create an event stream called <code>Orders</code> using <em>IBM Event Streams</em>. This will serve as the repository where messages, cloned from IBM MQ, are published and made available to other parts of the organization.</p>
 <p>The team will need to make decisions about how to replicate the data (with or without modification) and also determine the appropriate retention settings for this data. Given the governance policies in place at Focus Corporation, they will need to retain data for up to 1 week and replicate entries for high availability.</p>
-</li>
+<hr />
+<ol start="13">
+<li>Open the <strong>IBM Event Streams</strong> tab using your web browser.</li>
 </ol>
 <hr />
 <ol start="14">
@@ -420,7 +426,7 @@
 </ol>
 <hr />
 <ol start="17">
-<li>Under the <strong>Message Retention</strong> tab, accept the default recommendation of <code>A week</code> by clicking <strong>Next</strong>.</li>
+<li>Under the <strong>Message Retention</strong> tab, accept the default recommendation of <code>A week</code> and click <strong>Next</strong> to continue.</li>
 </ol>
 <hr />
 <ol start="18">
