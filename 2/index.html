@@ -17,7 +17,7 @@
     
     
       
-        <title>2. Browse a self-service catalog of events with Event Endpoint Management - IBM Event Automation for Technical Sales Level 3</title>
+        <title>2. Building a self-service catalog of events with Event Endpoint Management - IBM Event Automation for Technical Sales Level 3</title>
       
     
     
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#browsing-the-self-service-ibm-event-streams-catalog" class="md-skip">
+        <a href="#building-the-self-service-ibm-event-streams-catalog" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2. Browse a self-service catalog of events with Event Endpoint Management
+              2. Building a self-service catalog of events with Event Endpoint Management
             
           </span>
         </div>
@@ -223,7 +223,7 @@
   
     <li class="md-nav__item">
       <a href="../1/" class="md-nav__link">
-        1. Create an event stream from IBM MQ data using Event Streams
+        1. Creating an event stream from IBM MQ data using Event Streams
       </a>
     </li>
   
@@ -247,7 +247,7 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        2. Browse a self-service catalog of events with Event Endpoint Management
+        2. Building a self-service catalog of events with Event Endpoint Management
       </a>
       
     </li>
@@ -316,8 +316,295 @@
                 
 
 
-<h1 id="browsing-the-self-service-ibm-event-streams-catalog">Browsing the self-service IBM Event Streams catalog</h1>
+<h1 id="building-the-self-service-ibm-event-streams-catalog">Building the self-service IBM Event Streams catalog</h1>
 <hr />
+<p>Having successfully deployed the IBM MQ-Apacha Kafka connector framework, Focus Corporation's integration team have created a bridge between MQ and Event Streams. As new customer order data is processed by the IBM MQ message queue, it is simultaneously cloned into the <code>Orders</code> event stream — awaiting further analysis and action by other users downstream.</p>
+<p>In this module, Focus' integration team will utilize <strong>IBM Event Endpoint Management (EEM)</strong> to import the newly-created event stream into a self-service catalog. EEM supports two use cases: the first is for teams (like integration) to publish new event streams; the second is for consumers (such as marketing) to browse the contents of those event streams, without requiring direct intervention from the integration team.</p>
+<p>Before the event stream data can be browsed as part of a self-service catalog, the integration team must first import into EEM the <code>order</code> and <code>customer</code> streams via <em>Topics</em> created earlier within IBM Event Streams.</p>
+<hr />
+<ol>
+<li>Since this is the first time that the integration team has needed to import Topics from IBM Event Streams, they must first register the cluster within EEM.</li>
+</ol>
+<ul>
+<li>
+<p>Switch over to the <strong>IBM Event Endpoint Management</strong> (EEM) tab within your web browser.</p>
+</li>
+<li>
+<p>From the left-hand side of the interface, click <strong>Topic</strong>.</p>
+</li>
+<li>
+<p>From the right side of the interface, click the blue <strong>Add Topic</strong> button.</p>
+</li>
+</ul>
+<hr />
+<ol start="2">
+<li>A configuration tool for importing a Topic into EEM will load. First, define details regarding the <em>Cluster connection</em> to the IBM Event Streams environment.</li>
+</ol>
+<p>Under the <em>Add a new cluster</em> header, click the <strong>Add new cluster</strong> button.</p>
+<hr />
+<ol start="3">
+<li>Set the <em>Cluster Name</em> variable to <code>IBM Event Streams</code> and click <strong>Next</strong> to continue.</li>
+</ol>
+<hr />
+<ol start="4">
+<li>Additional details about the connection are required: the endpoint address, certificates required for secure communication with the cluster, and authentication credentials.</li>
+</ol>
+<p>Set the <em>Servers</em> variable to <code>ademo-es-kafka-bootstrap.cp4i.svc:9095</code> and click <strong>Next</strong> to continue.</p>
+<hr />
+<ol start="5">
+<li>Click (to add a checkmark) on the <strong>Accept all certificates</strong> toggle, then click <strong>Next</strong>.</li>
+</ol>
+<hr />
+<ol start="6">
+<li>Next, configure details regarding <em>Credentials</em>.</li>
+</ol>
+<ul>
+<li>
+<p>The <em>Security Protocol</em> field should remain at the default value of <code>SCRAM-SHA-512</code>.</p>
+</li>
+<li>
+<p><em>Username</em> should be set to <code>es-admin</code></p>
+</li>
+<li>
+<p><em>Password</em> must match the <strong>IBM Event Streams</strong> password generated in the Setup module. This password is unique to your particular environment.</p>
+</li>
+<li>
+<p>When satisfied, click <strong>Add Cluster</strong>.</p>
+</li>
+</ul>
+<hr />
+<ol start="7">
+<li>The web browser will return to the <em>Add Topic</em> configuration page from Step 2. Under the <em>Cluster connection</em> header, select the <code>IBM Event Streams</code> connection you just defined. When ready, click <strong>Next</strong>.</li>
+</ol>
+<hr />
+<ol start="8">
+<li>Now select the Topics that will be made available for browsing within the Event Endpoint Management catalog.</li>
+</ol>
+<p>Toggle (select) <em>both</em> the <code>CUSTOMERS</code> and <code>ORDERS</code> topics. You may keep the alias values as their recommended defaults.</p>
+<p>When ready, click <strong>Add Topic</strong>.</p>
+<hr />
+<h1 id="_1"></h1>
+<h1 id="describe-and-publish-event-streams-within-ibm-event-endpoint-management">Describe and publish event streams within IBM Event Endpoint Management</h1>
+<hr />
+<p>With the connections to IBM Event Streams defined and the Kafka Topics selected for replication, Focus' integration team is ready to create the self-service event stream catalogs within the EEM service. </p>
+<p>The team must provide descriptions of the event streams, including an example of how the data is structured and formatted. This description will be beneficial to other individuals within the company (such as the marketing department), who will want to know at-a-glance whether a particular Topic catalog fits their needs.</p>
+<hr />
+<ol start="9">
+<li>From the EEM dashboad, drill down into <strong>Topics</strong> as before and click the name of the <code>CUSTOMERS</code> topic.</li>
+</ol>
+<hr />
+<ol start="10">
+<li>Click the blue <strong>Edit information</strong> on the right-hand side of the page.</li>
+</ol>
+<hr />
+<ol start="11">
+<li>Within the <em>Overview information</em> tab:</li>
+</ol>
+<ul>
+<li>
+<p>Scroll down until you reach the <strong>Description</strong> field and enter the following text: <code>Events generated by the customer management system. A new event is created for each new user registration.</code></p>
+</li>
+<li>
+<p>Scroll further down until you reach the <strong>Tags</strong> field and enter <code>customer</code></p>
+</li>
+<li>
+<p>For the <strong>Contact Email</strong> field, enter <code>customerservice@focus.corp</code></p>
+</li>
+</ul>
+<p>When satisfied, click <strong>Save</strong></p>
+<hr />
+<ol start="12">
+<li>Within the <em>Event information</em> tab, scroll down until you locate the <strong>Sample message</strong> field. Here you will provide a representation of a typical message expected on the <code>CUSTOMERS</code> event stream.</li>
+</ol>
+<p>Copy and paste the following JSON into the field:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;customerid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;acb3eb65-98a1-45c2-84d4-f5df157862b4&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;customername&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Emilio Quitzon&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&quot;registered&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-10-24 19:20:35.638&quot;</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p>When satisfied, click <strong>Save</strong> to close the configuration tab.</p>
+<hr />
+<ol start="13">
+<li>The web browser will return to the <code>CUSTOMERS</code> Topic overview. From the three tabs at the top of the screen, click <strong>Options</strong>.</li>
+</ol>
+<hr />
+<ol start="14">
+<li>Within the <em>Details</em> tab, provide the following customizations:</li>
+</ol>
+<ul>
+<li>
+<p><strong>Order name</strong>: <code>Customer Access</code></p>
+</li>
+<li>
+<p><strong>Alias</strong>: <code>CUSTOMERS</code></p>
+</li>
+<li>
+<p><strong>Description</strong>: <code>Self-service access to the customer event stream.</code></p>
+</li>
+</ul>
+<p>When satisfied, click <strong>Next</strong>.</p>
+<hr />
+<ol start="15">
+<li>Leave the <em>Controls</em> tab empty (<code>No data</code>) and click <strong>Next</strong> to proceed.</li>
+</ol>
+<hr />
+<ol start="16">
+<li>The <em>Publish option</em> tab will give you a final opportunity to review the <code>CUSTOMERS</code> topic before publishing for other users of EEM.</li>
+</ol>
+<ul>
+<li>
+<p>Within the blue <em>Option Status</em> field, click the <strong>Publish</strong> button.</p>
+</li>
+<li>
+<p>Further down the panel, under the <em>Available gateways</em> field, click (toggle on) <code>production</code>.</p>
+</li>
+</ul>
+<p>When satisfied, click <strong>Save</strong> to finalize publication of the <code>CUSTOMERS</code> topic.</p>
+<hr />
+<p>The process of publishing an event streams Topic within EEM (Steps 9–16) must now be repeated— with some slight modifications —for the <code>ORDERS</code> topic.</p>
+<hr />
+<ol start="17">
+<li>From the EEM dashboard, drill down into <strong>Topics</strong> and then click the name <code>ORDERS</code> from the table.</li>
+</ol>
+<hr />
+<ol start="18">
+<li>Click on the <strong>Edit information</strong> button.</li>
+</ol>
+<hr />
+<ol start="19">
+<li>Within the <em>Overview information</em> tab:</li>
+</ol>
+<ul>
+<li>
+<p>Scroll down until you reach the <strong>Description</strong> field and enter the following text: <code>Events generated by the customer management system. An event will be emitted for every new order that is made.</code></p>
+</li>
+<li>
+<p>Scroll further down until you reach the <strong>Tags</strong> field and enter <code>orders</code></p>
+</li>
+<li>
+<p>For the <strong>Contact Email</strong> field, enter <code>orders@focus.corp</code></p>
+</li>
+</ul>
+<p>When satisfied, click <strong>Save</strong></p>
+<hr />
+<ol start="20">
+<li>Within the <em>Event information</em> tab, scroll down until you locate the <strong>Sample message</strong> field. Here you will provide a representation of a typical message expected on the <code>ORDERS</code> event stream.</li>
+</ol>
+<p>Copy and paste the following JSON into the field:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">197.09</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">&quot;customerid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a7d1586b-ced1-462f-9e44-14e9e5013540&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Composite Oversize 28in Tennis Racket&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1eba7af9-b748-4754-b750-3459e589dccf&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nt">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EMEA&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nt">&quot;ordertime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-10-24 19:26:04.839&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nt">&quot;customer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Reed McKenzie DDS&quot;</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p>When satisfied, click <strong>Save</strong> to close the configuration tab.</p>
+<hr />
+<ol start="21">
+<li>The web browser will return to the <code>ORDERS</code> Topic overview. From the three tabs at the top of the screen, click <strong>Options</strong>.</li>
+</ol>
+<hr />
+<ol start="22">
+<li>Within the <em>Details</em> tab, provide the following customizations:</li>
+</ol>
+<ul>
+<li>
+<p><strong>Order name</strong>: <code>Order Access</code></p>
+</li>
+<li>
+<p><strong>Alias</strong>: <code>ORDERS</code></p>
+</li>
+<li>
+<p><strong>Description</strong>: <code>Self-service access to the order event stream.</code></p>
+</li>
+</ul>
+<p>When satisfied, click <strong>Next</strong>.</p>
+<hr />
+<ol start="23">
+<li>Leave the <em>Controls</em> tab empty (<code>No data</code>) and click <strong>Next</strong> to proceed.</li>
+</ol>
+<hr />
+<ol start="24">
+<li>The <em>Publish option</em> tab will give you a final opportunity to review the <code>ORDERS</code> topic before publishing for other users of EEM.</li>
+</ol>
+<ul>
+<li>
+<p>Within the blue <em>Option Status</em> field, click the <strong>Publish</strong> button.</p>
+</li>
+<li>
+<p>Further down the panel, under the <em>Available gateways</em> field, click (toggle on) <code>production</code>.</p>
+</li>
+</ul>
+<p>When satisfied, click <strong>Save</strong> to finalize publication of the <code>ORDERS</code> topic.</p>
+<hr />
+<p>Before handing access over to Focus Corporation's marketing team, the integration squad must first validate that the catalogued event streams are performing as expected. If no issues are detected, they can generate access credentials for users to securely access the catalog.</p>
+<hr />
+<ol start="25">
+<li>Return to the EEM dashboard and drill down into <strong>Catalog</strong>, then click the name <code>CUSTOMERS</code> from the table.</li>
+</ol>
+<hr />
+<ol start="26">
+<li>Click the <strong>Generate access credentials</strong> button in the top-right corner of the page.</li>
+</ol>
+<hr />
+<ol start="27">
+<li>Provide an email address for the <em>Contact details</em> field: <code>marketing@focus.corp</code></li>
+</ol>
+<p>When satisfied, click <strong>Generate</strong>.</p>
+<hr />
+<ol start="28">
+<li>Access credentials for <code>CUSTOMERS</code> will be generated immediately and displayed within the web browser.</li>
+</ol>
+<ul>
+<li>
+<p>Record the <code>Username</code> and <code>Password</code> values to a notepad for reference later.</p>
+</li>
+<li>
+<p>Alternatively, save the credentials as a JSON file (using the <strong>Download as JSON</strong> button) on your local machine.</p>
+<div class="admonition warning">
+<p class="admonition-title">RECORD THE ACCESS CREDENTIALS</p>
+</div>
+<p>Don't proceed with the lab guide instructions before recording the <code>CUSTOMERS</code> access credentials. These values cannot be referenced again once this window is closed. You can always generate new credentials again later, but it will require repeating the previous steps.</p>
+</li>
+</ul>
+<hr />
+<p>Generate access credentials for the <code>ORDERS</code> catalog in the same manner as before.</p>
+<hr />
+<ol start="29">
+<li>Return to the EEM dashboard and drill down into <strong>Catalog</strong>, then click on <code>ORDERS</code>.</li>
+</ol>
+<hr />
+<ol start="30">
+<li>Click the <strong>Generate access credentials</strong> button.</li>
+</ol>
+<hr />
+<ol start="31">
+<li>Provide an email address for the <em>Contact details</em> field: <code>marketing@focus.corp</code></li>
+</ol>
+<p>When satisfied, click <strong>Generate</strong>.</p>
+<hr />
+<ol start="32">
+<li>Access credentials for <code>ORDERS</code> will be generated immediately and displayed within the web browser.</li>
+</ol>
+<ul>
+<li>
+<p>Record the <code>Username</code> and <code>Password</code> values to a notepad for reference later.</p>
+</li>
+<li>
+<p>Alternatively, save the credentials as a JSON file (using the <strong>Download as JSON</strong> button) on your local machine.</p>
+</li>
+</ul>
+<hr />
+<p>At this stage, responsibility can shift towards Focus Corporation's marketing team. Thanks to the hard work of the integration squad, the marketing department now has a fully configured, self-service catalog of event stream data available within EEM.</p>
+<hr />
+<h1 id="_2"></h1>
+<h1 id="next-steps">Next Steps</h1>
+<p>In the following module, Focus Corporation's marketing team will use IBM Event Processing to correlate newly-created customer accounts with orders totaling over $100 within a 24-hour time window.</p>
 
 
 
@@ -336,7 +623,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../1/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1. Create an event stream from IBM MQ data using Event Streams" rel="prev">
+        <a href="../1/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1. Creating an event stream from IBM MQ data using Event Streams" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -345,7 +632,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              1. Create an event stream from IBM MQ data using Event Streams
+              1. Creating an event stream from IBM MQ data using Event Streams
             </div>
           </div>
         </a>

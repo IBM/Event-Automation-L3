@@ -17,7 +17,7 @@
     
     
       
-        <title>1. Create an event stream from IBM MQ data using Event Streams - IBM Event Automation for Technical Sales Level 3</title>
+        <title>1. Creating an event stream from IBM MQ data using Event Streams - IBM Event Automation for Technical Sales Level 3</title>
       
     
     
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1. Create an event stream from IBM MQ data using Event Streams
+              1. Creating an event stream from IBM MQ data using Event Streams
             
           </span>
         </div>
@@ -232,7 +232,7 @@
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        1. Create an event stream from IBM MQ data using Event Streams
+        1. Creating an event stream from IBM MQ data using Event Streams
       </a>
       
     </li>
@@ -248,7 +248,7 @@
   
     <li class="md-nav__item">
       <a href="../2/" class="md-nav__link">
-        2. Browse a self-service catalog of events with Event Endpoint Management
+        2. Building a self-service catalog of events with Event Endpoint Management
       </a>
     </li>
   
@@ -449,6 +449,70 @@
 <h1 id="_3"></h1>
 <h1 id="configuring-a-message-bridge-between-ibm-mq-and-ibm-event-streams">Configuring a message bridge between <strong>IBM MQ</strong> and <strong>IBM Event Streams</strong></h1>
 <hr />
+<p>Using the Apache Kafka connector framework, Focus Corporation's integration team will now need to configure an "event bridge" using Red Hat OpenShift. The task can be performed programmatically via the OpenShift console. The bridge configuration will include connectivity details for accessing both IBM MQ and IBM Event Streams.</p>
+<p>Once configured and deployed, the bridge will utilize the Apache Kafka connector framework to read messages from the <code>TO.KAFKA</code> <em>message queue</em> and then publish those to the newly-created <code>Orders</code> <em>event stream</em>.</p>
+<hr />
+<ol start="19">
+<li>
+<p>Return to the OpenShift container platform dashboard.</p>
+<p>From the <strong>Home</strong> page, click the <em>+</em> icon located in the top-right corner of the interface.</p>
+</li>
+</ol>
+<hr />
+<ol start="20">
+<li>
+<p>The interface will load an <strong>Import YAML</strong> configuration tool, with a black canvas awaiting input. Here you can supply <em>YAML</em> (Yet Another Markup Language) or <em>JSON</em> files to define new deployments on the OpenShift cluster.</p>
+<p>The YAML definition of the Apache Kafka connector "bridge" has been prepared ahead of time. Copy and paste the following YAML file <em>exactly</em> as written into the <strong>Import YAML</strong> black canvas:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eventstreams.ibm.com/v1beta2</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KafkaConnector</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mq-connector</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cp4i</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">eventstreams.ibm.com/cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kafka-connect-cluster</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.ibm.eventstreams.connect.mqsource.MQSourceConnector</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">tasksMax</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="c1"># the Kafka topic to produce to</span><span class="w"></span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ORDERS</span><span class="w"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="c1"># the MQ queue to get messages from</span><span class="w"></span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="nt">mq.queue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TO.KAFKA</span><span class="w"></span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="c1"># connection details for the queue manager</span><span class="w"></span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="nt">mq.queue.manager</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orders</span><span class="w"></span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="nt">mq.connection.name.list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orders-ibm-mq(1414)</span><span class="w"></span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="nt">mq.channel.name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SYSTEM.DEF.SVRCONN</span><span class="w"></span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="c1"># format of the messages to transfer</span><span class="w"></span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="nt">mq.message.body.jms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="nt">mq.record.builder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.ibm.eventstreams.connect.mqsource.builders.JsonRecordBuilder</span><span class="w"></span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="nt">key.converter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.apache.kafka.connect.storage.StringConverter</span><span class="w"></span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="nt">value.converter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.apache.kafka.connect.json.JsonConverter</span><span class="w"></span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="c1"># whether to send the schema with the messages</span><span class="w"></span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="nt">key.converter.schemas.enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="nt">value.converter.schemas.enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+</code></pre></div>
+<p>When satisfied, click <strong>Create</strong>. Full deployment should only take a moment.</p>
+<hr />
+<ol start="21">
+<li>
+<p>Switch over to the <strong>IBM Event Streams</strong> tab with your web browser. Having configured the streaming queue in IBM MQ (earlier in Step 18), Focus Corporation's integration team now wants to view the orders that have been generated so far.</p>
+<p>From the home dashboard of the IBM Event Streams service, click the <strong>Topic</strong> tab (left-hand side) and then click on the name <code>ORDERS</code> from the table.</p>
+</li>
+</ol>
+<hr />
+<ol start="22">
+<li>
+<p>Granular details about the <code>ORDERS</code> topic will be loaded within the browser. From this page, you can inspect all of the messages (orders) generated from the time you set up the IBM MQ streaming queue configuration earlier.</p>
+<p>Click any one of the orders to pull up additional details on the payload and its contents.</p>
+<p>Note that you can inspect details about the <code>quantity</code>, <code>price</code>, <code>customerid</code>, <code>description</code>, <code>id</code>, <code>region</code>, <code>ordertime</code>, and <code>customer</code>. These fields will be valuable later for the marketing team as they look to perform outreach on customers meeting certain criteria.</p>
+</li>
+</ol>
+<hr />
+<h1 id="_4"></h1>
+<h1 id="next-steps">Next Steps</h1>
+<p>In the following module, the integration team will switch over into IBM Event Endpoint Management to import the event stream data and curate a self-service catalog for the marketing department.</p>
 
 
 
@@ -483,13 +547,13 @@
       
       
         
-        <a href="../2/" class="md-footer__link md-footer__link--next" aria-label="Next: 2. Browse a self-service catalog of events with Event Endpoint Management" rel="next">
+        <a href="../2/" class="md-footer__link md-footer__link--next" aria-label="Next: 2. Building a self-service catalog of events with Event Endpoint Management" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              2. Browse a self-service catalog of events with Event Endpoint Management
+              2. Building a self-service catalog of events with Event Endpoint Management
             </div>
           </div>
           <div class="md-footer__button md-icon">
