@@ -318,6 +318,378 @@
 
 <h1 id="using-the-ibm-event-processing-no-code-editor-to-configure-the-solution">Using the IBM Event Processing no-code editor to configure the solution</h1>
 <hr />
+<p>As a result of your work so far, the marketing department now has a fully configured, self-service catalog of event stream data available within IBM Event Endpoint Management (EEM).</p>
+<p>At this stage, work will transition from the integration team to the domain of the marketing team. Focus Corporation's marketing team will utilize IBM Event Processing (EP) to correlate any newly-created customer accounts with first-time purchase orders that total over $100 USD in value. Furthermore, these "first time customer with greater than $100 transaction" correlation will need to be identified within a 24-hour window of when they occur.</p>
+<p>If these conditions can be met, the marketing team will be able to create an actionable plan for putting high-value promotional offers in front of these first-time customers in a timely manner — which should translate to more sales revenue through Focus' digital storefront.</p>
+<hr />
+<ol>
+<li>With your web browser, access the <strong>IBM Event Processing</strong> dashboard. Dismiss any welcome screens or tutorials that are prompted after first logging in.</li>
+</ol>
+<hr />
+<ol start="2">
+<li>In the bottom-right corner of the page, click the blue <strong>Create</strong> to begin defining a new <em>flow</em>.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">EVENT PROCESSING FLOWS</p>
+<p>An event processing flow ingests a stream of events, analyzes that input, and takes automatic actions (defined by the user) in response to those conditions.</p>
+<p>A flow begins with one or multiple event sources which represent inbound events. For the purposes of this demonstration, you will leverage the <code>ORDERS</code> event stream that was defined in the previous module. You will do so using EP's intuitive, no-code authoring canvas.</p>
+</div>
+<hr />
+<ol start="3">
+<li>
+<p>For <strong>Name</strong>, specify <code>NewCustomerLargeOrder</code>.</p>
+<p>When satisfied, click <strong>Create</strong>.</p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Before the inbound events can be captured, connectivity details for the event source node (<code>ORDERS</code>) must be configured within the authoring canvas.</p>
+<ul>
+<li>
+<p>Wait until the page has refreshed to display the no-code environment. Along the left side are tools and actions that can be dragged into the authoring canvas on the right. Within the canvas, you will see an <em>Event source</em> node with default name of <code>source_1</code>.</p>
+</li>
+<li>
+<p>Click the <code>source_1</code> node and then click the <strong>Edit</strong> (pencil) icon in the top-right corner of the tile to begin modifying the node.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>The <strong>Configure event source</strong> wizard will load within your browser.</p>
+<ul>
+<li>
+<p>Under the <em>Add an event source of pick a recent one</em> header, select the <strong>Add event source</strong> tile.</p>
+</li>
+<li>
+<p>When satisfied, click <strong>Next</strong>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Switch back to the <strong>Event Endpoint Management</strong> tab and return to the home dashboard.</p>
+<ul>
+<li>
+<p>Scroll down the landing page until you reach the <strong>Access Information</strong> section.</p>
+</li>
+<li>
+<p>Just below, within the <em>Servers</em> table, is the full address of the Event Endpoint Management catalog.</p>
+</li>
+<li>
+<p>Copy the <em>full</em> address (<code>ademo-event-gw-ibm...</code>) to your notepad for reference later.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>The first tab, <em>Details</em>, needs additional information to configure the node.</p>
+<ul>
+<li>
+<p>Scroll down to the <strong>Node name</strong> field and enter <code>Orders</code></p>
+</li>
+<li>
+<p>Further down, under the <em>Connect to Kafka cluster</em> header, paste the full address copied in Step 6 into the <strong>Server</strong> field.</p>
+</li>
+<li>
+<p>When satisfied, click <strong>Next</strong>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>The event source must be configured to allow certificates used by the event stream.</p>
+<ul>
+<li>
+<p><strong>Accept certificates</strong> (by clicking the toggle button as shown in the screenshot below).</p>
+</li>
+<li>
+<p>When satisfied, click <strong>Next</strong>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="9">
+<li>
+<p>The second tab, <em>Access credentials</em>, requires authentication details for the EEM event source.</p>
+<ul>
+<li>
+<p>For <strong>Username</strong> and <strong>Password</strong>, supply the credentials for the <code>ORDERS</code> topic (Step 32 of Module 2).</p>
+</li>
+<li>
+<p>When satisfied, click <strong>Next</strong>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="10">
+<li>
+<p>The third tab, <em>Topic selection</em>, will prompt the user on which topic(s) to ingest from the event source.</p>
+<ul>
+<li>
+<p>Available topics will already be displayed within the configuration tool. Under the <em>Topic selection</em> header, click the button next to the <code>CUSTOMERS</code> topic to select it.</p>
+</li>
+<li>
+<p>When satisfied, click <strong>Next</strong>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="11">
+<li>
+<p>The fourth tab, <em>Define event structure</em>, requires a data schema or sample message in order to understand the expected structure of events ingested from the event source.</p>
+<ul>
+<li>
+<p>Under the <em>No defined structure</em> header, click the blue <strong>Upload a schema or sample message</strong> button to pull open an editor.</p>
+</li>
+<li>
+<p>Users can input schemas in either <em>Avro</em> or <em>JSON</em> data formats. Click the <strong>JSON</strong> tab.</p>
+</li>
+<li>
+<p>Copy and paste the following JSON into the sample message field. Note that this is the same sample schema you supplied when configuring the event source within EEM in Module 2.</p>
+</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;customerid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;acb3eb65-98a1-45c2-84d4-f5df157862b4&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;customername&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Emilio Quitzon&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&quot;registered&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-10-24 19:20:35.638&quot;</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>When satisfied, click <strong>Done</strong> to proceed.</p>
+<hr />
+<ol start="12">
+<li>
+<p>You will have a final opportunity to review and confirm the event source configuration. At this time, the event structure should reflect the expected properties— <code>customerid</code>, <code>customername</code>, and <code>registered</code> fields —for the <code>ORDERS</code> event stream topic.</p>
+<p>When ready, click <strong>Configure</strong> to finalize the configuration.</p>
+</li>
+</ol>
+<hr />
+<ol start="13">
+<li>
+<p>With the event source fully configured within EP, you can now begin tailoring the event processing flow to filter on orders where the value exceeds $100 USD.</p>
+<ul>
+<li>
+<p>The web browser will have loaded back to the authoring canvas, with the <code>source_1</code> default node now properly configured as <code>Orders</code>.</p>
+</li>
+<li>
+<p>Scroll down within the list of nodes and actions on the left-side interface until you locate the <strong>Filter</strong> node.</p>
+</li>
+<li>
+<p>Click and hold the <strong>Filter</strong> node, then drag it to the authoring canvas on the right. Place it to the right side of the <code>Orders</code> node.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="14">
+<li>
+<p>The output terminal for <code>Orders</code> needs to be connected as input to the <code>filter_1</code> node.</p>
+<ul>
+<li>
+<p>With your mouse pointer, hover over the <code>Orders</code> node and take note of the grey dot (labelled <em>Output Port</em>) at the right edge of the tile.</p>
+</li>
+<li>
+<p>Click and hold the <em>Output Port</em> (right-most) of <code>Orders</code> and <strong>drag</strong> it to the <em>Input Port</em> (left-most edge) of <code>filter_1</code>, then release your hold to complete the circuit.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="15">
+<li>
+<p>With the <code>Orders</code> event source node connected to the <code>filter_1</code> operation node, you must utilize the Filter node's expression builder to remove orders that are <em>less than</em> $100 USD in value. This will allow the marketing team's application to target only first-time customers with spending patterns of $100 USD or more.</p>
+<p>Hover over the <code>filter_1</code> node with your mouse pointer and click the <strong>Edit</strong> (pencil) icon.</p>
+</li>
+</ol>
+<hr />
+<ol start="16">
+<li>
+<p>Within the <em>Details</em> tab, specify the value of <strong>Node name</strong> as <code>FilterLargerOrders</code>.</p>
+<p>When satisfied, click <strong>Next</strong>.</p>
+</li>
+</ol>
+<hr />
+<ol start="17">
+<li>The <em>Define filter</em> tab will load next. To the right of the <strong>Filter expression</strong> field, click the <strong>Assistant</strong> drop-down menu to expose additional options.</li>
+</ol>
+<hr />
+<ol start="18">
+<li>
+<p>Event Processing's expression builder will guide you in defining the filter.</p>
+<ul>
+<li>
+<p>Property to filter on: <code>price</code></p>
+</li>
+<li>
+<p>Condition: <code>Is greater than</code></p>
+</li>
+<li>
+<p>Value: <code>100</code></p>
+</li>
+<li>
+<p>When satisfied, click the <strong>Add to expression</strong> button.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>The expression builder will automatically translate your statements into a syntactically-correct filter statement: <code>'price' &gt; 100</code></p>
+<p>Click the <strong>Configure</strong> button at the bottom of the panel to finalize the filter configuration.</p>
+<hr />
+<p>The marketing team needs to "JOIN" the filtered <code>Order</code> stream data to records of <code>New Customers</code> in order to correctly identify first-time purchasers that placed an order for over $100 USD in the last 24 hours. You shall use EP's authoring canvas to carry out the necessary JOIN operation.</p>
+<hr />
+<ol start="19">
+<li>
+<p>Back on the canvas for <code>NewCustomerLargerOrders</code>, scroll down along the left-hand interface until you locate the <strong>Interval Join</strong> node.</p>
+<p>Drag and drop this node at the far right-hand edge of the authoring canvas.</p>
+</li>
+</ol>
+<hr />
+<ol start="20">
+<li>
+<p>With your cursor, hover over the <code>New Customers</code> output terminal and locate the <em>Output Port</em> (grey) button.</p>
+<ul>
+<li>
+<p>Click and hold the <code>New Customers</code> <em>Output Port</em> edge and <strong>drag</strong> this to the <em>Input Port</em> edge of the newly-created <code>intervalJoin_1</code> node.</p>
+</li>
+<li>
+<p>Release your cursor to finalize the connection.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="21">
+<li>
+<p>Repeat the process, this time connecting the <code>FilterLargeOrders</code> node's <em>Output Port</em> to the <code>intervalJoin_1</code> node's <em>Input Port</em>.</p>
+<p>At this stage, the input of <code>intervalJoin_1</code> should be connected to the outputs of <em>both</em> the <code>FilterLargerOrders</code> and <code>New Customers</code> nodes.</p>
+</li>
+</ol>
+<hr />
+<ol start="22">
+<li>
+<p>The JOIN node must now be configured to correlate events based on a shared <code>customerid</code> field within the two event streams (<code>New Customers</code> and pre-filtered <code>Orders</code>).</p>
+<p>With your cursor, hover over the <code>intervalJoin_1</code> node and click the <strong>Edit</strong> (pencil) icon.</p>
+</li>
+</ol>
+<hr />
+<ol start="23">
+<li>
+<p>Within the <em>Details</em> tab, set <strong>Node name</strong> equal to <code>DetectNewCustomerLargeOrder</code>.</p>
+<p>When ready, click <strong>Next</strong>.</p>
+</li>
+</ol>
+<hr />
+<ol start="24">
+<li>
+<p>Within the <em>Join conditions</em> tab, activate the expression builder by click the <strong>Assistant</strong> drop-down menu. Set the following properties:</p>
+<ul>
+<li>
+<p>Specify property from 'New Customers': <code>customerid</code></p>
+</li>
+<li>
+<p>Specify property from 'FilterLargerOrders': <code>customerid</code></p>
+</li>
+<li>
+<p>When ready, click <strong>Add to expression</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<p>The syntactically-correct JOIN expression will be expressed under the <em>Define events</em> field:</p>
+<p><code>'New Customers'.'customerid' = 'FilterLargerOrders'.'customerid'</code></p>
+<p>After you have reviewed the JOIN condition, click <strong>Next</strong>.</p>
+<hr />
+<div class="admonition note">
+<p class="admonition-title">TRIGGERING EVENTS AND DETECTED EVENTS</p>
+<p>Two concepts are important to understand at this time: <em>Triggering events</em> and <em>Detected events</em>.</p>
+<ul>
+<li>
+<p>Since the <code>New Customer</code> sign-up event must logically occur before a purchase, it is considered a <em>triggering event</em></p>
+</li>
+<li>
+<p>Therefore, when a signal for an <code>Order</code> purchase of over $100 (the <em>detected event</em>) is received, the JOIN logic condition will be triggered for the two event streams</p>
+</li>
+</ul>
+</div>
+<ol start="25">
+<li>
+<p>Under the <em>Time window condition</em>, you can define the time interval "window" where detected events are considered viable for a promotional offer from the marketing team. To meet the criteria, a purchase of over $100 USD must be made by a first-time customer within a 24 hour window of creating an account.</p>
+<ul>
+<li>
+<p>Look for the <strong>Event to detect</strong> field and select the <code>FilterLargerOrders (event_time)</code> option from the drop-down menu.</p>
+</li>
+<li>
+<p>A <em>Preview</em> visualization of the time window interval is rendered within the panel. For now, with no adjustments made, this will appear as a vertical bar at 0 (X-axis).</p>
+</li>
+<li>
+<p>Scroll down further to reveal additional attributes to edit.</p>
+</li>
+<li>
+<p>Event to set the time window: <code>New Customers (event-time)</code></p>
+</li>
+<li>
+<p>Offset from event to start the time window: <code>0</code> <code>HOUR(S)</code></p>
+</li>
+<li>
+<p>Offset from event to end the time window: <code>24</code> <code>HOUR(S)</code></p>
+</li>
+<li>
+<p>When ready, click <strong>Next</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<p>The JOIN node's output going forward will be a combination of fields from both the filtered <code>Orders</code> and <code>New Customers</code> events streams.</p>
+<p>Before finalizing the interval join, you need to clean up the output so that duplicate fields (like <code>customerid</code> and <code>event_time</code>) are not included from the JOIN operation. You have the option of renaming or removing the duplicate fields — but for the sake of this demonstration, you will be removing the fields.</p>
+<hr />
+<ol start="26">
+<li>
+<p>Within the <em>Output properties</em> tab, locate the <code>customerid</code> field. There are <strong>two</strong> (duplicate) copies of the same field at this time. Your objective will be to delete <strong>ONE</strong> of the two duplicate records. Preserve one of the two.</p>
+<ul>
+<li>
+<p>Click the round <code>—</code> sign to the left of the first <code>customerid</code> row to remove the duplicate field.</p>
+</li>
+<li>
+<p>The result will be only one copy of the <code>customerid</code> field in the table. The red text (<em>Must be unique</em>) underlining the field should now have disappeared.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="27">
+<li>
+<p>Repeat the procedure for the <code>event_time</code> field, which is also duplicated by the JOIN operation.</p>
+<ul>
+<li>
+<p>Delete one of the two <code>event_time</code> fields</p>
+</li>
+<li>
+<p>With all duplicates now removed from the table, the <strong>Configure</strong> button will now be highlighted in blue and selectable.</p>
+</li>
+<li>
+<p>Click the <strong>Configure</strong> button to finalize the interval join configuration.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h1 id="_1"></h1>
+<h1 id="next-steps">Next Steps</h1>
+<p>With filtering and processing steps now in place for incoming event streams, Focus Corporation's marketing team is able to detect valid promotional opportunities and emit those detected events to their customer loyalty application. In the following section, you will create those linkages and validate its effectiveness using "historical" and "live" data feeds.</p>
 
 
 

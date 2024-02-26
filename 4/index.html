@@ -318,6 +318,129 @@
 
 <h1 id="connecting-the-event-stream-output-to-the-marketing-application">Connecting the event stream output to the marketing application</h1>
 <hr />
+<p>It's finally time to unify the hard work put in by Focus Corporation's integration and marketing team. With a rich feed of filtered and processed event streams, which joins together <code>New Customers</code> and <code>Orders</code> data feeds, the marketing department can begin supplying their customer loyalty application with input. When new events are detected that match their promotional criteria, the application will automatically trigger an upsell activity for the new customer.</p>
+<hr />
+<ol>
+<li>Return to the authoring canvas dashboard for <code>NewCustomerLargeOrders</code> within the IBM Event Processing (EP) tab.</li>
+</ol>
+<hr />
+<ol start="2">
+<li>From the list of nodes along the left-side interface, drag and drop the <strong>Event destination</strong> node into the canvas. Place it far to the right of the other nodes within the table. You can use your mouse wheel to resize the table if necessary.</li>
+</ol>
+<hr />
+<p>The new node <code>sink_1</code> represents a "resource" (a concept from Apache Kafka), such as a topic, that can receive incoming events — thereby serving as a destination.</p>
+<ol start="3">
+<li>
+<p>With your cursor, hover over the <code>DetectNewCustomerLargeOrders</code> node that was created in the previous module.</p>
+<ul>
+<li>
+<p>Click and drag the node's <em>Output Port</em> edge, connecting it to the <em>Input Port</em> edge of the <code>sink_1</code> node</p>
+</li>
+<li>
+<p>Release the mouse button to establish the connection between the two nodes</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>Hover over the <code>sink_1</code> node and click the <strong>Edit</strong> (pencil) icon to configure the destination details.</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Within the <em>Details</em> tab, adjust the following variables:</p>
+<ul>
+<li>
+<p>Node name: <code>OutputToMarketingApp</code></p>
+</li>
+<li>
+<p>Server: <code>ademo-es-kafka-bootstrap.cp4i.svc:9095</code></p>
+</li>
+<li>
+<p>The server has been pre-configured as part of the hands-on lab Setup module, generating the Apache Kafka events that will simulate both "historical" and "live" customer interactions with Focus' online storefront</p>
+</li>
+<li>
+<p>When satisfied, click <strong>Next</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Select the <strong>Accept certificates</strong> toggle when asked if you wish to trust all security certificates issued by the event stream source.</p>
+<p>When ready, click <strong>Next</strong>.</p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Within the <em>Access credentials</em> tab, modify the following variables:</p>
+<ul>
+<li>
+<p>Username: <code>es-admin</code></p>
+</li>
+<li>
+<p>Password: the password unique to your Event Streams instance</p>
+</li>
+<li>
+<p>When satisfied, click <strong>Next</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>Within the <em>Topic selection</em> tab, you will be asked to specify which of the available endpoints (topics available to the credentials you provided in Step 7) should serve as a destination "sink." In this situation, we want to said all valid customer interactions meeting the purchase criteria to the marketing department's customer loyalty application.</p>
+<ul>
+<li>
+<p>Select <code>LOYALTY.APP</code></p>
+</li>
+<li>
+<p>Click <strong>Configure</strong> to finalize the event destination</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<p>You are now ready to begin testing the end-to-end flow using <strong>historical</strong> event data. This will allow the marketing and integration teams to see the results of the flow and validate the result: several new customers who are eligible for the promotional discount should be detected and flagged within the loyalty application.</p>
+<hr />
+<ol start="9">
+<li>
+<p>Return to the authoring canvas dashboard for <code>NewCustomerLargeOrders</code> within IBM Event Processing.</p>
+<ul>
+<li>
+<p>In the top-right corner of the interface, click the <strong>Run</strong> drop-down menu.</p>
+</li>
+<li>
+<p>From the list of options, select <strong>Include historical</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="10">
+<li>
+<p>Detected events will begin automatically populating the <strong>Output Events</strong> panel, along the bottom of the page.</p>
+<ul>
+<li>
+<p>Continue to verify the detected events until satisfied with the historical event data results</p>
+</li>
+<li>
+<p>When ready, stop the flow by clicking the <strong>Stop</strong> button in the top-right corner of the page.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<p>Having successfully tested the flow, the marketing team is ready to reconfigure the event destination sink to supply <strong>live</strong> event stream data into Focus Corporation's production environment.</p>
+<hr />
+<ol start="11">
+<li>From the drop-down in the top-right corner of the page, click <strong>Run</strong> and then select <strong>Events from now</strong> to begin processing "live" (non-historical) event data.</li>
+</ol>
+<p>The event flow processing is now fully in production and generating actionable promotions within Focus Corporation's customer loyalty application!</p>
 
 
 
