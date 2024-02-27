@@ -329,22 +329,34 @@
 <li>
 <p>Open the <strong>IBM MQ</strong> dashboard with a web browser.</p>
 <p>From the left-hand side interface, drill down into the <strong>Manage</strong> tab.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-1.png" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="2">
-<li>Select the <strong>Queues</strong> tab along the top of the page.</li>
+<li>
+<p>Select the <strong>Queues</strong> tab along the top of the page.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-2.png" /></a></p>
+</li>
 </ol>
 <hr />
 <ol start="3">
 <li>
 <p>Scroll down the page until you reach a table, which at this time should show several queues that are already a part of the environment.</p>
 <p>Create a new queue by clicking the blue <strong>Create +</strong> icon in the top-right corner of the table.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-3.png" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="4">
-<li>Wait for the Queue creation wizard to load, then select <strong>Local</strong> from <code>Choose queue type</code>.</li>
+<li>
+<p>Wait for the Queue creation wizard to load, then select <strong>Local</strong> from <code>Choose queue type</code>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-4.png" /></a></p>
+</li>
 </ol>
 <hr />
 <ol start="5">
@@ -357,13 +369,19 @@
 <li>The web browser will refresh back to the <strong>Manage</strong> &gt; <strong>Queues</strong> perspective.</li>
 <li>From the Queues table, confirm that the <code>TO.KAFKA</code> queue is now available. </li>
 </ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-5.png" /></a></p>
 </li>
 </ol>
 <hr />
 <p>Next, you need to configure IBM MQ to clone all customer order data that it is exchanging between Focus Corporation's order management system and payment gateway. Messages must be reviewed to verify that they contain the expected payload information.</p>
 <hr />
 <ol start="6">
-<li>From the <strong>Manage</strong> &gt; <strong>Queues</strong> table, locate the queue named <code>PAYMENT.REQ</code> and click the <strong>Name</strong> to inspect it in more detail.</li>
+<li>
+<p>From the <strong>Manage</strong> &gt; <strong>Queues</strong> table, locate the queue named <code>PAYMENT.REQ</code> and click the <strong>Name</strong> to inspect it in more detail.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-6.png" /></a></p>
+</li>
 </ol>
 <hr />
 <ol start="7">
@@ -374,17 +392,25 @@
 <li>Inspect the contents of the packet, which is a series of key-value pairs. You should see details about the order <code>id</code>, <code>customer</code>, <code>customerid</code>, <code>description</code>, <code>price</code>, <code>quantity</code>, <code>region</code>, and <code>ordertime</code>.</li>
 <li><strong>Close</strong> the <em>Message Details</em> panel by clicking the <code>X</code> in the top-right corner or the grey <code>Close</code> button.</li>
 </ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-7.png" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="8">
-<li>Back on the <code>PAYMENT.REQ</code> orders summary table, locate the <strong>Actions</strong> button in the top-right corner of the page. Click to open a drop-down menu and then select <strong>View configuration</strong>.</li>
+<li>
+<p>Back on the <code>PAYMENT.REQ</code> orders summary table, locate the <strong>Actions</strong> button in the top-right corner of the page. Click to open a drop-down menu and then select <strong>View configuration</strong>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-8.png" /></a></p>
+</li>
 </ol>
 <hr />
 <ol start="9">
 <li>
 <p>Multiple attributes of the <code>PAYMENT.REQ</code> order queue can be configured from this page.</p>
 <p>Click the grey <strong>Edit</strong> button to the right side of the <code>General</code> page.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-9.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -396,13 +422,23 @@
 <li>This will direct IBM MQ to clone messages from the <code>PAYMENT.QUE</code> queue into the <code>TO.KAFKA</code> streaming queue created in Step 5.</li>
 <li>When satisfied, click the blue <strong>Save</strong> button in the top-right of the page to confirm the configuration changes.</li>
 </ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-10.png" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="11">
 <li>
 <p>Once confirmed, the new configuration will immediately take effect and cloned order messages will promptly begin filling the <code>TO.KAFKA</code> queue.</p>
-<p>Confirm this activity is ongoing by returning to the <strong>Manage</strong> page. From the table of queues, drill down into the <strong>TO.KAFKA</strong> queue.</p>
+<ul>
+<li>Scroll back up to the top of the page and locate the blue <strong>Manage</strong> text in the top-left corner of the screen. Click the text to return back to the <em>Manage</em> page for <code>Orders</code>.</li>
+<li>From the tabs along the top of the page, click the <strong>Queues</strong> tab.</li>
+<li>From the table of queues, drill down into the <strong>TO.KAFKA</strong> queue.</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-11a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-11a.png" /></a></p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-11b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-11b.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -417,7 +453,11 @@
 <p>The team will need to make decisions about how to replicate the data (with or without modification) and also determine the appropriate retention settings for this data. Given the governance policies in place at Focus Corporation, they will need to retain data for up to 1 week and replicate entries for high availability.</p>
 <hr />
 <ol start="13">
-<li>Open the <strong>IBM Event Streams</strong> tab using your web browser.</li>
+<li>
+<p>Open the <strong>IBM Event Streams</strong> tab using your web browser.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-13.png" /></a></p>
+</li>
 </ol>
 <hr />
 <ol start="14">
@@ -428,21 +468,35 @@
 <li>
 <p>The team must first decide on a <strong>Topic Name</strong>.</p>
 <p>Set the value to <code>ORDERS</code> and then click the blue <strong>Next</strong> button to continue.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-15.png" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="16">
-<li>Under the <strong>Patitions</strong> tab, accept the default recommendation of <code>1</code> by clicking <strong>Next</strong>.</li>
+<li>
+<p>Under the <strong>Patitions</strong> tab, accept the default recommendation of <code>1</code> by clicking <strong>Next</strong>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-16.png" /></a></p>
+</li>
 </ol>
 <hr />
 <ol start="17">
-<li>Under the <strong>Message Retention</strong> tab, accept the default recommendation of <code>A week</code> and click <strong>Next</strong> to continue.</li>
+<li>
+<p>Under the <strong>Message Retention</strong> tab, accept the default recommendation of <code>A week</code> and click <strong>Next</strong> to continue.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-17.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-17.png" /></a></p>
+</li>
 </ol>
 <hr />
 <ol start="18">
 <li>
 <p>Under the <strong>Replicas</strong> tab, accept the default recommendation of <code>Replication factor: 3</code>.</p>
 <p>Confirm your selections by clicking the <strong>Create Topic</strong> button.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-18a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-18a.png" /></a></p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-18b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-18b.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -456,6 +510,8 @@
 <li>
 <p>Return to the OpenShift container platform dashboard.</p>
 <p>From the <strong>Home</strong> page, click the <em>+</em> icon located in the top-right corner of the interface.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-19.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-19.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -495,11 +551,19 @@
 </code></pre></div>
 <p><br/></p>
 <p>When satisfied, click <strong>Create</strong>. Full deployment should only take a moment.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-20a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-20a.png" /></a></p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-20b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-20b.png" /></a></p>
 <hr />
 <ol start="21">
 <li>
 <p>Switch over to the <strong>IBM Event Streams</strong> tab with your web browser. Having configured the streaming queue in IBM MQ (earlier in Step 18), Focus Corporation's integration team now wants to view the orders that have been generated so far.</p>
 <p>From the home dashboard of the IBM Event Streams service, click the <strong>Topic</strong> tab (left-hand side) and then click on the name <code>ORDERS</code> from the table.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-21a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-21a.png" /></a></p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-21b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-21b.png" /></a></p>
 </li>
 </ol>
 <hr />
@@ -508,6 +572,8 @@
 <p>Granular details about the <code>ORDERS</code> topic will be loaded within the browser. From this page, you can inspect all of the messages (orders) generated from the time you set up the IBM MQ streaming queue configuration earlier.</p>
 <p>Click any one of the orders to pull up additional details on the payload and its contents.</p>
 <p>Note that you can inspect details about the <code>quantity</code>, <code>price</code>, <code>customerid</code>, <code>description</code>, <code>id</code>, <code>region</code>, <code>ordertime</code>, and <code>customer</code>. These fields will be valuable later for the marketing team as they look to perform outreach on customers meeting certain criteria.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-22.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/1-22.png" /></a></p>
 </li>
 </ol>
 <hr />
