@@ -323,7 +323,10 @@
 <p>If these conditions can be met, the marketing team will be able to create an actionable plan for putting high-value promotional offers in front of these first-time customers in a timely manner — which should translate to more sales revenue through Focus' digital storefront.</p>
 <hr />
 <ol>
-<li>With your web browser, access the <strong>IBM Event Processing</strong> dashboard. Dismiss any welcome screens or tutorials that are prompted after first logging in.</li>
+<li>
+<p>With your web browser, access the <strong>IBM Event Processing</strong> dashboard.</p>
+<p>Dismiss any welcome screens or tutorials that are prompted after first logging in by clicking the <strong>Skip</strong> text in the bottom-left corner of the interface.</p>
+</li>
 </ol>
 <hr />
 <div class="admonition note">
@@ -342,6 +345,9 @@
 </li>
 </ol>
 <hr />
+<h1 id="_1"></h1>
+<h1 id="configuring-an-event-source-for-orders">Configuring an event source for Orders</h1>
+<hr />
 <ol start="4">
 <li>
 <p>Before the inbound events can be captured, connectivity details for the event source node (<code>ORDERS</code>) must be configured within the authoring canvas.</p>
@@ -350,7 +356,7 @@
 <p>Wait until the page has refreshed to display the no-code environment. Along the left side are tools and actions that can be dragged into the authoring canvas on the right. Within the canvas, you will see an <em>Event source</em> node with default name of <code>source_1</code>.</p>
 </li>
 <li>
-<p>Click the <code>source_1</code> node and then click the <strong>Edit</strong> (pencil) icon in the top-right corner of the tile to begin modifying the node.</p>
+<p>With your cursor, hover over the <code>source_1</code> node and then click the <strong>Edit</strong> (pencil) icon in the top-right corner of the tile to begin modifying the node.</p>
 </li>
 </ul>
 </li>
@@ -364,7 +370,7 @@
 <p>Under the <em>Add an event source of pick a recent one</em> header, select the <strong>Add event source</strong> tile.</p>
 </li>
 <li>
-<p>When satisfied, click <strong>Next</strong>.</p>
+<p>Click <strong>Next</strong>.</p>
 </li>
 </ul>
 </li>
@@ -372,16 +378,22 @@
 <hr />
 <ol start="6">
 <li>
-<p>Switch back to the <strong>Event Endpoint Management</strong> tab and return to the home dashboard.</p>
+<p>Switch back to the <strong>Event Endpoint Management</strong> tab and click <strong>Catalog</strong> from the left-hand interface.</p>
 <ul>
 <li>
-<p>Scroll down the landing page until you reach the <strong>Access Information</strong> section.</p>
+<p>Drill down into the <code>ORDERS</code> topic by clicking on the name.</p>
 </li>
 <li>
-<p>Just below, within the <em>Servers</em> table, is the full address of the Event Endpoint Management catalog.</p>
+<p>Scroll down the topic summary page until you reach the <strong>Access Information</strong> section.</p>
+</li>
+<li>
+<p>Just below, within the <em>Servers</em> table, is the full address of the <code>ORDERS</code> event topic.</p>
 </li>
 <li>
 <p>Copy the <em>full</em> address (<code>ademo-event-gw-ibm...</code>) to your notepad for reference later.</p>
+</li>
+<li>
+<p>When ready, switch back to the <strong>IBM Event Processing</strong> tab with your web browser.</p>
 </li>
 </ul>
 </li>
@@ -395,10 +407,10 @@
 <p>Scroll down to the <strong>Node name</strong> field and enter <code>Orders</code></p>
 </li>
 <li>
-<p>Further down, under the <em>Connect to Kafka cluster</em> header, paste the full address copied in Step 6 into the <strong>Server</strong> field.</p>
+<p>Further down, under the <em>Connect to Kafka cluster</em> header, paste the full address copied in Step 6 into the <strong>Server</strong> field</p>
 </li>
 <li>
-<p>When satisfied, click <strong>Next</strong>.</p>
+<p>Click <strong>Next</strong></p>
 </li>
 </ul>
 </li>
@@ -409,10 +421,10 @@
 <p>The event source must be configured to allow certificates used by the event stream.</p>
 <ul>
 <li>
-<p><strong>Accept certificates</strong> (by clicking the toggle button as shown in the screenshot below).</p>
+<p><strong>Accept certificates</strong> (by clicking the toggle button as shown in the screenshot below)</p>
 </li>
 <li>
-<p>When satisfied, click <strong>Next</strong>.</p>
+<p>Click <strong>Next</strong></p>
 </li>
 </ul>
 </li>
@@ -423,10 +435,13 @@
 <p>The second tab, <em>Access credentials</em>, requires authentication details for the EEM event source.</p>
 <ul>
 <li>
-<p>For <strong>Username</strong> and <strong>Password</strong>, supply the credentials for the <code>ORDERS</code> topic (Step 32 of Module 2).</p>
+<p>Keep the <strong>Select security mechanism</strong> variable as its default value: <code>PLAIN</code></p>
 </li>
 <li>
-<p>When satisfied, click <strong>Next</strong>.</p>
+<p>For <strong>Username</strong> and <strong>Password</strong>, supply the credentials for the <code>ORDERS</code> topic (Step 32 of Module 2)</p>
+</li>
+<li>
+<p>Click <strong>Next</strong></p>
 </li>
 </ul>
 </li>
@@ -437,10 +452,10 @@
 <p>The third tab, <em>Topic selection</em>, will prompt the user on which topic(s) to ingest from the event source.</p>
 <ul>
 <li>
-<p>Available topics will already be displayed within the configuration tool. Under the <em>Topic selection</em> header, click the button next to the <code>CUSTOMERS</code> topic to select it.</p>
+<p>Available topics will already be displayed within the configuration tool. Under the <em>Topic selection</em> header, click the button next to the <code>ORDERS</code> topic to select it.</p>
 </li>
 <li>
-<p>When satisfied, click <strong>Next</strong>.</p>
+<p>Click <strong>Next</strong>.</p>
 </li>
 </ul>
 </li>
@@ -463,27 +478,175 @@
 </li>
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;customerid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;acb3eb65-98a1-45c2-84d4-f5df157862b4&quot;</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;customername&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Emilio Quitzon&quot;</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&quot;registered&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-10-24 19:20:35.638&quot;</span><span class="w"></span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">197.09</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&quot;customerid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a7d1586b-ced1-462f-9e44-14e9e5013540&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Composite Oversize 28in Tennis Racket&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1eba7af9-b748-4754-b750-3459e589dccf&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EMEA&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">&quot;ordertime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-10-24 19:26:04.839&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">&quot;customer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Reed McKenzie DDS&quot;</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p>When satisfied, click <strong>Done</strong> to proceed.</p>
 <hr />
 <ol start="12">
 <li>
-<p>You will have a final opportunity to review and confirm the event source configuration. At this time, the event structure should reflect the expected properties— <code>customerid</code>, <code>customername</code>, and <code>registered</code> fields —for the <code>ORDERS</code> event stream topic.</p>
-<p>When ready, click <strong>Configure</strong> to finalize the configuration.</p>
+<p>You will have a final opportunity to review and confirm the event source configuration.</p>
+<p>Click <strong>Configure</strong> to finalize the configuration of the <code>Orders</code> event source.</p>
 </li>
 </ol>
 <hr />
+<h1 id="_2"></h1>
+<h1 id="configuring-an-event-source-for-new-customers">Configuring an event source for New Customers</h1>
+<hr />
+<p>The configurations performed for the <code>ORDERS</code> topic now (Steps 4 – 12) must now be repeated for the <code>CUSTOMERS</code> topic.</p>
 <ol start="13">
+<li>
+<p>Return to the <code>NewCustomerLargeOrder</code> canvas and drag a new <strong>Event Source</strong> (from the left-hand interface) into the canvas, placing it just below the <code>Orders</code> source.</p>
+<ul>
+<li>With your cursor, hover over the new <code>source_1</code> node and then click the <strong>Edit</strong> (pencil) icon in the top-right corner of the tile to begin modifying the node.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="14">
+<li>
+<p>The <strong>Configure event source</strong> wizard will load within your browser.</p>
+<ul>
+<li>
+<p>Under the <em>Add an event source of pick a recent one</em> header, select the <strong>Add event source</strong> tile.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="15">
+<li>
+<p>Switch back to the <strong>Event Endpoint Management</strong> tab and click <strong>Catalog</strong> from the left-hand interface.</p>
+<ul>
+<li>
+<p>Drill down into the <code>CUSTOMERS</code> topic by clicking on the name.</p>
+</li>
+<li>
+<p>Scroll down the topic summary page until you reach the <strong>Access Information</strong> section.</p>
+</li>
+<li>
+<p>Just below, within the <em>Servers</em> table, is the full address of the <code>CUSTOMERS</code> event topic.</p>
+</li>
+<li>
+<p>Copy the <em>full</em> address (<code>ademo-event-gw-ibm...</code>) to your notepad for reference later.</p>
+</li>
+<li>
+<p>When ready, switch back to the <strong>IBM Event Processing</strong> tab with your web browser.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="16">
+<li>
+<p>The first tab, <em>Details</em>, needs additional information to configure the node.</p>
+<ul>
+<li>
+<p>Scroll down to the <strong>Node name</strong> field and enter <code>New Customers</code></p>
+</li>
+<li>
+<p>Further down, under the <em>Connect to Kafka cluster</em> header, paste the full address copied in Step 15 into the <strong>Server</strong> field</p>
+</li>
+<li>
+<p>Click <strong>Next</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="17">
+<li>
+<p>The event source must be configured to allow certificates used by the event stream.</p>
+<ul>
+<li>
+<p><strong>Accept certificates</strong> (by clicking the toggle button as shown in the screenshot below)</p>
+</li>
+<li>
+<p>Click <strong>Next</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="18">
+<li>
+<p>The second tab, <em>Access credentials</em>, requires authentication details for the EEM event source.</p>
+<ul>
+<li>
+<p>Keep the <strong>Select security mechanism</strong> variable as its default value: <code>PLAIN</code></p>
+</li>
+<li>
+<p>For <strong>Username</strong> and <strong>Password</strong>, supply the credentials for the <code>CUSTOMERS</code> topic (Step 28 of Module 2)</p>
+</li>
+<li>
+<p>Click <strong>Next</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="19">
+<li>
+<p>The third tab, <em>Topic selection</em>, will prompt the user on which topic(s) to ingest from the event source.</p>
+<ul>
+<li>
+<p>Available topics will already be displayed within the configuration tool. Under the <em>Topic selection</em> header, click the button next to the <code>CUSTOMERS</code> topic to select it.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="20">
+<li>
+<p>The fourth tab, <em>Define event structure</em>, requires a data schema or sample message in order to understand the expected structure of events ingested from the event source.</p>
+<ul>
+<li>
+<p>Under the <em>No defined structure</em> header, click the blue <strong>Upload a schema or sample message</strong> button to pull open an editor.</p>
+</li>
+<li>
+<p>Users can input schemas in either <em>Avro</em> or <em>JSON</em> data formats. Click the <strong>JSON</strong> tab.</p>
+</li>
+<li>
+<p>Copy and paste the following JSON into the sample message field. Note that this is the same sample schema you supplied when configuring the event source within EEM in Module 2.</p>
+</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;customerid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;acb3eb65-98a1-45c2-84d4-f5df157862b4&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;customername&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Emilio Quitzon&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span><span class="nt">&quot;registered&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-10-24 19:20:35.638&quot;</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>When satisfied, click <strong>Done</strong> to proceed.</p>
+<hr />
+<ol start="21">
+<li>
+<p>You will have a final opportunity to review and confirm the event source configuration.</p>
+<p>Click <strong>Configure</strong> to finalize the configuration of the <code>New Customers</code> event source.</p>
+</li>
+</ol>
+<hr />
+<h1 id="_3"></h1>
+<h1 id="filtering-event-sources-to-match-specific-criteria">Filtering event sources to match specific criteria</h1>
+<hr />
+<ol start="22">
 <li>
 <p>With the event source fully configured within EP, you can now begin tailoring the event processing flow to filter on orders where the value exceeds $100 USD.</p>
 <ul>
-<li>
-<p>The web browser will have loaded back to the authoring canvas, with the <code>source_1</code> default node now properly configured as <code>Orders</code>.</p>
-</li>
 <li>
 <p>Scroll down within the list of nodes and actions on the left-side interface until you locate the <strong>Filter</strong> node.</p>
 </li>
@@ -494,7 +657,7 @@
 </li>
 </ol>
 <hr />
-<ol start="14">
+<ol start="23">
 <li>
 <p>The output terminal for <code>Orders</code> needs to be connected as input to the <code>filter_1</code> node.</p>
 <ul>
@@ -508,25 +671,25 @@
 </li>
 </ol>
 <hr />
-<ol start="15">
+<ol start="24">
 <li>
 <p>With the <code>Orders</code> event source node connected to the <code>filter_1</code> operation node, you must utilize the Filter node's expression builder to remove orders that are <em>less than</em> $100 USD in value. This will allow the marketing team's application to target only first-time customers with spending patterns of $100 USD or more.</p>
 <p>Hover over the <code>filter_1</code> node with your mouse pointer and click the <strong>Edit</strong> (pencil) icon.</p>
 </li>
 </ol>
 <hr />
-<ol start="16">
+<ol start="25">
 <li>
-<p>Within the <em>Details</em> tab, specify the value of <strong>Node name</strong> as <code>FilterLargerOrders</code>.</p>
+<p>Within the <em>Details</em> tab, specify the value of <strong>Node name</strong> as <code>FilterLargeOrders</code>.</p>
 <p>When satisfied, click <strong>Next</strong>.</p>
 </li>
 </ol>
 <hr />
-<ol start="17">
+<ol start="26">
 <li>The <em>Define filter</em> tab will load next. To the right of the <strong>Filter expression</strong> field, click the <strong>Assistant</strong> drop-down menu to expose additional options.</li>
 </ol>
 <hr />
-<ol start="18">
+<ol start="27">
 <li>
 <p>Event Processing's expression builder will guide you in defining the filter.</p>
 <ul>
@@ -540,7 +703,7 @@
 <p>Value: <code>100</code></p>
 </li>
 <li>
-<p>When satisfied, click the <strong>Add to expression</strong> button.</p>
+<p>Click the <strong>Add to expression</strong> button</p>
 </li>
 </ul>
 </li>
@@ -550,14 +713,14 @@
 <hr />
 <p>The marketing team needs to "JOIN" the filtered <code>Order</code> stream data to records of <code>New Customers</code> in order to correctly identify first-time purchasers that placed an order for over $100 USD in the last 24 hours. You shall use EP's authoring canvas to carry out the necessary JOIN operation.</p>
 <hr />
-<ol start="19">
+<ol start="28">
 <li>
-<p>Back on the canvas for <code>NewCustomerLargerOrders</code>, scroll down along the left-hand interface until you locate the <strong>Interval Join</strong> node.</p>
+<p>Back on the canvas for <code>NewCustomerLargeOrders</code>, scroll down along the left-hand interface until you locate the <strong>Interval Join</strong> node.</p>
 <p>Drag and drop this node at the far right-hand edge of the authoring canvas.</p>
 </li>
 </ol>
 <hr />
-<ol start="20">
+<ol start="29">
 <li>
 <p>With your cursor, hover over the <code>New Customers</code> output terminal and locate the <em>Output Port</em> (grey) button.</p>
 <ul>
@@ -571,28 +734,28 @@
 </li>
 </ol>
 <hr />
-<ol start="21">
+<ol start="30">
 <li>
 <p>Repeat the process, this time connecting the <code>FilterLargeOrders</code> node's <em>Output Port</em> to the <code>intervalJoin_1</code> node's <em>Input Port</em>.</p>
-<p>At this stage, the input of <code>intervalJoin_1</code> should be connected to the outputs of <em>both</em> the <code>FilterLargerOrders</code> and <code>New Customers</code> nodes.</p>
+<p>At this stage, the input of <code>intervalJoin_1</code> should be connected to the outputs of <em>both</em> the <code>FilterLargeOrders</code> and <code>New Customers</code> nodes.</p>
 </li>
 </ol>
 <hr />
-<ol start="22">
+<ol start="31">
 <li>
 <p>The JOIN node must now be configured to correlate events based on a shared <code>customerid</code> field within the two event streams (<code>New Customers</code> and pre-filtered <code>Orders</code>).</p>
 <p>With your cursor, hover over the <code>intervalJoin_1</code> node and click the <strong>Edit</strong> (pencil) icon.</p>
 </li>
 </ol>
 <hr />
-<ol start="23">
+<ol start="32">
 <li>
 <p>Within the <em>Details</em> tab, set <strong>Node name</strong> equal to <code>DetectNewCustomerLargeOrder</code>.</p>
 <p>When ready, click <strong>Next</strong>.</p>
 </li>
 </ol>
 <hr />
-<ol start="24">
+<ol start="33">
 <li>
 <p>Within the <em>Join conditions</em> tab, activate the expression builder by click the <strong>Assistant</strong> drop-down menu. Set the following properties:</p>
 <ul>
@@ -600,7 +763,7 @@
 <p>Specify property from 'New Customers': <code>customerid</code></p>
 </li>
 <li>
-<p>Specify property from 'FilterLargerOrders': <code>customerid</code></p>
+<p>Specify property from 'FilterLargeOrders': <code>customerid</code></p>
 </li>
 <li>
 <p>When ready, click <strong>Add to expression</strong></p>
@@ -609,7 +772,7 @@
 </li>
 </ol>
 <p>The syntactically-correct JOIN expression will be expressed under the <em>Define events</em> field:</p>
-<p><code>'New Customers'.'customerid' = 'FilterLargerOrders'.'customerid'</code></p>
+<p><code>'New Customers'.'customerid' = 'FilterLargeOrders'.'customerid'</code></p>
 <p>After you have reviewed the JOIN condition, click <strong>Next</strong>.</p>
 <hr />
 <div class="admonition note">
@@ -624,12 +787,12 @@
 </li>
 </ul>
 </div>
-<ol start="25">
+<ol start="34">
 <li>
 <p>Under the <em>Time window condition</em>, you can define the time interval "window" where detected events are considered viable for a promotional offer from the marketing team. To meet the criteria, a purchase of over $100 USD must be made by a first-time customer within a 24 hour window of creating an account.</p>
 <ul>
 <li>
-<p>Look for the <strong>Event to detect</strong> field and select the <code>FilterLargerOrders (event_time)</code> option from the drop-down menu.</p>
+<p>Look for the <strong>Event to detect</strong> field and select the <code>FilterLargeOrders (event_time)</code> option from the drop-down menu.</p>
 </li>
 <li>
 <p>A <em>Preview</em> visualization of the time window interval is rendered within the panel. For now, with no adjustments made, this will appear as a vertical bar at 0 (X-axis).</p>
@@ -656,7 +819,7 @@
 <p>The JOIN node's output going forward will be a combination of fields from both the filtered <code>Orders</code> and <code>New Customers</code> events streams.</p>
 <p>Before finalizing the interval join, you need to clean up the output so that duplicate fields (like <code>customerid</code> and <code>event_time</code>) are not included from the JOIN operation. You have the option of renaming or removing the duplicate fields — but for the sake of this demonstration, you will be removing the fields.</p>
 <hr />
-<ol start="26">
+<ol start="35">
 <li>
 <p>Within the <em>Output properties</em> tab, locate the <code>customerid</code> field. There are <strong>two</strong> (duplicate) copies of the same field at this time. Your objective will be to delete <strong>ONE</strong> of the two duplicate records. Preserve one of the two.</p>
 <ul>
@@ -670,7 +833,7 @@
 </li>
 </ol>
 <hr />
-<ol start="27">
+<ol start="36">
 <li>
 <p>Repeat the procedure for the <code>event_time</code> field, which is also duplicated by the JOIN operation.</p>
 <ul>
@@ -687,7 +850,7 @@
 </li>
 </ol>
 <hr />
-<h1 id="_1"></h1>
+<h1 id="_4"></h1>
 <h1 id="next-steps">Next Steps</h1>
 <p>With filtering and processing steps now in place for incoming event streams, Focus Corporation's marketing team is able to detect valid promotional opportunities and emit those detected events to their customer loyalty application. In the following section, you will create those linkages and validate its effectiveness using "historical" and "live" data feeds.</p>
 
