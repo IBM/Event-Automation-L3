@@ -419,7 +419,7 @@
 <a class="glightbox" href="../_attachments/setup-3a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/setup-3a.png" /></a></p>
 <p><br/>
 <a class="glightbox" href="../_attachments/setup-3b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/setup-3b.png" /></a></p>
-<div class="admonition tip">
+<div class="admonition note">
 <p class="admonition-title">PROVISIONING TIMES</p>
 <p>Reservations take approximately <strong>60 minutes</strong> to complete from the time that you click submit. If you navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ, you can monitor the progress of your reservation. Wait for the ITZ reservation to be marked as "<em>Ready</em>" before attempting to start the lab — accessing it too soon will lead to issues (or an outright failure) when connecting to the OpenShift cluster.</p>
 </div>
@@ -459,16 +459,21 @@
 <hr />
 <h1 id="_2"></h1>
 <h1 id="customization-of-the-lab-environment">Customization of the Lab Environment</h1>
-<hr />
+<ol start="7">
+<li>
+<p>In order to deploy containerized instances of <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em> on top of OpenShift, you must first download and set up your local machine with the <strong>OpenShift Command Line Interface (CLI)</strong>.</p>
 <div class="admonition note">
 <p class="admonition-title">COMMAND LINE ACCESS</p>
 <p>For parts of the hands-on lab, you will be required to establish connections over SSH to remote infrastructure endpoints. It is recommended that users do so via <strong>Terminal</strong> (Mac) or <strong>PuTTY</strong> (Windows). For detailed instructions on how to connect with PuTTY, or if you are using a Windows machine, <a href="https://ibm.box.com/s/d71tn63hutdxrjwh21qdzralrsxlcspe" target="_blank">reference the linked material</a>.</p>
 </div>
-<ol start="7">
+<ul>
 <li>
-<p>In order to deploy containerized instances of <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em> on top of OpenShift, you must first download and set up your local machine with the <strong>OpenShift Command Line Interface (CLI)</strong>.</p>
 <p>In the top-right corner of the OpenShift dashboard, click the <strong>question mark</strong> (<code>?</code>) icon as shown in the screenshot below. This will open a drop-down menu with several options.</p>
+</li>
+<li>
 <p>Click the <strong>Command line tools</strong> option from the drop-down menu.</p>
+</li>
+</ul>
 <p><br/>
 <a class="glightbox" href="../_attachments/setup-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-7.png" width="600" /></a></p>
 </li>
@@ -476,8 +481,7 @@
 <hr />
 <ol start="8">
 <li>
-<p>From the <code>oc - OpenShift Command Line Interface (CLI)</code> options, click the download link that matches your local machine's operating system (Mac, Windows, or Linux).</p>
-<p>Once downloaded, execute the installer and proceed with the lab guide once <code>oc</code> is successfully installed.</p>
+<p>From the <code>oc - OpenShift Command Line Interface (CLI)</code> options, click the download link that matches your local machine's operating system (Mac, Windows, or Linux). Once downloaded, execute the installer and proceed with the lab guide once <code>oc</code> is successfully installed.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/setup-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-8.png" width="600" /></a></p>
 </li>
@@ -485,8 +489,15 @@
 <hr />
 <ol start="9">
 <li>
-<p>Return to the OpenShift dashboard landing page. In the far right-hand corner of the interface, click the <strong>kube:admin</strong> button to open another drop-down menu.</p>
+<p>Return to the OpenShift dashboard landing page.</p>
+<ul>
+<li>
+<p>In the far right-hand corner of the interface, click the <strong>kube:admin</strong> button to open another drop-down menu.</p>
+</li>
+<li>
 <p>From the options, select <strong>Copy login command</strong> to open a new tab or window with details about remotely accessing the OpenShift cluster.</p>
+</li>
+</ul>
 <p><br/>
 <a class="glightbox" href="../_attachments/setup-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-9.png" width="600" /></a></p>
 </li>
@@ -511,7 +522,14 @@
 <ol start="12">
 <li>
 <p>Open your command line tool of preference on your local machine, likely either <strong>Terminal</strong> or <strong>PuTTY</strong>. At this stage, the OpenShift CLI (<code>oc</code>) should be available on your machine and ready for remotely connecting to the OpenShift cluster.</p>
-<p>Within the Terminal, <strong>paste the full login command</strong> recorded in Step 11 and hit <code>Return</code> to commence the login. A prompt similar to the screenshot below will be displayed momentarily, indicating that the Terminal is now successfully connected (remotely) to the OpenShift cluster.</p>
+<ul>
+<li>
+<p>Within the Terminal, <strong>paste the full login command</strong> recorded in Step 11 and hit <code>Return</code> to commence the login.</p>
+</li>
+<li>
+<p>A prompt similar to the screenshot below will be displayed momentarily, indicating that the Terminal is now successfully connected (remotely) to the OpenShift cluster.</p>
+</li>
+</ul>
 <p><br/>
 <a class="glightbox" href="../_attachments/setup-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-12.png" width="600" /></a></p>
 </li>
@@ -548,12 +566,18 @@
 <ol start="16">
 <li>
 <p>The <em>Platform Navigator</em> and <em>IBM MQ</em> services utilize the same login details. The password supplied for these two services by the Terminal console in Step 15 is a <em>temporary</em>, <em>one-time-use</em> password.</p>
-<p>Try logging into the <em>IBM MQ</em> environment environment by pasting the <code>URL</code> into a web browser. Then supply the <code>username</code> and temporary <code>password</code> recorded within your notepad.</p>
 <div class="admonition warning">
 <p class="admonition-title">THIS CONNECTION IS NOT PRIVATE</p>
 <p>Ignore any "<em>This connection is not private</em>" warnings you may receive. If the page does not load, verify that you are connected to the IBM intranet with an active VPN.</p>
 </div>
+<ul>
+<li>
+<p>Try logging into the <em>IBM MQ</em> environment environment by pasting the <code>URL</code> into a web browser. Then supply the <code>username</code> and temporary <code>password</code> recorded within your notepad.</p>
+</li>
+<li>
 <p>When prompted, create your own password for logging into the environment. Confirm your selection with <strong>Submit</strong> and then update your <code>password</code> records for both the <em>Platform Navigator</em> and <em>IBM MQ</em> services.</p>
+</li>
+</ul>
 <p><br/>
 <a class="glightbox" href="../_attachments/setup-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-16.png" width="600" /></a></p>
 <p><br/>
@@ -561,10 +585,6 @@ At this stage, the lab environment is fully configured and ready for hands-on wo
 </li>
 </ol>
 <hr />
-<div class="admonition note">
-<p class="admonition-title">MQ &amp; CPI AUTHENTICATION<p>Both services utilize the same <code>username</code> and <code>password</code> credentials. However, the two URLs generated by the Terminal console in Step 15 are <em>unique</em>. Ensure that you are logging in to the correct dashboard (IBM MQ or CPI) when asked to do so in the subsequent chapters.</p>
-</p>
-</div>
 <ol start="17">
 <li>
 <p>With your web browser, open and authenticate with (using credentials from Step 15) each of the services needed for the hands-on lab:</p>
@@ -575,9 +595,13 @@ At this stage, the lab environment is fully configured and ready for hands-on wo
 <li><em>Event Processing</em></li>
 <li><em>IBM MQ</em></li>
 </ul>
+<p>Keep these tabs open. You will be switching between them frequently.</p>
+<div class="admonition note">
+<p class="admonition-title">MQ &amp; CPI AUTHENTICATION</p>
+<p>Both services utilize the same <code>username</code> and <code>password</code> credentials. However, the two URLs generated by the Terminal console in Step 15 are <em>unique</em>. Ensure that you are logging in to the correct dashboard (IBM MQ or CPI) when asked to do so in the subsequent chapters.</p>
+</div>
 </li>
 </ol>
-<p>Keep these tabs open. You will be switching between them frequently.</p>
 <hr />
 <h1 id="_3"></h1>
 <h1 id="next-steps">Next Steps</h1>
