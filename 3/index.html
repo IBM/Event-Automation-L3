@@ -332,13 +332,15 @@
 </ol>
 <hr />
 <ol start="2">
-<li>In the bottom-right corner of the page, click the blue <strong>Create</strong> to begin defining a new <em>flow</em>.</li>
-</ol>
+<li>
+<p>In the bottom-right corner of the page, click the blue <strong>Create</strong> to begin defining a new <em>flow</em>.</p>
 <div class="admonition note">
 <p class="admonition-title">EVENT PROCESSING FLOWS</p>
 <p>An event processing flow ingests a stream of events, analyzes that input, and takes automatic actions (defined by the user) in response to those conditions.</p>
 <p>A flow begins with one or multiple event sources which represent inbound events. For the purposes of this demonstration, you will leverage the <code>ORDERS</code> event stream that was defined in the previous module. You will do so using EP's intuitive, no-code authoring canvas.</p>
 </div>
+</li>
+</ol>
 <hr />
 <ol start="3">
 <li>
@@ -491,6 +493,9 @@
 <li>
 <p>Copy and paste the following JSON into the sample message field. Note that this is the same sample schema you supplied when configuring the event source within EEM in Module 2.</p>
 </li>
+<li>
+<p>When ready, click <strong>Done</strong> to proceed.</p>
+</li>
 </ul>
 </li>
 </ol>
@@ -505,7 +510,6 @@
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">&quot;customer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Reed McKenzie DDS&quot;</span><span class="w"></span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>When ready, click <strong>Done</strong> to proceed.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/3-11a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-11a.png" width="600" /></a></p>
 <p><a class="glightbox" href="../_attachments/3-11b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-11b.png" width="600" /></a></p>
@@ -539,7 +543,7 @@
 <p>The <strong>Configure event source</strong> wizard will load within your browser.</p>
 <ul>
 <li>
-<p>Under the <em>Add an event source of pick a recent one</em> header, select the <strong>Add event source</strong> tile</p>
+<p>Under the <em>Add an event source of pick a recent one</em> header, select <strong>Add event source</strong></p>
 </li>
 <li>
 <p>Click <strong>Next</strong></p>
@@ -652,6 +656,9 @@
 <li>
 <p>Copy and paste the following JSON into the sample message field. Note that this is the same sample schema you supplied when configuring the event source within EEM in Module 2.</p>
 </li>
+<li>
+<p>When ready, click <strong>Done</strong> to proceed.</p>
+</li>
 </ul>
 </li>
 </ol>
@@ -663,8 +670,6 @@
 </code></pre></div>
 <p><br/>
 <a class="glightbox" href="../_attachments/3-20.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-20.png" width="600" /></a></p>
-<p><br/>
-When ready, click <strong>Done</strong> to proceed.</p>
 <hr />
 <ol start="21">
 <li>
@@ -910,7 +915,7 @@ When ready, click <strong>Done</strong> to proceed.</p>
 <hr />
 <ol start="36">
 <li>
-<p>Repeat the procedure for the <code>event_time</code> field, which is also duplicated by the JOIN operation.</p>
+<p>Repeat the procedure for the <code>event_time</code> field, which is also duplicated by the JOIN:</p>
 <ul>
 <li>
 <p>Delete the <code>event_time</code> row where the <em>Source</em> column is labelled as "New Customers".</p>
