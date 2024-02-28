@@ -449,6 +449,11 @@
 <h1 id="cloning-order-queues-with-ibm-event-streams">Cloning order queues with IBM Event Streams</h1>
 <p>Focus Corporation's integration team will now need to create an event stream called <code>Orders</code> using <em>IBM Event Streams</em>. This will serve as the repository where messages, cloned from IBM MQ, are published and made available to other parts of the organization.</p>
 <p>The team will need to make decisions about how to replicate the data (with or without modification) and also determine the appropriate retention settings for this data. Given the governance policies in place at Focus Corporation, they will need to retain data for up to 1 week and replicate entries for high availability.</p>
+<div class="admonition note">
+<p class="admonition-title">MQ-KAFKA CONNECTOR</p>
+<p><strong>IBM MQ</strong> allows applications, systems, services, and files to request and coordinate processing tasks — sending and receiving message data via messaging queues. <strong>IBM Event Automation</strong>'s Kafka integrations makes it possible to capture a continuous stream of events, representing state changes across one or multiple environments, and makes those events persistently available for retrieval.</p>
+<p>In combination, IBM MQ and Event Automation enable business-critical communications originating over MQ to be captured as events within Kafka topics, which can later be shared across the enterprise for fueling more responsive applications. IBM MQ-Kafka connectors support bi-directional connectivity between these two architectures. Clients of IBM Event Automation are fully supported for using MQ-Kafka connectors with the Event Streams capability of the platform. Support for the MQ-Kafka connector is also available for IBM clients with MQ Advanced entitlements.</p>
+</div>
 <hr />
 <ol start="13">
 <li>
