@@ -323,15 +323,20 @@
 <div class="admonition note">
 <p class="admonition-title">WHAT IS THE DIFFERENCE BETWEEN OpenAPI and AsyncAPI?</p>
 <p>OpenAPI and AsyncAPI both represent formalized specifications for describing APIs, but the data source feeding these APIs and the style in which that data is communicated differs between the two. <strong>This is important in the context of IBM Event Endpoint Management.</strong></p>
-<div class="highlight"><pre><span></span><code>- **OpenAPI** is designed for describing RESTful API endpoints, focusing on synchronous client-server communication: a client sends a request and waits for a direct response from a server. Therefore, OpenAPI is well suited for standard web services where a client interacts with a server in a request-response model.
-
-- **AsyncAPI** is designed from describing event-drive, asynchronous APIs, focusing on asynchronous communication patterns: publish and subscribe, event streaming, and message-driven APIs. It is well suited for Internet of Things (IoT) applications, real-time data processing use cases, or other scenarios where communication doesn&#39;t follow the typical direct request-response (synchronous and RESTful) API pattern.
-</code></pre></div>
-<p>Put simply, the key difference between the two is communication pattern. OpenAPI is designed for synchronous messaging (following the request—response pattern) and AsyncAPI is intended for asynchronous communication (event-driven) patterns. IBM Event Endpoint Management— a composable service within IBM Event Automation —uses AsyncAPI as the standardized way for describing event-driven messages. It allows clients to quickly "discover" events across their ecosystem, publish those events across the organization according to governance rules that ensure compliance, and create enforceable policies through event gateways. Like clients do today with API gateways, an event gateway provides isolation, abstraction, policy enforcement, and decoupling to asynchronous (event-driven) data sources.</p>
+<ul>
+<li>
+<p><strong>OpenAPI</strong> is designed for describing RESTful API endpoints, focusing on synchronous client-server communication: a client sends a request and waits for a direct response from a server. Therefore, OpenAPI is well suited for standard web services where a client interacts with a server in a request-response model.</p>
+</li>
+<li>
+<p><strong>AsyncAPI</strong> is designed from describing event-drive, asynchronous APIs, focusing on asynchronous communication patterns: publish and subscribe, event streaming, and message-driven APIs. It is well suited for Internet of Things (IoT) applications, real-time data processing use cases, or other scenarios where communication doesn't follow the typical direct request-response (synchronous and RESTful) API pattern.</p>
+</li>
+</ul>
+<p>Put simply, the key difference between the two is communication pattern. OpenAPI is designed for synchronous messaging (following the request—response pattern) and AsyncAPI is intended for asynchronous communication (event-driven) patterns.</p>
+<p>IBM Event Endpoint Management— a composable service within IBM Event Automation —uses AsyncAPI as the standardized way for describing event-driven messages. It allows clients to quickly "discover" events across their ecosystem, publish those events across the organization according to governance rules that ensure compliance, and create enforceable policies through event gateways. Like clients do today with API gateways, an event gateway provides isolation, abstraction, policy enforcement, and decoupling to asynchronous (event-driven) data sources.</p>
 </div>
 <hr />
 <h1 id="_1"></h1>
-<h1 id="defining-new-kafka-topics-within-ibm-event-streams">Defining new Kafka Topics within IBM Event Streams</h1>
+<h1 id="defining-new-topics-within-ibm-event-streams">Defining new Topics within IBM Event Streams</h1>
 <p>Before the event stream data can be browsed as part of a self-service catalog, the integration team must first import into EEM the <code>order</code> and <code>customer</code> streams via <em>Topics</em> created earlier within IBM Event Streams.</p>
 <hr />
 <ol>
@@ -439,7 +444,7 @@
 </ol>
 <hr />
 <h1 id="_2"></h1>
-<h1 id="defining-the-event-stream-schema-for-customers">Defining the event stream schema for <em>CUSTOMERS</em></h1>
+<h1 id="defining-a-data-schema-for-customers">Defining a data schema for <em>CUSTOMERS</em></h1>
 <p>With the connections to IBM Event Streams defined and the Kafka Topics selected for replication, Focus' integration team is ready to create the self-service event stream catalogs within EEM. </p>
 <p>The team must provide descriptions of the event streams, including an example of how the data is structured and formatted. This description will be beneficial to other individuals within the company (such as the marketing department), who will want to know at-a-glance whether a particular Topic catalog fits their needs.</p>
 <hr />
@@ -492,9 +497,8 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></p>
 <p>When satisfied, click <strong>Save</strong> to finalize both the <em>Overview Information</em> and <em>Event Information</em> configuration settings.</p>
-<div class="highlight"><pre><span></span><code>&lt;br/&gt;
-![](_attachments/2-12.png){: loading=lazy width=&quot;600&quot;}
-</code></pre></div>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-12.png" width="600" /></a></p>
 <hr />
 <ol start="13">
 <li>
@@ -562,7 +566,7 @@
 </ol>
 <hr />
 <h1 id="_3"></h1>
-<h1 id="defining-the-event-stream-schema-for-orders">Defining the event stream schema for <em>ORDERS</em></h1>
+<h1 id="defining-a-data-schema-for-orders">Defining a data schema for <em>ORDERS</em></h1>
 <p>The process of publishing an event streams Topic within EEM (Steps 9–16) must now be repeated— with some slight modifications —for the <code>ORDERS</code> topic.</p>
 <hr />
 <ol start="17">
@@ -728,9 +732,18 @@
 </li>
 </ol>
 <hr />
-<p>Generate access credentials for the <code>ORDERS</code> catalog in the same manner as before.</p>
 <ol start="29">
-<li>Return to the EEM dashboard and drill down into <strong>Catalog</strong>, then click on <code>ORDERS</code>.</li>
+<li>
+<p>Generate access credentials for the <code>ORDERS</code> catalog in the same manner as you did for <code>CUSTOMERS</code>:</p>
+<ul>
+<li>
+<p>Return to the EEM dashboard</p>
+</li>
+<li>
+<p>Drill down into <strong>Catalog</strong> and then click <code>ORDERS</code></p>
+</li>
+</ul>
+</li>
 </ol>
 <hr />
 <ol start="30">
@@ -746,7 +759,7 @@
 <hr />
 <ol start="32">
 <li>
-<p>Access credentials for <code>ORDERS</code> will be generated immediately and displayed within the web browser.</p>
+<p>Access credentials for <code>ORDERS</code> will be generated immediately within the web browser:</p>
 <ul>
 <li>
 <p>Record the <code>Username</code> and <code>Password</code> values to a notepad for reference later.</p>
