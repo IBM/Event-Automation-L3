@@ -337,7 +337,7 @@
 <p>When new events are detected which match the marketing team's promotional criteria, the application will automatically trigger an upsell activity for the new customer.</p>
 <hr />
 <ol>
-<li>Return to the authoring canvas dashboard for <code>NewCustomerLargeOrders</code> within the IBM Event Processing (EP) tab.</li>
+<li>Return to the authoring canvas dashboard for <code>NewCustomerLargeOrders</code> within the <strong>IBM Event Processing (EP)</strong> tab.</li>
 </ol>
 <hr />
 <ol start="2">
@@ -346,7 +346,7 @@
 <p><br/>
 <a class="glightbox" href="../_attachments/4-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/4-2.png" width="600" /></a></p>
 <p><br/>
-The new node <code>sink_1</code> represents a "resource" (a concept from Apache Kafka), such as a topic, that can receive incoming events — thereby serving as a destination.</p>
+The new node <code>sink_1</code> represents a "resource", a concept from Apache Kafka. These resources can receive incoming events — thereby serving as a <em>destination</em>.</p>
 </li>
 </ol>
 <hr />
@@ -422,7 +422,8 @@ The new node <code>sink_1</code> represents a "resource" (a concept from Apache 
 <hr />
 <ol start="8">
 <li>
-<p>Within the <em>Topic selection</em> tab, you will be asked to specify which of the available endpoints (topics available to the credentials you provided in Step 7) should serve as a destination "sink." In this situation, we want to said all valid customer interactions meeting the purchase criteria to the marketing department's customer loyalty application.</p>
+<p>Within the <em>Topic selection</em> tab, you will be asked to specify which of the available endpoints (topics available to the credentials you provided in Step 7) should serve as a destination "sink."</p>
+<p>In this situation, the goal is to send all valid customer interactions (which meet the purchasing criteria) to the marketing department's customer loyalty application.</p>
 <ul>
 <li>
 <p>Select <code>LOYALTY.APP</code></p>
@@ -437,14 +438,15 @@ The new node <code>sink_1</code> represents a "resource" (a concept from Apache 
 </li>
 </ol>
 <hr />
-<p>You are now ready to begin testing the end-to-end flow using historical event data. This will allow the marketing and integration teams to see the results of the flow and validate the result: several new customers who are eligible for the promotional discount should be detected and flagged within the loyalty application.</p>
+<p>You are now ready to begin testing the end-to-end flow using historical event data. This will allow the marketing and integration teams to see the results of the flow and validate the result.</p>
+<p>If successful, several new customers who are eligible for the promotional discount should be detected and flagged within the loyalty application.</p>
 <hr />
 <ol start="9">
 <li>
 <p>Return to the authoring canvas dashboard for <code>NewCustomerLargeOrders</code> within EP.</p>
 <ul>
 <li>
-<p>In the top-right corner of the interface, click the <strong>Run</strong> drop-down menu.</p>
+<p>In the top-right corner of the interface, click the <strong>Run</strong> drop-down menu</p>
 </li>
 <li>
 <p>From the list of options, select <strong>Include historical</strong></p>
@@ -480,9 +482,9 @@ The new node <code>sink_1</code> represents a "resource" (a concept from Apache 
 </li>
 </ol>
 <hr />
-<p>Having successfully tested the flow, the marketing team is ready to reconfigure the event destination sink to supply live event stream data into Focus' production environment.</p>
-<p>The event flow processing is now fully in production and generating actionable promotions within Focus Corporation's customer loyalty application!</p>
-<p>Congratulations on a successful demonstration. This concludes the hands-on material.</p>
+<p>Having successfully tested the flow, the marketing team is ready to reconfigure the event destination sink, allowing them to supply live event stream data into Focus' production environment.</p>
+<p>The event flow processing can then easily be put into production and immediately begin generating actionable promotions within Focus Corporation's customer loyalty application.</p>
+<p>Congratulations on a successful demonstration! This concludes the hands-on material. At this time, you should be ready to record a <strong>Stand &amp; Deliver</strong> presentation or complete the Level 3 accreditation quiz — follow the <a href="https://ibm.github.io/Event-Automation-L3/evaluation/" target="_blank">Evaluation</a> steps appropriate to your job role.</p>
 
 
 

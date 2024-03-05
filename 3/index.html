@@ -333,9 +333,9 @@
 
 <h1 id="using-ibm-event-processing-no-code-editors-to-configure-the-solution">Using IBM Event Processing no-code editors to configure the solution</h1>
 <hr />
-<p>As a result of your work so far, the marketing department now has a fully configured, self-service catalog of event stream data available within <strong>IBM Event Endpoint Management (EEM)</strong>.</p>
-<p>At this stage, work will transition from the integration team to the domain of the marketing team. Focus Corporation's marketing team will utilize <strong>IBM Event Processing (EP)</strong> to correlate any newly-created customer accounts with first-time purchase orders that total over $100 USD in value. Furthermore, these "first time customer with greater than $100 transaction" correlation will need to be identified within a 24-hour window of when they occur.</p>
-<p>If these conditions can be met, the marketing team will be able to create an actionable plan for putting high-value promotional offers in front of these first-time customers in a timely manner — which should translate to more sales revenue through Focus' digital storefront.</p>
+<p>Focus Corporation's marketing department now has a fully configured, self-service catalog of event stream data available within <strong>IBM Event Endpoint Management (EEM)</strong>.</p>
+<p>At this stage, work will transition from the integration team to the domain of the marketing team. Focus' marketing team will utilize <strong>IBM Event Processing (EP)</strong> to correlate any newly-created customer accounts with first-time purchase orders that total over $100 USD in value. Furthermore, these correlated transactions will need to be identified within a 24-hour window of when they occur.</p>
+<p>If these conditions can be met, the marketing team will be able to create an actionable plan for putting high-value promotional offers in front of first-time customers in a timely manner — which should translate to more sales revenue through Focus' digital storefront.</p>
 <hr />
 <ol>
 <li>
@@ -359,8 +359,7 @@
 <hr />
 <ol start="3">
 <li>
-<p>For <strong>Name</strong>, specify <code>NewCustomerLargeOrder</code>.</p>
-<p>When ready, click <strong>Create</strong>.</p>
+<p>For <strong>Name</strong>, specify <code>NewCustomerLargeOrder</code> and then click <strong>Create</strong>.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/3-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-3.png" width="600" /></a></p>
 </li>
@@ -394,7 +393,7 @@
 <p>The <strong>Configure event source</strong> wizard will load within your browser.</p>
 <ul>
 <li>
-<p>Under the <em>Add an event source of pick a recent one</em> header, select the <strong>Add event source</strong> tile</p>
+<p>Under the <em>Add an event source or pick a recent one</em> header, select <strong>Add event source</strong></p>
 </li>
 <li>
 <p>Click <strong>Next</strong></p>
@@ -410,19 +409,19 @@
 <p>Switch back to the <strong>Event Endpoint Management</strong> tab and click <strong>Catalog</strong> from the left-hand interface.</p>
 <ul>
 <li>
-<p>Drill down into the <code>ORDERS</code> topic by clicking on the name.</p>
+<p>Drill down into the <code>ORDERS</code> topic by clicking on the name</p>
 </li>
 <li>
-<p>Scroll down the topic summary page until you reach the <strong>Access Information</strong> section.</p>
+<p>Scroll down the topic summary page until you reach the <strong>Access Information</strong> section</p>
 </li>
 <li>
-<p>Just below, within the <em>Servers</em> table, is the full address of the <code>ORDERS</code> event topic.</p>
+<p>Just below, within the <em>Servers</em> table, is the full address of the <code>ORDERS</code> event topic</p>
 </li>
 <li>
-<p>Copy the <em>full</em> address (<code>ademo-event-gw-ibm...</code>) to your notepad for reference later.</p>
+<p>Copy the <em>full</em> address (<code>ademo-event-gw-ibm...</code>) to your notepad for reference later</p>
 </li>
 <li>
-<p>When ready, switch back to the <strong>IBM Event Processing</strong> tab with your web browser.</p>
+<p>When ready, switch back to the <strong>IBM Event Processing</strong> tab with your web browser</p>
 </li>
 </ul>
 <p><br/>
@@ -488,10 +487,13 @@
 <p>The third tab, <em>Topic selection</em>, will prompt the user on which topic(s) to ingest from the event source.</p>
 <ul>
 <li>
-<p>Available topics will already be displayed within the configuration tool. Under the <em>Topic selection</em> header, click the button next to the <code>ORDERS</code> topic to select it.</p>
+<p>Available topics will already be displayed within the configuration tool</p>
 </li>
 <li>
-<p>Click <strong>Next</strong>.</p>
+<p>Under the <em>Topic selection</em> header, click the button next to the <code>ORDERS</code> topic to select it</p>
+</li>
+<li>
+<p>Click <strong>Next</strong></p>
 </li>
 </ul>
 <p><br/>
@@ -504,16 +506,16 @@
 <p>The fourth tab, <em>Define event structure</em>, requires a data schema or sample message in order to understand the expected structure of events ingested from the event source.</p>
 <ul>
 <li>
-<p>Under the <em>No defined structure</em> header, click the blue <strong>Upload a schema or sample message</strong> button to pull open an editor.</p>
+<p>Under the <em>No defined structure</em> header, click the blue <strong>Upload a schema or sample message</strong> button to pull open an editor</p>
 </li>
 <li>
-<p>Users can input schemas in either <em>Avro</em> or <em>JSON</em> data formats. Click the <strong>JSON</strong> tab.</p>
+<p>Users can input schemas in either <em>Avro</em> or <em>JSON</em> data formats: click the <strong>JSON</strong> tab</p>
 </li>
 <li>
 <p>Copy and paste the following JSON into the sample message field. Note that this is the same sample schema you supplied when configuring the event source within EEM in Module 2.</p>
 </li>
 <li>
-<p>When ready, click <strong>Done</strong> to proceed.</p>
+<p>When ready, click <strong>Done</strong> to proceed</p>
 </li>
 </ul>
 </li>
@@ -562,7 +564,7 @@
 <p>The <strong>Configure event source</strong> wizard will load within your browser.</p>
 <ul>
 <li>
-<p>Under the <em>Add an event source of pick a recent one</em> header, select <strong>Add event source</strong></p>
+<p>Under the <em>Add an event source or pick a recent one</em> header, select <strong>Add event source</strong></p>
 </li>
 <li>
 <p>Click <strong>Next</strong></p>
@@ -578,19 +580,19 @@
 <p>Switch back to the <strong>Event Endpoint Management</strong> tab and click <strong>Catalog</strong> from the left-hand interface.</p>
 <ul>
 <li>
-<p>Drill down into the <code>CUSTOMERS</code> topic by clicking on the name.</p>
+<p>Drill down into the <code>CUSTOMERS</code> topic by clicking on the name</p>
 </li>
 <li>
-<p>Scroll down the topic summary page until you reach the <strong>Access Information</strong> section.</p>
+<p>Scroll down the topic summary page until you reach the <strong>Access Information</strong> section</p>
 </li>
 <li>
-<p>Just below, within the <em>Servers</em> table, is the full address of the <code>CUSTOMERS</code> event topic.</p>
+<p>Just below, within the <em>Servers</em> table, is the full address of the <code>CUSTOMERS</code> event topic</p>
 </li>
 <li>
-<p>Copy the <em>full</em> address (<code>ademo-event-gw-ibm...</code>) to your notepad for reference later.</p>
+<p>Copy the <em>full</em> address (<code>ademo-event-gw-ibm...</code>) to your notepad for reference later</p>
 </li>
 <li>
-<p>When ready, switch back to the <strong>IBM Event Processing</strong> tab with your web browser.</p>
+<p>When ready, switch back to the <strong>IBM Event Processing</strong> tab with your web browser</p>
 </li>
 </ul>
 </li>
@@ -651,10 +653,13 @@
 <p>The third tab, <em>Topic selection</em>, will prompt the user on which topic(s) to ingest from the event source.</p>
 <ul>
 <li>
-<p>Available topics will already be displayed within the configuration tool. Under the <em>Topic selection</em> header, click the button next to the <code>CUSTOMERS</code> topic to select it.</p>
+<p>Available topics will already be displayed within the configuration tool</p>
 </li>
 <li>
-<p>Click <strong>Next</strong>.</p>
+<p>Under the <em>Topic selection</em> header, click the button next to the <code>CUSTOMERS</code> topic to select it</p>
+</li>
+<li>
+<p>Click <strong>Next</strong></p>
 </li>
 </ul>
 <p><br/>
@@ -667,16 +672,16 @@
 <p>The fourth tab, <em>Define event structure</em>, requires a data schema or sample message in order to understand the expected structure of events ingested from the event source.</p>
 <ul>
 <li>
-<p>Under the <em>No defined structure</em> header, click the blue <strong>Upload a schema or sample message</strong> button to pull open an editor.</p>
+<p>Under the <em>No defined structure</em> header, click the blue <strong>Upload a schema or sample message</strong> button to pull open an editor</p>
 </li>
 <li>
-<p>Users can input schemas in either <em>Avro</em> or <em>JSON</em> data formats. Click the <strong>JSON</strong> tab.</p>
+<p>Users can input schemas in either <em>Avro</em> or <em>JSON</em> data formats: click the <strong>JSON</strong> tab</p>
 </li>
 <li>
 <p>Copy and paste the following JSON into the sample message field. Note that this is the same sample schema you supplied when configuring the event source within EEM in Module 2.</p>
 </li>
 <li>
-<p>When ready, click <strong>Done</strong> to proceed.</p>
+<p>When ready, click <strong>Done</strong> to proceed</p>
 </li>
 </ul>
 </li>
@@ -743,7 +748,7 @@
 <hr />
 <ol start="25">
 <li>
-<p>Within the <em>Details</em> tab, specify the value of <strong>Node name</strong> as <code>FilterLargeOrders</code>.</p>
+<p>Within the <em>Details</em> tab, specify the value of <strong>Node name</strong> as <code>FilterLargeOrders</code></p>
 <p>When ready, click <strong>Next</strong>.</p>
 </li>
 </ol>
@@ -787,7 +792,7 @@
 <hr />
 <h1 id="_4"></h1>
 <h1 id="performing-a-join-across-two-event-sources">Performing a JOIN across two event sources</h1>
-<p>The marketing team needs to "JOIN" the filtered <code>Order</code> stream data to records of <code>New Customers</code> in order to correctly identify first-time purchasers that placed an order for over $100 USD in the last 24 hours. You shall use EP's authoring canvas to carry out the necessary JOIN operation.</p>
+<p>The marketing team needs to "JOIN" the filtered <code>Order</code> stream data to records of <code>New Customers</code> in order to correctly identify first-time purchasers that placed an order for over $100 USD in the last 24 hours. Use EP's authoring canvas to carry out the necessary JOIN operation.</p>
 <hr />
 <ol start="28">
 <li>
@@ -803,10 +808,10 @@
 <p>With your cursor, hover over the <code>New Customers</code> output terminal and locate the <em>Output Port</em> (grey) button.</p>
 <ul>
 <li>
-<p>Click and hold the <code>New Customers</code> <em>Output Port</em> edge and <strong>drag</strong> this to the <em>Input Port</em> edge of the newly-created <code>intervalJoin_1</code> node.</p>
+<p>Click and hold the <code>New Customers</code> <em>Output Port</em> edge and <strong>drag</strong> this to the <em>Input Port</em> edge of the newly-created <code>intervalJoin_1</code> node</p>
 </li>
 <li>
-<p>Release your cursor to finalize the connection.</p>
+<p>Release your cursor to finalize the connection</p>
 </li>
 </ul>
 <p><br/>
@@ -832,7 +837,7 @@
 <hr />
 <ol start="32">
 <li>
-<p>Within the <em>Details</em> tab, set <strong>Node name</strong> equal to <code>DetectNewCustomerLargeOrders</code>.</p>
+<p>Within the <em>Details</em> tab, set <strong>Node name</strong> equal to <code>DetectNewCustomerLargeOrders</code></p>
 <p>When ready, click <strong>Next</strong>.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/3-32.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-32.png" width="600" /></a></p>
@@ -913,7 +918,7 @@
 <hr />
 <ol start="35">
 <li>
-<p>Within the <em>Output properties</em> tab, locate the <code>customerid</code> field. There are <strong>two</strong> (duplicate) copies of the same field at this time. Your objective will be to delete <strong>ONE</strong> of the two duplicate records. Preserve one of the two.</p>
+<p>Within the <em>Output properties</em> tab, locate the <code>customerid</code> field. There are <strong>two</strong> (duplicate) copies of the same field at this time. Your objective will be to delete <strong>ONE</strong> of the two duplicate records, where the <em>Source</em> is labelled as <code>New Customers</code>. Preserve the record where <em>Source</em> is labelled as <code>FilterLargeOrders</code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">ONLY REMOVE DUPLICATES WHERE SOURCE == New Customers</p>
 <p>When reviewing <em>Output properties</em> for duplicate fields, take note of the table's <strong>Source</strong> column. Duplicates will be produced by both the <code>New Customers</code> and <code>FilterLargeOrders</code> nodes. Only remove duplicates where the <strong>Source</strong> is listed as <code>New Customers</code>.</p>
