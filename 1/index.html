@@ -333,12 +333,12 @@
 
 <h1 id="creating-an-event-stream-from-an-ibm-mq-message-queue">Creating an event stream from an IBM MQ message queue</h1>
 <hr />
-<p>To take advantage of the message queue data available from IBM MQ, Focus Corporation's integration team will need to make IBM MQ's enterprise data available to a broader set of APIs. This will allow Focus' application developers to subscribe to the data without any risk or impact to the core back-end systems supporting the data: risks can be lowered and the development process can be decoupled from data retention processes (accelerating application development.)</p>
-<p>To do so, Focus' integration team will need to expose the IBM MQ enterprise data using "event streams." Specifically, the integration team (and application developers) will need access to customer order information. This data will be vital for the marketing team's ambitions of rapidly offering high value promotions to newly-acquired customers.</p>
+<p>To take advantage of the message queue data available from IBM MQ, Focus Corporation's integration team will need to make IBM MQ's enterprise data available to a broader set of APIs. This will allow Focus' application developers to subscribe to the data without any risk or impact to the core back-end systems that support the data. Risks can be lowered and the application development process can be decoupled from data retention processes.</p>
+<p>To do so, Focus' integration team will need to expose the IBM MQ enterprise data using "event streams." Specifically, the integration team (and application developers) will need access to customer order information. This data will be vital for the marketing team's ambitions of making high value promotions to newly-acquired customers in a timely manner.</p>
 <hr />
 <h1 id="_1"></h1>
 <h1 id="configuring-ibm-mq-to-clone-customer-order-data">Configuring IBM MQ to clone customer order data</h1>
-<p>Both the order management system and its payment gateway system are currently using IBM MQ message queues for exchanging customer order data. The integration team (and you) will begin the hands-on work by tapping into this message exchange, clone each of the orders that is handled across IBM MQ, and then publish those messages into a new event stream.</p>
+<p>Both the order management system and its payment gateway system are currently using IBM MQ message queues for exchanging customer order data. The integration team will need to tap into this message exchange, clone each of the orders being handled across IBM MQ, and then publish those messages into a new event stream.</p>
 <hr />
 <ol>
 <li>
@@ -368,7 +368,7 @@
 <hr />
 <ol start="4">
 <li>
-<p>Wait for the Queue creation wizard to load, then select <strong>Local</strong> from <code>Choose queue type</code>.</p>
+<p>Wait for the Queue creation wizard to load, then select <strong>Local</strong> from <em>Choose queue type</em>.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/1-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-4.png" width="600" /></a></p>
 </li>
@@ -376,7 +376,7 @@
 <hr />
 <ol start="5">
 <li>
-<p>The <code>Quick create</code> option should be selected by default.</p>
+<p>The <em>Quick create</em> option should be selected by default.</p>
 <ul>
 <li>Under the <strong>Queue name</strong> field, enter <code>TO.KAFKA</code> (all uppercase).</li>
 <li>Leave all other settings configured to their default values.</li>
@@ -403,7 +403,7 @@
 <li>
 <p>The queue will already have been populated with multiple <em>Messages</em>. Click on any of the <strong>Timestamp</strong> names available in the table (something similar to <code>Feb 21, 2024 at 5:12:00 PM</code>) to pull open a <em>Message Details</em> panel.</p>
 <ul>
-<li>Scroll down within the <em>Message Details</em> panel until you reach the <strong>Application Data</strong> section.</li>
+<li>Scroll down the <em>Message Details</em> panel until you reach <strong>Application Data</strong></li>
 <li>Inspect the contents of the packet, which is a series of key-value pairs. You should see details about the order <code>id</code>, <code>customer</code>, <code>customerid</code>, <code>description</code>, <code>price</code>, <code>quantity</code>, <code>region</code>, and <code>ordertime</code>.</li>
 <li><strong>Close</strong> the <em>Message Details</em> panel by clicking the <code>X</code> in the top-right corner or the grey <code>Close</code> button.</li>
 </ul>
@@ -536,7 +536,7 @@ The integration team will need to make decisions about how to replicate the data
 <ol start="20">
 <li>
 <p>The interface will load an <strong>Import YAML</strong> configuration tool, with a black canvas awaiting input. Here you can supply <em>YAML</em> (Yet Another Markup Language) or <em>JSON</em> files to define new deployments on the OpenShift cluster.</p>
-<p>The YAML definition of the Apache Kafka connector "bridge" has been prepared ahead of time. Copy and paste the following YAML file <em>exactly</em> as written into the <strong>Import YAML</strong> black canvas:</p>
+<p>The YAML definition of the Apache Kafka connector "bridge" has been prepared ahead of time. Copy and paste the following YAML <em>exactly</em> as written into the <strong>Import YAML</strong> canvas:</p>
 </li>
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eventstreams.ibm.com/v1beta2</span><span class="w"></span>
