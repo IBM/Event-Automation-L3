@@ -382,7 +382,7 @@
 <hr />
 <ol start="2">
 <li>
-<p>From the <code>Single environment reservation options</code> list, select <strong>Reserve now</strong>.</p>
+<p>From the <code>Single environment reservation options</code> list, select <strong>Reserve now</strong><sup>[A]</sup>.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/setup-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.png" width="600" /></a></p>
 </li>
@@ -393,44 +393,44 @@
 <p>Supply additional details about your ITZ reservation request:</p>
 <ul>
 <li>
-<p><strong>Name</strong>: Give your reservation a unique name.</p>
+<p><strong>Name</strong><sup>[A]</sup>: Give your reservation a unique name.</p>
 </li>
 <li>
-<p><strong>Purpose</strong>: Set to <code>Practice / Self-Education</code> and affirm that customer data will not be used with the environment. If you are replicating this hands-on demonstration with a client, you must select <em>Customer Demo</em> and supply a sales opportunity number.</p>
+<p><strong>Purpose</strong><sup>[B]</sup>: Set to <code>Practice / Self-Education</code> and affirm that customer data will not be used with the environment. If you are replicating this hands-on demonstration with a client, you must select <em>Customer Demo</em> and supply a sales opportunity number.</p>
 </li>
 <li>
-<p><strong>Purpose Description</strong>: Provide a brief summary of how the environment will be used.</p>
+<p><strong>Purpose Description</strong><sup>[C]</sup>: Provide a brief summary of how the environment will be used.</p>
 </li>
 <li>
-<p><strong>Preferred Geography</strong>: Select the data center region that is closest to your location.</p>
+<p><strong>Preferred Geography</strong><sup>[D]</sup>: Select the data center region that is closest to your location.</p>
 </li>
 <li>
-<p><strong>End Date &amp; Time</strong>: Select a time and date for when the reservation will expire. The recommended amount is 2 days, although it is possible to finish the hands-on demonstration within a few hours. Additional time extensions are available.</p>
+<p><strong>End Date &amp; Time</strong><sup>[E]</sup>: Select a time and date for when the reservation will expire. The recommended amount is 2 days, although it is possible to finish the hands-on demonstration within a few hours. Additional time extensions are available.</p>
 </li>
 <li>
-<p><strong>OCP/Kubernetes Cluster Network</strong>: Default value of <code>10.128.0.0/14</code></p>
+<p><strong>OCP/Kubernetes Cluster Network</strong><sup>[F]</sup>: Default value of <code>10.128.0.0/14</code></p>
 </li>
 <li>
 <p><strong>Enable FIPS Security</strong>: Default value of <code>No</code></p>
 </li>
 <li>
-<p><strong>OpenShift Version</strong>: Set to <code>4.14</code></p>
+<p><strong>OpenShift Version</strong><sup>[G]</sup>: Set to <code>4.14</code></p>
 </li>
 <li>
-<p><strong>Storage</strong>: Set to <code>ODF - 2 TB</code></p>
+<p><strong>Storage</strong><sup>[H]</sup>: Set to <code>ODF - 2 TB</code></p>
 </li>
 <li>
-<p><strong>OCP/Kubernetes Service Network</strong>: Default value of <code>172.30.0.0/16</code></p>
+<p><strong>OCP/Kubernetes Service Network</strong><sup>[I]</sup>: Default value of <code>172.30.0.0/16</code></p>
 </li>
 <li>
 <p><strong>Worker Node Count</strong>: Default value of <code>3</code></p>
 </li>
 <li>
-<p><strong>Worker Node Flavor</strong>: Set to <code>16 vCPU x 64 GB - 100 GB ephemeral storage</code></p>
+<p><strong>Worker Node Flavor</strong><sup>[J]</sup>: Set to <code>16 vCPU x 64 GB - 100 GB ephemeral storage</code></p>
 </li>
 </ul>
 <p></br></p>
-<p>When satisfied, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit</strong>.</p>
+<p>When satisfied, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit</strong><sup>[K]</sup>.</p>
 <div class="admonition note">
 <p class="admonition-title">PROVISIONING TIMES</p>
 <p>Reservations take approximately <strong>60 minutes</strong> to complete from the time that you click submit. If you navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ, you can monitor the progress of your reservation. Wait for the ITZ reservation to be marked as "<em>Ready</em>" before attempting to start the lab — accessing it too soon will lead to issues (or an outright failure) when connecting to the OpenShift cluster.</p>
@@ -444,7 +444,7 @@
 <hr />
 <ol start="4">
 <li>
-<p>When the ITZ environment is ready to go, you will receive an email to your inbox (similar to the screenshot below). Click the blue <strong>View My Reservations</strong> at the bottom of the email to open a page with more details about the environment. Alternatively, you can click the <a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a> tab from the ITZ home page to drill down into your environment's details.</p>
+<p>When the ITZ environment is ready to go, you will receive an email to your inbox (similar to the screenshot below). Click the blue <strong>View My Reservations</strong><sup>[A]</sup> at the bottom of the email to open a page with more details about the environment. Alternatively, you can click the <a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a> tab from the ITZ home page to drill down into your environment's details.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/setup-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-4.png" width="600" /></a></p>
 </li>
@@ -455,10 +455,10 @@
 <p>Details about your OpenShift cluster, including login and authentication details, are summarized on the page.</p>
 <ul>
 <li>
-<p>Record the <strong>Username</strong> (<code>kubeadmin</code>) and <strong>Password</strong> (unique to your environment), as well as the <strong>Desktop URL</strong> just above those two items, to a notepad for reference later</p>
+<p>Record the <strong>Username</strong><sup>[A]</sup> (<code>kubeadmin</code>) and <strong>Password</strong><sup>[B]</sup> (unique to your environment), as well as the <strong>Desktop URL</strong> just above those two items, to a notepad for reference later</p>
 </li>
 <li>
-<p>Click the blue <strong>Open your IBM Cloud environment</strong> icon to access OpenShift's dashboard</p>
+<p>Click the blue <strong>Open your IBM Cloud environment</strong><sup>[C]</sup> icon to access OpenShift's dashboard</p>
 </li>
 </ul>
 <p><br/>
@@ -471,7 +471,7 @@
 <p>You will be prompted to provide the <strong>Username</strong> and <strong>Password</strong> recorded in <em>Step 5</em>.</p>
 <ul>
 <li>
-<p>Click <strong>Log in</strong> to proceed</p>
+<p>Click <strong>Log in</strong><sup>[A]</sup> to proceed</p>
 </li>
 <li>
 <p>Once authenticated, the web browser will redirect to the main dashboard for the OpenShift Container Platform web interface</p>
@@ -496,10 +496,10 @@
 <p>In order to deploy containerized instances of <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em> on top of OpenShift, you must first download and set up your local machine with the <strong>OpenShift Command Line Interface (CLI)</strong>.</p>
 <ul>
 <li>
-<p>In the top-right corner of the OpenShift dashboard, click the <strong>question mark</strong> (<code>?</code>) icon as shown in the screenshot below. This will open a drop-down menu with several options.</p>
+<p>In the top-right corner of the OpenShift dashboard, click the <strong>question mark</strong><sup>[A]</sup> (<code>?</code>) icon as shown in the screenshot below. This will open a drop-down menu with several options.</p>
 </li>
 <li>
-<p>Click the <strong>Command line tools</strong> option from the drop-down menu.</p>
+<p>Click the <strong>Command line tools</strong><sup>[B]</sup> option from the drop-down menu.</p>
 </li>
 </ul>
 <div class="admonition note">
@@ -527,7 +527,7 @@
 <p>In the far right-hand corner of the interface, click the <strong>kube:admin</strong> button to open another drop-down menu</p>
 </li>
 <li>
-<p>From the options, select <strong>Copy login command</strong> to open a new tab or window with details about remotely accessing the OpenShift cluster</p>
+<p>From the options, select <strong>Copy login command</strong><sup>[A]</sup> to open a new tab or window with details about remotely accessing the OpenShift cluster</p>
 </li>
 </ul>
 <p><br/>
@@ -545,7 +545,7 @@
 <hr />
 <ol start="11">
 <li>
-<p>Details about a newly-generated API token will load on screen. Record the full command listed under <strong>Log in with this token</strong> (resembling something similar to <code>oc login --token=sha256...</code>) and save this to your notepad for later reference.</p>
+<p>Details about a newly-generated API token will load on screen. Record the full command listed under <strong>Log in with this token</strong><sup>[A]</sup> (resembling something similar to <code>oc login --token=sha256...</code>) and save this to your notepad for later reference.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/setup-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-11.png" width="600" /></a></p>
 </li>
@@ -592,7 +592,7 @@
 <p>Wait for the full deployment to complete before continuing with the lab documentation.</p>
 </li>
 <li>
-<p>When ready, each of the lab services— IBM Cloud Pak for Integration ("Platform Navigator"), Event Streams, Event Endpoint Management, Event Processing, and IBM MQ —will be listed to the Terminal window.</p>
+<p>When ready, each of the lab services— IBM Cloud Pak for Integration ("Platform Navigator")<sup>[A]</sup>, Event Streams<sup>[B]</sup>, Event Endpoint Management<sup>[C]</sup>, Event Processing<sup>[D]</sup>, and IBM MQ<sup>[E]</sup> —will be listed to the Terminal window.</p>
 </li>
 <li>
 <p>Each listing will be accompanied by a <code>URL</code>, <code>username</code>, and <code>password</code>. <strong>Record</strong> this information to a notepad for reference later.</p>
@@ -613,7 +613,7 @@
 <p>Try logging into the <em>IBM MQ</em> environment environment by pasting the <code>URL</code> into a web browser. Then supply the <code>username</code> and temporary <code>password</code> recorded within your notepad.</p>
 </li>
 <li>
-<p>When prompted, create your own password for logging into the environment. Confirm your selection with <strong>Submit</strong> and then update your <code>password</code> records for both the <em>Platform Navigator</em> and <em>IBM MQ</em> services.</p>
+<p>When prompted, create your own password for logging into the environment. Confirm your selection with <strong>Submit</strong><sup>[A]</sup> and then update your <code>password</code> records for both the <em>Platform Navigator</em> and <em>IBM MQ</em> services.</p>
 </li>
 </ul>
 <p><br/>
