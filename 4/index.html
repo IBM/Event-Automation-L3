@@ -342,7 +342,7 @@
 <hr />
 <ol start="2">
 <li>
-<p>From the list of nodes along the left-side interface, drag and drop the <strong>Event destination</strong> node into the canvas. Place it far to the right of the other nodes within the table. You can use your mouse wheel to resize the table if necessary.</p>
+<p>From the list of nodes along the left-side interface, drag and drop the <strong>Event destination</strong><sup>[A]</sup> node into the canvas. Place it far to the right of the other nodes within the table<sup>[B]</sup>. You can use your mouse wheel to resize the table if necessary.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/4-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/4-2.png" width="600" /></a></p>
 <p><br/>
@@ -361,13 +361,15 @@ The new node <code>sink_1</code> represents a "resource", a concept from Apache 
 <p>Release the mouse button to establish the connection between the two nodes</p>
 </li>
 </ul>
-<p><br/>
-<a class="glightbox" href="../_attachments/4-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/4-3.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="4">
-<li>Hover over the <code>sink_1</code> node and click the <strong>Edit</strong> (pencil) icon to configure the destination.</li>
+<li>
+<p>Hover over the <code>sink_1</code> node and click the <strong>Edit</strong><sup>[A]</sup> (pencil) icon to configure the destination.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/4-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/4-3.png" width="600" /></a></p>
+</li>
 </ol>
 <hr />
 <ol start="5">
@@ -375,16 +377,16 @@ The new node <code>sink_1</code> represents a "resource", a concept from Apache 
 <p>Within the <em>Details</em> tab, adjust the following variables:</p>
 <ul>
 <li>
-<p>Node name: <code>OutputToMarketingApp</code></p>
+<p><strong>Node name</strong><sup>[A]</sup>: <code>OutputToMarketingApp</code></p>
 </li>
 <li>
-<p>Server: <code>ademo-es-kafka-bootstrap.cp4i.svc:9095</code></p>
+<p><strong>Server</strong><sup>[B]</sup>: <code>ademo-es-kafka-bootstrap.cp4i.svc:9095</code></p>
 </li>
 <li>
 <p>The server has been pre-configured as part of the hands-on lab Setup module, generating the Apache Kafka events that will simulate both "historical" and "live" customer interactions with Focus' online storefront</p>
 </li>
 <li>
-<p>When ready, click <strong>Next</strong></p>
+<p>When ready, click <strong>Next</strong><sup>[C]</sup></p>
 </li>
 </ul>
 <p><br/>
@@ -394,8 +396,8 @@ The new node <code>sink_1</code> represents a "resource", a concept from Apache 
 <hr />
 <ol start="6">
 <li>
-<p>Select the <strong>Accept certificates</strong> toggle when asked if you wish to trust all security certificates issued by the event stream source.</p>
-<p>When ready, click <strong>Next</strong>.</p>
+<p>Select the <strong>Accept certificates</strong><sup>[B]</sup> toggle when asked if you wish to trust all security certificates issued by the event stream source.</p>
+<p>When ready, click <strong>Next</strong><sup>[C]</sup>.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/4-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/4-6.png" width="600" /></a></p>
 </li>
@@ -406,13 +408,13 @@ The new node <code>sink_1</code> represents a "resource", a concept from Apache 
 <p>Within the <em>Access credentials</em> tab, modify the following variables:</p>
 <ul>
 <li>
-<p>Username: <code>es-admin</code></p>
+<p><strong>Username</strong><sup>[A]</sup>: <code>es-admin</code></p>
 </li>
 <li>
-<p>Password: the password unique to your Event Streams instance</p>
+<p><strong>Password</strong><sup>[B]</sup>: the password unique to your Event Streams instance</p>
 </li>
 <li>
-<p>When ready, click <strong>Next</strong></p>
+<p>When ready, click <strong>Next</strong><sup>[C]</sup></p>
 </li>
 </ul>
 <p><br/>
@@ -426,10 +428,10 @@ The new node <code>sink_1</code> represents a "resource", a concept from Apache 
 <p>In this situation, the goal is to send all valid customer interactions (which meet the purchasing criteria) to the marketing department's customer loyalty application.</p>
 <ul>
 <li>
-<p>Select <code>LOYALTY.APP</code></p>
+<p>Select <code>LOYALTY.APP</code><sup>[A]</sup></p>
 </li>
 <li>
-<p>Click <strong>Configure</strong> to finalize the event destination</p>
+<p>Click <strong>Configure</strong><sup>[B]</sup> to finalize the event destination</p>
 </li>
 </ul>
 <p><br/>
@@ -449,7 +451,7 @@ The new node <code>sink_1</code> represents a "resource", a concept from Apache 
 <p>In the top-right corner of the interface, click the <strong>Run</strong> drop-down menu</p>
 </li>
 <li>
-<p>From the list of options, select <strong>Include historical</strong></p>
+<p>From the list of options, select <strong>Include historical</strong><sup>[A]</sup></p>
 </li>
 </ul>
 <p><br/>

@@ -340,26 +340,23 @@
 <ol>
 <li>
 <p>With your web browser, access the <strong>IBM Event Processing</strong> dashboard.</p>
-<p>Dismiss any welcome screens or tutorials that are prompted after first logging in by clicking the <strong>Skip</strong> text in the bottom-left corner of the interface.</p>
-<p><br/>
-<a class="glightbox" href="../_attachments/3-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-1.png" width="600" /></a></p>
+<p>Dismiss any welcome screens or tutorials that are prompted after first logging in by clicking the <strong>Hide Welcome</strong><sup>[A]</sup> text in the bottom-left corner of the interface.</p>
 </li>
-</ol>
-<hr />
-<ol start="2">
 <li>
-<p>In the bottom-right corner of the page, click the blue <strong>Create</strong> to begin defining a new <em>flow</em>.</p>
+<p>In the bottom-right corner of the page, click the blue <strong>Create</strong><sup>[B]</sup> to begin defining a new <em>flow</em>.</p>
 <div class="admonition note">
 <p class="admonition-title">EVENT PROCESSING FLOWS</p>
 <p>An event processing flow ingests a stream of events, analyzes that input, and takes automatic actions (defined by the user) in response to those conditions.</p>
 <p>A flow begins with one or multiple event sources which represent inbound events. For the purposes of this demonstration, you will leverage the <code>ORDERS</code> event stream that was defined in the previous module. You will do so using EP's intuitive, no-code authoring canvas.</p>
 </div>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-1.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="3">
 <li>
-<p>For <strong>Name</strong>, specify <code>NewCustomerLargeOrder</code> and then click <strong>Create</strong>.</p>
+<p>For <strong>Name</strong><sup>[A]</sup>, specify <code>NewCustomerLargeOrder</code> and then click <strong>Create</strong><sup>[B]</sup>.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/3-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-3.png" width="600" /></a></p>
 </li>
@@ -377,10 +374,10 @@
 <p>Along the left side are tools and actions that can be dragged into the authoring canvas on the right</p>
 </li>
 <li>
-<p>Within the canvas, you will see an <em>Event source</em> node with default name of <code>source_1</code></p>
+<p>Within the canvas, you will see an <strong>Event source</strong><sup>[A]</sup> node with default name of <code>source_1</code></p>
 </li>
 <li>
-<p>With your cursor, hover over the <code>source_1</code> node and then click the <strong>Edit</strong> (pencil) icon in the top-right corner of the tile to begin modifying the node</p>
+<p>With your cursor, hover over the <code>source_1</code> node and then click the <strong>Edit</strong><sup>[B]</sup> (pencil) icon in the top-right corner of the tile to begin modifying the node</p>
 </li>
 </ul>
 <p><br/>
@@ -393,10 +390,10 @@
 <p>The <strong>Configure event source</strong> wizard will load within your browser.</p>
 <ul>
 <li>
-<p>Under the <em>Add an event source or pick a recent one</em> header, select <strong>Add event source</strong></p>
+<p>Under the <em>Add an event source or pick a recent one</em> header, select <strong>Add event source</strong><sup>[A]</sup></p>
 </li>
 <li>
-<p>Click <strong>Next</strong></p>
+<p>Click <strong>Next</strong><sup>[B]</sup></p>
 </li>
 </ul>
 <p><br/>
@@ -409,7 +406,7 @@
 <p>Switch back to the <strong>Event Endpoint Management</strong> tab and click <strong>Catalog</strong> from the left-hand interface.</p>
 <ul>
 <li>
-<p>Drill down into the <code>ORDERS</code> topic by clicking on the name</p>
+<p>Drill down into the <code>ORDERS</code><sup>[A]</sup> topic by clicking on the name</p>
 </li>
 <li>
 <p>Scroll down the topic summary page until you reach the <strong>Access Information</strong> section</p>
@@ -418,7 +415,7 @@
 <p>Just below, within the <em>Servers</em> table, is the full address of the <code>ORDERS</code> event topic</p>
 </li>
 <li>
-<p>Copy the <em>full</em> address (<code>ademo-event-gw-ibm...</code>) to your notepad for reference later</p>
+<p>Copy the <em>full</em> address (<code>ademo-event-gw-ibm...</code>)<sup>[B]</sup> to your notepad for reference later</p>
 </li>
 <li>
 <p>When ready, switch back to the <strong>IBM Event Processing</strong> tab with your web browser</p>
@@ -438,28 +435,25 @@
 <p>Scroll down to the <strong>Node name</strong> field and enter <code>Orders</code></p>
 </li>
 <li>
-<p>Further down, under the <em>Connect to Kafka cluster</em> header, paste the full address copied in Step 6 into the <strong>Server</strong> field</p>
+<p>Further down, under the <em>Connect to Kafka cluster</em> header, paste the full address copied in Step 6 into the <strong>Server</strong><sup>[A]</sup> field</p>
 </li>
 <li>
 <p>Click <strong>Next</strong></p>
 </li>
 </ul>
-<p><br/>
-<a class="glightbox" href="../_attachments/3-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-7.png" width="600" /></a></p>
 </li>
-</ol>
-<hr />
-<ol start="8">
 <li>
 <p>The event source must be configured to allow certificates used by the event stream.</p>
 <ul>
 <li>
-<p><strong>Accept certificates</strong> (by clicking the toggle button as shown in the screenshot below)</p>
+<p><strong>Accept certificates</strong><sup>[B]</sup> (by clicking the toggle button as shown in the screenshot below)</p>
 </li>
 <li>
-<p>Click <strong>Next</strong></p>
+<p>Click <strong>Next</strong><sup>[C]</sup></p>
 </li>
 </ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-7.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
@@ -471,10 +465,10 @@
 <p>Keep the <strong>Select security mechanism</strong> variable as its default value: <code>PLAIN</code></p>
 </li>
 <li>
-<p>For <strong>Username</strong> and <strong>Password</strong>, supply the credentials for the <code>ORDERS</code> topic (Step 32 of Module 2)</p>
+<p>For <strong>Username</strong><sup>[A]</sup> and <strong>Password</strong><sup>[B]</sup>, supply the credentials for the <code>ORDERS</code> topic (Step 32 of Module 2)</p>
 </li>
 <li>
-<p>Click <strong>Next</strong></p>
+<p>Click <strong>Next</strong><sup>[C]</sup></p>
 </li>
 </ul>
 <p><br/>
@@ -490,10 +484,10 @@
 <p>Available topics will already be displayed within the configuration tool</p>
 </li>
 <li>
-<p>Under the <em>Topic selection</em> header, click the button next to the <code>ORDERS</code> topic to select it</p>
+<p>Under the <em>Topic selection</em> header, click the button next to the <code>ORDERS</code><sup>[A]</sup> topic to select it</p>
 </li>
 <li>
-<p>Click <strong>Next</strong></p>
+<p>Click <strong>Next</strong><sup>[B]</sup></p>
 </li>
 </ul>
 <p><br/>
@@ -506,16 +500,16 @@
 <p>The fourth tab, <em>Define event structure</em>, requires a data schema or sample message in order to understand the expected structure of events ingested from the event source.</p>
 <ul>
 <li>
-<p>Under the <em>No defined structure</em> header, click the blue <strong>Upload a schema or sample message</strong> button to pull open an editor</p>
+<p>Under the <em>No defined structure</em> header, click the blue <strong>Upload a schema or sample message</strong><sup>[A]</sup> button to pull open an editor</p>
 </li>
 <li>
-<p>Users can input schemas in either <em>Avro</em> or <em>JSON</em> data formats: click the <strong>JSON</strong> tab</p>
+<p>Users can input schemas in either <em>Avro</em> or <em>JSON</em> data formats: click the <strong>JSON</strong><sup>[B]</sup> tab</p>
 </li>
 <li>
 <p>Copy and paste the following JSON into the sample message field. Note that this is the same sample schema you supplied when configuring the event source within EEM in Module 2.</p>
 </li>
 <li>
-<p>When ready, click <strong>Done</strong> to proceed</p>
+<p>When ready, click <strong>Done</strong><sup>[C]</sup> to proceed</p>
 </li>
 </ul>
 </li>
@@ -538,7 +532,7 @@
 <ol start="12">
 <li>
 <p>You will have a final opportunity to review and confirm the event source configuration.</p>
-<p>Click <strong>Configure</strong> to finalize the configuration of the <code>Orders</code> event source.</p>
+<p>Click <strong>Configure</strong><sup>[A]</sup> to finalize the configuration of the <code>Orders</code> event source.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/3-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-12.png" width="600" /></a></p>
 </li>
@@ -550,7 +544,7 @@
 <hr />
 <ol start="13">
 <li>
-<p>Return to the <code>NewCustomerLargeOrder</code> canvas and drag a new <strong>Event Source</strong> (from the left-hand interface) into the canvas, placing it just below the <code>Orders</code> source.</p>
+<p>Return to the <code>NewCustomerLargeOrder</code><sup>[A]</sup> canvas and drag a new <strong>Event Source</strong><sup>[B]</sup> (from the left-hand interface) into the canvas, placing it just below the <code>Orders</code> source.</p>
 <ul>
 <li>With your cursor, hover over the new <code>source_1</code> node and then click the <strong>Edit</strong> (pencil) icon in the top-right corner of the tile to begin modifying the node.</li>
 </ul>
@@ -564,10 +558,10 @@
 <p>The <strong>Configure event source</strong> wizard will load within your browser.</p>
 <ul>
 <li>
-<p>Under the <em>Add an event source or pick a recent one</em> header, select <strong>Add event source</strong></p>
+<p>Under the <em>Add an event source or pick a recent one</em> header, select <strong>Add event source</strong><sup>[A]</sup></p>
 </li>
 <li>
-<p>Click <strong>Next</strong></p>
+<p>Click <strong>Next</strong><sup>[B]</sup></p>
 </li>
 </ul>
 <p><br/>
@@ -603,13 +597,13 @@
 <p>Back within EP: the first tab, <em>Details</em>, needs additional information to configure the node.</p>
 <ul>
 <li>
-<p>Scroll down to the <strong>Node name</strong> field and enter <code>New Customers</code></p>
+<p>Scroll down to the <strong>Node name</strong><sup>[A]</sup> field and enter <code>New Customers</code></p>
 </li>
 <li>
-<p>Further down, under the <em>Connect to Kafka cluster</em> header, paste the full address copied in Step 15 into the <strong>Server</strong> field</p>
+<p>Further down, under the <em>Connect to Kafka cluster</em> header, paste the full address copied in Step 15 into the <strong>Server</strong><sup>[B]</sup> field</p>
 </li>
 <li>
-<p>Click <strong>Next</strong></p>
+<p>Click <strong>Next</strong><sup>[C]</sup></p>
 </li>
 </ul>
 <p><br/>
@@ -656,10 +650,10 @@
 <p>Available topics will already be displayed within the configuration tool</p>
 </li>
 <li>
-<p>Under the <em>Topic selection</em> header, click the button next to the <code>CUSTOMERS</code> topic to select it</p>
+<p>Under the <em>Topic selection</em> header, click the button next to the <code>CUSTOMERS</code><sup>[A]</sup> topic to select it</p>
 </li>
 <li>
-<p>Click <strong>Next</strong></p>
+<p>Click <strong>Next</strong><sup>[B]</sup></p>
 </li>
 </ul>
 <p><br/>
@@ -675,13 +669,13 @@
 <p>Under the <em>No defined structure</em> header, click the blue <strong>Upload a schema or sample message</strong> button to pull open an editor</p>
 </li>
 <li>
-<p>Users can input schemas in either <em>Avro</em> or <em>JSON</em> data formats: click the <strong>JSON</strong> tab</p>
+<p>Users can input schemas in either <em>Avro</em> or <em>JSON</em> data formats: click the <strong>JSON</strong><sup>[A]</sup> tab</p>
 </li>
 <li>
 <p>Copy and paste the following JSON into the sample message field. Note that this is the same sample schema you supplied when configuring the event source within EEM in Module 2.</p>
 </li>
 <li>
-<p>When ready, click <strong>Done</strong> to proceed</p>
+<p>When ready, click <strong>Done</strong><sup>[B]</sup> to proceed</p>
 </li>
 </ul>
 </li>
@@ -698,7 +692,7 @@
 <ol start="21">
 <li>
 <p>You will have a final opportunity to review and confirm the event source configuration.</p>
-<p>Click <strong>Configure</strong> to finalize the configuration of the <code>New Customers</code> event source.</p>
+<p>Click <strong>Configure</strong><sup>[A]</sup> to finalize the configuration of the <code>New Customers</code> event source.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/3-21a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-21a.png" width="600" /></a></p>
 <p><a class="glightbox" href="../_attachments/3-21b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-21b.png" width="600" /></a></p>
@@ -714,7 +708,7 @@
 <p>Scroll down within the list of nodes and actions on the left-side interface until you locate the <strong>Filter</strong> node.</p>
 <ul>
 <li>
-<p>Click and hold the <strong>Filter</strong> node, then drag it to the authoring canvas on the right</p>
+<p>Click and hold the <strong>Filter</strong><sup>[A]</sup> node, then drag it to the authoring canvas on the right</p>
 </li>
 <li>
 <p>Position it to the right side of the <code>Orders</code> node</p>
@@ -728,10 +722,10 @@
 <p>The output terminal for <code>Orders</code> needs to be connected as input to the <code>filter_1</code> node.</p>
 <ul>
 <li>
-<p>With your mouse pointer, hover over the <code>Orders</code> node and take note of the grey dot (labelled <em>Output Port</em>) at the right edge of the tile</p>
+<p>With your mouse pointer, hover over the <code>Orders</code> node and take note of the grey dot (labelled <em>Output Port</em><sup>[B]</sup>) at the right edge of the tile</p>
 </li>
 <li>
-<p>Click and hold the <em>Output Port</em> (right-most) of <code>Orders</code> and <strong>drag</strong> it to the <em>Input Port</em> (left-most edge) of <code>filter_1</code>, then release your hold to complete the circuit</p>
+<p>Click and hold the <em>Output Port</em> (right-most) of <code>Orders</code> and <strong>drag</strong> it to the <em>Input Port</em><sup>[C]</sup> (left-most edge) of <code>filter_1</code>, then release your hold to complete the circuit</p>
 </li>
 </ul>
 <p><br/>
@@ -742,7 +736,7 @@
 <ol start="24">
 <li>
 <p>With the <code>Orders</code> event source node connected to the <code>filter_1</code> operation node, you must utilize the Filter node's expression builder to remove orders that are <em>less than</em> $100 USD in value. This will allow the marketing team's application to target only first-time customers with spending patterns of $100 USD or more.</p>
-<p>Hover over the <code>filter_1</code> node with your mouse pointer and click the <strong>Edit</strong> (pencil) icon.</p>
+<p>Hover over the <code>filter_1</code> node with your mouse pointer and click the <strong>Edit</strong><sup>[D]</sup> (pencil) icon.</p>
 </li>
 </ol>
 <hr />
@@ -755,7 +749,7 @@
 <hr />
 <ol start="26">
 <li>
-<p>The <em>Define filter</em> tab will load next. To the right of the <strong>Filter expression</strong> field, click the <strong>Assistant</strong> drop-down menu to expose additional options.</p>
+<p>The <em>Define filter</em> tab will load next. To the right of the <strong>Filter expression</strong> field, click the <strong>Assistant</strong><sup>[A]</sup> drop-down menu to expose additional options.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/3-26.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-26.png" width="600" /></a></p>
 </li>
@@ -781,7 +775,7 @@
 <p>The expression builder will automatically translate your statements into a syntactically-correct filter statement: <code>'price' &gt; 100</code></p>
 </li>
 <li>
-<p>Click the <strong>Configure</strong> button at the bottom of the panel to finalize the filter configuration</p>
+<p>Click the <strong>Configure</strong><sup>[B]</sup> button at the bottom of the panel to finalize the filter configuration</p>
 </li>
 </ul>
 <p><br/>
@@ -796,8 +790,8 @@
 <hr />
 <ol start="28">
 <li>
-<p>Back on the canvas for <code>NewCustomerLargeOrders</code>, scroll down along the left-hand interface until you locate the <strong>Interval Join</strong> node.</p>
-<p>Drag and drop this node at the far right-hand edge of the authoring canvas.</p>
+<p>Back on the canvas for <code>NewCustomerLargeOrders</code>, scroll down along the left-hand interface until you locate the <strong>Interval Join</strong><sup>[A]</sup> node.</p>
+<p>Drag and drop this node<sup>[B]</sup> at the far right-hand edge of the authoring canvas.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/3-28.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-28.png" width="600" /></a></p>
 </li>
@@ -808,7 +802,7 @@
 <p>With your cursor, hover over the <code>New Customers</code> output terminal and locate the <em>Output Port</em> (grey) button.</p>
 <ul>
 <li>
-<p>Click and hold the <code>New Customers</code> <em>Output Port</em> edge and <strong>drag</strong> this to the <em>Input Port</em> edge of the newly-created <code>intervalJoin_1</code> node</p>
+<p>Click and hold the <code>New Customers</code> <em>Output Port</em><sup>[A]</sup> edge and <strong>drag</strong> this to the <em>Input Port</em><sup>[B]</sup> edge of the newly-created <code>intervalJoin_1</code> node</p>
 </li>
 <li>
 <p>Release your cursor to finalize the connection</p>
@@ -821,7 +815,7 @@
 <hr />
 <ol start="30">
 <li>
-<p>Repeat the process, this time connecting the <code>FilterLargeOrders</code> node's <em>Output Port</em> to the <code>intervalJoin_1</code> node's <em>Input Port</em>.</p>
+<p>Repeat the process, this time connecting the <code>FilterLargeOrders</code> node's <em>Output Port</em><sup>[A]</sup> to the <code>intervalJoin_1</code> node's <em>Input Port</em><sup>[B]</sup>.</p>
 <p>At this stage, the input of <code>intervalJoin_1</code> should be connected to the outputs of <em>both</em> the <code>FilterLargeOrders</code> and <code>New Customers</code> nodes.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/3-30.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-30.png" width="600" /></a></p>
@@ -837,8 +831,8 @@
 <hr />
 <ol start="32">
 <li>
-<p>Within the <em>Details</em> tab, set <strong>Node name</strong> equal to <code>DetectNewCustomerLargeOrders</code></p>
-<p>When ready, click <strong>Next</strong>.</p>
+<p>Within the <em>Details</em> tab, set <strong>Node name</strong><sup>[A]</sup> equal to <code>DetectNewCustomerLargeOrders</code></p>
+<p>When ready, click <strong>Next</strong><sup>[B]</sup>.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/3-32.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-32.png" width="600" /></a></p>
 </li>
@@ -846,7 +840,7 @@
 <hr />
 <ol start="33">
 <li>
-<p>Within the <em>Join conditions</em> tab, activate the expression builder by click the <strong>Assistant</strong> drop-down menu. Set the following properties:</p>
+<p>Within the <em>Join conditions</em> tab, activate the expression builder by click the <strong>Assistant</strong><sup>[A]</sup> drop-down menu. Set the following properties:</p>
 <ul>
 <li>
 <p>Specify property from 'New Customers': <code>customerid</code></p>
@@ -855,13 +849,13 @@
 <p>Specify property from 'FilterLargeOrders': <code>customerid</code></p>
 </li>
 <li>
-<p>When ready, click <strong>Add to expression</strong></p>
+<p>When ready, click <strong>Add to expression</strong><sup>[B]</sup></p>
 </li>
 <li>
 <p>The syntactically-correct JOIN expression will be expressed under the <em>Define events</em> field: <code>'New Customers'.'customerid' = 'FilterLargeOrders'.'customerid'</code></p>
 </li>
 <li>
-<p>After you have reviewed the JOIN condition, click <strong>Next</strong></p>
+<p>After you have reviewed the JOIN condition, click <strong>Next</strong><sup>[C]</sup></p>
 </li>
 </ul>
 <p><br/>
@@ -887,7 +881,7 @@
 <p>Under the <em>Time window condition</em>, you can define the time interval "window" where detected events are considered viable for a promotional offer from the marketing team. To meet the criteria, a purchase of over $100 USD must be made by a first-time customer within a 24 hour window of creating an account.</p>
 <ul>
 <li>
-<p>Look for the <strong>Event to detect</strong> field and select the <code>FilterLargeOrders (event_time)</code> option from the drop-down menu.</p>
+<p>Look for the <strong>Event to detect</strong><sup>[A]</sup> field and select the <code>FilterLargeOrders (event_time)</code> option from the drop-down menu.</p>
 </li>
 <li>
 <p>A <em>Preview</em> visualization of the time window interval is rendered within the panel. For now, with no adjustments made, this will appear as a vertical bar at 0 (X-axis).</p>
@@ -902,10 +896,10 @@
 <p>Offset from event to start the time window: <code>0</code> <code>HOUR(S)</code></p>
 </li>
 <li>
-<p>Offset from event to end the time window: <code>24</code> <code>HOUR(S)</code></p>
+<p>Offset from event to end the time window<sup>[B]</sup>: <code>24</code> <code>HOUR(S)</code></p>
 </li>
 <li>
-<p>When ready, click <strong>Next</strong></p>
+<p>When ready, click <strong>Next</strong><sup>[C]</sup></p>
 </li>
 </ul>
 <p><br/>
@@ -918,7 +912,7 @@
 <hr />
 <ol start="35">
 <li>
-<p>Within the <em>Output properties</em> tab, locate the <code>customerid</code> field. There are <strong>two</strong> (duplicate) copies of the same field at this time. Your objective will be to delete <strong>ONE</strong> of the two duplicate records, where the <em>Source</em> is labelled as <code>New Customers</code>. Preserve the record where <em>Source</em> is labelled as <code>FilterLargeOrders</code>.</p>
+<p>Within the <em>Output properties</em> tab, locate the <code>customerid</code><sup>[A]</sup> field. There are <strong>two</strong> (duplicate) copies of the same field at this time. Your objective will be to delete <strong>ONE</strong> of the two duplicate records, where the <em>Source</em> is labelled as <code>New Customers</code>. Preserve the record where <em>Source</em> is labelled as <code>FilterLargeOrders</code>.</p>
 <div class="admonition warning">
 <p class="admonition-title">ONLY REMOVE DUPLICATES WHERE SOURCE == New Customers</p>
 <p>When reviewing <em>Output properties</em> for duplicate fields, take note of the table's <strong>Source</strong> column. Duplicates will be produced by both the <code>New Customers</code> and <code>FilterLargeOrders</code> nodes. Only remove duplicates where the <strong>Source</strong> is listed as <code>New Customers</code>.</p>
@@ -944,7 +938,7 @@
 <p>Delete the <code>event_time</code> row where the <em>Source</em> column is labelled as "New Customers".</p>
 </li>
 <li>
-<p>With all duplicates now removed from the table, the <strong>Configure</strong> button will now be highlighted in blue and selectable.</p>
+<p>With all duplicates now removed from the table, the <strong>Configure</strong><sup>[A]</sup> button will now be highlighted in blue and selectable.</p>
 </li>
 <li>
 <p>Click the <strong>Configure</strong> button to finalize the interval join configuration.</p>
