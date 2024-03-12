@@ -412,7 +412,7 @@
 <hr />
 <ol start="6">
 <li>
-<p>Switch back to the <strong>Event Endpoint Management</strong> tab and click <strong>Catalog</strong> from the left-hand interface.</p>
+<p>Switch back to the <strong>Event Endpoint Management</strong> tab and click <strong>Catalog</strong>.</p>
 <ul>
 <li>
 <p>Drill down into the <code>ORDERS</code><sup>[A]</sup> topic by clicking on the name</p>
@@ -767,7 +767,7 @@
 <li>
 <p>The <em>Define filter</em> tab will load next. To the right of the <strong>Filter expression</strong> field, click the <strong>Assistant</strong><sup>[A]</sup> drop-down menu to expose additional options.</p>
 <p><br/>
-<a class="glightbox" href="../_attachments/3-26.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-26.png" width="300" /></a></p>
+<a class="glightbox" href="../_attachments/3-27a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-27a.png" width="300" /></a></p>
 </li>
 </ol>
 <hr />
@@ -795,8 +795,7 @@
 </li>
 </ul>
 <p><br/>
-<a class="glightbox" href="../_attachments/3-27a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-27a.png" width="600" /></a></p>
-<p><a class="glightbox" href="../_attachments/3-27b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-27b.png" width="600" /></a></p>
+<a class="glightbox" href="../_attachments/3-27b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-27b.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
@@ -807,7 +806,7 @@
 <ol start="28">
 <li>
 <p>Back on the canvas for <code>NewCustomerLargeOrders</code>, scroll down along the left-hand interface until you locate the <strong>Interval Join</strong><sup>[A]</sup> node.</p>
-<p>Drag and drop this node<sup>[B]</sup> at the far right-hand edge of the authoring canvas.</p>
+<p>Drag and drop this node<sup>[B]</sup> to the far right-hand edge of the authoring canvas.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/3-28.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-28.png" width="600" /></a></p>
 </li>
@@ -821,7 +820,7 @@
 <p>Click and hold the <code>New Customers</code> <em>Output Port</em><sup>[A]</sup> edge and <strong>drag</strong> this to the <em>Input Port</em><sup>[B]</sup> edge of the newly-created <code>intervalJoin_1</code> node</p>
 </li>
 <li>
-<p>Release your cursor to finalize the connection</p>
+<p>Release your cursor to finalize the circuit</p>
 </li>
 </ul>
 <p><br/>
@@ -900,19 +899,19 @@
 <p>Look for the <strong>Event to detect</strong><sup>[A]</sup> field and select the <code>FilterLargeOrders (event_time)</code> option from the drop-down menu</p>
 </li>
 <li>
-<p>A <em>Preview</em> visualization of the time window interval is rendered within the panel — for now, with no adjustments made, this will appear as a vertical bar at 0 (X-axis)</p>
+<p>A <em>Preview</em> visualization of the time window interval is rendered within the panel — for now, with no adjustments made, this will appear as a vertical bar at 0 (on the X-axis)</p>
 </li>
 <li>
 <p>Scroll down further to reveal additional attributes to edit</p>
 </li>
 <li>
-<p>Event to set the time window: <code>New Customers (event-time)</code></p>
+<p><em>Event to set the time window</em>: <code>New Customers (event-time)</code></p>
 </li>
 <li>
-<p>Offset from event to start the time window: <code>0</code> <code>HOUR(S)</code></p>
+<p><em>Offset from event to start the time window</em>: <code>0</code> <code>HOUR(S)</code></p>
 </li>
 <li>
-<p>Offset from event to end the time window<sup>[B]</sup>: <code>24</code> <code>HOUR(S)</code></p>
+<p><em>Offset from event to end the time window</em><sup>[B]</sup>: <code>24</code> <code>HOUR(S)</code></p>
 </li>
 <li>
 <p>When ready, click <strong>Next</strong><sup>[C]</sup></p>
@@ -923,7 +922,7 @@
 </li>
 </ol>
 <hr />
-<p>The JOIN node's output going forward will be a combination of fields from both the filtered <code>Orders</code> and <code>New Customers</code> events streams.</p>
+<p>The JOIN node's output will be a combination of fields from both the filtered <code>Orders</code> and <code>New Customers</code> events streams.</p>
 <p>Before finalizing the interval join, you need to clean up the output so that duplicate fields (like <code>customerid</code> and <code>event_time</code>) are not included from the JOIN operation. You have the option of renaming or removing the duplicate fields — but for the sake of this demonstration, you will be removing the fields.</p>
 <hr />
 <ol start="35">
@@ -957,7 +956,7 @@
 <p>Delete the <code>event_time</code> row where the <em>Source</em> column is labelled as "New Customers"</p>
 </li>
 <li>
-<p>With all duplicates now removed from the table, the <strong>Configure</strong><sup>[A]</sup> button will now be highlighted in blue and selectable</p>
+<p>With all duplicates removed from the table, the <strong>Configure</strong><sup>[A]</sup> button will now be highlighted in blue and selectable</p>
 </li>
 <li>
 <p>Click the <strong>Configure</strong> button to finalize the interval join configuration</p>
@@ -971,7 +970,7 @@
 <hr />
 <h1 id="_5"></h1>
 <h1 id="next-steps">Next Steps</h1>
-<p>With filtering and processing steps now in place for incoming event streams, Focus Corporation's marketing team is able to detect valid promotional opportunities and emit those detected events to their customer loyalty application. In the following section, you will create those linkages and validate its effectiveness using "historical" and "live" data feeds.</p>
+<p>With filtering and processing steps now in place for incoming event streams, Focus Corporation's marketing team is able to detect valid promotional opportunities and emit those detected events to their customer loyalty application. In the following section, you will create those linkages and validate its effectiveness using "live" data feeds.</p>
 
 
 
