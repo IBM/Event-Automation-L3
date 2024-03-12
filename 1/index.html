@@ -335,8 +335,7 @@
 <hr />
 <p><div class="video-container"><iframe src="../_videos/module1.mp4" style="position: relative; width: 100%; height: 22.172vw" frameborder="0" allowfullscreen></iframe></div></p>
 <div class="admonition quote">
-<p class="admonition-title">WATCH THIS DEMONSTRATION</p>
-<p>Christopher Bienko <em>(Principal, Learning Content Development, IBM Application Modernization)</em> provides a hands-on demonstration of the module contents.</p>
+<p>Christopher Bienko <em>(Principal, Learning Content Development, IBM Application Modernization)</em> provides a hands-on demonstration of Module 1's contents.</p>
 <p><strong>Additional ways to watch:</strong> <a href="https://ibm.seismic.com/Link/Content/DC4cQH44328qqGFWgD89HPjF9Xgj" target="_blank">Seismic replay available for download.</a> [8 minutes]</p>
 </div>
 <hr />
@@ -411,8 +410,8 @@
 <p>The queue will already have been populated with multiple <em>Messages</em>. Click on any of the <strong>Timestamp</strong><sup>[A]</sup> names available in the table (something similar to <code>Feb 21, 2024 at 5:12:00 PM</code>) to pull open a <em>Message Details</em> panel.</p>
 <ul>
 <li>Scroll down the <em>Message Details</em> panel until you reach <strong>Application Data</strong><sup>[B]</sup></li>
-<li>Inspect the contents of the packet, which is a series of key-value pairs. You should see details about the order <code>id</code>, <code>customer</code>, <code>customerid</code>, <code>description</code>, <code>price</code>, <code>quantity</code>, <code>region</code>, and <code>ordertime</code>.</li>
-<li><strong>Close</strong><sup>[C]</sup> the <em>Message Details</em> panel by clicking the <code>X</code> in the top-right corner or the grey <code>Close</code> button.</li>
+<li>Inspect the contents of the packet, which is a series of key-value pairs: you should see details about the order <code>id</code>, <code>customer</code>, <code>customerid</code>, <code>description</code>, <code>price</code>, <code>quantity</code>, <code>region</code>, and <code>ordertime</code></li>
+<li><strong>Close</strong><sup>[C]</sup> the <em>Message Details</em> panel by clicking the <code>X</code> in the top-right corner or the grey <code>Close</code> button</li>
 </ul>
 <p><br/>
 <a class="glightbox" href="../_attachments/1-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-7.png" width="600" /></a></p>
@@ -440,9 +439,9 @@
 <li>
 <p>From the tabs on the left side of the page, drill down into <strong>Storage</strong><sup>[A]</sup>.</p>
 <ul>
-<li>Scroll down until you reach the <strong>Streaming queue name</strong><sup>[B]</sup> field and change the value to <code>TO.KAFKA</code>.</li>
-<li>This will direct IBM MQ to clone messages from the <code>PAYMENT.QUE</code> queue into the <code>TO.KAFKA</code> streaming queue created in Step 5.</li>
-<li>When satisfied, click the blue <strong>Save</strong><sup>[C]</sup> button in the top-right of the page to confirm the configuration changes.</li>
+<li>Scroll down until you reach the <strong>Streaming queue name</strong><sup>[B]</sup> field and change the value to <code>TO.KAFKA</code></li>
+<li>This will direct IBM MQ to clone messages from the <code>PAYMENT.QUE</code> queue into the <code>TO.KAFKA</code> streaming queue created in Step 5</li>
+<li>When satisfied, click the blue <strong>Save</strong><sup>[C]</sup> button in the top-right of the page to confirm the configuration changes</li>
 </ul>
 <p><br/>
 <a class="glightbox" href="../_attachments/1-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-10.png" width="600" /></a></p>
@@ -453,9 +452,10 @@
 <li>
 <p>Once confirmed, the new configuration will immediately take effect and cloned order messages will promptly begin filling the <code>TO.KAFKA</code> queue.</p>
 <ul>
-<li>Scroll back up to the top of the page and locate the blue <strong>Manage</strong><sup>[A]</sup> text in the top-left corner of the screen. Click the text to return back to the <em>Manage</em> page for <code>Orders</code>.</li>
-<li>From the tabs along the top of the page, click the <strong>Queues</strong> tab.</li>
-<li>From the table of queues, drill down into the <strong>TO.KAFKA</strong> queue.</li>
+<li>Scroll back up to the top of the page and locate the blue <strong>Manage</strong><sup>[A]</sup> text in the top-left corner of the screen</li>
+<li>Click the text to return back to the <em>Manage</em> page for <code>Orders</code></li>
+<li>From the tabs along the top of the page, click the <strong>Queues</strong> tab</li>
+<li>From the table of queues, drill down into the <strong>TO.KAFKA</strong> queue</li>
 </ul>
 <p><br/>
 <a class="glightbox" href="../_attachments/1-11a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-11a.png" width="300" /></a></p>
@@ -469,7 +469,6 @@
 <h1 id="_2"></h1>
 <h1 id="cloning-order-queues-with-ibm-event-streams">Cloning order queues with IBM Event Streams</h1>
 <p>Focus Corporation's integration team will now need to create an event stream called <code>Orders</code> using <em>IBM Event Streams</em>. This will serve as the repository where messages, cloned from IBM MQ, are published and made available to other parts of the organization.</p>
-<p><br/></p>
 <div class="admonition note">
 <p class="admonition-title">MQ-KAFKA CONNECTOR</p>
 <p><strong>IBM MQ</strong> allows applications, systems, services, and files to request and coordinate processing tasks — sending and receiving message data via messaging queues. <strong>IBM Event Automation</strong>'s Kafka integrations makes it possible to capture a continuous stream of events, representing state changes across one or multiple environments, and makes those events persistently available for retrieval.</p>
@@ -588,12 +587,15 @@ The integration team will need to make decisions about how to replicate the data
 <ol start="22">
 <li>
 <p>Granular details about the <code>ORDERS</code> topic will be loaded within the browser. From this page, you can inspect all of the messages (orders) generated from the time you set up the IBM MQ streaming queue configuration earlier.</p>
-<p>Click any one of the orders to pull up additional details on the payload and its contents.</p>
-<p>Note that you can inspect details about the <code>quantity</code>, <code>price</code>, <code>customerid</code>, <code>description</code>, <code>id</code>, <code>region</code>, <code>ordertime</code>, and <code>customer</code>. These fields will be valuable later for the marketing team as they look to perform outreach on customers meeting certain criteria.</p>
-<p><br/>
-<a class="glightbox" href="../_attachments/1-22.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-22.png" width="600" /></a></p>
+<ul>
+<li>Click any one of the orders to pull up additional details on the payload and its contents</li>
+<li>Note that you can inspect details about the <code>quantity</code>, <code>price</code>, <code>customerid</code>, <code>description</code>, <code>id</code>, <code>region</code>, <code>ordertime</code>, and <code>customer</code></li>
+</ul>
+<p><a class="glightbox" href="../_attachments/1-22.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-22.png" width="600" /></a></p>
 </li>
 </ol>
+<p><br/>
+These fields will be valuable later for the marketing team as they look to perform outreach on customers meeting certain criteria.</p>
 <hr />
 <h1 id="_4"></h1>
 <h1 id="next-steps">Next Steps</h1>
