@@ -373,11 +373,13 @@
 <p>The hands-on environment— a combination of services from <em>IBM Cloud Pak for Integration</em> (CPI) and <em>IBM Event Automation</em> (EA) —will be running entirely atop of <strong>Red Hat OpenShift</strong>, which will orchestrate containerized deployments of CPI and EA across the OpenShift cluster.</p>
 <hr />
 <ol>
-<li><strong>Reserve</strong> a Red Hat OpenShift cluster via the IBM Technology Zone pre-defined template.</li>
-</ol>
+<li>
+<p><strong>Reserve</strong> a Red Hat OpenShift cluster via the IBM Technology Zone pre-defined template.</p>
 <div class="admonition warning">
 <p><strong>URL:</strong> <strong><a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3</a></strong></p>
 </div>
+</li>
+</ol>
 <hr />
 <ol start="2">
 <li>
@@ -387,6 +389,10 @@
 </li>
 </ol>
 <hr />
+<div class="admonition note">
+<p class="admonition-title">PROVISIONING TIMES<p>Reservations take approximately <strong>60 minutes</strong> to complete from the time that you click submit. If you navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ, you can monitor the progress of your reservation. Wait for the ITZ reservation to be marked as "<em>Ready</em>" before attempting to start the lab — accessing it too soon will lead to issues (or an outright failure) when connecting to the OpenShift cluster.</p>
+</p>
+</div>
 <ol start="3">
 <li>
 <p>Supply additional details about your ITZ reservation request:</p>
@@ -428,16 +434,10 @@
 <p><strong>Worker Node Flavor</strong><sup>[J]</sup>: Set to <code>16 vCPU x 64 GB - 100 GB ephemeral storage</code></p>
 </li>
 </ul>
-<p></br></p>
 <p>When satisfied, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit</strong><sup>[K]</sup>.</p>
-<div class="admonition note">
-<p class="admonition-title">PROVISIONING TIMES</p>
-<p>Reservations take approximately <strong>60 minutes</strong> to complete from the time that you click submit. If you navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ, you can monitor the progress of your reservation. Wait for the ITZ reservation to be marked as "<em>Ready</em>" before attempting to start the lab — accessing it too soon will lead to issues (or an outright failure) when connecting to the OpenShift cluster.</p>
-</div>
 <p><br/>
-<a class="glightbox" href="../_attachments/setup-3a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-3a.png" width="600" /></a></p>
-<p><br/>
-<a class="glightbox" href="../_attachments/setup-3b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-3b.png" width="600" /></a></p>
+<a class="glightbox" href="../_attachments/setup-3a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-3a.png" width="300" /></a></p>
+<p><a class="glightbox" href="../_attachments/setup-3b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-3b.png" width="300" /></a></p>
 </li>
 </ol>
 <hr />
@@ -457,7 +457,7 @@
 <p>Record the <strong>Username</strong><sup>[A]</sup> (<code>kubeadmin</code>) and <strong>Password</strong><sup>[B]</sup> (unique to your environment), as well as the <strong>Desktop URL</strong> just above those two items, to a notepad for reference later</p>
 </li>
 <li>
-<p>Click the blue <strong>Open your IBM Cloud environment</strong><sup>[C]</sup> icon to access OpenShift's dashboard</p>
+<p>Click <strong>Open your IBM Cloud environment</strong><sup>[C]</sup> to access OpenShift's dashboard</p>
 </li>
 </ul>
 <p><br/>
@@ -502,7 +502,7 @@
 </li>
 </ul>
 <p><br/></p>
-<div class="admonition note inline end">
+<div class="admonition note inline">
 <p class="admonition-title">COMMAND LINE ACCESS</p>
 <p>For parts of the hands-on lab, you will be required to establish connections over SSH to remote infrastructure endpoints. It is recommended that users do so via <strong>Terminal</strong> (Mac) or <strong>PuTTY</strong> (Windows). For detailed instructions on how to connect with PuTTY, or if you are using Windows, <a href="https://ibm.box.com/s/d71tn63hutdxrjwh21qdzralrsxlcspe" target="_blank">reference the linked material</a>.</p>
 </div>
@@ -630,8 +630,7 @@
 <li><em>Event Processing</em></li>
 <li><em>IBM MQ</em></li>
 </ul>
-<p><br/>
-Keep these tabs open. You will be switching between them frequently.</p>
+<p>Keep these tabs open. You will be switching between them frequently.</p>
 </li>
 </ol>
 <hr />
