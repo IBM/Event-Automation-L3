@@ -348,15 +348,18 @@
 <p>With your web browser, access the <strong>IBM Event Processing</strong> dashboard.</p>
 <p>Dismiss any welcome screens or tutorials that are prompted after first logging in by clicking the <strong>Hide Welcome</strong><sup>[A]</sup> text in the bottom-left corner of the interface.</p>
 </li>
+</ol>
+<hr />
+<ol start="2">
 <li>
 <p>In the bottom-right corner of the page, click the blue <strong>Create</strong><sup>[B]</sup> to begin defining a new <em>flow</em>.</p>
-<div class="admonition note">
+<p><br/></p>
+<div class="admonition note inline end">
 <p class="admonition-title">EVENT PROCESSING FLOWS</p>
 <p>An event processing flow ingests a stream of events, analyzes that input, and takes automatic actions (defined by the user) in response to those conditions.</p>
 <p>A flow begins with one or multiple event sources which represent inbound events. For the purposes of this demonstration, you will leverage the <code>ORDERS</code> event stream that was defined in the previous module. You will do so using EP's intuitive, no-code authoring canvas.</p>
 </div>
-<p><br/>
-<a class="glightbox" href="../_attachments/3-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-1.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/3-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-1.png" width="450" /></a></p>
 </li>
 </ol>
 <hr />
@@ -448,6 +451,9 @@
 </li>
 </ul>
 </li>
+</ol>
+<hr />
+<ol start="8">
 <li>
 <p>The event source must be configured to allow certificates used by the event stream.</p>
 <ul>
@@ -512,7 +518,7 @@
 <p>Users can input schemas in either <em>Avro</em> or <em>JSON</em> data formats: click the <strong>JSON</strong><sup>[B]</sup> tab</p>
 </li>
 <li>
-<p>Copy and paste the following JSON into the sample message field. Note that this is the same sample schema you supplied when configuring the event source within EEM in Module 2.</p>
+<p>Copy and paste the following JSON into the sample message field</p>
 </li>
 <li>
 <p>When ready, click <strong>Done</strong><sup>[C]</sup> to proceed</p>
@@ -520,6 +526,9 @@
 </ul>
 </li>
 </ol>
+<div class="admonition note inline end">
+<p>Note that this is the same sample schema you supplied when configuring the event source within EEM in Module 2.</p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="w"></span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"></span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">197.09</span><span class="p">,</span><span class="w"></span>
@@ -551,9 +560,7 @@
 <ol start="13">
 <li>
 <p>Return to the <code>NewCustomerLargeOrder</code><sup>[A]</sup> canvas and drag a new <strong>Event Source</strong><sup>[B]</sup> (from the left-hand interface) into the canvas, placing it just below the <code>Orders</code> source.</p>
-<ul>
-<li>With your cursor, hover over the new <code>source_1</code> node and then click the <strong>Edit</strong> (pencil) icon in the top-right corner of the tile to begin modifying the node.</li>
-</ul>
+<p>With your cursor, hover over the new <code>source_1</code> node and then click the <strong>Edit</strong> (pencil) icon in the top-right corner of the tile to begin modifying the node.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/3-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-13.png" width="400" /></a></p>
 </li>
@@ -650,7 +657,7 @@
 <hr />
 <ol start="19">
 <li>
-<p>The third tab, <em>Topic selection</em>, will prompt the user on which topic(s) to ingest from the event source.</p>
+<p>The third tab, <em>Topic selection</em>, will ask which topic(s) to ingest from the event source.</p>
 <ul>
 <li>
 <p>Available topics will already be displayed within the configuration tool</p>
@@ -678,7 +685,7 @@
 <p>Users can input schemas in either <em>Avro</em> or <em>JSON</em> data formats: click the <strong>JSON</strong><sup>[A]</sup> tab</p>
 </li>
 <li>
-<p>Copy and paste the following JSON into the sample message field. Note that this is the same sample schema you supplied when configuring the event source within EEM in Module 2.</p>
+<p>Copy and paste the following JSON into the sample message field</p>
 </li>
 <li>
 <p>When ready, click <strong>Done</strong><sup>[B]</sup> to proceed</p>
@@ -686,6 +693,9 @@
 </ul>
 </li>
 </ol>
+<div class="admonition note inline end">
+<p>Note that this is the same sample schema you supplied when configuring the event source within EEM in Module 2</p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span><span class="w"></span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">&quot;customerid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;acb3eb65-98a1-45c2-84d4-f5df157862b4&quot;</span><span class="p">,</span><span class="w"></span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">&quot;customername&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Emilio Quitzon&quot;</span><span class="p">,</span><span class="w"></span>
@@ -887,13 +897,13 @@
 <p>Under the <em>Time window condition</em>, you can define the time interval "window" where detected events are considered viable for a promotional offer from the marketing team. To meet the criteria, a purchase of over $100 USD must be made by a first-time customer within a 24 hour window of creating an account.</p>
 <ul>
 <li>
-<p>Look for the <strong>Event to detect</strong><sup>[A]</sup> field and select the <code>FilterLargeOrders (event_time)</code> option from the drop-down menu.</p>
+<p>Look for the <strong>Event to detect</strong><sup>[A]</sup> field and select the <code>FilterLargeOrders (event_time)</code> option from the drop-down menu</p>
 </li>
 <li>
-<p>A <em>Preview</em> visualization of the time window interval is rendered within the panel. For now, with no adjustments made, this will appear as a vertical bar at 0 (X-axis).</p>
+<p>A <em>Preview</em> visualization of the time window interval is rendered within the panel — for now, with no adjustments made, this will appear as a vertical bar at 0 (X-axis)</p>
 </li>
 <li>
-<p>Scroll down further to reveal additional attributes to edit.</p>
+<p>Scroll down further to reveal additional attributes to edit</p>
 </li>
 <li>
 <p>Event to set the time window: <code>New Customers (event-time)</code></p>
@@ -919,20 +929,23 @@
 <ol start="35">
 <li>
 <p>Within the <em>Output properties</em> tab, locate the <code>customerid</code><sup>[A]</sup> field. There are <strong>two</strong> (duplicate) copies of the same field at this time. Your objective will be to delete <strong>ONE</strong> of the two duplicate records, where the <em>Source</em> is labelled as <code>New Customers</code>. Preserve the record where <em>Source</em> is labelled as <code>FilterLargeOrders</code>.</p>
-<div class="admonition warning">
-<p class="admonition-title">ONLY REMOVE DUPLICATES WHERE SOURCE == New Customers</p>
-<p>When reviewing <em>Output properties</em> for duplicate fields, take note of the table's <strong>Source</strong> column. Duplicates will be produced by both the <code>New Customers</code> and <code>FilterLargeOrders</code> nodes. Only remove duplicates where the <strong>Source</strong> is listed as <code>New Customers</code>.</p>
-</div>
 <ul>
 <li>
-<p>Click the round <code>—</code> sign to the left of the first <code>customerid</code> row, where the <em>Source</em> is labelled as "New Customers", to remove the duplicate.</p>
+<p>Click the round <code>—</code> sign to the left of the first <code>customerid</code> row, where the <em>Source</em> is labelled as "New Customers", to remove the duplicate</p>
 </li>
 <li>
-<p>The result will be only one copy of the <code>customerid</code> field in the table. The red text (<em>Must be unique</em>) underlining the field will disappear from the table.</p>
+<p>The result will be only one copy of the <code>customerid</code> field in the table</p>
+</li>
+<li>
+<p>The red text (<em>Must be unique</em>) underlining the field will disappear from the table</p>
 </li>
 </ul>
-<p><br/>
-<a class="glightbox" href="../_attachments/3-35a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-35a.png" width="600" /></a></p>
+<p><br/></p>
+<div class="admonition warning inline end">
+<p class="admonition-title">ONLY REMOVE DUPLICATES WHERE SOURCE == NEW CUSTOMERS</p>
+<p>When reviewing <em>Output properties</em> for duplicate fields, take note of the table's <strong>Source</strong> column. Duplicates will be produced by both the <code>New Customers</code> and <code>FilterLargeOrders</code> nodes. Only remove duplicates where the <strong>Source</strong> is listed as <code>New Customers</code>.</p>
+</div>
+<p><a class="glightbox" href="../_attachments/3-35a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-35a.png" width="450" /></a></p>
 </li>
 </ol>
 <hr />
@@ -941,13 +954,13 @@
 <p>Repeat the procedure for the <code>event_time</code> field, which is also duplicated by the JOIN:</p>
 <ul>
 <li>
-<p>Delete the <code>event_time</code> row where the <em>Source</em> column is labelled as "New Customers".</p>
+<p>Delete the <code>event_time</code> row where the <em>Source</em> column is labelled as "New Customers"</p>
 </li>
 <li>
-<p>With all duplicates now removed from the table, the <strong>Configure</strong><sup>[A]</sup> button will now be highlighted in blue and selectable.</p>
+<p>With all duplicates now removed from the table, the <strong>Configure</strong><sup>[A]</sup> button will now be highlighted in blue and selectable</p>
 </li>
 <li>
-<p>Click the <strong>Configure</strong> button to finalize the interval join configuration.</p>
+<p>Click the <strong>Configure</strong> button to finalize the interval join configuration</p>
 </li>
 </ul>
 <p><br/>
