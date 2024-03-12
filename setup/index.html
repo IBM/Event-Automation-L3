@@ -373,12 +373,11 @@
 <p>The hands-on environment— a combination of services from <em>IBM Cloud Pak for Integration</em> (CPI) and <em>IBM Event Automation</em> (EA) —will be running entirely atop of <strong>Red Hat OpenShift</strong>, which will orchestrate containerized deployments of CPI and EA across the OpenShift cluster.</p>
 <hr />
 <ol>
-<li>
-<p><strong>Reserve</strong> a Red Hat OpenShift cluster via the IBM Technology Zone pre-defined template.</p>
-<p><br/>
-<strong>URL:</strong> <strong><a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3</a></strong></p>
-</li>
+<li><strong>Reserve</strong> a Red Hat OpenShift cluster via the IBM Technology Zone pre-defined template.</li>
 </ol>
+<div class="admonition warning">
+<p><strong>URL:</strong> <strong><a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3</a></strong></p>
+</div>
 <hr />
 <ol start="2">
 <li>
@@ -496,18 +495,18 @@
 <p>In order to deploy containerized instances of <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em> on top of OpenShift, you must first download and set up your local machine with the <strong>OpenShift Command Line Interface (CLI)</strong>.</p>
 <ul>
 <li>
-<p>In the top-right corner of the OpenShift dashboard, click the <strong>question mark</strong><sup>[A]</sup> (<code>?</code>) icon as shown in the screenshot below. This will open a drop-down menu with several options.</p>
+<p>In the top-right corner of the OpenShift dashboard, click the <strong>question mark</strong><sup>[A]</sup> (<code>?</code>) icon as shown in the screenshot below</p>
 </li>
 <li>
-<p>Click the <strong>Command line tools</strong><sup>[B]</sup> option from the drop-down menu.</p>
+<p>Click the <strong>Command line tools</strong><sup>[B]</sup> option from the drop-down menu</p>
 </li>
 </ul>
-<div class="admonition note">
+<p><br/></p>
+<div class="admonition note inline end">
 <p class="admonition-title">COMMAND LINE ACCESS</p>
 <p>For parts of the hands-on lab, you will be required to establish connections over SSH to remote infrastructure endpoints. It is recommended that users do so via <strong>Terminal</strong> (Mac) or <strong>PuTTY</strong> (Windows). For detailed instructions on how to connect with PuTTY, or if you are using Windows, <a href="https://ibm.box.com/s/d71tn63hutdxrjwh21qdzralrsxlcspe" target="_blank">reference the linked material</a>.</p>
 </div>
-<p><br/>
-<a class="glightbox" href="../_attachments/setup-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-7.png" width="300" /></a></p>
+<p><a class="glightbox" href="../_attachments/setup-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-7.png" width="300" /></a></p>
 </li>
 </ol>
 <hr />
@@ -532,16 +531,13 @@
 </ol>
 <hr />
 <ol start="10">
-<li>
-<p>A mostly-blank page will load, with <strong>Display Token</strong> written in blue text in the top-left of the page. Click this link to proceed.</p>
-<p><br/>
-<a class="glightbox" href="../_attachments/setup-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-10.png" width="200" /></a></p>
-</li>
+<li>A mostly-blank page will load, with <strong>Display Token</strong> written in blue text in the top-left of the page. Click the link to proceed.</li>
 </ol>
 <hr />
 <ol start="11">
 <li>
-<p>Details about a newly-generated API token will load on screen. Record the full command listed under <strong>Log in with this token</strong><sup>[A]</sup> (resembling something similar to <code>oc login --token=sha256...</code>) and save this to your notepad for later reference.</p>
+<p>Details about a newly-generated API token will load on screen.</p>
+<p>Record the full command listed under <strong>Log in with this token</strong><sup>[A]</sup> (resembling something similar to <code>oc login --token=sha256...</code>) and save this to your notepad for later reference.</p>
 <p><br/>
 <a class="glightbox" href="../_attachments/setup-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-11.png" width="600" /></a></p>
 </li>
@@ -552,10 +548,10 @@
 <p>Open your command line tool of preference on your local machine, likely either <strong>Terminal</strong> or <strong>PuTTY</strong>. At this stage, the OpenShift CLI (<code>oc</code>) should be available on your machine and ready for remotely connecting to the OpenShift cluster.</p>
 <ul>
 <li>
-<p>Within the Terminal, <strong>paste the full login command</strong> recorded in Step 11 and hit <code>Return</code> to commence the login.</p>
+<p>Within the Terminal, <strong>paste the full login command</strong> recorded in Step 11 and hit <code>Return</code> to commence the login</p>
 </li>
 <li>
-<p>A prompt similar to the screenshot below will be displayed momentarily, indicating that the Terminal is now successfully connected (remotely) to the OpenShift cluster.</p>
+<p>A prompt similar to the screenshot below will be displayed momentarily, indicating that the Terminal is now successfully connected (remotely) to the OpenShift cluster</p>
 </li>
 </ul>
 <p><br/>
@@ -592,12 +588,12 @@
 </li>
 <li>
 <p>Each listing will be accompanied by a <code>URL</code>, <code>username</code>, and <code>password</code>. <strong>Record</strong> this information to a notepad for reference later.</p>
-<div class="admonition tip">
+<p><br/></p>
+<div class="admonition tip inline end">
 <p class="admonition-title">DEPLOYMENT TIMES</p>
 <p>The deployment of <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em> containers to the OpenShift cluster is entirely automated using <em>Red Hat Ansible</em> scripts. Full deployment and configuration should take approximately <strong>20-45 minutes</strong> to complete.</p>
 </div>
-<p><br/>
-<a class="glightbox" href="../_attachments/setup-15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-15.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/setup-15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-15.png" width="450" /></a></p>
 </li>
 </ul>
 <hr />
@@ -611,14 +607,19 @@
 <li>
 <p>When prompted, create your own password for logging into the environment. Confirm your selection with <strong>Submit</strong><sup>[A]</sup> and then update your <code>password</code> records for both the <em>Platform Navigator</em> and <em>IBM MQ</em> services.</p>
 </li>
+<li>
+<p>At this stage, the lab environment is fully configured and ready for hands-on work.</p>
+</li>
 </ul>
 <p><br/>
-<a class="glightbox" href="../_attachments/setup-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-16.png" width="400" /></a></p>
-<p><br/>
-At this stage, the lab environment is fully configured and ready for hands-on work. </p>
+<a class="glightbox" href="../_attachments/setup-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-16.png" width="400" /></a> </p>
 </li>
 </ol>
 <hr />
+<div class="admonition note">
+<p class="admonition-title">MQ &amp; CPI AUTHENTICATION<p>Both services utilize the same <code>username</code> and <code>password</code> credentials. However, the two URLs generated by the Terminal console in Step 15 are <em>unique</em>. Ensure that you are logging in to the correct dashboard (IBM MQ or CPI) when asked to do so in the subsequent chapters.</p>
+</p>
+</div>
 <ol start="17">
 <li>
 <p>With your web browser, open a new tab for each of the services needed for the hands-on lab:</p>
@@ -629,10 +630,6 @@ At this stage, the lab environment is fully configured and ready for hands-on wo
 <li><em>Event Processing</em></li>
 <li><em>IBM MQ</em></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">MQ &amp; CPI AUTHENTICATION</p>
-<p>Both services utilize the same <code>username</code> and <code>password</code> credentials. However, the two URLs generated by the Terminal console in Step 15 are <em>unique</em>. Ensure that you are logging in to the correct dashboard (IBM MQ or CPI) when asked to do so in the subsequent chapters.</p>
-</div>
 <p><br/>
 Keep these tabs open. You will be switching between them frequently.</p>
 </li>
