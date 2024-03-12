@@ -338,7 +338,6 @@
 <p>Christopher Bienko <em>(Principal, Learning Content Development, IBM Application Modernization)</em> provides a hands-on demonstration of Module 1's contents.</p>
 <p><strong>Additional ways to watch:</strong> <a href="https://ibm.seismic.com/Link/Content/DC4cQH44328qqGFWgD89HPjF9Xgj" target="_blank">Seismic replay available for download.</a> [8 minutes]</p>
 </div>
-<hr />
 <p>To take advantage of the message queue data available from IBM MQ, Focus Corporation's integration team will need to make IBM MQ's enterprise data available to a broader set of APIs. This will allow Focus' application developers to subscribe to the data without any risk or impact to the core back-end systems that support the data. Risks can be lowered and the application development process can be decoupled from data retention processes.</p>
 <p>To do so, Focus' integration team will need to expose the IBM MQ enterprise data using "event streams." Specifically, the integration team (and application developers) will need access to customer order information. This data will be vital for the marketing team's ambitions of making high value promotions to newly-acquired customers in a timely manner.</p>
 <hr />
@@ -468,14 +467,12 @@
 <hr />
 <h1 id="_2"></h1>
 <h1 id="cloning-order-queues-with-ibm-event-streams">Cloning order queues with IBM Event Streams</h1>
-<p>Focus Corporation's integration team will now need to create an event stream called <code>Orders</code> using <em>IBM Event Streams</em>. This will serve as the repository where messages, cloned from IBM MQ, are published and made available to other parts of the organization.</p>
-<div class="admonition note">
+<div class="admonition note inline end">
 <p class="admonition-title">MQ-KAFKA CONNECTOR</p>
 <p><strong>IBM MQ</strong> allows applications, systems, services, and files to request and coordinate processing tasks — sending and receiving message data via messaging queues. <strong>IBM Event Automation</strong>'s Kafka integrations makes it possible to capture a continuous stream of events, representing state changes across one or multiple environments, and makes those events persistently available for retrieval.</p>
 <p>In combination, IBM MQ and Event Automation enable business-critical communications originating over MQ to be captured as events within Kafka topics, which can later be shared across the enterprise for fueling more responsive applications. IBM MQ-Kafka connectors support bi-directional connectivity between these two architectures. Clients of IBM Event Automation are fully supported for using MQ-Kafka connectors with the Event Streams capability of the platform. Support for the MQ-Kafka connector is also available for IBM clients with MQ Advanced entitlements.</p>
 </div>
-<p></br>
-The integration team will need to make decisions about how to replicate the data (with or without modification) and also determine the appropriate retention settings for this data. Given the governance policies in place at Focus Corporation, they will need to retain data for up to 1 week and replicate entries for high availability.</p>
+<p>Focus Corporation's integration team will now need to create an event stream called <code>Orders</code> using <em>IBM Event Streams</em>. This will serve as the repository where messages, cloned from IBM MQ, are published and made available to other parts of the organization. <br/>The integration team will need to make decisions about how to replicate the data (with or without modification) and also determine the appropriate retention settings for this data. Given the governance policies in place at Focus Corporation, they will need to retain data for up to 1 week and replicate entries for high availability.</p>
 <hr />
 <ol start="13">
 <li>Open the <strong>IBM Event Streams</strong> tab using your web browser.</li>
@@ -591,7 +588,8 @@ The integration team will need to make decisions about how to replicate the data
 <li>Click any one of the orders to pull up additional details on the payload and its contents</li>
 <li>Note that you can inspect details about the <code>quantity</code>, <code>price</code>, <code>customerid</code>, <code>description</code>, <code>id</code>, <code>region</code>, <code>ordertime</code>, and <code>customer</code></li>
 </ul>
-<p><a class="glightbox" href="../_attachments/1-22.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-22.png" width="600" /></a></p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-22.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-22.png" width="600" /></a></p>
 </li>
 </ol>
 <p><br/>
