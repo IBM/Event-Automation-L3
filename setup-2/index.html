@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#prerequisites-and-setup" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -346,10 +346,8 @@
                 
 
 
-<h1 id="prerequisites-and-setup">Prerequisites and Setup</h1>
-<hr />
 <div class="admonition warning">
-<p class="admonition-title">SETUP TIME ESTIMATES</p>
+<p class="admonition-title">TIME ESTIMATES FOR SETUP</p>
 <p>The following section will take approximately <strong>3 to 4 hours</strong> to complete. Budget your time accordingly.</p>
 <ul>
 <li>
@@ -375,7 +373,7 @@
 <p><br/>
 <a class="glightbox" href="../_attachments/introduction-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/introduction-2.png" /></a></p>
 <hr />
-<p>The hands-on material covered within this lab will focus on <em>event-led integration</em> solutions, specifically the <strong>IBM Event Automation</strong> suite — as well as elements of the <strong>IBM Cloud Pak for Integration</strong> (MQ-Kafka connector.)</p>
+<p>The hands-on material covered within this lab will focus on <em>event-led integration</em> solutions, specifically the <strong>IBM Event Automation</strong> (EA) suite — as well as elements of the <strong>IBM Cloud Pak for Integration</strong> (CP4I) MQ-Kafka connector.</p>
 <p>IBM Event Automation provides an open, composable set of capabilities that interoperate with the services and tools that are already part of many enterprise IT departments. A fundamental component to IBM Event Automation's architecture is composability, which will be highlighted through the lab as you incrementally add more capabilities and elements to the demo environment.</p>
 <ul>
 <li>
@@ -391,9 +389,93 @@
 <p>Environment templates (images) have been defined ahead of time with the assistance of <strong>IBM Technology Zone</strong> (ITZ), which can be reserved for learning and client demonstration purposes at no-charge. Some further configuration of these environments will be required after deployment.</p>
 <hr />
 <h1 id="_1"></h1>
-<h1 id="request-an-ibm-technology-zone-environment">Request an IBM Technology Zone Environment</h1>
+<h1 id="prerequisites">Prerequisites</h1>
+<p>This product is being developed and continuously updated in an agile manner. In addition to adding new capabilities, upgrades to the product are likely to result in changes to the user interface over time. As such, the screenshots used in this lab may not always look exactly like what you see in the latest version of product. These differences should not affect how the lab is executed, and the authoring team will do their best to keep things up to date, but be aware that screenshots or steps may differ slightly with your environment.</p>
+<p>Before reserving an environment with ITZ, first ensure that <strong>all</strong> of the following services and frameworks are available on your local machine. These will be needed to begin deployment and installation of the EA and CP4I suite on top of the OCP cluster.</p>
+<div class="highlight"><pre><span></span><code>    1. &lt;a href=&quot;https://docs.redhat.com/en/documentation/red_hat_build_of_microshift/4.14/html/cli_tools/microshift-oc-cli-install#cli-installing-cli_cli-oc-installing&quot; target=&quot;_blank&quot;&gt;oc CLI v4.6+&lt;/a&gt;
+    2. &lt;a href=&quot;https://cli.github.com/&quot; target=&quot;_blank&quot;&gt;GitHub CLI&lt;/a&gt;
+    3. &lt;a href=&quot;https://www.oracle.com/br/java/technologies/downloads/&quot; target=&quot;_blank&quot;&gt;Java v8+&lt;/a&gt;
+    4. &lt;a href=&quot;https://www.misterpki.com/install-keytool/&quot; target=&quot;_blank&quot;&gt;keytool&lt;/a&gt;
+    5. &lt;a href=&quot;https://github.com/openssl/openssl&quot; target=&quot;_blank&quot;&gt;openssl&lt;/a&gt;
+    6. &lt;a href=&quot;https://mailtrap.io/&quot; target=&quot;_blank&quot;&gt;mailtrap&lt;/a&gt;
+</code></pre></div>
+<p>Instructions and resources for prerequisites setup are provided in each of the hyperlinks.</p>
+<hr />
+<h1 id="_2"></h1>
+<h1 id="reserving-an-ibm-technology-zone-environment">Reserving an IBM Technology Zone Environment</h1>
 <p>You will require access to the ITZ in order to reserve your environment and complete the lab. If you do not yet have access or an account with the ITZ, <a href="https://techzone.ibm.com/" target="_blank">you will need to register for one</a>.</p>
-<p>The hands-on environment— a combination of services from <em>IBM Cloud Pak for Integration</em> (CPI) and <em>IBM Event Automation</em> (EA) —will be running entirely atop of <strong>Red Hat OpenShift</strong>, which will orchestrate containerized deployments of CPI and EA across the OpenShift cluster.</p>
+<p>The hands-on environment— a combination of services from <em>IBM Cloud Pak for Integration</em> (CP4I) and <em>IBM Event Automation</em> (EA) —will be running entirely atop of <strong>Red Hat OpenShift</strong>, which will orchestrate containerized deployments of CPI and EA across the OpenShift cluster.</p>
+<p>If you require more details about the CP4I installation process, please check the <a href="https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=installing-overview-installation" target="_blank">product documentation</a>.</p>
+<hr />
+<ol>
+<li>
+<p><strong>Reserve</strong> a Red Hat OpenShift cluster via the IBM Technology Zone pre-defined template.</p>
+<div class="admonition warning">
+<p><strong>URL:</strong> <strong><a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3</a></strong></p>
+</div>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>From the <code>Single environment reservation options</code> list, select <strong>Reserve now</strong><sup>[A]</sup>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Configure the following <strong>fields</strong> in the reservation template to the values as described in the table below. All other fields from the ITZ template, if not listed in the table below, should be kept at their default values.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Purpose</code></td>
+<td>If reserving for L3 or L4 training, select <em>Education</em>. If delivering a PoC, select <em>Pilot</em> and provide a Sales opportunity number.</td>
+</tr>
+<tr>
+<td><code>Purpose Description</code></td>
+<td>If reserving for L3 or L4 training, enter <em>Event-led Integration Training</em>. If delivering a PoC, enter the PoC and client details.</td>
+</tr>
+<tr>
+<td><code>Preferred Geography</code></td>
+<td>Select your preferred geography.</td>
+</tr>
+<tr>
+<td><code>OpenShift Version</code></td>
+<td>4.15</td>
+</tr>
+<tr>
+<td><code>Storage</code></td>
+<td>ODF – 2TB</td>
+</tr>
+<tr>
+<td><code>Worker Node Count</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>Worker Node Flavor</code></td>
+<td>16 vCPU x 64 GB - 100 GB ephemeral storage</td>
+</tr>
+</tbody>
+</table>
+<p>When satisfied, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit</strong><sup>[K]</sup>.</p>
+<div class="highlight"><pre><span></span><code>!!! note &quot;PROVISIONING TIMES&quot;
+
+    Reservations take approximately **60 minutes** to complete from the time that you click submit. If you navigate to the **&lt;a href=&quot;https://techzone.ibm.com/my/reservations&quot; target=&quot;_blank&quot;&gt;My Reservations&lt;/a&gt;** tab of the ITZ, you can monitor the progress of your reservation. Wait for the ITZ reservation to be marked as &quot;*Ready*&quot; before attempting to start the lab — accessing it too soon will lead to issues (or an outright failure) when connecting to the OpenShift cluster.
+
+![](_attachments/setup-3a.png){: loading=lazy width=&quot;600&quot;}
+
+![](_attachments/setup-3b.png){: loading=lazy width=&quot;600&quot;}
+</code></pre></div>
+</li>
+</ol>
 <hr />
 
 
