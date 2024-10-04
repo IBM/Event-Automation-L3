@@ -819,6 +819,128 @@ Configure the following <strong>fields</strong> in the reservation template to t
 </li>
 </ol>
 <hr />
+<ol start="6">
+<li>
+<p>Integrate EEM and ES instances.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>scripts/19f-eem-es-config.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Get a token for post-deployment configuration.</p>
+<ul>
+<li>Log in to your Event Endpoint Management UI from a supported web browser (get the login URL for your Event Endpoint Management instance running the command below).</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>oc get eem -n tools
+</code></pre></div>
+<ul>
+<li>Click the <strong>user icon</strong> in the header and then click <strong>Profile</strong> to open the page</li>
+<li>Within the <strong>Profile</strong> page, click <em>Create</em> token to open the dialog</li>
+<li>Read the message and note that API access tokens expire</li>
+<li>Provide a token description that can be used to identify your token and then click <em>Create</em></li>
+<li>Once the new token is generated, click <em>Copy</em> token</li>
+<li>Click <em>Close</em> to exit the dialog</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>Set environment variable for token by replacing <code>&lt;my-eem-token&gt;</code> with your own token value, then execute the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nb">export</span> <span class="nv">EEM_TOKEN</span><span class="o">=</span>&lt;my-eem-token&gt;
+</code></pre></div>
+<p>Afterwards, record your token into a notepad as you will need to reference it later in the demo script.</p>
+</li>
+</ol>
+<hr />
+<h2 id="29-deploying-the-enterprise-messaging-mq-service">2.9 Deploying the Enterprise Messaging (MQ) service</h2>
+<ol>
+<li>
+<p>Install the MQ Catalog Source.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/09-mq-catalog-source.yaml 
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>oc get catalogsources ibmmq-operator-catalogsource -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install the MQ Operator.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/06-mq-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-mq-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Set the MQ namespace environment variable.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="nb">export</span> <span class="nv">MQ_NAMESPACE</span><span class="o">=</span>cp4i-mq
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Create certificates and extra route.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>scripts/10a-qmgr-pre-config.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Create <code>configmap</code> with MQ configuration.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>oc apply -f resources/03c-qmgr-mqsc-config.yaml
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Deploy the MQ Queue Manager instance.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>scripts/10b-qmgr-inst-deploy.sh
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>oc get queuemanager qmgr-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait a few minutes. You should expect a response of <code>Running</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Create <code>CCDT</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>scripts/10c-qmgr-post-config.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>Deploy the MQ Source Connector.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>oc apply -f resources/02b-es-mq-source.yaml
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="9">
+<li>
+<p>Deploy the MQ Sink Connector.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>oc apply -f resources/02c-es-mq-sink.yaml
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<h2 id="210-deploy-the-event-processing-ep-service">2.10 Deploy the Event Processing (EP) service</h2>
 
 
 
