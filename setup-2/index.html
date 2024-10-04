@@ -389,7 +389,7 @@
 <p>Environment templates (images) have been defined ahead of time with the assistance of <strong>IBM Technology Zone</strong> (ITZ), which can be reserved for learning and client demonstration purposes at no-charge. Some further configuration of these environments will be required after deployment.</p>
 <hr />
 <h1 id="_1"></h1>
-<h1 id="prerequisites">Prerequisites</h1>
+<h1 id="1-prerequisites">1. Prerequisites</h1>
 <p>This product is being developed and continuously updated in an agile manner. In addition to adding new capabilities, upgrades to the product are likely to result in changes to the user interface over time. As such, the screenshots used in this lab may not always look exactly like what you see in the latest version of product. These differences should not affect how the lab is executed, and the authoring team will do their best to keep things up to date, but be aware that screenshots or steps may differ slightly with your environment.</p>
 <p>Before reserving an environment with ITZ, first ensure that <strong>all</strong> of the following services and frameworks are available on your local machine. These will be needed to begin deployment and installation of the EA and CP4I suite on top of the OCP cluster.</p>
 <div class="highlight"><pre><span></span><code>    1. &lt;a href=&quot;https://docs.redhat.com/en/documentation/red_hat_build_of_microshift/4.14/html/cli_tools/microshift-oc-cli-install#cli-installing-cli_cli-oc-installing&quot; target=&quot;_blank&quot;&gt;oc CLI v4.6+&lt;/a&gt;
@@ -402,14 +402,15 @@
 <p>Instructions and resources for prerequisites setup are provided in each of the hyperlinks.</p>
 <hr />
 <h1 id="_2"></h1>
-<h1 id="reserving-an-ibm-technology-zone-environment">Reserving an IBM Technology Zone Environment</h1>
+<h1 id="2-reserving-an-ibm-technology-zone-environment">2. Reserving an IBM Technology Zone Environment</h1>
 <p>You will require access to the ITZ in order to reserve your environment and complete the lab. If you do not yet have access or an account with the ITZ, <a href="https://techzone.ibm.com/" target="_blank">you will need to register for one</a>.</p>
 <p>The hands-on environment— a combination of services from <em>IBM Cloud Pak for Integration</em> (CP4I) and <em>IBM Event Automation</em> (EA) —will be running entirely atop of <strong>Red Hat OpenShift</strong>, which will orchestrate containerized deployments of CPI and EA across the OpenShift cluster.</p>
 <p>If you require more details about the CP4I installation process, please check the <a href="https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=installing-overview-installation" target="_blank">product documentation</a>.</p>
 <hr />
+<h2 id="21-deploy-an-openshift-container-platform-ocp-cluster">2.1 Deploy an OpenShift Container Platform (OCP) cluster</h2>
 <ol>
 <li>
-<p><strong>Reserve</strong> a Red Hat OpenShift cluster via the IBM Technology Zone pre-defined template.</p>
+<p>Reserve a Red Hat OpenShift cluster via the <strong>IBM Technology Zone</strong> pre-defined template.</p>
 <div class="admonition warning">
 <p><strong>URL:</strong> <strong><a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3</a></strong></p>
 </div>
@@ -462,17 +463,32 @@ Configure the following <strong>fields</strong> in the reservation template to t
 <ol start="2">
 <li>
 <p>When satisfied, verify that you agree to the <em>Terms and Conditions</em><sup>[A]</sup> for the environment and finalize your reservation request by clicking <strong>Submit</strong><sup>[B]</sup>.</p>
-<div class="admonition note">
-<p class="admonition-title">PROVISIONING TIMES</p>
-<p>Reservations take approximately <strong>60 minutes</strong> to complete from the time that you click submit. If you navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ, you can monitor the progress of your reservation. Wait for the ITZ reservation to be marked as "<em>Ready</em>" before attempting to start the lab — accessing it too soon will lead to issues (or an outright failure) when connecting to the OpenShift cluster.</p>
-</div>
 <p><a class="glightbox" href="../_attachments/setup-3a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-3a.png" width="600" /></a></p>
 <p><a class="glightbox" href="../_attachments/setup-3b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-3b.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="3">
-<li>You will receive an ITZ email confirming that the instance is provisioning.</li>
+<li>
+<p>You will receive an ITZ email confirming that the instance is provisioning.</p>
+<div class="admonition note">
+<p class="admonition-title">PROVISIONING TIMES</p>
+<p>Reservations take approximately <strong>30 to 60 minutes</strong> to complete from the time that you click submit. If you navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ, you can monitor the progress of the reservation. Wait for the ITZ reservation to be marked as "<em>Ready</em>" before attempting to start the lab — accessing it too soon will lead to issues (or an outright failure) when connecting to the OpenShift cluster.</p>
+</div>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>You will receive a second email once the environment is provisioned and the reservation status will now show as <em>Ready</em>. Click on <strong>Reservation ID</strong> to open the details page for the new OCP environment.</li>
+</ol>
+<hr />
+<ol start="5">
+<li>Save for reference the <em>Cluster Admin Username</em><sup>[A]</sup>, <em>Cluster Admin Password</em><sup>[B]</sup>, and <em>OCP Console</em><sup>[C]</sup> link.</li>
+</ol>
+<hr />
+<h2 id="22-accessing-the-ocp-cluster">2.2 Accessing the OCP cluster</h2>
+<ol>
+<li>And</li>
 </ol>
 
 
