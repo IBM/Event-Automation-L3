@@ -488,7 +488,7 @@ Configure the following <strong>fields</strong> in the reservation template to t
 </ol>
 <hr />
 <h2 id="22-accessing-the-ocp-cluster">2.2 Accessing the OCP cluster</h2>
-<p>In this section, you will access your OpenShift cluster and install the OpenShift command line tool (CLI).</p>
+<p>In this section, access the OpenShift cluster and install the OpenShift command line tool (CLI).</p>
 <ol>
 <li>
 <p>In a web browser, open the OCP Console link and paste the <em>Cluster Admin Username</em><sup>[A]</sup> and <em>Password</em><sup>[B]</sup> from the previous step and click <strong>Log in</strong><sup>[C]</sup>.</p>
@@ -498,9 +498,10 @@ Configure the following <strong>fields</strong> in the reservation template to t
 <p><a class="glightbox" href="../_attachments/setup-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-6.png" width="400" /></a></p>
 </div>
 </li>
-<li>
-<p>Copy the login command to access the cluster by CLI. In the top right, click your username<sup>[A]</sup> and select <strong>Copy login command</strong><sup>[B]</sup>.</p>
-</li>
+</ol>
+<hr />
+<ol start="2">
+<li>Copy the login command to access the cluster by CLI. In the top right, click your username<sup>[A]</sup> and select <strong>Copy login command</strong><sup>[B]</sup>.</li>
 </ol>
 <hr />
 <ol start="3">
@@ -509,6 +510,79 @@ Configure the following <strong>fields</strong> in the reservation template to t
 <hr />
 <ol start="4">
 <li>Copy the <em>Log in with this token</em> command and paste into a Terminal window. Now you are ready for the Cloud Pak for Integration (CP4I) installation. </li>
+</ol>
+<hr />
+<h2 id="23-clone-repositories">2.3 Clone repositories</h2>
+<p>You will need to clone the demo repo to your workstation.</p>
+<ol>
+<li>
+<p>Open a terminal window and run the command below:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>gh repo clone github.ibm.com/joel-gomez/cp4i-demo
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Open the <code>cp4i-demo</code> folder:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span> cp4i-demo
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<h2 id="24-set-context">2.4 Set context</h2>
+<p>Based on where you have deployed your OCP cluster you will need to set up some environment variables to inform the installation script about your environment. </p>
+<ol>
+<li>
+<p>Define an environment variable to set the CP4I version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">export</span> <span class="nv">CP4I_VER</span><span class="o">=</span><span class="m">16</span>.1.0
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Set the OCP type based on the storage classes in your cluster. If using a ROKS cluster, use <code>export OCP_TYPE=ROKS</code> instead.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">export</span> <span class="nv">OCP_TYPE</span><span class="o">=</span>ODF
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Set <em>mailtap</em> credentials, substituting <code>&lt;my-mailtrap-user&gt;</code> and <code>&lt;my-mailtrap-pwd&gt;</code> with the variables you set during the <strong>1. Prerequisites</strong> section.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span> <span class="nv">MAILTRAP_USER</span><span class="o">=</span>&lt;my-mailtrap-user&gt; 
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">export</span> <span class="nv">MAILTRAP_PWD</span><span class="o">=</span>&lt;my-mailtrap-pwd&gt;
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>If you have provisioned your OCP cluster in Tech Zone you can use the following script to set the proper default storage class.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>scripts/99-odf-tkz-set-scs.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>Your cluster will also need access to pull the container software required to deploy the Cloud Pak. Your <em>Entitlement Key</em> is used to grant access. You can download your entitlement key from <a href="https://myibm.ibm.com/products-services/containerlibrary" target="_blank">My IBM</a>. Click <strong>Copy</strong>.</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>The IBM Entitled Registry contains software images for the capabilities in IBM Cloud Pak for Integration. To allow the Cloud Pak for Integration operators to automatically pull those software images, you must first obtain your entitlement key, then add your entitlement key in a pull secret. Replace <code>&lt;my-key&gt;</code> with your <em>IBM entitlement key</em> and then execute the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span> <span class="nv">ENT_KEY</span><span class="o">=</span>&lt;my-key&gt;
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Now, you need to define a <em>namespace</em> where you will deploy the different capabilities.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>scripts/02a-cp4i-ns-key-config.sh
+</code></pre></div>
+</li>
 </ol>
 <hr />
 
