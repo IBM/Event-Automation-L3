@@ -794,15 +794,14 @@ Configure the following <strong>fields</strong> in the reservation template to t
 <p>Run the following command to confirm the pod has been restarted.
 <div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>oc get pods -n tools <span class="p">|</span> grep eem-demo-mgr
 </code></pre></div></p>
-<p>Confirm you get the following response before proceeding to the next step:
-<br/>
-<code>eem-demo-mgr-ibm-eem-manager-0                    1/1     Running     0          51s</code></p>
-<p><br/>
-Now re-run the script and you should get the expected result.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>scripts/19a-eem-manager-inst-deploy.sh
+<p>Confirm you get the following response before proceeding to the next step.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>eem-demo-mgr-ibm-eem-manager-0                    <span class="m">1</span>/1     Running     <span class="m">0</span>          51s
+</code></pre></div></p>
+<p>Now re-run the script and you should get the expected result.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>scripts/19a-eem-manager-inst-deploy.sh
 </code></pre></div></p>
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>oc get eventendpointmanagement eem-demo-mgr -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>oc get eventendpointmanagement eem-demo-mgr -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div></p>
 <p>Wait a few minutes. You should expect a response of <code>Running</code>.</p>
 </li>
@@ -811,10 +810,10 @@ Now re-run the script and you should get the expected result.
 <ol start="5">
 <li>
 <p>Deploy the EEM Gateway instance.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>scripts/19b-eem-gateway-inst-deploy.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>scripts/19b-eem-gateway-inst-deploy.sh
 </code></pre></div>
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>oc get eventgateway eem-demo-gw -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>oc get eventgateway eem-demo-gw -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
 <p>You should expect a response of <code>Running</code>.</p>
 </li>
