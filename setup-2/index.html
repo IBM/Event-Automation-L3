@@ -696,6 +696,127 @@ Configure the following <strong>fields</strong> in the reservation template to t
 </ol>
 <hr />
 <h2 id="27-deploying-ibm-event-streams">2.7 Deploying IBM Event Streams</h2>
+<ol>
+<li>
+<p>Install the Event Streams Catalog Source.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/08-event-streams-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>oc get catalogsources ibm-eventstreams-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install the Event Streams Operator.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/05-event-streams-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment eventstreams-cluster-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span> 
+</code></pre></div>
+<p>You should expect a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Deploy the Event Streams instance.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>oc apply -f instances/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/<span class="si">${</span><span class="nv">OCP_TYPE</span><span class="si">}</span>/05-event-streams-instance.yaml
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>oc get eventstreams es-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<div class="admonition warning">
+<p>This will take few minutes, so be patient. At some point you may see errors — it is common to receive <code>FAILED</code> message in the first 15 minutes.</p>
+</div>
+<p>Wait approximately 15-30 minutes. You should expect a response of <code>Ready</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Create users.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>oc apply -f resources/02a-es-initial-config-jgr-users.yaml
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<h2 id="28-deploying-ibm-event-endpoint-management-eem">2.8 Deploying IBM Event Endpoint Management (EEM)</h2>
+<ol>
+<li>
+<p>Install the EEM Catalog Source.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/13-eem-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>oc get catalogsources ibm-eventendpointmanagement-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install the EEM Operator.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/09-eem-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-eem-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span> 
+</code></pre></div>
+<p>You should expect a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Set passwords via environment variables (replace with your passwords).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="nb">export</span> <span class="nv">EEM_ADMIN_PWD</span><span class="o">=</span>&lt;eem-admin-pwd&gt;
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="nb">export</span> <span class="nv">EEM_USER_PWD</span><span class="o">=</span>&lt;eem-user-pwd&gt; 
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Deploy EEM Manager instance:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>scripts/19a-eem-manager-inst-deploy.sh
+</code></pre></div>
+<div class="admonition warning">
+<p>The current version may introduce an issue and instead of a positive response at the end of the script you may get the following message: <code>Something is wrong!</code></p>
+<p>If that is the case, then run the following commands to fix the problem:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>oc <span class="nb">exec</span> -it -n tools eem-demo-mgr-ibm-eem-manager-0 -- rmdir /opt/storage/lost+found
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>oc delete pod -n tools eem-demo-mgr-ibm-eem-manager-0
+</code></pre></div>
+</div>
+<p>Run the following command to confirm the pod has been restarted.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>oc get pods -n tools <span class="p">|</span> grep eem-demo-mgr
+</code></pre></div></p>
+<p>Confirm you get the following response before proceeding to the next step.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>eem-demo-mgr-ibm-eem-manager-0                    <span class="m">1</span>/1     Running     <span class="m">0</span>          51s
+</code></pre></div></p>
+<p>Now re-run the script and you should get the expected result.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>scripts/19a-eem-manager-inst-deploy.sh
+</code></pre></div></p>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>oc get eventendpointmanagement eem-demo-mgr -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div></p>
+<p>Wait a few minutes. You should expect a response of <code>Running</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Deploy the EEM Gateway instance.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>scripts/19b-eem-gateway-inst-deploy.sh
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>oc get eventgateway eem-demo-gw -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>Running</code>.</p>
+</li>
+</ol>
+<hr />
 
 
 
