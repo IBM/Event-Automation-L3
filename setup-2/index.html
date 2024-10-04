@@ -488,9 +488,29 @@ Configure the following <strong>fields</strong> in the reservation template to t
 </ol>
 <hr />
 <h2 id="22-accessing-the-ocp-cluster">2.2 Accessing the OCP cluster</h2>
+<p>In this section, you will access your OpenShift cluster and install the OpenShift command line tool (CLI).</p>
 <ol>
-<li>And</li>
+<li>
+<p>In a web browser, open the OCP Console link and paste the <em>Cluster Admin Username</em><sup>[A]</sup> and <em>Password</em><sup>[B]</sup> from the previous step and click <strong>Log in</strong><sup>[C]</sup>.</p>
+<div class="admonition warning inline end">
+<p class="admonition-title">THIS CONNECTION IS NOT PRIVATE<p>Depending on your web browser, you may receive a warning about <code>This connection is not private</code> or a similarly phrased message. Disregard these warnings and continue to the intended destination by clicking <em>"visit this website."</em></p>
+</p>
+<p><a class="glightbox" href="../_attachments/setup-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-6.png" width="400" /></a></p>
+</div>
+</li>
+<li>
+<p>Copy the login command to access the cluster by CLI. In the top right, click your username<sup>[A]</sup> and select <strong>Copy login command</strong><sup>[B]</sup>.</p>
+</li>
 </ol>
+<hr />
+<ol start="3">
+<li>Click <strong>Display Token</strong>.</li>
+</ol>
+<hr />
+<ol start="4">
+<li>Copy the <em>Log in with this token</em> command and paste into a Terminal window. Now you are ready for the Cloud Pak for Integration (CP4I) installation. </li>
+</ol>
+<hr />
 
 
 
