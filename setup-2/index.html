@@ -571,7 +571,7 @@ Configure the following <strong>fields</strong> in the reservation template to t
 <hr />
 <ol start="6">
 <li>
-<p>The IBM Entitled Registry contains software images for the capabilities in IBM Cloud Pak for Integration. To allow the Cloud Pak for Integration operators to automatically pull those software images, you must first obtain your entitlement key, then add your entitlement key in a pull secret. Replace <code>&lt;my-key&gt;</code> with your <em>IBM entitlement key</em> and then execute the following:</p>
+<p>The IBM Entitled Registry contains software images for the capabilities in IBM Cloud Pak for Integration. To allow the Cloud Pak for Integration operators to automatically pull those software images, you must first obtain your entitlement key, then add your entitlement key in a pull secret. Replace <code>&lt;my-key&gt;</code> with your <em>IBM entitlement key</em> and then execute:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span> <span class="nv">ENT_KEY</span><span class="o">=</span>&lt;my-key&gt;
 </code></pre></div>
 </li>
@@ -585,6 +585,117 @@ Configure the following <strong>fields</strong> in the reservation template to t
 </li>
 </ol>
 <hr />
+<h2 id="25-install-foundational-services">2.5 Install foundational services</h2>
+<p>The IBM Cloud Pak foundational services operator is no longer installed automatically. Install this operator manually if you need to create an instance that uses identity and access management (IAM). The following steps will walk you through this process.</p>
+<ol>
+<li>
+<p>First you need a <strong>certificate manager</strong>, otherwise the IBM Cloud Pak foundational services operator installation will not complete.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>oc apply -f resources/00-cert-manager-namespace.yaml
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>oc apply -f resources/00-cert-manager-operatorgroup.yaml
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>oc apply -f resources/00-cert-manager-subscription.yaml
+</code></pre></div>
+<p>Confirm the subscription has been completed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment cert-manager-operator-controller-manager -n cert-manager-operator --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> -n cert-manager-operator --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install the <strong>Postgress SQL Catalog source</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/01-postgress-sql-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>oc get catalogsources cloud-native-postgresql-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Install the <strong>Common Services Catalog source</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/02-common-services-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>oc get catalogsources opencloud-operators -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Create the <strong>Common Services namespace</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>oc new-project ibm-common-services
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Install the <strong>Foundational Services operator</strong> (former Common Services).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/00-common-service-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment/ibm-common-service-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="26-deploy-the-platform-ui">2.6 Deploy the Platform UI</h2>
+<p>Deploying the Platform UI allows you to deploy and manage instances from a central location.</p>
+<ol>
+<li>
+<p>Install the <strong>Platform UI Catalog</strong> source.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/03-platform-navigator-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>oc get catalogsources ibm-integration-platform-navigator-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install the <strong>Platform UI Operator</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/01-platform-navigator-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-integration-platform-navigator-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Deploy a <strong>Platform UI instance</strong>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>oc apply -f instances/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/common/01-platform-navigator-instance.yaml
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>oc get platformnavigator cp4i-navigator -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.conditions[0].type}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Once the Platform UI instance is up and running, retrieve the access information by executing the following script:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>scripts/03b-cp4i-access-info.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>Open the Platform UI URL with a web browser and log in. Note the password is temporary and you will be required to change it. Take note of your new password, as you will use it multiple times throughout the lab.</li>
+</ol>
+<hr />
+<h2 id="27-deploying-ibm-event-streams">2.7 Deploying IBM Event Streams</h2>
 
 
 
