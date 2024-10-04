@@ -17,7 +17,7 @@
     
     
       
-        <title>Evaluation - IBM Event Automation for Technical Sales Level 3</title>
+        <title>/ - IBM Event Automation for Technical Sales Level 3</title>
       
     
     
@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#evaluation-criteria-for-ibm-technical-sellers-and-business-partners" class="md-skip">
+        <a href="#prerequisites-and-setup" class="md-skip">
           Skip to content
         </a>
       
@@ -106,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Evaluation
+              /
             
           </span>
         </div>
@@ -220,21 +220,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../evaluation/" class="md-nav__link">
         Evaluation
       </a>
-      
     </li>
   
 
@@ -305,11 +295,21 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../setup-2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         /
       </a>
+      
     </li>
   
 
@@ -346,75 +346,47 @@
                 
 
 
-<h1 id="evaluation-criteria-for-ibm-technical-sellers-and-business-partners">Evaluation Criteria for IBM Technical Sellers and Business Partners</h1>
+<h1 id="prerequisites-and-setup">Prerequisites and Setup</h1>
 <hr />
-<p>To receive a Level 3 badge (<strong>IBM Event Automation for Technical Sales Intermediate</strong>), IBMers and Business Partners must demonstrate mastery of the skills learned throughout the various modules of these hands-on labs and coursework. Level 3 skills requirements— and the way participants will be evaluated —differs depending on job role.</p>
 <div class="admonition note">
-<p class="admonition-title">IBM TECHNICAL SELLERS<p>IBM technical sellers must develop and record a <strong>Stand &amp; Deliver</strong> presentation, which will be uploaded to the IBM Stand &amp; Deliver platform for evaluation. This video is intended to simulate your delivery of a “live” demo in front of a client — on camera.</p>
-<p>IBMers will have flexibility in defining a hypothetical client, the pain points that customer has, and the goals they aspire to. The recording will then cover the seller’s hands-on demonstration and pitch to the client of the value of the IBM solution using the environments and techniques of this lab.</p>
-</p>
+<p class="admonition-title">SETUP TIME ESTIMATES</p>
+<p>The following section will take approximately <strong>3 to 4 hours</strong> to complete: roughly 30 to 60 minutes for provisioning of the Red Hat OpenShift (OCP) cluster from IBM Technology Zone (ITZ); and an estimated 3 hours of time to manually install and deploy IBM Event Automation (and IBM Cloud Pak for Integration) on to the OCP cluster. Budget your time accordingly.</p>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">BUSINESS PARTNERS<p>Business partners must pass a <strong>skills evaluation quiz</strong> after completing the hands-on portion of the course. The quiz consists of multiple choice questions, with four possible responses (and only one correct answer) for each question. Participants must pass the quiz with a grade of 80% or higher.</p>
-<p>The quiz questions will ask you about on-screen text or descriptions that come up as you work through the lab guide. Answers to quiz questions can only be determined by carefully following the instructions of the hands-on lab.</p>
-</p>
-</div>
-<p>Take note that any materials marked as <code>OPTIONAL</code> are <strong>not</strong> evaluated for Level 3 badges.</p>
+<div class="admonition warning">
+<p class="admonition-title">SUPPORT AND TROUBLESHOOTING</p>
+<p>If you require assistance or run into issues with the hands-on lab, help is available.</p>
 <ul>
 <li>
-<p>IBM technical sellers are <em>not</em> required to include optional sections in their Stand &amp; Deliver</p>
+<p><strong>Environment issues</strong>: The lab environment is managed by IBM Technology Zone. <a href="https://techzone.ibm.com/help" target="_blank">Opening a support case ticket</a> is recommended for issues related to the hands-on environment (provisioning, running, and so on.)</p>
 </li>
 <li>
-<p>Business partners are <em>not</em> tested on the contents of optional sections</p>
+<p><strong>Documentation issues</strong>: If there is an error in the lab documentation, or if you require additional support in completing the material, open a thread on the <a href="https://ibm.enterprise.slack.com/archives/C06NY5ZGXPY" target="_blank">#l3-support-app-modernization</a> Slack channel.</p>
 </li>
 </ul>
+</div>
+<p><br/>
+<a class="glightbox" href="../_attachments/introduction-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/introduction-2.png" /></a></p>
+<hr />
+<p>The hands-on material covered within this lab will focus on <em>event-led integration</em> solutions, specifically the <strong>IBM Event Automation</strong> suite — as well as elements of the <strong>IBM Cloud Pak for Integration</strong> (MQ-Kafka connector.)</p>
+<p>IBM Event Automation provides an open, composable set of capabilities that interoperate with the services and tools that are already part of many enterprise IT departments. A fundamental component to IBM Event Automation's architecture is composability, which will be highlighted through the lab as you incrementally add more capabilities and elements to the demo environment.</p>
+<ul>
+<li>
+<p><strong>Event Endpoint Management</strong>: facilitates secured exposure of event streams and unite all event streams (including MQ and Kafka) into a single, comprehensive view. Focus' marketing department can discover, subscribe to, and generate security credentials for colleagues using the self-service catalog.  Manual processes will be automated and onboarding of users can be expedited.</p>
+</li>
+<li>
+<p><strong>Event Processing</strong>: a no-code editor for allowing developers (of any skill level) to construct processing flows, detect situations across multiple events inside a configurable time-window, and validate flow behavior prior to deploying into production (using historical data.)</p>
+</li>
+<li>
+<p><strong>Event Streams</strong> + <strong>Kafka-MQ connector</strong>: part of the <em>IBM Cloud Pak for Integration</em> suite, this connector allows <em>IBM MQ</em> messages to be published into a Kafka-compatible event stream. It provides assurances that all MQ messages are delivered once-and-only-once, without requiring complex or custom code.</p>
+</li>
+</ul>
+<p>Environment templates (images) have been defined ahead of time with the assistance of <strong>IBM Technology Zone</strong> (ITZ), which can be reserved for learning and client demonstration purposes at no-charge. Some further configuration of these environments will be required after deployment.</p>
 <hr />
 <h1 id="_1"></h1>
-<h1 id="ibmer-stand-deliver-assessment"><strong>IBMer</strong> Stand &amp; Deliver Assessment</h1>
-<div class="admonition warning">
-<p class="admonition-title">IBMers — SUBMIT RECORDINGS HERE<p>Submit your Stand &amp; Deliver recording online using IBM YourLearning:</p>
-<p><a href="https://yourlearning.ibm.com/activity/ISND-SALESENABLEMENT-2403071100" target="_blank">https://yourlearning.ibm.com/activity/ISND-SALESENABLEMENT-2403071100</a></p>
-</p>
-</div>
-<p>The evaluation criteria described below <strong>only applies to IBMers</strong>, who must record a Stand &amp; Deliver to receive credit for this Level 3 course. By default, IBMers will be evaluated by their First Line Manager (FLM) — although they may request another manager to evaluate their Stand &amp; Deliver, if appropriate. Instructions on how to submit a Stand &amp; Deliver are included within the activity on YourLearning.</p>
-<p>IBM Technical Sellers need to include <strong>all</strong> seven of the following elements in their Stand &amp; Deliver recording to receive a Level 3 badge. FLMs are to use these requirements as part of their evaluation criteria.</p>
-<ol>
-<li>
-<p>Seller articulated their client's pain point(s) and the value proposition of using <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em>.</p>
-</li>
-<li>
-<p>Seller highlighted use cases for <em>IBM Event Automation</em>. It is recommended that sellers address the challenges of real-time access for meeting client demands — and how event-led integration solutions from IBM can overcome these obstacles.</p>
-</li>
-<li>
-<p>Seller must demonstrate how to take existing IBM MQ message queues and publish those as Kafka-based event streams using <em>IBM Cloud Pak for Integration</em> and <em>IBM Event Streams</em>.</p>
-</li>
-<li>
-<p>Seller must utilize <em>IBM Event Endpoint Management</em> to import the newly-created event streams topics and show how the service provides a self-service catalog for managing those topics.</p>
-</li>
-<li>
-<p>Seller must show how <em>IBM Event Processing</em> can correlate any newly-created customer accounts with first-time purchase orders that total over $100 USD in value. They should include in this demonstration an explanation about how to define event sources, destinations, filters, and <code>JOIN</code> interval operations using the no-code authoring canvas.</p>
-</li>
-<li>
-<p>Seller must connect historical data to the <code>LOYALTY.APP</code> application endpoint to validate the end-to-end configurations made so far and simulate how "live" event data is being processed by the IBM Event Automation suite. Sellers should use the <code>Run &gt; Include Historical</code> test execution inside <em>IBM Event Processing</em> to demonstrate this.</p>
-</li>
-<li>
-<p>Seller closed the demonstration with a call to action for their client that could include: a workshop, a deeper dive into the product meeting, or Proof of Experience (PoX) engagement.</p>
-</li>
-</ol>
+<h1 id="request-an-ibm-technology-zone-environment">Request an IBM Technology Zone Environment</h1>
+<p>You will require access to the ITZ in order to reserve your environment and complete the lab. If you do not yet have access or an account with the ITZ, <a href="https://techzone.ibm.com/" target="_blank">you will need to register for one</a>.</p>
+<p>The hands-on environment— a combination of services from <em>IBM Cloud Pak for Integration</em> (CPI) and <em>IBM Event Automation</em> (EA) —will be running entirely atop of <strong>Red Hat OpenShift</strong>, which will orchestrate containerized deployments of CPI and EA across the OpenShift cluster.</p>
 <hr />
-<h1 id="_2"></h1>
-<h1 id="business-partner-quiz-assessment"><strong>Business Partner</strong> Quiz Assessment</h1>
-<div class="admonition warning">
-<p class="admonition-title">PARTNERS — COMPLETE ASSESSMENT HERE<p>Complete your assessment online using IBM Training:</p>
-<p><a href="https://learn.ibm.com/course/view.php?id=16334" target="_blank">https://learn.ibm.com/course/view.php?id=16334</a></p>
-</p>
-</div>
-<p>The skills evaluation quiz consists of multiple choice questions, with four possible responses (and only one correct answer) for each question. The quiz questions will ask you about on-screen text or descriptions that come up as you work through the lab guide. Participants must pass the quiz with a grade of 80% or higher.</p>
-<p>Answers to the quiz can only be determined by carefully following the instructions of the hands-on lab. Sections of the lab marked as <code>OPTIONAL</code> will <strong>not</strong> be tested on as part of the quiz.</p>
-<hr />
-<h1 id="_3"></h1>
-<h1 id="next-steps">Next Steps</h1>
-<p>In the following module, you will create an event stream from a message queue using <em>IBM MQ</em>.</p>
 
 
 
@@ -433,7 +405,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../setup/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Setup" rel="prev">
+        <a href="../4/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 4. Connecting real-time events to a promotional marketing app" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -442,26 +414,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Setup
+              4. Connecting real-time events to a promotional marketing app
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../1/" class="md-footer__link md-footer__link--next" aria-label="Next: 1. Creating an event stream from MQ data using Event Streams" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              1. Creating an event stream from MQ data using Event Streams
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
