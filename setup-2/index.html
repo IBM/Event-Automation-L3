@@ -729,6 +729,7 @@ Configure the following <strong>fields</strong> in the reservation template to t
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>oc get eventstreams es-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
 <div class="admonition warning">
+<p class="admonition-title">TROUBLESHOOTING</p>
 <p>This will take few minutes, so be patient. At some point you may see errors — it is common to receive <code>FAILED</code> message in the first 15 minutes.</p>
 </div>
 <p>Wait approximately 15-30 minutes. You should expect a response of <code>Ready</code>.</p>
@@ -783,6 +784,7 @@ Configure the following <strong>fields</strong> in the reservation template to t
 <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>scripts/19a-eem-manager-inst-deploy.sh
 </code></pre></div>
 <div class="admonition warning">
+<p class="admonition-title">TROUBLESHOOTING</p>
 <p>The current version may introduce an issue and instead of a positive response at the end of the script you may get the following message: <code>Something is wrong!</code></p>
 <p>If that is the case, then run the following commands to fix the problem:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>oc <span class="nb">exec</span> -it -n tools eem-demo-mgr-ibm-eem-manager-0 -- rmdir /opt/storage/lost+found
