@@ -255,8 +255,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploying-the-openshift-container-platform-ocp-cluster" class="md-nav__link">
-    Deploying the OpenShift Container Platform (OCP) cluster
+  <a href="#deploying-the-ocp-cluster" class="md-nav__link">
+    Deploying the OCP cluster
   </a>
   
 </li>
@@ -304,29 +304,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploying-ibm-event-endpoint-management-eem" class="md-nav__link">
-    Deploying IBM Event Endpoint Management (EEM)
+  <a href="#deploying-ibm-event-endpoint-management" class="md-nav__link">
+    Deploying IBM Event Endpoint Management
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploying-the-enterprise-messaging-mq-service" class="md-nav__link">
-    Deploying the Enterprise Messaging (MQ) service
+  <a href="#deploying-the-enterprise-messaging-service" class="md-nav__link">
+    Deploying the Enterprise Messaging service
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploying-the-event-processing-ep-service" class="md-nav__link">
-    Deploying the Event Processing (EP) service
+  <a href="#deploying-the-event-processing-service" class="md-nav__link">
+    Deploying the Event Processing service
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploying-demo-helper-scripts" class="md-nav__link">
-    Deploying demo "helper" scripts
+  <a href="#launching-support-scripts" class="md-nav__link">
+    Launching support scripts
   </a>
   
 </li>
@@ -462,8 +462,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploying-the-openshift-container-platform-ocp-cluster" class="md-nav__link">
-    Deploying the OpenShift Container Platform (OCP) cluster
+  <a href="#deploying-the-ocp-cluster" class="md-nav__link">
+    Deploying the OCP cluster
   </a>
   
 </li>
@@ -511,29 +511,29 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploying-ibm-event-endpoint-management-eem" class="md-nav__link">
-    Deploying IBM Event Endpoint Management (EEM)
+  <a href="#deploying-ibm-event-endpoint-management" class="md-nav__link">
+    Deploying IBM Event Endpoint Management
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploying-the-enterprise-messaging-mq-service" class="md-nav__link">
-    Deploying the Enterprise Messaging (MQ) service
+  <a href="#deploying-the-enterprise-messaging-service" class="md-nav__link">
+    Deploying the Enterprise Messaging service
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploying-the-event-processing-ep-service" class="md-nav__link">
-    Deploying the Event Processing (EP) service
+  <a href="#deploying-the-event-processing-service" class="md-nav__link">
+    Deploying the Event Processing service
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#deploying-demo-helper-scripts" class="md-nav__link">
-    Deploying demo "helper" scripts
+  <a href="#launching-support-scripts" class="md-nav__link">
+    Launching support scripts
   </a>
   
 </li>
@@ -620,7 +620,7 @@
 <p>The hands-on environment— a combination of services from <em>IBM Cloud Pak for Integration</em> (CP4I) and <em>IBM Event Automation</em> (EA) —will be running entirely atop of <strong>Red Hat OpenShift</strong>, which will orchestrate containerized deployments of CPI and EA across the OpenShift cluster.</p>
 <p>If you require more details about the CP4I installation process, please check the <a href="https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=installing-overview-installation" target="_blank">product documentation</a>.</p>
 <hr />
-<h2 id="deploying-the-openshift-container-platform-ocp-cluster"><strong>Deploying the OpenShift Container Platform (OCP) cluster</strong></h2>
+<h2 id="deploying-the-ocp-cluster"><strong>Deploying the OCP cluster</strong></h2>
 <ol>
 <li>
 <p>Reserve a Red Hat OpenShift cluster via the <strong>IBM Technology Zone</strong> pre-defined template.</p>
@@ -996,10 +996,10 @@ Configure the following <strong>fields</strong> in the reservation template to t
 </li>
 </ol>
 <hr />
-<h2 id="deploying-ibm-event-endpoint-management-eem"><strong>Deploying IBM Event Endpoint Management (EEM)</strong></h2>
+<h2 id="deploying-ibm-event-endpoint-management"><strong>Deploying IBM Event Endpoint Management</strong></h2>
 <ol>
 <li>
-<p>Install the EEM Catalog Source.</p>
+<p>Install the IBM Event Endpoint Management (EEM) Catalog Source.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/13-eem-catalog-source.yaml
 </code></pre></div>
 <p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
@@ -1109,10 +1109,10 @@ Configure the following <strong>fields</strong> in the reservation template to t
 </li>
 </ol>
 <hr />
-<h2 id="deploying-the-enterprise-messaging-mq-service"><strong>Deploying the Enterprise Messaging (MQ) service</strong></h2>
+<h2 id="deploying-the-enterprise-messaging-service"><strong>Deploying the Enterprise Messaging service</strong></h2>
 <ol>
 <li>
-<p>Install the MQ Catalog Source.</p>
+<p>Install the nterprise Messaging (MQ) Catalog Source.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/09-mq-catalog-source.yaml 
 </code></pre></div>
 <p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
@@ -1194,7 +1194,7 @@ Configure the following <strong>fields</strong> in the reservation template to t
 </li>
 </ol>
 <hr />
-<h2 id="deploying-the-event-processing-ep-service"><strong>Deploying the Event Processing (EP) service</strong></h2>
+<h2 id="deploying-the-event-processing-service"><strong>Deploying the Event Processing service</strong></h2>
 <ol>
 <li>
 <p>Install Apache Flink Catalog Source.</p>
@@ -1241,7 +1241,7 @@ Configure the following <strong>fields</strong> in the reservation template to t
 <hr />
 <ol start="5">
 <li>
-<p>Install the Event Processing Catalog Source.</p>
+<p>Install the Event Processing (EP) Catalog Source.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/15-event-processing-catalog-source.yaml
 </code></pre></div>
 <p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
@@ -1323,7 +1323,7 @@ Configure the following <strong>fields</strong> in the reservation template to t
 </li>
 </ol>
 <hr />
-<h2 id="deploying-demo-helper-scripts"><strong>Deploying demo "helper" scripts</strong></h2>
+<h2 id="launching-support-scripts"><strong>Launching support scripts</strong></h2>
 <p>Additional supporting services are needed to generate results and data for the hands-on lab experience.</p>
 <ol>
 <li>
