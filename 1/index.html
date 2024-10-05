@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#creating-an-event-stream-from-an-ibm-mq-message-queue" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -346,8 +346,8 @@
                 
 
 
-<h1 id="creating-an-event-stream-from-an-ibm-mq-message-queue">Creating an event stream from an IBM MQ message queue</h1>
-<hr />
+<h1 id="_1"></h1>
+<h1 id="1-creating-an-event-stream-from-an-ibm-mq-message-queue"><strong>1. Creating an event stream from an IBM MQ message queue</strong></h1>
 <p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="../_videos/module1.mp4" type="video/mp4" /></video></div></p>
 <div class="admonition quote">
 <p>Christopher Bienko <em>(Principal, Learning Content Development, IBM Application Modernization)</em> provides a hands-on demonstration of Module 1's contents.</p>
@@ -357,16 +357,19 @@
 <p>To take advantage of the message queue data available from IBM MQ, Focus Corporation's integration team will need to make IBM MQ's enterprise data available to a broader set of APIs. This will allow Focus' application developers to subscribe to the data without any risk or impact to the core back-end systems that support the data. Risks will be lowered and the application development process can be decoupled from data retention processes.</p>
 <p>To do so, Focus' integration team will need to expose the IBM MQ enterprise data using "event streams." Specifically, the integration team (and application developers) will need access to the customer order information contained within these streams. This data will be vital for the marketing team's plans to offer high value promotions for newly-acquired customers in a timely manner.</p>
 <hr />
-<h1 id="_1"></h1>
-<h1 id="configuring-ibm-mq-to-clone-customer-order-data">Configuring IBM MQ to clone customer order data</h1>
+<h2 id="11-configuring-ibm-mq-to-clone-customer-order-data">**1.1 Configuring IBM MQ to clone customer order data</h2>
 <p>Both the order management system and its payment gateway system are currently using IBM MQ message queues for exchanging customer order data. The integration team will need to tap into this message exchange, clone each of the orders being handled across IBM MQ, and then publish those messages into a new event stream.</p>
 <hr />
 <ol>
 <li>
-<p>Open the <strong>IBM MQ</strong> dashboard with a web browser.</p>
-<p>From the left-hand side interface, drill down into the <strong>Manage</strong><sup>[A]</sup> tab.</p>
+<p>Open the <strong>IBM Cloud Pak for Integration Platform Navigator</strong> dashboard with a web browser.</p>
+<ul>
+<li>From the home page, open the <strong>Orders</strong> queue manager</li>
+<li>From the left-hand side interface, drill down into the <strong>Manage</strong><sup>[A]</sup> tab</li>
+</ul>
 <p><br/>
-<a class="glightbox" href="../_attachments/1-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-1.png" width="400" /></a></p>
+<a class="glightbox" href="../_attachments/module1.1-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.1-1.png" width="600" /></a>
+<a class="glightbox" href="../_attachments/1-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-1.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
@@ -481,8 +484,7 @@
 <li>Take note of the customer order messages that are now populating the <code>TO.KAFKA</code> message queue table. You can click the circular refresh icon (to the left of the blue <em>Create</em> button) to reload the queue contents.</li>
 </ol>
 <hr />
-<h1 id="_2"></h1>
-<h1 id="cloning-order-queues-with-ibm-event-streams">Cloning order queues with IBM Event Streams</h1>
+<h2 id="12-cloning-order-queues-with-ibm-event-streams"><strong>1.2 Cloning order queues with IBM Event Streams</strong></h2>
 <p>Focus Corporation's integration team will now need to create an event stream called <code>Orders</code> using <em>IBM Event Streams</em>. This will serve as the repository where messages, cloned from IBM MQ, are published and made available to other parts of the organization.</p>
 <p>The integration team will need to make decisions about how to replicate the data (with or without modification) and also determine the appropriate retention settings for this data. Given the governance policies in place at Focus Corporation, they will need to retain data for up to 1 week and replicate entries for high availability.</p>
 <div class="admonition note">
@@ -536,8 +538,7 @@
 </li>
 </ol>
 <hr />
-<h1 id="_3"></h1>
-<h1 id="configuring-a-message-bridge-between-ibm-mq-and-ibm-event-streams">Configuring a message bridge between IBM MQ and IBM Event Streams</h1>
+<h2 id="13-configuring-a-message-bridge-between-ibm-mq-and-ibm-event-streams"><strong>1.3 Configuring a message bridge between IBM MQ and IBM Event Streams</strong></h2>
 <p>Using the Apache Kafka connector framework, Focus Corporation's integration team will now need to configure an "event bridge" using Red Hat OpenShift. The task can be performed programmatically via the OpenShift console. The bridge configuration will include connectivity details for accessing both IBM MQ and IBM Event Streams.</p>
 <p>Once configured and deployed, the bridge will utilize the Apache Kafka connector framework to read messages from the <code>TO.KAFKA</code> <em>message queue</em> and then publish those to the newly-created <code>Orders</code> <em>event stream</em>.</p>
 <hr />
@@ -606,14 +607,72 @@
 <li>Note that you can inspect details about the <code>quantity</code>, <code>price</code>, <code>customerid</code>, <code>description</code>, <code>id</code>, <code>region</code>, <code>ordertime</code>, and <code>customer</code></li>
 </ul>
 <p><br/>
-<a class="glightbox" href="../_attachments/1-22.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-22.png" width="600" /></a></p>
-</li>
-</ol>
+<a class="glightbox" href="../_attachments/module1.3-22.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.3-22.png" width="600" /></a></p>
 <p><br/>
 These fields will be valuable later for the marketing team as they look to perform outreach on customers meeting certain criteria.</p>
+</li>
+</ol>
 <hr />
-<h1 id="_4"></h1>
-<h1 id="next-steps">Next Steps</h1>
+<ol start="23">
+<li>
+<p>Switch back to the <strong>IBM Event Streams</strong> dashboard<sup>[A]</sup> and click <strong>Connect to this cluster</strong><sup>[B]</sup>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/module1.3-23.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.3-23.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="24">
+<li>
+<p>Details about your Kafka cluster, including the URL are authentication details, are summarized on this page.</p>
+<ul>
+<li>Open the <strong>Internal</strong> tab<sup>[A]</sup></li>
+<li>Record the <code>Kafka SCRAM URL</code> to a notepad for reference later<sup>[B]</sup></li>
+<li>Click <strong>Generate SCRAM credentials</strong><sup>[C]</sup></li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/module1.3-24.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.3-24.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="25">
+<li>
+<p>To connect securely to IBM Event Streams, your application needs credentials with permissions set appropriately for accessing cluster resources (such as Topics).</p>
+<ul>
+<li><em>Credential name</em><sup>[A]</sup> should be set to <code>es-demo</code></li>
+<li><em>What do you want your application to do?</em><sup>[B]</sup> set to <code>Produce messages, consume messages and create topics and schemas</code></li>
+<li><strong>Next</strong> <sup>[C]</sup> to continue</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/module1.3-25.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.3-25.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="26">
+<li>Select <em>All Topics</em> and click <strong>Next</strong>.</li>
+</ol>
+<hr />
+<ol start="27">
+<li>Select <em>All consumer groups</em> and click <strong>Next</strong>.</li>
+</ol>
+<hr />
+<ol start="28">
+<li>
+<p>Select <em>No transactional IDs</em><sup>[A]</sup> and click <strong>Generate credentials</strong><sup>[B]</sup> to continue.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/module1.3-28.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.3-28.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="29">
+<li>
+<p>Record the <code>SCRAM username</code><sup>[A]</sup> and <code>SCRAM password</code><sup>[B]</sup> values to a notepad for future reference.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/module1.3-29.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.3-29.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h1 id="_2"></h1>
+<h1 id="next-steps"><strong>Next steps</strong></h1>
 <p>In the following module, the integration team will use <em>IBM Event Endpoint Management</em> to import the event stream data and curate a self-service catalog for the marketing department.</p>
 
 

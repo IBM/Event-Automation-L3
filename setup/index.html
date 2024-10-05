@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#prerequisites-and-setup" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -346,13 +346,19 @@
                 
 
 
-<h1 id="prerequisites-and-setup">Prerequisites and Setup</h1>
-<hr />
-<div class="admonition note">
-<p class="admonition-title">SETUP TIME ESTIMATES</p>
-<p>The following section will take approximately <strong>90-120 minutes</strong> to complete. Much of the setup work is fully automated and will allow you to perform other tasks or errands while it is underway. Budget your time accordingly.</p>
-</div>
 <div class="admonition warning">
+<p class="admonition-title">TIME ESTIMATES FOR SETUP</p>
+<p>The following section will take approximately <strong>3 to 4 hours</strong> to complete. Budget your time accordingly.</p>
+<ul>
+<li>
+<p>Roughly 30 to 60 minutes for provisioning of the Red Hat OpenShift (OCP) cluster from IBM Technology Zone</p>
+</li>
+<li>
+<p>An estimated 3 hours of time to manually install and deploy IBM Event Automation (and IBM Cloud Pak for Integration) on to the OCP cluster</p>
+</li>
+</ul>
+</div>
+<div class="admonition note">
 <p class="admonition-title">SUPPORT AND TROUBLESHOOTING</p>
 <p>If you require assistance or run into issues with the hands-on lab, help is available.</p>
 <ul>
@@ -367,7 +373,7 @@
 <p><br/>
 <a class="glightbox" href="../_attachments/introduction-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/introduction-2.png" /></a></p>
 <hr />
-<p>The hands-on material covered within this lab will focus on <em>event-led integration</em> solutions, specifically the <strong>IBM Event Automation</strong> suite — as well as elements of the <strong>IBM Cloud Pak for Integration</strong> (MQ-Kafka connector.)</p>
+<p>The hands-on material covered within this lab will focus on <em>event-led integration</em> solutions, specifically the <strong>IBM Event Automation</strong> (EA) suite — as well as elements of the <strong>IBM Cloud Pak for Integration</strong> (CP4I) MQ-Kafka connector.</p>
 <p>IBM Event Automation provides an open, composable set of capabilities that interoperate with the services and tools that are already part of many enterprise IT departments. A fundamental component to IBM Event Automation's architecture is composability, which will be highlighted through the lab as you incrementally add more capabilities and elements to the demo environment.</p>
 <ul>
 <li>
@@ -383,271 +389,787 @@
 <p>Environment templates (images) have been defined ahead of time with the assistance of <strong>IBM Technology Zone</strong> (ITZ), which can be reserved for learning and client demonstration purposes at no-charge. Some further configuration of these environments will be required after deployment.</p>
 <hr />
 <h1 id="_1"></h1>
-<h1 id="request-an-ibm-technology-zone-environment">Request an IBM Technology Zone Environment</h1>
-<p>You will require access to the ITZ in order to reserve your environment and complete the lab. If you do not yet have access or an account with the ITZ, <a href="https://techzone.ibm.com/" target="_blank">you will need to register for one</a>.</p>
-<p>The hands-on environment— a combination of services from <em>IBM Cloud Pak for Integration</em> (CPI) and <em>IBM Event Automation</em> (EA) —will be running entirely atop of <strong>Red Hat OpenShift</strong>, which will orchestrate containerized deployments of CPI and EA across the OpenShift cluster.</p>
+<h1 id="1-prerequisites"><strong>1. Prerequisites</strong></h1>
+<p>This product is being developed and continuously updated in an agile manner. In addition to adding new capabilities, upgrades to the product are likely to result in changes to the user interface over time. As such, the screenshots used in this lab may not always look exactly like what you see in the latest version of product. These differences should not affect how the lab is executed, and the authoring team will do their best to keep things up to date, but be aware that screenshots or steps may differ slightly with your environment.</p>
+<p>Before reserving an environment with ITZ, first ensure that <strong>all</strong> of the following services and frameworks are available on your local machine. These will be needed to begin deployment and installation of the EA and CP4I suite on top of the OCP cluster.</p>
+<ul>
+<li><a href="https://docs.redhat.com/en/documentation/red_hat_build_of_microshift/4.14/html/cli_tools/microshift-oc-cli-install#cli-installing-cli_cli-oc-installing" target="_blank">oc CLI v4.6+</a></li>
+<li><a href="https://cli.github.com/" target="_blank">GitHub CLI</a></li>
+<li><a href="https://www.oracle.com/br/java/technologies/downloads/" target="_blank">Java v8+</a></li>
+<li><a href="https://www.misterpki.com/install-keytool/" target="_blank">keytool</a></li>
+<li><a href="https://github.com/openssl/openssl" target="_blank">openssl</a></li>
+<li><a href="https://mailtrap.io/" target="_blank">mailtrap</a></li>
+</ul>
+<p>Instructions and resources for prerequisites setup are provided in each of the hyperlinks.</p>
 <hr />
+<h1 id="_2"></h1>
+<h1 id="2-deploying-the-lab-environment"><strong>2. Deploying the lab environment</strong></h1>
+<p>You will require access to the ITZ in order to reserve your environment and complete the lab. If you do not yet have access or an account with the ITZ, <a href="https://techzone.ibm.com/" target="_blank">you will need to register for one</a>.</p>
+<p>The hands-on environment— a combination of services from <em>IBM Cloud Pak for Integration</em> (CP4I) and <em>IBM Event Automation</em> (EA) —will be running entirely atop of <strong>Red Hat OpenShift</strong>, which will orchestrate containerized deployments of CPI and EA across the OpenShift cluster.</p>
+<p>If you require more details about the CP4I installation process, please check the <a href="https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=installing-overview-installation" target="_blank">product documentation</a>.</p>
+<hr />
+<h2 id="21-deploying-an-openshift-container-platform-ocp-cluster"><strong>2.1 Deploying an OpenShift Container Platform (OCP) cluster</strong></h2>
 <ol>
 <li>
-<p><strong>Reserve</strong> a Red Hat OpenShift cluster via the IBM Technology Zone pre-defined template.</p>
+<p>Reserve a Red Hat OpenShift cluster via the <strong>IBM Technology Zone</strong> pre-defined template.</p>
 <div class="admonition warning">
 <p><strong>URL:</strong> <strong><a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3</a></strong></p>
 </div>
+<p><br/>
+From the <code>Single environment reservation options</code> list, select <strong>Reserve now</strong><sup>[A]</sup>.</p>
+<p><br/></p>
+<div class="admonition note inline end">
+<p class="admonition-title">FULLSCREEN IMAGES</p>
+<p>Click on any of the screenshots within this documentation to enlarge the image.</p>
+</div>
+<p><a class="glightbox" href="../_attachments/setup-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.png" width="450" /></a></p>
+<p><br/>
+Configure the following <strong>fields</strong> in the reservation template to the values as described in the table below. All other fields from the ITZ template, if not listed in the table below, should be kept at their <em>default</em> values.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Purpose</code></td>
+<td>If reserving for L3 or L4 training, select <em>Education</em>. If delivering a PoC, select <em>Pilot</em> and provide a Sales opportunity number.</td>
+</tr>
+<tr>
+<td><code>Purpose Description</code></td>
+<td>If reserving for L3 or L4 training, enter <em>Event-led Integration Training</em>. If delivering a PoC, enter the PoC and client details.</td>
+</tr>
+<tr>
+<td><code>Preferred Geography</code></td>
+<td>Select your preferred geography.</td>
+</tr>
+<tr>
+<td><code>OpenShift Version</code></td>
+<td>4.15</td>
+</tr>
+<tr>
+<td><code>Storage</code></td>
+<td>ODF – 2TB</td>
+</tr>
+<tr>
+<td><code>Worker Node Count</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>Worker Node Flavor</code></td>
+<td>16 vCPU x 64 GB - 100 GB ephemeral storage</td>
+</tr>
+</tbody>
+</table>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.1-1a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.1-1a.png" width="600" /></a>
+<a class="glightbox" href="../_attachments/setup-2.1-1b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.1-1b.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="2">
 <li>
-<p>From the <code>Single environment reservation options</code> list, select <strong>Reserve now</strong><sup>[A]</sup>.</p>
+<p>When satisfied, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit</strong>.</p>
 <p><br/>
-<a class="glightbox" href="../_attachments/setup-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.png" width="600" /></a></p>
+<a class="glightbox" href="../_attachments/setup-2.1-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.1-2.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="3">
 <li>
-<p>Supply additional details about your ITZ reservation request:</p>
-<ul>
-<li>
-<p><strong>Name</strong><sup>[A]</sup>: Give your reservation a unique name.</p>
-</li>
-<li>
-<p><strong>Purpose</strong><sup>[B]</sup>: Set to <code>Practice / Self-Education</code> and affirm that customer data will not be used with the environment. If you are replicating this hands-on demonstration with a client, you must select <em>Customer Demo</em> and supply a sales opportunity number.</p>
-</li>
-<li>
-<p><strong>Purpose Description</strong><sup>[C]</sup>: Provide a brief summary of how the environment will be used.</p>
-</li>
-<li>
-<p><strong>Preferred Geography</strong><sup>[D]</sup>: Select the data center region that is closest to your location.</p>
-</li>
-<li>
-<p><strong>End Date &amp; Time</strong><sup>[E]</sup>: Select a time and date for when the reservation will expire. The recommended amount is 2 days, although it is possible to finish the hands-on demonstration within a few hours. Additional time extensions are available.</p>
-</li>
-<li>
-<p><strong>OCP/Kubernetes Cluster Network</strong><sup>[F]</sup>: Default value of <code>10.128.0.0/14</code></p>
-</li>
-<li>
-<p><strong>Enable FIPS Security</strong>: Default value of <code>No</code></p>
-</li>
-<li>
-<p><strong>OpenShift Version</strong><sup>[G]</sup>: Set to <code>4.14</code></p>
-</li>
-<li>
-<p><strong>Storage</strong><sup>[H]</sup>: Set to <code>ODF - 2 TB</code></p>
-</li>
-<li>
-<p><strong>OCP/Kubernetes Service Network</strong><sup>[I]</sup>: Default value of <code>172.30.0.0/16</code></p>
-</li>
-<li>
-<p><strong>Worker Node Count</strong>: Default value of <code>3</code></p>
-</li>
-<li>
-<p><strong>Worker Node Flavor</strong><sup>[J]</sup>: Set to <code>16 vCPU x 64 GB - 100 GB ephemeral storage</code></p>
-</li>
-</ul>
-<p>When satisfied, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit</strong><sup>[K]</sup>.</p>
-<div class="admonition note">
+<p>You will receive an ITZ email confirming that the instance is provisioning.</p>
+<p><br/></p>
+<div class="admonition note inline end">
 <p class="admonition-title">PROVISIONING TIMES</p>
-<p>Reservations take approximately <strong>60 minutes</strong> to complete from the time that you click submit. If you navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ, you can monitor the progress of your reservation. Wait for the ITZ reservation to be marked as "<em>Ready</em>" before attempting to start the lab — accessing it too soon will lead to issues (or an outright failure) when connecting to the OpenShift cluster.</p>
+<p>Reservations take approximately <strong>30 to 60 minutes</strong> to complete from the time that you click submit. If you navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ, you can monitor the progress of the reservation. Wait for the ITZ reservation to be marked as "<em>Ready</em>" before attempting to start the lab — accessing it too soon will lead to issues (or an outright failure) when connecting to OpenShift.</p>
 </div>
-<p><a class="glightbox" href="../_attachments/setup-3a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-3a.png" width="600" /></a></p>
-<p><a class="glightbox" href="../_attachments/setup-3b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-3b.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/setup-2.1-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.1-3.png" width="450" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="4">
 <li>
-<p>When the ITZ environment is ready to go, you will receive an email to your inbox (similar to the screenshot below). Click the blue <strong>View My Reservations</strong><sup>[A]</sup> at the bottom of the email to open a page with more details about the environment. Alternatively, you can click the <a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a> tab from the ITZ home page to drill down into your environment's details.</p>
+<p>You will receive a second email once the environment is provisioned and the reservation status will now show as <em>Ready</em>. Click on <strong>Reservation ID</strong> to open the details page for the new OCP environment.</p>
 <p><br/>
-<a class="glightbox" href="../_attachments/setup-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-4.png" width="300" /></a></p>
+<a class="glightbox" href="../_attachments/setup-2.1-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.1-4.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="5">
 <li>
-<p>Details about your OpenShift cluster, including login and authentication details, are summarized on the page.</p>
-<ul>
-<li>
-<p>Record the <strong>Username</strong><sup>[A]</sup> (<code>kubeadmin</code>) and <strong>Password</strong><sup>[B]</sup> (unique to your environment), as well as the <strong>Desktop URL</strong> just above those two items, to a notepad for reference later</p>
-</li>
-<li>
-<p>Click <strong>Open your IBM Cloud environment</strong><sup>[C]</sup> to access OpenShift's dashboard</p>
-</li>
-</ul>
+<p>Save for reference the <em>Cluster Admin Username</em><sup>[A]</sup>, <em>Cluster Admin Password</em><sup>[B]</sup>, and <em>OCP Console</em><sup>[C]</sup> link.</p>
 <p><br/>
-<a class="glightbox" href="../_attachments/setup-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-5.png" width="600" /></a></p>
+<a class="glightbox" href="../_attachments/setup-2.1-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.1-5.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="22-accessing-the-ocp-cluster"><strong>2.2 Accessing the OCP cluster</strong></h2>
+<p>In this section, access the OpenShift cluster and install the OpenShift command line tool (CLI).</p>
+<ol>
+<li>
+<p>In a web browser, open the OCP Console link and paste the <em>Cluster Admin Username</em><sup>[A]</sup> and <em>Password</em><sup>[B]</sup> from the previous step and click <strong>Log in</strong><sup>[C]</sup>.</p>
+<p><br/></p>
+<div class="admonition warning inline end">
+<p class="admonition-title">THIS CONNECTION IS NOT PRIVATE<p>Depending on your web browser, you may receive a warning about <code>This connection is not private</code> or a similarly phrased message. Disregard these warnings and continue to the intended destination by clicking <em>"visit this website."</em></p>
+</p>
+</div>
+<p><a class="glightbox" href="../_attachments/setup-2.2-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.2-1.png" width="450" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Copy the login command to access the cluster by CLI. In the top right, click your username<sup>[A]</sup> and select <strong>Copy login command</strong><sup>[B]</sup>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.2-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.2-2.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Click <strong>Display Token</strong>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.2-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.2-3.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Copy the <em>Log in with this token</em> command and paste into a Terminal window. Now you are ready for the Cloud Pak for Integration (CP4I) installation. </p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.2-4a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.2-4a.png" width="600" /></a>
+<a class="glightbox" href="../_attachments/setup-2.2-4b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.2-4b.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="23-cloning-repositories"><strong>2.3 Cloning repositories</strong></h2>
+<p>You will need to clone the demo repo to your workstation.</p>
+<ol>
+<li>
+<p>Open a terminal window and run the command below:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>gh repo clone github.ibm.com/joel-gomez/cp4i-demo
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Open the <code>cp4i-demo</code> folder:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span> cp4i-demo
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<h2 id="24-set-context"><strong>2.4 Set context</strong></h2>
+<p>Based on where you have deployed your OCP cluster you will need to set up some environment variables to inform the installation script about your environment. </p>
+<ol>
+<li>
+<p>Define an environment variable to set the CP4I version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">export</span> <span class="nv">CP4I_VER</span><span class="o">=</span><span class="m">16</span>.1.0
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Set the OCP type based on the storage classes in your cluster. If using a ROKS cluster, use <code>export OCP_TYPE=ROKS</code> instead.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">export</span> <span class="nv">OCP_TYPE</span><span class="o">=</span>ODF
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Set <em>mailtap</em> credentials, substituting <code>&lt;my-mailtrap-user&gt;</code> and <code>&lt;my-mailtrap-pwd&gt;</code> with the variables you set during the <strong>1. Prerequisites</strong> section.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span> <span class="nv">MAILTRAP_USER</span><span class="o">=</span>&lt;my-mailtrap-user&gt; 
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">export</span> <span class="nv">MAILTRAP_PWD</span><span class="o">=</span>&lt;my-mailtrap-pwd&gt;
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>If you have provisioned your OCP cluster in Tech Zone you can use the following script to set the proper default storage class.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>scripts/99-odf-tkz-set-scs.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Your cluster will also need access to pull the container software required to deploy the Cloud Pak. Your <em>Entitlement Key</em> is used to grant access. You can download your entitlement key from <a href="https://myibm.ibm.com/products-services/containerlibrary" target="_blank">My IBM</a>. Click <strong>Copy</strong>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.4-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.4-5.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
 <ol start="6">
 <li>
-<p>You will be prompted to provide the <strong>Username</strong> and <strong>Password</strong> recorded in Step 5.</p>
-<ul>
-<li>
-<p>Click <strong>Log in</strong><sup>[A]</sup> to proceed</p>
-</li>
-<li>
-<p>Once authenticated, the web browser will redirect to the main dashboard for the OpenShift Container Platform web interface</p>
-</li>
-<li>
-<p>You are now ready to proceed with the lab environment customization for <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em></p>
-</li>
-</ul>
-<p><br/></p>
-<div class="admonition warning inline end">
-<p class="admonition-title">THIS CONNECTION IS NOT PRIVATE</p>
-<p>Depending on your web browser, you may receive a warning about <code>This connection is not private</code> or a similarly phrased message. Disregard these warnings and continue to the intended destination by clicking <em>"visit this website."</em></p>
-</div>
-<p><a class="glightbox" href="../_attachments/setup-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-6.png" width="400" /></a></p>
+<p>The IBM Entitled Registry contains software images for the capabilities in IBM Cloud Pak for Integration. To allow the Cloud Pak for Integration operators to automatically pull those software images, you must first obtain your entitlement key, then add your entitlement key in a pull secret. Replace <code>&lt;my-key&gt;</code> with your <em>IBM entitlement key</em> and then execute:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">export</span> <span class="nv">ENT_KEY</span><span class="o">=</span>&lt;my-key&gt;
+</code></pre></div>
 </li>
 </ol>
 <hr />
-<h1 id="_2"></h1>
-<h1 id="customization-of-the-lab-environment">Customization of the Lab Environment</h1>
 <ol start="7">
 <li>
-<p>In order to deploy containerized instances of <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em> on top of OpenShift, you must first download and set up your local machine with the <strong>OpenShift Command Line Interface (CLI)</strong>.</p>
-<ul>
-<li>
-<p>In the top-right corner of the OpenShift dashboard, click the <strong>question mark</strong><sup>[A]</sup> (<code>?</code>) icon as shown in the screenshot below</p>
+<p>Now, you need to define a <em>namespace</em> where you will deploy the different capabilities.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>scripts/02a-cp4i-ns-key-config.sh
+</code></pre></div>
 </li>
+</ol>
+<hr />
+<h2 id="25-installing-the-ibm-cloud-pak-foundational-services"><strong>2.5 Installing the IBM Cloud Pak foundational services</strong></h2>
+<p>The IBM Cloud Pak foundational services operator is no longer installed automatically. Install this operator manually if you need to create an instance that uses identity and access management (IAM). The following steps will walk you through this process.</p>
+<ol>
 <li>
-<p>Click the <strong>Command line tools</strong><sup>[B]</sup> option from the drop-down menu</p>
+<p>First you need a certificate manager, otherwise the IBM Cloud Pak foundational services operator installation will not complete.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>oc apply -f resources/00-cert-manager-namespace.yaml
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>oc apply -f resources/00-cert-manager-operatorgroup.yaml
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>oc apply -f resources/00-cert-manager-subscription.yaml
+</code></pre></div>
+<p>Confirm the subscription has been completed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment cert-manager-operator-controller-manager -n cert-manager-operator --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> -n cert-manager-operator --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>Succeeded</code>.</p>
 </li>
-</ul>
-<p><br/></p>
-<div class="admonition note inline">
-<p class="admonition-title">COMMAND LINE ACCESS</p>
-<p>For parts of the hands-on lab, you will be required to establish connections over SSH to remote infrastructure endpoints. It is recommended that users do so via <strong>Terminal</strong> (Mac) or <strong>PuTTY</strong> (Windows). For detailed instructions on how to connect with PuTTY, or if you are using Windows, <a href="https://ibm.box.com/s/d71tn63hutdxrjwh21qdzralrsxlcspe" target="_blank">reference the linked material</a>.</p>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install the Postgress SQL Catalog source.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/01-postgress-sql-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>oc get catalogsources cloud-native-postgresql-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Install the Common Services Catalog source.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/02-common-services-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>oc get catalogsources opencloud-operators -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Create the Common Services namespace.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>oc new-project ibm-common-services
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Install the Foundational Services operator (former Common Services).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/00-common-service-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment/ibm-common-service-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="26-deploying-the-platform-ui"><strong>2.6 Deploying the Platform UI</strong></h2>
+<p>Deploying the Platform UI allows you to deploy and manage instances from a central location.</p>
+<ol>
+<li>
+<p>Install the Platform UI Catalog source.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/03-platform-navigator-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>oc get catalogsources ibm-integration-platform-navigator-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install the Platform UI Operator.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/01-platform-navigator-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-integration-platform-navigator-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Deploy a Platform UI instance.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>oc apply -f instances/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/common/01-platform-navigator-instance.yaml
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>oc get platformnavigator cp4i-navigator -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.conditions[0].type}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Once the Platform UI instance is up and running, retrieve the access information by executing the following script:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>scripts/03b-cp4i-access-info.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Open the Platform UI URL with a web browser and log in. Note the password is temporary and you will be required to change it. Take note of your new password, as you will use it multiple times throughout the lab.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.6-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.6-5.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="27-deploying-ibm-event-streams"><strong>2.7 Deploying IBM Event Streams</strong></h2>
+<ol>
+<li>
+<p>Install the Event Streams Catalog Source.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/08-event-streams-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>oc get catalogsources ibm-eventstreams-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install the Event Streams Operator.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/05-event-streams-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment eventstreams-cluster-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span> 
+</code></pre></div>
+<p>You should expect a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Deploy the Event Streams instance.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>oc apply -f instances/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/<span class="si">${</span><span class="nv">OCP_TYPE</span><span class="si">}</span>/05-event-streams-instance.yaml
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>oc get eventstreams es-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">TROUBLESHOOTING</p>
+<p>This will take few minutes, so be patient. At some point you may see errors — it is common to receive <code>FAILED</code> message in the first 15 minutes.</p>
 </div>
-<p><a class="glightbox" href="../_attachments/setup-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-7.png" width="300" /></a></p>
+<p>Wait approximately 15 to 30 minutes. You should expect a response of <code>Ready</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Create users.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>oc apply -f resources/02a-es-initial-config-jgr-users.yaml
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<h2 id="28-deploying-ibm-event-endpoint-management-eem"><strong>2.8 Deploying IBM Event Endpoint Management (EEM)</strong></h2>
+<ol>
+<li>
+<p>Install the EEM Catalog Source.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/13-eem-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>oc get catalogsources ibm-eventendpointmanagement-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install the EEM Operator.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/09-eem-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-eem-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span> 
+</code></pre></div>
+<p>You should expect a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Set passwords via environment variables (replace with your passwords).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="nb">export</span> <span class="nv">EEM_ADMIN_PWD</span><span class="o">=</span>&lt;eem-admin-pwd&gt;
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a><span class="nb">export</span> <span class="nv">EEM_USER_PWD</span><span class="o">=</span>&lt;eem-user-pwd&gt; 
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Deploy EEM Manager instance:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>scripts/19a-eem-manager-inst-deploy.sh
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">TROUBLESHOOTING</p>
+<p>The current version may introduce an issue and instead of a positive response at the end of the script you may get the following message: <code>Something is wrong!</code></p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.8-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.8-4.png" width="600" /></a></p>
+<p>If that is the case, then run the following commands to fix the problem:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>oc <span class="nb">exec</span> -it -n tools eem-demo-mgr-ibm-eem-manager-0 -- rmdir /opt/storage/lost+found
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>oc delete pod -n tools eem-demo-mgr-ibm-eem-manager-0
+</code></pre></div>
+</div>
+<p>Run the following command to confirm the pod has been restarted.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>oc get pods -n tools <span class="p">|</span> grep eem-demo-mgr
+</code></pre></div></p>
+<p>Confirm you get the following response before proceeding to the next step.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>eem-demo-mgr-ibm-eem-manager-0                    <span class="m">1</span>/1     Running     <span class="m">0</span>          51s
+</code></pre></div></p>
+<p>Now re-run the script and you should get the expected result.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>scripts/19a-eem-manager-inst-deploy.sh
+</code></pre></div></p>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>oc get eventendpointmanagement eem-demo-mgr -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div></p>
+<p>Wait a few minutes. You should expect a response of <code>Running</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Deploy the EEM Gateway instance.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>scripts/19b-eem-gateway-inst-deploy.sh
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>oc get eventgateway eem-demo-gw -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>Running</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Integrate EEM and ES instances.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>scripts/19f-eem-es-config.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Get a token for post-deployment configuration.</p>
+<ul>
+<li>Log in to your Event Endpoint Management UI from a supported web browser (get the login URL for your Event Endpoint Management instance running the command below).</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>oc get eem -n tools
+</code></pre></div>
+<ul>
+<li>Click the <strong>user icon</strong> in the header and then click <strong>Profile</strong> to open the page</li>
+<li>Within the <strong>Profile</strong> page, click <em>Create</em> token to open the dialog</li>
+<li>Read the message and note that API access tokens expire</li>
+<li>Provide a token description that can be used to identify your token and then click <em>Create</em></li>
+<li>Once the new token is generated, click <em>Copy</em> token</li>
+<li>Click <em>Close</em> to exit the dialog</li>
+</ul>
 </li>
 </ol>
 <hr />
 <ol start="8">
-<li>From the <em>oc - OpenShift Command Line Interface (CLI)</em> options, click the download link that matches your local machine's operating system (Mac, Windows, or Linux). Once downloaded, execute the installer and proceed with the lab guide once <code>oc</code> is installed.</li>
+<li>
+<p>Set environment variable for token by replacing <code>&lt;my-eem-token&gt;</code> with your own token value, then execute the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nb">export</span> <span class="nv">EEM_TOKEN</span><span class="o">=</span>&lt;my-eem-token&gt;
+</code></pre></div>
+<p>Afterwards, record your token into a notepad as you will need to reference it later in the demo script.</p>
+</li>
+</ol>
+<hr />
+<h2 id="29-deploying-the-enterprise-messaging-mq-service"><strong>2.9 Deploying the Enterprise Messaging (MQ) service</strong></h2>
+<ol>
+<li>
+<p>Install the MQ Catalog Source.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/09-mq-catalog-source.yaml 
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>oc get catalogsources ibmmq-operator-catalogsource -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install the MQ Operator.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/06-mq-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-mq-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Set the MQ namespace environment variable.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="nb">export</span> <span class="nv">MQ_NAMESPACE</span><span class="o">=</span>cp4i-mq
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Create certificates and extra route.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>scripts/10a-qmgr-pre-config.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Create <code>configmap</code> with MQ configuration.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>oc apply -f resources/03c-qmgr-mqsc-config.yaml
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Deploy the MQ Queue Manager instance.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>scripts/10b-qmgr-inst-deploy.sh
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>oc get queuemanager qmgr-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait a few minutes. You should expect a response of <code>Running</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Create <code>CCDT</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>scripts/10c-qmgr-post-config.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>Deploy the MQ Source Connector.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>oc apply -f resources/02b-es-mq-source.yaml
+</code></pre></div>
+</li>
 </ol>
 <hr />
 <ol start="9">
 <li>
-<p>Return to the OpenShift dashboard landing page.</p>
-<ul>
-<li>
-<p>In the far right-hand corner of the interface, click the <strong>kube:admin</strong> button to open another drop-down menu</p>
+<p>Deploy the MQ Sink Connector.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>oc apply -f resources/02c-es-mq-sink.yaml
+</code></pre></div>
 </li>
+</ol>
+<hr />
+<h2 id="210-deploy-the-event-processing-ep-service"><strong>2.10 Deploy the Event Processing (EP) service</strong></h2>
+<ol>
 <li>
-<p>From the options, select <strong>Copy login command</strong><sup>[A]</sup> to open a new tab or window with details about remotely accessing the OpenShift cluster</p>
+<p>Install Apache Flink Catalog Source.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/14-ea-flink-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>oc get catalogsources ibm-eventautomation-flink-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
 </li>
-</ul>
-<p><br/>
-<a class="glightbox" href="../_attachments/setup-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-9.png" width="300" /></a></p>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install Apache Flink Operator.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/10-ea-flink-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment flink-kubernetes-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Prepare <code>TrustStore</code> for Event Automation.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>scripts/20d-ea-truststore-config.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Deploy the Apache Flink instance.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a>oc apply -f instances/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/common/21-ea-flink-instance.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>oc get flinkdeployment ea-flink-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.jobManagerDeploymentStatus}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Install the Event Processing Catalog Source.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/15-event-processing-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a>oc get catalogsources ibm-eventprocessing-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Install the Event Processing Operator.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/11-event-processing-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-ep-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Set password via environment variables (substitute <code>&lt;ep-admin-pwd&gt;</code> with your own password).</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="nb">export</span> <span class="nv">EP_ADMIN_PWD</span><span class="o">=</span>&lt;ep-admin-pwd&gt;
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>Deploy the Event Processing instance.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a>scripts/20b-ea-ep-inst-deploy.sh
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a>oc get eventprocessing ep-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>Running</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="9">
+<li>
+<p>Install the <code>PGSQL</code> Operator.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a>oc apply -f resources/12a-pgsql-subscription.yaml
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment pgo -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>Succeeded</code>.</p>
 </li>
 </ol>
 <hr />
 <ol start="10">
-<li>A mostly-blank page will load, with <strong>Display Token</strong> written in blue text in the top-left of the page. Click the link to proceed.</li>
+<li>
+<p>Create <code>configmap</code> with database configuration.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a>oc apply -f resources/12b-pgsql-config.yaml
+</code></pre></div>
+</li>
 </ol>
 <hr />
 <ol start="11">
 <li>
-<p>Details about a newly-generated API token will load on screen.</p>
-<p>Record the full command listed under <strong>Log in with this token</strong><sup>[A]</sup> (resembling something similar to <code>oc login --token=sha256...</code>) and save this to your notepad for later reference.</p>
-<p><br/>
-<a class="glightbox" href="../_attachments/setup-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-11.png" width="600" /></a></p>
+<p>Deploy a <code>PGSQL</code> database instance:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a>oc apply -f resources/12c-pgsql-db.yaml
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a>oc get pods -l <span class="s2">&quot;postgres-operator.crunchydata.com/role=master&quot;</span> -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[0].status.conditions[1].status}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait a few minutes. You should expect a response of <code>True</code>.</p>
 </li>
 </ol>
 <hr />
 <ol start="12">
 <li>
-<p>Open your command line tool of preference on your local machine, likely either <strong>Terminal</strong> or <strong>PuTTY</strong>. At this stage, the OpenShift CLI (<code>oc</code>) should be available on your machine and ready for remotely connecting to the OpenShift cluster.</p>
-<ul>
-<li>
-<p>Within the Terminal, <strong>paste the full login command</strong> recorded in Step 11 and hit <code>Return</code> to commence the login</p>
-</li>
-<li>
-<p>A prompt similar to the screenshot below will be displayed momentarily, indicating that the Terminal is now successfully connected (remotely) to the OpenShift cluster</p>
-</li>
-</ul>
-<p><br/>
-<a class="glightbox" href="../_attachments/setup-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-12.png" width="600" /></a></p>
-</li>
-</ol>
-<hr />
-<ol start="13">
-<li>
-<p>To deploy containerized instances of <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em> to the OpenShift cluster, you must first download those container images <em>locally</em> and then deploy them <em>remotely</em> on the OpenShift cluster.</p>
-<p><strong>Execute</strong> the following command within your Terminal console to <code>clone</code> the necessary scripts and images to your <em>local machine</em>:</p>
-<div class="admonition warning">
-<p><strong>Copy and execute:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git clone https://github.com/IBM/platinum-demo-code-event-automation.git
-</code></pre></div></p>
-</div>
-</li>
-</ol>
-<hr />
-<ol start="14">
-<li>Navigate to the newly cloned <code>platinum-demo-code-event-automation</code> repository with the following command:</li>
-</ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span> platinum-demo-code-event-automation
+<p>Retrieve the connection details for accessing the EA instances. Record that information into a notepad for future reference.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a>scripts/20c-ea-access-info.sh
 </code></pre></div>
-<hr />
-<div class="admonition warning">
-<p class="admonition-title">WINDOWS USERS</p>
-<p><em>Step 15</em> uses a shell script to deploy <em>IBM Cloud Pak for Integration</em> and <em>IBM Event Automation</em> via OpenShift containers. The shell script can be executed as-written for MacOS and Linux users.</p>
-<p>However, if you are a Windows user, follow <strong><a href="https://ibm-integration.github.io/learninghub/demos/cp4i-api-tech/win-user/" target="_blank">the linked documentation</a></strong> to request a Linux Virtual Machine. You will only need to make use of the VM for the purposes of <em>Step 15</em> (deploying the demo environment.) Afterwards you may carry on with the lab instructions on your personal Windows device via a web browser.</p>
-</div>
-<ol start="15">
-<li>Execute the following command to kick off the process of deploying and configuring the containerized services to the <em>OpenShift cluster</em>:</li>
+</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./deploy.sh
+<hr />
+<h2 id="211-deploying-the-demo-helpers"><strong>2.11 Deploying the demo "helpers"</strong></h2>
+<p>Additional supporting services are needed to generate results and data for the hands-on lab experience.</p>
+<ol>
+<li>
+<p>Open a Terminal window and execute the following command to clone (via <code>git</code>) the demo repository to your local machine.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a>gh repo clone ibm-integration/eventautomationL3
 </code></pre></div>
-<ul>
-<li>
-<p>Wait for the full deployment to complete before continuing with the lab documentation</p>
-</li>
-<li>
-<p>When ready, each of the lab services— IBM Cloud Pak for Integration<sup>[A]</sup> ("Platform Navigator"), Event Streams<sup>[B]</sup>, Event Endpoint Management<sup>[C]</sup>, Event Processing<sup>[D]</sup>, and IBM MQ<sup>[E]</sup> —will be listed to the Terminal window</p>
-</li>
-<li>
-<p>Each listing will be accompanied by a <code>URL</code>, <code>username</code>, and <code>password</code> — <strong>record</strong> this information to a notepad for reference later</p>
-<p><br/></p>
-<div class="admonition note inline end">
-<p class="admonition-title">DEPLOYMENT TIMES</p>
-<p>The deployment of <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em> containers to the OpenShift cluster is entirely automated using <em>Red Hat Ansible</em> scripts. Full deployment and configuration should take approximately <strong>20-45 minutes</strong> to complete.</p>
-</div>
-<p><a class="glightbox" href="../_attachments/setup-15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-15.png" width="450" /></a></p>
-</li>
-</ul>
-<hr />
-<ol start="16">
-<li>
-<p>The <em>Platform Navigator</em> and <em>IBM MQ</em> services utilize the same login details. The password supplied for these two services by the Terminal console in Step 15 is a <em>temporary</em>, <em>one-time-use</em> password.</p>
-<ul>
-<li>
-<p>Try logging into the <em>IBM MQ</em> environment environment by pasting the <code>URL</code> into a web browser, then enter the <code>username</code> and temporary <code>password</code> recorded earlier</p>
-</li>
-<li>
-<p>When prompted, create your own password for logging into the environment</p>
-</li>
-<li>
-<p>Confirm your selection with <strong>Submit</strong><sup>[A]</sup> and then update your <code>password</code> records for both the <em>Platform Navigator</em> and <em>IBM MQ</em> services</p>
-</li>
-<li>
-<p>At this stage, the lab environment is fully configured and ready for hands-on work</p>
-</li>
-</ul>
-<p><br/>
-<a class="glightbox" href="../_attachments/setup-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-16.png" width="400" /></a> </p>
 </li>
 </ol>
 <hr />
-<div class="admonition note inline end">
-<p class="admonition-title">MQ &amp; CPI AUTHENTICATION<p>Both services utilize the same <code>username</code> and <code>password</code> credentials. However, the two URLs generated by the Terminal console in Step 15 are <em>unique</em>. Ensure that you are logging in to the correct dashboard (IBM MQ or CPI) when asked to do so.</p>
-</p>
-</div>
-<ol start="17">
+<ol start="2">
 <li>
-<p>With your web browser, open a new tab for each of the services needed for the hands-on lab:</p>
+<p>Navigate to the <code>eventautomationL3</code> directory.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a><span class="nb">cd</span> eventautomationL3
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Execute the script below to install the "demo helper" services.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a>./deploy-helpers.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Enable the Kafka Connect base.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a>scripts/08c-event-streams-kafka-connect-config.sh
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a>oc get kafkaconnects jgr-connect-cluster -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.conditions[0].type}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>You should expect a response of <code>Ready</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Enable the Kafka Connector Datagen.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a>scripts/08e-event-streams-kafka-connector-datagen-config.sh
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a>oc get kafkaconnector -n tools
+</code></pre></div>
+<p>After several minutes, you should receive the following response:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a>NAME            CLUSTER          CONNECTOR CLASS                                  MAX TASKS   READY
+<a id="__codelineno-86-2" name="__codelineno-86-2" href="#__codelineno-86-2"></a>kafka-datagen   jgr-connect-cluster     com.ibm.eventautomation.demos.acme.DatagenSourceConnector       1               True
+<a id="__codelineno-86-3" name="__codelineno-86-3" href="#__codelineno-86-3"></a>mq-sink         jgr-connect-cluster     com.ibm.eventstreams.connect.mqsink.MQSinkConnector             1               True
+<a id="__codelineno-86-4" name="__codelineno-86-4" href="#__codelineno-86-4"></a>mq-source       jgr-connect-cluster     com.ibm.eventstreams.connect.mqsource.MQSourceConnector         1               True
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<h1 id="_3"></h1>
+<h1 id="3-next-steps"><strong>3. Next steps</strong></h1>
+<p>Congratulations — you have successfully deployed <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em>, as well as the necessary services to run the hands-on lab.</p>
+<p>At this stage, use your web browser to open a new tab for each of the services:</p>
 <ul>
 <li><em>IBM Cloud Pak for Integration (CPI)</em></li>
 <li><em>Event Streams</em></li>
@@ -655,13 +1177,8 @@
 <li><em>Event Processing</em></li>
 <li><em>IBM MQ</em></li>
 </ul>
-</li>
-</ol>
 <p><br/>
 Keep these tabs open. You will be switching between them frequently.</p>
-<hr />
-<h1 id="_3"></h1>
-<h1 id="next-steps">Next Steps</h1>
 <p>The following module will outline the Level 3 evaluation criteria for IBM technical sellers and business partners. Follow the accreditation steps appropriate to your job role.</p>
 
 
