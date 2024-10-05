@@ -73,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#building-a-self-service-event-catalog-with-ibm-event-endpoint-management" class="md-skip">
+        <a href="#_1" class="md-skip">
           Skip to content
         </a>
       
@@ -331,14 +331,13 @@
                 
 
 
-<h1 id="building-a-self-service-event-catalog-with-ibm-event-endpoint-management">Building a self-service event catalog with IBM Event Endpoint Management</h1>
-<hr />
 <p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="../_videos/module2.mp4" type="video/mp4" /></video></div></p>
 <div class="admonition quote">
 <p>Christopher Bienko <em>(Principal, Learning Content Development, IBM Application Modernization)</em> provides a hands-on demonstration of Module 2's contents.</p>
 <p><strong>Additional ways to watch:</strong> <a href="https://ibm.seismic.com/Link/Content/DCCH9WJ36CWTJG9Bj34WjDFTq9VB" target="_blank">Seismic replay available for download.</a> [9 minutes]</p>
 </div>
-<p><br/></p>
+<h1 id="_1"></h1>
+<h1 id="building-a-self-service-event-catalog-with-ibm-event-endpoint-management"><strong>Building a self-service event catalog with IBM Event Endpoint Management</strong></h1>
 <p>Having successfully deployed the IBM MQ-Apacha Kafka connector framework, Focus Corporation's integration team have created a bridge between MQ and Event Streams. As new customer order data is processed by the IBM MQ message queue, it is simultaneously cloned into the <code>Orders</code> event stream — awaiting further analysis and action by other users downstream.</p>
 <p>In this module, Focus' integration team will utilize <strong>IBM Event Endpoint Management (EEM)</strong> to import the newly-created event stream into a self-service catalog. EEM supports two use cases: the first is allowing teams (like the integration squad) to publish new event streams; the second is for consumers (such as marketing) to browse the contents of those event streams, without requiring direct intervention from the integration team.</p>
 <div class="admonition note">
@@ -356,8 +355,7 @@
 <p>IBM Event Endpoint Management— a composable service within IBM Event Automation —uses AsyncAPI as the standardized way for describing event-driven messages. It allows clients to quickly "discover" events across their ecosystem, publish those events across the organization according to governance rules that ensure compliance, and create enforceable policies through event gateways. Like enterprises do today with API gateways, an event gateway provides isolation, abstraction, policy enforcement, and decoupling to asynchronous (event-driven) data sources.</p>
 </div>
 <hr />
-<h1 id="_1"></h1>
-<h1 id="defining-new-topics-within-ibm-event-streams">Defining new Topics within IBM Event Streams</h1>
+<h2 id="defining-new-topics-within-ibm-event-streams"><strong>Defining new Topics within IBM Event Streams</strong></h2>
 <p>Before the event stream data can be browsed as part of a self-service catalog, the integration team must first import into EEM the <code>ORDER</code> and <code>CUSTOMER</code> streams via <em>Topics</em> created earlier within IBM Event Streams.</p>
 <hr />
 <ol>
@@ -375,7 +373,7 @@
 </li>
 </ul>
 <p><br/>
-<a class="glightbox" href="../_attachments/2-1a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-1a.png" width="600" /></a></p>
+<a class="glightbox" href="../_attachments/module2-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module2-1.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
@@ -409,14 +407,14 @@
 <p>Additional details about the connection are required: the endpoint address, certificates required for secure communication with the cluster, and authentication credentials.</p>
 <ul>
 <li>
-<p>Set the <em>Servers</em><sup>[A]</sup> variable to <code>ademo-es-kafka-bootstrap.cp4i.svc:9095</code></p>
+<p>Set the <em>Servers</em><sup>[A]</sup> variable to the <code>Kafka SCRAM URL</code> that you copied in <em>Module 1 - Step 24</em> (likely <code>es-demo-kafka-bootstrap.tools.svc:9095</code>)</p>
 </li>
 <li>
 <p>Click <strong>Next</strong><sup>[B]</sup> to continue</p>
 </li>
 </ul>
 <p><br/>
-<a class="glightbox" href="../_attachments/2-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-4.png" width="600" /></a></p>
+<a class="glightbox" href="../_attachments/module2-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module2-4.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
@@ -437,7 +435,7 @@
 <p>The <em>Security Protocol</em> field should remain at the default value of <code>SCRAM-SHA-512</code></p>
 </li>
 <li>
-<p><em>Username</em><sup>[A]</sup> should be set to <code>es-admin</code></p>
+<p><em>Username</em><sup>[A]</sup> should be set to <code>es-demo</code> (set in the previous section)</p>
 </li>
 <li>
 <p><em>Password</em><sup>[B]</sup> must match the <strong>IBM Event Streams</strong> password generated in the Setup module. This password is unique to your particular environment.</p>
@@ -447,7 +445,7 @@
 </li>
 </ul>
 <p><br/>
-<a class="glightbox" href="../_attachments/2-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-6.png" width="600" /></a></p>
+<a class="glightbox" href="../_attachments/module2-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module2-6.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
@@ -482,12 +480,12 @@
 </li>
 </ul>
 <p><br/>
-<a class="glightbox" href="../_attachments/2-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-8.png" width="600" /></a></p>
+<a class="glightbox" href="../_attachments/module2-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module2-8.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
 <h1 id="_2"></h1>
-<h1 id="defining-a-data-schema-for-customers">Defining a data schema for <em>CUSTOMERS</em></h1>
+<h2 id="defining-a-data-schema-for-customers"><strong>Defining a data schema for <code>CUSTOMERS</code></strong></h2>
 <p>With the connections to IBM Event Streams defined and the Kafka Topics selected for replication, Focus' integration team is ready to create self-service event stream catalogs within EEM. </p>
 <p>The team must provide descriptions of the event streams, including an example of how the data is structured and formatted. This description will be beneficial to other individuals within the company (such as the marketing department), who will want to know at-a-glance whether a particular Topic catalog fits their needs.</p>
 <hr />
@@ -612,8 +610,7 @@ When ready, click <strong>Save</strong><sup>[C]</sup> to finalize both the <em>O
 </li>
 </ol>
 <hr />
-<h1 id="_3"></h1>
-<h1 id="defining-a-data-schema-for-orders">Defining a data schema for <em>ORDERS</em></h1>
+<h2 id="defining-a-data-schema-for-orders"><strong>Defining a data schema for <code>ORDERS</code></strong></h2>
 <p>The process of publishing an event streams Topic within EEM (Steps 9–16) must now be repeated— with some slight modifications —for the <code>ORDERS</code> topic.</p>
 <hr />
 <ol start="17">
@@ -734,15 +731,14 @@ When ready, click <strong>Save</strong><sup>[B]</sup> to finalize both the <em>O
 </li>
 </ol>
 <hr />
-<h1 id="_4"></h1>
-<h1 id="validating-the-configuration-changes-and-generating-access-credentials">Validating the configuration changes and generating access credentials</h1>
+<h2 id="validating-the-configuration-changes-and-generating-access-credentials"><strong>Validating the configuration changes and generating access credentials</strong></h2>
 <p>Before handing access over to Focus Corporation's marketing team, the integration squad must first validate that the catalogued event streams are performing as expected. If no issues are detected, they can generate access credentials for users to securely access the catalog.</p>
 <hr />
 <ol start="25">
 <li>
 <p>Return to the EEM dashboard and drill down into <strong>Catalog</strong><sup>[A]</sup>, then click the name <code>CUSTOMERS</code><sup>[B]</sup> from the table.</p>
 <p><br/>
-<a class="glightbox" href="../_attachments/2-25.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-25.png" width="600" /></a></p>
+<a class="glightbox" href="../_attachments/module2-25.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module2-25.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
@@ -824,8 +820,8 @@ When ready, click <strong>Save</strong><sup>[B]</sup> to finalize both the <em>O
 <hr />
 <p>At this stage, responsibility can shift towards Focus Corporation's marketing team. Thanks to the hard work of the integration squad, the marketing department now has a fully configured, self-service catalog of event stream data available within EEM.</p>
 <hr />
-<h1 id="_5"></h1>
-<h1 id="next-steps">Next Steps</h1>
+<h1 id="_3"></h1>
+<h1 id="next-steps"><strong>Next steps</strong></h1>
 <p>In the following module, Focus' marketing team will use <em>IBM Event Processing</em> to correlate newly-created customer accounts with orders totaling over $100 within a 24-hour time window.</p>
 
 

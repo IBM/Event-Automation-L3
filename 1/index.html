@@ -341,7 +341,7 @@
 <p>To take advantage of the message queue data available from IBM MQ, Focus Corporation's integration team will need to make IBM MQ's enterprise data available to a broader set of APIs. This will allow Focus' application developers to subscribe to the data without any risk or impact to the core back-end systems that support the data. Risks will be lowered and the application development process can be decoupled from data retention processes.</p>
 <p>To do so, Focus' integration team will need to expose the IBM MQ enterprise data using "event streams." Specifically, the integration team (and application developers) will need access to the customer order information contained within these streams. This data will be vital for the marketing team's plans to offer high value promotions for newly-acquired customers in a timely manner.</p>
 <hr />
-<h2 id="configuring-ibm-mq-to-clone-customer-order-data">**Configuring IBM MQ to clone customer order data</h2>
+<h2 id="configuring-ibm-mq-to-clone-customer-order-data"><strong>Configuring IBM MQ to clone customer order data</strong></h2>
 <p>Both the order management system and its payment gateway system are currently using IBM MQ message queues for exchanging customer order data. The integration team will need to tap into this message exchange, clone each of the orders being handled across IBM MQ, and then publish those messages into a new event stream.</p>
 <hr />
 <ol>
