@@ -261,9 +261,47 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2. Building a self-service catalog of events with Event Endpoint Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         2. Building a self-service catalog of events with Event Endpoint Management
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-self-service-event-catalog-with-ibm-event-endpoint-management" class="md-nav__link">
+    Building a self-service event catalog with IBM Event Endpoint Management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-new-topics-within-ibm-event-streams" class="md-nav__link">
+    Defining new Topics within IBM Event Streams
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -319,6 +357,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-self-service-event-catalog-with-ibm-event-endpoint-management" class="md-nav__link">
+    Building a self-service event catalog with IBM Event Endpoint Management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-new-topics-within-ibm-event-streams" class="md-nav__link">
+    Defining new Topics within IBM Event Streams
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -331,13 +391,14 @@
                 
 
 
+<h1 id="_1"></h1>
 <p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="../_videos/module2.mp4" type="video/mp4" /></video></div></p>
 <div class="admonition quote">
 <p>Christopher Bienko <em>(Principal, IBM Global Sales Enablement)</em> provides a hands-on demonstration of Module 2.</p>
 <p><strong>Additional ways to watch:</strong> <a href="https://ibm.seismic.com/Link/Content/DCCH9WJ36CWTJG9Bj34WjDFTq9VB" target="_blank">Seismic replay available for download.</a> [9 minutes]</p>
 </div>
-<h1 id="_1"></h1>
-<h1 id="building-a-self-service-event-catalog-with-ibm-event-endpoint-management"><strong>Building a self-service event catalog with IBM Event Endpoint Management</strong></h1>
+<p><br/></p>
+<h2 id="building-a-self-service-event-catalog-with-ibm-event-endpoint-management"><strong>Building a self-service event catalog with IBM Event Endpoint Management</strong></h2>
 <p>Having successfully deployed the IBM MQ-Apacha Kafka connector framework, Focus Corporation's integration team have created a bridge between MQ and Event Streams. As new customer order data is processed by the IBM MQ message queue, it is simultaneously cloned into the <code>Orders</code> event stream — awaiting further analysis and action by other users downstream.</p>
 <p>In this module, Focus' integration team will utilize <strong>IBM Event Endpoint Management (EEM)</strong> to import the newly-created event stream into a self-service catalog. EEM supports two use cases: the first is allowing teams (like the integration squad) to publish new event streams; the second is for consumers (such as marketing) to browse the contents of those event streams, without requiring direct intervention from the integration team.</p>
 <div class="admonition note">
@@ -818,8 +879,7 @@ When ready, click <strong>Save</strong><sup>[B]</sup> to finalize both the <em>O
 </li>
 </ol>
 <hr />
-<h1 id="_3"></h1>
-<h1 id="next-steps"><strong>Next steps</strong></h1>
+<h2 id="next-steps"><strong>Next steps</strong></h2>
 <p>At this stage, responsibility can shift towards Focus Corporation's marketing team. Thanks to the hard work of the integration squad, the marketing department now has a fully configured, self-service catalog of event stream data available within EEM.</p>
 <p>In the following module, Focus' marketing team will use <em>IBM Event Processing</em> to correlate newly-created customer accounts with orders totaling over $100 within a 24-hour time window.</p>
 
