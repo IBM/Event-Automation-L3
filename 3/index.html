@@ -338,9 +338,12 @@
 </div>
 <h1 id="_1"></h1>
 <h1 id="using-ibm-event-processing-no-code-editors-to-configure-the-solution"><strong>Using IBM Event Processing no-code editors to configure the solution</strong></h1>
-<p>Focus Corporation's marketing department now has a fully configured, self-service catalog of event stream data available within <strong>IBM Event Endpoint Management (EEM)</strong>.</p>
-<p>At this stage, work will transition from the integration team to the domain of the marketing team. Focus' marketing team will utilize <strong>IBM Event Processing (EP)</strong> to correlate any newly-created customer accounts with first-time purchase orders that total over $100 USD in value. Furthermore, these correlated transactions will need to be identified within a 24-hour window of when they occur.</p>
-<p>If these conditions can be met, the marketing team will be able to create an actionable plan for putting high-value promotional offers in front of first-time customers in a timely manner — which should translate to more sales revenue through Focus' digital storefront.</p>
+<div class="highlight"><pre><span></span><code>Focus Corporation&#39;s marketing department now has a fully configured, self-service catalog of event stream data available within **IBM Event Endpoint Management (EEM)**.
+
+At this stage, work will transition from the integration team to the domain of the marketing team. Focus&#39; marketing team will utilize **IBM Event Processing (EP)** to correlate any newly-created customer accounts with first-time purchase orders that total over $100 USD in value. Furthermore, these correlated transactions will need to be identified within a 24-hour window of when they occur.
+
+If these conditions can be met, the marketing team will be able to create an actionable plan for putting high-value promotional offers in front of first-time customers in a timely manner — which should translate to more sales revenue through Focus&#39; digital storefront.
+</code></pre></div>
 <hr />
 <ol>
 <li>
@@ -371,7 +374,8 @@
 </ol>
 <hr />
 <h2 id="configuring-an-event-source-for-orders"><strong>Configuring an event source for <code>Orders</code></strong></h2>
-<p>Before the inbound events can be captured, connectivity details for the event source node (<code>ORDERS</code>) must be configured within the authoring canvas.</p>
+<div class="highlight"><pre><span></span><code>Before the inbound events can be captured, connectivity details for the event source node (`ORDERS`) must be configured within the authoring canvas.
+</code></pre></div>
 <hr />
 <ol start="4">
 <li>
@@ -522,25 +526,25 @@
 <p>From the <em>Key and Headers</em> tab, you will NOT need to map <code>key</code> and <code>headers</code> to event fields: simply click <strong>Next</strong> to continue</p>
 </li>
 </ul>
-</li>
-</ol>
 <div class="admonition note inline end">
 <p>Note that this is the same sample schema you supplied when configuring the event source within EEM in Module 2.</p>
 </div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="w"></span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">197.09</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&quot;customerid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a7d1586b-ced1-462f-9e44-14e9e5013540&quot;</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Composite Oversize 28in Tennis Racket&quot;</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1eba7af9-b748-4754-b750-3459e589dccf&quot;</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EMEA&quot;</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">&quot;ordertime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-10-24 19:26:04.839&quot;</span><span class="p">,</span><span class="w"></span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">&quot;customer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Reed McKenzie DDS&quot;</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">197.09</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">&quot;customerid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a7d1586b-ced1-462f-9e44-14e9e5013540&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Composite Oversize 28in Tennis Racket&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1eba7af9-b748-4754-b750-3459e589dccf&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nt">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EMEA&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nt">&quot;ordertime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-10-24 19:26:04.839&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nt">&quot;customer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Reed McKenzie DDS&quot;</span><span class="w"></span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <p><br/>
 <a class="glightbox" href="../_attachments/event-source-format-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/event-source-format-1.png" width="600" /></a></p>
 <p><a class="glightbox" href="../_attachments/event-source-format-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/event-source-format-3.png" width="600" /></a></p>
+</li>
+</ol>
 <hr />
 <ol start="12">
 <li>
@@ -972,7 +976,7 @@
 </ol>
 <hr />
 <h1 id="_3"></h1>
-<h1 id="next-steps">Next Steps</h1>
+<h1 id="next-steps"><strong>Next steps</strong></h1>
 <p>With filtering and processing steps now in place for incoming event streams, Focus Corporation's marketing team is able to detect valid promotional opportunities and emit those detected events to their customer loyalty application. In the following section, you will create those linkages and validate its effectiveness using "live" data feeds.</p>
 
 
