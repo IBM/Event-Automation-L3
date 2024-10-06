@@ -1219,7 +1219,7 @@
 <h2 id="deploying-the-enterprise-messaging-service"><strong>Deploying the Enterprise Messaging service</strong></h2>
 <ol>
 <li>
-<p>Install the nterprise Messaging (MQ) Catalog Source.</p>
+<p>Install the Enterprise Messaging (MQ) Catalog Source.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/09-mq-catalog-source.yaml 
 </code></pre></div>
 <p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
@@ -1268,12 +1268,15 @@
 <ol start="6">
 <li>
 <p>Deploy the MQ Queue Manager instance.</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>scripts/10b-qmgr-inst-deploy.sh
 </code></pre></div>
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>oc get queuemanager qmgr-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>Wait a few minutes. You should expect a response of <code>Running</code>.</p>
+<p>You should expect a response of <code>Running</code>.</p>
 </li>
 </ol>
 <hr />
