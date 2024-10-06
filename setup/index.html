@@ -883,7 +883,7 @@
 <p>Confirm the subscription has been completed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment cert-manager-operator-controller-manager -n cert-manager-operator --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> -n cert-manager-operator --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>Succeeded</code>.</p>
+<p>Wait for a response of  <code>Succeeded</code>.</p>
 <details class="warning">
 <summary>NO RESPONSE</summary>
 <p>If no response is generated, <strong>wait a couple of minutes</strong> and try again. Do not proceed until receiving the <code>Succeeded</code> prompt.</p>
@@ -899,7 +899,7 @@
 <p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>oc get catalogsources cloud-native-postgresql-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>READY</code>.</p>
+<p>Wait for a response of <code>READY</code>.</p>
 <details class="warning">
 <summary>TRANSIENT_FAILURE</summary>
 <p>You may be seeing a response of <code>TRANSIENT_FAILURE</code> which indicates the deployment is underway but not yet complete. Wait until the <code>READY</code> response is received before continuing.</p>
@@ -915,7 +915,7 @@
 <p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>oc get catalogsources opencloud-operators -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>READY</code>.</p>
+<p>Wait for a response of <code>READY</code>.</p>
 </li>
 </ol>
 <hr />
@@ -935,7 +935,7 @@
 <p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment/ibm-common-service-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>Succeeded</code>.</p>
+<p>Wait for a response of <code>Succeeded</code>.</p>
 </li>
 </ol>
 <hr />
@@ -949,7 +949,7 @@
 <p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>oc get catalogsources ibm-integration-platform-navigator-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>READY</code>.</p>
+<p>Wait for a response of <code>READY</code>.</p>
 </li>
 </ol>
 <hr />
@@ -961,7 +961,7 @@
 <p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-integration-platform-navigator-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>Succeeded</code>.</p>
+<p>Wait for a response of <code>Succeeded</code>.</p>
 </li>
 </ol>
 <hr />
@@ -976,7 +976,7 @@
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>oc get platformnavigator cp4i-navigator -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.conditions[0].type}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>READY</code>.</p>
+<p>Wait for a response of <code>READY</code>.</p>
 <details class="warning">
 <summary>PENDING</summary>
 <p>You may be seeing a response of <code>PENDING</code> which indicates the deployment is underway but not yet complete. Wait until the <code>READY</code> response is received before continuing.</p>
@@ -1010,7 +1010,7 @@
 <p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>oc get catalogsources ibm-eventstreams-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>READY</code>.</p>
+<p>Wait for a response of <code>READY</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1025,7 +1025,7 @@
 <p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment eventstreams-cluster-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span> 
 </code></pre></div>
-<p>You should expect a response of <code>Succeeded</code>.</p>
+<p>Wait for a response of <code>Succeeded</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1040,7 +1040,7 @@
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>oc get eventstreams es-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>Ready</code>.</p>
+<p>Wait for a response of <code>Ready</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1061,7 +1061,7 @@
 <p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>oc get catalogsources ibm-eventendpointmanagement-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>READY</code>.</p>
+<p>Wait for a response of <code>READY</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1076,7 +1076,7 @@
 <p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-eem-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span> 
 </code></pre></div>
-<p>You should expect a response of <code>Succeeded</code>.</p>
+<p>Wait for a response of <code>Succeeded</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1135,7 +1135,7 @@
 </code></pre></div></p>
 </li>
 <li>
-<p>You should expect a response of <code>Running</code>.</p>
+<p>Wait for a response of <code>Running</code>.</p>
 <details class="warning">
 <summary>TROUBLESHOOTING</summary>
 <p>The current version may introduce an issue and instead of a positive response at the end of the script you may get the following message: <code>Something is wrong!</code></p>
@@ -1162,7 +1162,7 @@
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>oc get eventgateway eem-demo-gw -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>Running</code>.</p>
+<p>Wait for a response of <code>Running</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1225,7 +1225,7 @@
 <p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>oc get catalogsources ibmmq-operator-catalogsource -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>READY</code>.</p>
+<p>Wait for a response of <code>READY</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1237,7 +1237,7 @@
 <p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-mq-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>Succeeded</code>.</p>
+<p>Wait for a response of <code>Succeeded</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1276,7 +1276,7 @@
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>oc get queuemanager qmgr-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>Running</code>.</p>
+<p>Wait for a response of <code>Running</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1313,7 +1313,7 @@
 <p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>oc get catalogsources ibm-eventautomation-flink-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>READY</code>.</p>
+<p>Wait for a response of <code>READY</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1328,7 +1328,7 @@
 <p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment flink-kubernetes-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>Succeeded</code>.</p>
+<p>Wait for a response of <code>Succeeded</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1352,7 +1352,7 @@
 <a id="__codelineno-65-10" name="__codelineno-65-10" href="#__codelineno-65-10"></a>error: error reading ./eventautomation.jks: no such file or directory
 </code></pre></div>
 </details>
-<p>You should expect a response of <code>TrustStore for Event Automation has been created.</code></p>
+<p>Wait for a response of <code>TrustStore for Event Automation has been created.</code></p>
 </li>
 </ol>
 <hr />
@@ -1367,7 +1367,7 @@
 <p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a>oc get flinkdeployment ea-flink-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.jobManagerDeploymentStatus}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>READY</code>.</p>
+<p>Wait for a response of <code>READY</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1379,7 +1379,7 @@
 <p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>oc get catalogsources ibm-eventprocessing-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>READY</code>.</p>
+<p>Wait for a response of <code>READY</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1394,7 +1394,7 @@
 <p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-ep-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>Succeeded</code>.</p>
+<p>Wait for a response of <code>Succeeded</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1419,7 +1419,7 @@
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a>oc get eventprocessing ep-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>Running</code>.</p>
+<p>Wait for a response of <code>Running</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1434,7 +1434,7 @@
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment pgo -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>Succeeded</code>.</p>
+<p>Wait for a response of <code>Succeeded</code>.</p>
 </li>
 </ol>
 <hr />
@@ -1457,7 +1457,7 @@
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a>oc get pods -l <span class="s2">&quot;postgres-operator.crunchydata.com/role=master&quot;</span> -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[0].status.conditions[1].status}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>True</code>.</p>
+<p>Wait for a response of <code>True</code>.</p>
 <details class="warning">
 <summary>TROUBLESHOOTING</summary>
 <p>If you execute the <code>oc get pods -l...</code> check too soon, the Terminal will return with an error message similar to the one captured below. Wait approximately 5 minutes and then try the command again. Once PGSQL has been deployed, the Terminal should return a value of <code>True</code>.</p>
@@ -1507,6 +1507,9 @@
 <ol start="3">
 <li>
 <p>Execute the script below to install the "demo helper" services.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~10 minutes</em></p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a>./deploy-helpers.sh
 </code></pre></div>
 </li>
@@ -1515,12 +1518,15 @@
 <ol start="4">
 <li>
 <p>Enable the Kafka Connect base.</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a>scripts/08c-event-streams-kafka-connect-config.sh
 </code></pre></div>
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a>oc get kafkaconnects jgr-connect-cluster -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.conditions[0].type}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>You should expect a response of <code>Ready</code>.</p>
+<p>Wait for a response of <code>Ready</code>.</p>
 </li>
 </ol>
 <hr />
