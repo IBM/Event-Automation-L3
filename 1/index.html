@@ -648,9 +648,9 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KafkaConnector</span><span class="w"></span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mq-connector</span><span class="w"></span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cp4i</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tools</span><span class="w"></span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">eventstreams.ibm.com/cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kafka-connect-cluster</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">eventstreams.ibm.com/cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jgr-connect-cluster</span><span class="w"></span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.ibm.eventstreams.connect.mqsource.MQSourceConnector</span><span class="w"></span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">tasksMax</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
@@ -682,7 +682,7 @@
 <p>Switch over to the <strong>IBM Event Streams</strong> tab with your web browser. Having configured the streaming queue in IBM MQ (earlier in Step 18), Focus Corporation's integration team now wants to view the orders that have been generated so far.</p>
 <p>From the home dashboard of the IBM Event Streams service, click the <strong>Topic</strong><sup>[A]</sup> tab (left-hand side) and then click on the name <code>ORDERS</code> from the table.</p>
 <p><br/>
-<a class="glightbox" href="../_attachments/1-21a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-21a.png" width="200" /></a></p>
+<a class="glightbox" href="../_attachments/module1.3-22.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.3-22.png" width="600" /></a></p>
 </li>
 </ol>
 <hr />
@@ -693,8 +693,6 @@
 <li>Click any one of the orders to pull up additional details on the payload and its contents</li>
 <li>Note that you can inspect details about the <code>quantity</code>, <code>price</code>, <code>customerid</code>, <code>description</code>, <code>id</code>, <code>region</code>, <code>ordertime</code>, and <code>customer</code></li>
 </ul>
-<p><br/>
-<a class="glightbox" href="../_attachments/module1.3-22.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.3-22.png" width="600" /></a></p>
 <p><br/>
 These fields will be valuable later for the marketing team as they look to perform outreach on customers meeting certain criteria.</p>
 </li>
