@@ -1118,7 +1118,7 @@
 <p>Now re-run the script to confirm the deployment:
     <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>scripts/19a-eem-manager-inst-deploy.sh
 </code></pre></div></p>
-<details class="quote">
+<details class="warning">
 <summary>EXPECTED OUTPUT</summary>
 <p>If the EEM Manager instance was successfully deployed, you should receive the following prompts to Terminal:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>eventendpointmanagement.events.ibm.com/eem-demo-mgr unchanged
@@ -1154,6 +1154,9 @@
 <ol start="5">
 <li>
 <p>Deploy the EEM Gateway instance.</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>scripts/19b-eem-gateway-inst-deploy.sh
 </code></pre></div>
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
@@ -1173,20 +1176,17 @@
 <hr />
 <ol start="7">
 <li>
-<p>Get a token for post-deployment configuration.</p>
-<ul>
-<li>Log in to your Event Endpoint Management UI from a supported web browser (get the login URL for your Event Endpoint Management instance running the command below).</li>
-</ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>oc get eem -n tools
+<p>Retrieve the connection details for the deployed Event Endpoint Management (EEM) instance by executing the following script. Record these details to a notepad for future reference.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>oc get eem -n tools
 </code></pre></div>
-<ul>
-<li>Click the <strong>user icon</strong> in the header and then click <strong>Profile</strong> to open the page</li>
-<li>Within the <strong>Profile</strong> page, click <em>Create</em> token to open the dialog</li>
-<li>Read the message and note that API access tokens expire</li>
-<li>Provide a token description that can be used to identify your token and then click <em>Create</em></li>
-<li>Once the new token is generated, click <em>Copy</em> token</li>
-<li>Click <em>Close</em> to exit the dialog</li>
-</ul>
+- <strong>Username</strong>: <code>eem-admin</code> | <strong>Password</strong>: the value set for <code>&lt;EEM-ADMIN-PWD&gt;</code> earlier in <em>Step 3</em>
+- Log in to your Event Endpoint Management UI from a supported web browser
+- Dismiss the welcome and tutorial messages
+- Click the <strong>user icon</strong> in the top-right corner and then click <strong>Profile</strong> from the drop-down
+- Within the <strong>Profile</strong> page, click <strong>Create token</strong>
+- Set <em>Token description</em> to a memorable value (<code>EEM Token</code>) and then click <strong>Create</strong>
+- Once the new token is generated, click <strong>Copy</strong> and record it to a notepad
+- Click <em>Close</em> to exit the dialog</p>
 </li>
 </ol>
 <hr />
