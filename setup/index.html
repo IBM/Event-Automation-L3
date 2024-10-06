@@ -1099,27 +1099,37 @@
 </div>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>scripts/19a-eem-manager-inst-deploy.sh
 </code></pre></div>
-- Wait for a <code>EEM Manager has been deployed</code> response before continuing.
-- Run the following command to confirm the pod has been restarted.
+<br/></p>
+<ul>
+<li>
+<p>Wait for a <code>EEM Manager has been deployed</code> response before continuing.</p>
+</li>
+<li>
+<p>Run the following command to confirm the pod has been restarted.
     <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>oc get pods -n tools <span class="p">|</span> grep eem-demo-mgr
-</code></pre></div>
-- Confirm you get the following response before proceeding to the next step.
+</code></pre></div></p>
+</li>
+<li>
+<p>Confirm you get the following response before proceeding to the next step.
     <div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>eem-demo-mgr-ibm-eem-manager-0                    <span class="m">1</span>/1     Running     <span class="m">0</span>          51s
-</code></pre></div>
-- Now re-run the script to confirm the deployment:
+</code></pre></div></p>
+</li>
+<li>
+<p>Now re-run the script to confirm the deployment:
     <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>scripts/19a-eem-manager-inst-deploy.sh
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code>??? quote &quot;EXPECTED OUTPUT&quot;
-    If the EEM Manager instance was successfully deployed, you should receive the following prompts to Terminal:
-
-    ```
-    eventendpointmanagement.events.ibm.com/eem-demo-mgr unchanged
-    secret/eem-demo-mgr-ibm-eem-user-credentials patched (no change)
-    secret/eem-demo-mgr-ibm-eem-user-roles patched (no change)
-    Cleaning up temp files...
-    EEM Manager has been deployed
-    ```
+</li>
+</ul>
+<details class="quote">
+<summary>EXPECTED OUTPUT</summary>
+<p>If the EEM Manager instance was successfully deployed, you should receive the following prompts to Terminal:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>eventendpointmanagement.events.ibm.com/eem-demo-mgr unchanged
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>secret/eem-demo-mgr-ibm-eem-user-credentials patched (no change)
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>secret/eem-demo-mgr-ibm-eem-user-roles patched (no change)
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>Cleaning up temp files...
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>EEM Manager has been deployed
 </code></pre></div>
+</details>
 <ul>
 <li>Confirm the instance has been deployed successfully before moving to the next step running the following command:
     <div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>oc get eventendpointmanagement eem-demo-mgr -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
