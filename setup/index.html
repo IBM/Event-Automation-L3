@@ -1118,8 +1118,6 @@
 <p>Now re-run the script to confirm the deployment:
     <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>scripts/19a-eem-manager-inst-deploy.sh
 </code></pre></div></p>
-</li>
-</ul>
 <details class="quote">
 <summary>EXPECTED OUTPUT</summary>
 <p>If the EEM Manager instance was successfully deployed, you should receive the following prompts to Terminal:</p>
@@ -1130,10 +1128,12 @@
 <a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>EEM Manager has been deployed
 </code></pre></div>
 </details>
-<ul>
-<li>Confirm the instance has been deployed successfully before moving to the next step running the following command:
+</li>
+<li>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command:
     <div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>oc get eventendpointmanagement eem-demo-mgr -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
-</code></pre></div></li>
+</code></pre></div></p>
+</li>
 <li>
 <p>You should expect a response of <code>Running</code>.</p>
 <details class="warning">
