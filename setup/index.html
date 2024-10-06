@@ -1427,7 +1427,7 @@
 </div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/11-event-processing-subscription.yaml
 </code></pre></div>
-<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<p>Confirm the operator has been installed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-ep-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
 <p>Wait for a response of <code>Succeeded</code>.</p>
