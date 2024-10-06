@@ -1321,7 +1321,7 @@
 <li>
 <p>Install Apache Flink Operator.</p>
 <div class="admonition note">
-<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+<p><strong>Time to install</strong>: <em>~5 minutes</em></p>
 </div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/10-ea-flink-subscription.yaml
 </code></pre></div>
@@ -1334,7 +1334,7 @@
 <hr />
 <ol start="3">
 <li>
-<p>Prepare <code>TrustStore</code> for Event Automation.</p>
+<p>Prepare TrustStore for Event Automation.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a>scripts/20d-ea-truststore-config.sh
 </code></pre></div>
 <details class="warning">
@@ -1359,6 +1359,9 @@
 <ol start="4">
 <li>
 <p>Deploy the Apache Flink instance.</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a>oc apply -f instances/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/common/21-ea-flink-instance.yaml
 </code></pre></div>
 <p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
