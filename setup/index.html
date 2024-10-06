@@ -1099,40 +1099,45 @@
 </div>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>scripts/19a-eem-manager-inst-deploy.sh
 </code></pre></div>
-Wait for a <code>EEM Manager has been deployed</code> response before continuing.</p>
+- Wait for a <code>EEM Manager has been deployed</code> response before continuing.
+- Run the following command to confirm the pod has been restarted.
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>oc get pods -n tools <span class="p">|</span> grep eem-demo-mgr
+</code></pre></div>
+- Confirm you get the following response before proceeding to the next step.
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>eem-demo-mgr-ibm-eem-manager-0                    <span class="m">1</span>/1     Running     <span class="m">0</span>          51s
+</code></pre></div>
+- Now re-run the script to confirm the deployment:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>scripts/19a-eem-manager-inst-deploy.sh
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code>??? quote &quot;EXPECTED OUTPUT&quot;
+    If the EEM Manager instance was successfully deployed, you should receive the following prompts to Terminal:
+
+    ```
+    eventendpointmanagement.events.ibm.com/eem-demo-mgr unchanged
+    secret/eem-demo-mgr-ibm-eem-user-credentials patched (no change)
+    secret/eem-demo-mgr-ibm-eem-user-roles patched (no change)
+    Cleaning up temp files...
+    EEM Manager has been deployed
+    ```
+</code></pre></div>
+<ul>
+<li>Confirm the instance has been deployed successfully before moving to the next step running the following command:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>oc get eventendpointmanagement eem-demo-mgr -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div></li>
+<li>
+<p>You should expect a response of <code>Running</code>.</p>
 <details class="warning">
 <summary>TROUBLESHOOTING</summary>
 <p>The current version may introduce an issue and instead of a positive response at the end of the script you may get the following message: <code>Something is wrong!</code></p>
 <p><br/>
 <a class="glightbox" href="../_attachments/setup-2.8-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.8-4.png" width="600" /></a></p>
 <p>If that is the case, then run the following commands to fix the problem:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>oc <span class="nb">exec</span> -it -n tools eem-demo-mgr-ibm-eem-manager-0 -- rmdir /opt/storage/lost+found
-<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>oc delete pod -n tools eem-demo-mgr-ibm-eem-manager-0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>oc <span class="nb">exec</span> -it -n tools eem-demo-mgr-ibm-eem-manager-0 -- rmdir /opt/storage/lost+found
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>oc delete pod -n tools eem-demo-mgr-ibm-eem-manager-0
 </code></pre></div>
 </details>
-<p>Run the following command to confirm the pod has been restarted.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>oc get pods -n tools <span class="p">|</span> grep eem-demo-mgr
-</code></pre></div></p>
-<p>Confirm you get the following response before proceeding to the next step.
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>eem-demo-mgr-ibm-eem-manager-0                    <span class="m">1</span>/1     Running     <span class="m">0</span>          51s
-</code></pre></div></p>
-<p>Now re-run the script to confirm the deployment:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>scripts/19a-eem-manager-inst-deploy.sh
-</code></pre></div></p>
-<details class="quote">
-<summary>EXPECTED OUTPUT</summary>
-<p>If the EEM Manager instance was successfully deployed, you should receive the following prompts to Terminal:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>eventendpointmanagement.events.ibm.com/eem-demo-mgr unchanged
-<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>secret/eem-demo-mgr-ibm-eem-user-credentials patched (no change)
-<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a>secret/eem-demo-mgr-ibm-eem-user-roles patched (no change)
-<a id="__codelineno-41-4" name="__codelineno-41-4" href="#__codelineno-41-4"></a>Cleaning up temp files...
-<a id="__codelineno-41-5" name="__codelineno-41-5" href="#__codelineno-41-5"></a>EEM Manager has been deployed
-</code></pre></div>
-</details>
-<p>Confirm the instance has been deployed successfully before moving to the next step running the following command:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>oc get eventendpointmanagement eem-demo-mgr -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
-</code></pre></div></p>
-<p>You should expect a response of <code>Running</code>.</p>
+</li>
+</ul>
 </li>
 </ol>
 <hr />
