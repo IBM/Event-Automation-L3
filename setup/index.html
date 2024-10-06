@@ -1386,6 +1386,9 @@
 <ol start="6">
 <li>
 <p>Install the Event Processing Operator.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~5 minutes</em></p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/11-event-processing-subscription.yaml
 </code></pre></div>
 <p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
@@ -1397,7 +1400,9 @@
 <hr />
 <ol start="7">
 <li>
-<p>Set password via environment variables (substitute <code>&lt;ep-admin-pwd&gt;</code> with your own password).</p>
+<p>Now you must <strong>create your own passwords</strong> for EP administrators and then set that to environment variables.</p>
+<p>Replace <code>&lt;ep-admin-pwd&gt;</code> with a new password (of your choosing). Record that passwords to a notepad so that you can reference it later.</p>
+<p>Execute the following script, after replacing the variable, to set EP password.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a><span class="nb">export</span> <span class="nv">EP_ADMIN_PWD</span><span class="o">=</span>&lt;ep-admin-pwd&gt;
 </code></pre></div>
 </li>
@@ -1406,6 +1411,9 @@
 <ol start="8">
 <li>
 <p>Deploy the Event Processing instance.</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a>scripts/20b-ea-ep-inst-deploy.sh
 </code></pre></div>
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
@@ -1418,6 +1426,9 @@
 <ol start="9">
 <li>
 <p>Install the <code>PGSQL</code> Operator.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~5 minutes</em></p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a>oc apply -f resources/12a-pgsql-subscription.yaml
 </code></pre></div>
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
@@ -1438,19 +1449,32 @@
 <ol start="11">
 <li>
 <p>Deploy a <code>PGSQL</code> database instance:</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a>oc apply -f resources/12c-pgsql-db.yaml
 </code></pre></div>
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a>oc get pods -l <span class="s2">&quot;postgres-operator.crunchydata.com/role=master&quot;</span> -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[0].status.conditions[1].status}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
-<p>Wait a few minutes. You should expect a response of <code>True</code>.</p>
+<p>You should expect a response of <code>True</code>.</p>
+<details class="warning">
+<summary>TROUBLESHOOTING</summary>
+<p>If you execute the <code>oc get pods -l...</code> check too soon, the Terminal will return with an error message similar to the one captured below. Wait approximately 5 minutes and then try the command again. Once PGSQL has been deployed, the Terminal should return a value of <code>True</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a>error: error executing jsonpath &quot;{.items[0].status.conditions[1].status}&quot;: Error executing template: array index out of bounds: index 0, length 0. Printing more information for debugging the template:
+<a id="__codelineno-80-2" name="__codelineno-80-2" href="#__codelineno-80-2"></a>template was:
+<a id="__codelineno-80-3" name="__codelineno-80-3" href="#__codelineno-80-3"></a>    {.items[0].status.conditions[1].status}
+<a id="__codelineno-80-4" name="__codelineno-80-4" href="#__codelineno-80-4"></a>object given to jsonpath engine was:
+<a id="__codelineno-80-5" name="__codelineno-80-5" href="#__codelineno-80-5"></a>    map[string]interface {}{&quot;apiVersion&quot;:&quot;v1&quot;, &quot;items&quot;:[]interface {}{}, &quot;kind&quot;:&quot;List&quot;, &quot;metadata&quot;:map[string]interface {}{&quot;resourceVersion&quot;:&quot;&quot;}}
+</code></pre></div>
+</details>
 </li>
 </ol>
 <hr />
 <ol start="12">
 <li>
 <p>Retrieve the connection details for accessing the EA instances. Record that information into a notepad for future reference.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a>scripts/20c-ea-access-info.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a>scripts/20c-ea-access-info.sh
 </code></pre></div>
 </li>
 </ol>
@@ -1460,7 +1484,7 @@
 <ol>
 <li>
 <p>Open a Terminal window and execute the following command to clone (via <code>git</code>) the demo repository to your local machine.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a>gh repo clone ibm-integration/eventautomationL3
+<div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a>gh repo clone ibm-integration/eventautomationL3
 </code></pre></div>
 </li>
 </ol>
@@ -1468,7 +1492,7 @@
 <ol start="2">
 <li>
 <p>Navigate to the <code>eventautomationL3</code> directory.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a><span class="nb">cd</span> eventautomationL3
+<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="nb">cd</span> eventautomationL3
 </code></pre></div>
 </li>
 </ol>
@@ -1476,7 +1500,7 @@
 <ol start="3">
 <li>
 <p>Execute the script below to install the "demo helper" services.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a>./deploy-helpers.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a>./deploy-helpers.sh
 </code></pre></div>
 </li>
 </ol>
@@ -1484,10 +1508,10 @@
 <ol start="4">
 <li>
 <p>Enable the Kafka Connect base.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a>scripts/08c-event-streams-kafka-connect-config.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a>scripts/08c-event-streams-kafka-connect-config.sh
 </code></pre></div>
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a>oc get kafkaconnects jgr-connect-cluster -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.conditions[0].type}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a>oc get kafkaconnects jgr-connect-cluster -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.conditions[0].type}&#39;</span><span class="p">;</span><span class="nb">echo</span>
 </code></pre></div>
 <p>You should expect a response of <code>Ready</code>.</p>
 </li>
@@ -1496,16 +1520,16 @@
 <ol start="5">
 <li>
 <p>Enable the Kafka Connector Datagen.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a>scripts/08e-event-streams-kafka-connector-datagen-config.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a>scripts/08e-event-streams-kafka-connector-datagen-config.sh
 </code></pre></div>
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a>oc get kafkaconnector -n tools
+<div class="highlight"><pre><span></span><code><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a>oc get kafkaconnector -n tools
 </code></pre></div>
 <p>After several minutes, you should receive the following response:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a>NAME            CLUSTER          CONNECTOR CLASS                                  MAX TASKS   READY
-<a id="__codelineno-88-2" name="__codelineno-88-2" href="#__codelineno-88-2"></a>kafka-datagen   jgr-connect-cluster     com.ibm.eventautomation.demos.acme.DatagenSourceConnector       1               True
-<a id="__codelineno-88-3" name="__codelineno-88-3" href="#__codelineno-88-3"></a>mq-sink         jgr-connect-cluster     com.ibm.eventstreams.connect.mqsink.MQSinkConnector             1               True
-<a id="__codelineno-88-4" name="__codelineno-88-4" href="#__codelineno-88-4"></a>mq-source       jgr-connect-cluster     com.ibm.eventstreams.connect.mqsource.MQSourceConnector         1               True
+<div class="highlight"><pre><span></span><code><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a>NAME            CLUSTER          CONNECTOR CLASS                                  MAX TASKS   READY
+<a id="__codelineno-89-2" name="__codelineno-89-2" href="#__codelineno-89-2"></a>kafka-datagen   jgr-connect-cluster     com.ibm.eventautomation.demos.acme.DatagenSourceConnector       1               True
+<a id="__codelineno-89-3" name="__codelineno-89-3" href="#__codelineno-89-3"></a>mq-sink         jgr-connect-cluster     com.ibm.eventstreams.connect.mqsink.MQSinkConnector             1               True
+<a id="__codelineno-89-4" name="__codelineno-89-4" href="#__codelineno-89-4"></a>mq-source       jgr-connect-cluster     com.ibm.eventstreams.connect.mqsource.MQSourceConnector         1               True
 </code></pre></div>
 </li>
 </ol>
