@@ -1518,62 +1518,67 @@
 <p>Additional supporting services are needed to generate results and data for the hands-on lab experience.</p>
 <ol>
 <li>
-<p>Open a Terminal window and execute the following command to clone (via <code>git</code>) the demo repository to your local machine.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a>git clone https://github.com/ibm-integration/eventautomationL3.git
+<p>Navigate outside of the <code>cp4i-demo</code> directory first so that the support scripts can be cloned in a separate directory:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a><span class="nb">cd</span> ..
 </code></pre></div>
 </li>
-</ol>
-<hr />
-<ol start="2">
 <li>
-<p>Navigate to the <code>eventautomationL3</code> directory.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a><span class="nb">cd</span> eventautomationL3
+<p>Execute the following command to clone (via <code>git</code>) the support script repository (<code>eventautomationl3.git</code>) to your local machine.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a>git clone https://github.com/ibm-integration/eventautomationL3.git
 </code></pre></div>
 </li>
 </ol>
 <hr />
 <ol start="3">
 <li>
-<p>Execute the script below to install the "demo helper" services.</p>
-<div class="admonition note">
-<p><strong>Time to install</strong>: <em>~10 minutes</em></p>
-</div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a>./deploy-helpers.sh
+<p>Navigate into the <code>eventautomationL3</code> directory.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a><span class="nb">cd</span> eventautomationL3
 </code></pre></div>
 </li>
 </ol>
 <hr />
 <ol start="4">
 <li>
-<p>Enable the Kafka Connect base.</p>
+<p>Execute the script below to install the support script services.</p>
 <div class="admonition note">
-<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+<p><strong>Time to install</strong>: <em>~10 minutes</em></p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a>scripts/08c-event-streams-kafka-connect-config.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a>./deploy-helpers.sh
 </code></pre></div>
-<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a>oc get kafkaconnects jgr-connect-cluster -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.conditions[0].type}&#39;</span><span class="p">;</span><span class="nb">echo</span>
-</code></pre></div>
-<p>Wait for a response of <code>Ready</code>.</p>
 </li>
 </ol>
 <hr />
 <ol start="5">
 <li>
+<p>Enable the Kafka Connect base.</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a>scripts/08c-event-streams-kafka-connect-config.sh
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a>oc get kafkaconnects jgr-connect-cluster -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.conditions[0].type}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>Ready</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
 <p>Enable the Kafka Connector data generator.</p>
 <div class="admonition note">
 <p><strong>Time to deploy</strong>: <em>~1 minute</em></p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-88-1" name="__codelineno-88-1" href="#__codelineno-88-1"></a>scripts/08e-event-streams-kafka-connector-datagen-config.sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a>scripts/08e-event-streams-kafka-connector-datagen-config.sh
 </code></pre></div>
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-89-1" name="__codelineno-89-1" href="#__codelineno-89-1"></a>oc get kafkaconnector -n tools
+<div class="highlight"><pre><span></span><code><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a>oc get kafkaconnector -n tools
 </code></pre></div>
 <p>After several minutes, you should receive the following response:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-90-1" name="__codelineno-90-1" href="#__codelineno-90-1"></a>NAME            CLUSTER          CONNECTOR CLASS                                  MAX TASKS   READY
-<a id="__codelineno-90-2" name="__codelineno-90-2" href="#__codelineno-90-2"></a>kafka-datagen   jgr-connect-cluster     com.ibm.eventautomation.demos.acme.DatagenSourceConnector       1               True
-<a id="__codelineno-90-3" name="__codelineno-90-3" href="#__codelineno-90-3"></a>mq-sink         jgr-connect-cluster     com.ibm.eventstreams.connect.mqsink.MQSinkConnector             1               True
-<a id="__codelineno-90-4" name="__codelineno-90-4" href="#__codelineno-90-4"></a>mq-source       jgr-connect-cluster     com.ibm.eventstreams.connect.mqsource.MQSourceConnector         1               True
+<div class="highlight"><pre><span></span><code><a id="__codelineno-91-1" name="__codelineno-91-1" href="#__codelineno-91-1"></a>NAME            CLUSTER          CONNECTOR CLASS                                  MAX TASKS   READY
+<a id="__codelineno-91-2" name="__codelineno-91-2" href="#__codelineno-91-2"></a>kafka-datagen   jgr-connect-cluster     com.ibm.eventautomation.demos.acme.DatagenSourceConnector       1               True
+<a id="__codelineno-91-3" name="__codelineno-91-3" href="#__codelineno-91-3"></a>mq-sink         jgr-connect-cluster     com.ibm.eventstreams.connect.mqsink.MQSinkConnector             1               True
+<a id="__codelineno-91-4" name="__codelineno-91-4" href="#__codelineno-91-4"></a>mq-source       jgr-connect-cluster     com.ibm.eventstreams.connect.mqsource.MQSourceConnector         1               True
 </code></pre></div>
 </li>
 </ol>
