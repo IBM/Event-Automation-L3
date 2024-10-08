@@ -271,36 +271,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#creating-an-event-stream-from-an-ibm-mq-message-queue" class="md-nav__link">
-    Creating an event stream from an IBM MQ message queue
+  <a href="#i-creating-an-event-stream-from-an-ibm-mq-message-queue" class="md-nav__link">
+    i. Creating an event stream from an IBM MQ message queue
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuring-ibm-mq-to-clone-customer-order-data" class="md-nav__link">
-    Configuring IBM MQ to clone customer order data
+  <a href="#ii-configuring-ibm-mq-to-clone-customer-order-data" class="md-nav__link">
+    ii. Configuring IBM MQ to clone customer order data
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#cloning-order-queues-with-ibm-event-streams" class="md-nav__link">
-    Cloning order queues with IBM Event Streams
+  <a href="#iii-cloning-order-queues-with-ibm-event-streams" class="md-nav__link">
+    iii. Cloning order queues with IBM Event Streams
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuring-a-message-bridge-between-ibm-mq-and-ibm-event-streams" class="md-nav__link">
-    Configuring a message bridge between IBM MQ and IBM Event Streams
+  <a href="#iv-configuring-a-message-bridge-between-ibm-mq-and-ibm-event-streams" class="md-nav__link">
+    iv. Configuring a message bridge between IBM MQ and IBM Event Streams
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    Next steps
+  <a href="#v-next-steps" class="md-nav__link">
+    v. Next steps
   </a>
   
 </li>
@@ -385,36 +385,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#creating-an-event-stream-from-an-ibm-mq-message-queue" class="md-nav__link">
-    Creating an event stream from an IBM MQ message queue
+  <a href="#i-creating-an-event-stream-from-an-ibm-mq-message-queue" class="md-nav__link">
+    i. Creating an event stream from an IBM MQ message queue
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuring-ibm-mq-to-clone-customer-order-data" class="md-nav__link">
-    Configuring IBM MQ to clone customer order data
+  <a href="#ii-configuring-ibm-mq-to-clone-customer-order-data" class="md-nav__link">
+    ii. Configuring IBM MQ to clone customer order data
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#cloning-order-queues-with-ibm-event-streams" class="md-nav__link">
-    Cloning order queues with IBM Event Streams
+  <a href="#iii-cloning-order-queues-with-ibm-event-streams" class="md-nav__link">
+    iii. Cloning order queues with IBM Event Streams
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuring-a-message-bridge-between-ibm-mq-and-ibm-event-streams" class="md-nav__link">
-    Configuring a message bridge between IBM MQ and IBM Event Streams
+  <a href="#iv-configuring-a-message-bridge-between-ibm-mq-and-ibm-event-streams" class="md-nav__link">
+    iv. Configuring a message bridge between IBM MQ and IBM Event Streams
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    Next steps
+  <a href="#v-next-steps" class="md-nav__link">
+    v. Next steps
   </a>
   
 </li>
@@ -440,11 +440,11 @@
 <p><strong>Additional ways to watch:</strong> <a href="https://ibm.seismic.com/Link/Content/DC4cQH44328qqGFWgD89HPjF9Xgj" target="_blank">Seismic replay available for download.</a> [8 minutes]</p>
 </div>
 <p><br/></p>
-<h2 id="creating-an-event-stream-from-an-ibm-mq-message-queue"><strong>Creating an event stream from an IBM MQ message queue</strong></h2>
+<h2 id="i-creating-an-event-stream-from-an-ibm-mq-message-queue"><strong>i. Creating an event stream from an IBM MQ message queue</strong></h2>
 <p>To take advantage of the message queue data available from IBM MQ, Focus Corporation's integration team will need to make IBM MQ's enterprise data available to a broader set of APIs. This will allow Focus' application developers to subscribe to the data without any risk or impact to the core back-end systems that support the data. Risks will be lowered and the application development process can be decoupled from data retention processes.</p>
 <p>To do so, Focus' integration team will need to expose the IBM MQ enterprise data using "event streams." Specifically, the integration team (and application developers) will need access to the customer order information contained within these streams. This data will be vital for the marketing team's plans to offer high value promotions for newly-acquired customers in a timely manner.</p>
 <hr />
-<h2 id="configuring-ibm-mq-to-clone-customer-order-data"><strong>Configuring IBM MQ to clone customer order data</strong></h2>
+<h2 id="ii-configuring-ibm-mq-to-clone-customer-order-data"><strong>ii. Configuring IBM MQ to clone customer order data</strong></h2>
 <p>Both the order management system and its payment gateway system are currently using IBM MQ message queues for exchanging customer order data. The integration team will need to tap into this message exchange, clone each of the orders being handled across IBM MQ, and then publish those messages into a new event stream.</p>
 <hr />
 <ol>
@@ -571,7 +571,7 @@
 <li>Take note of the customer order messages that are now populating the <code>TO.KAFKA</code> message queue table. You can click the circular refresh icon (to the left of the blue <em>Create</em> button) to reload the queue contents.</li>
 </ol>
 <hr />
-<h2 id="cloning-order-queues-with-ibm-event-streams"><strong>Cloning order queues with IBM Event Streams</strong></h2>
+<h2 id="iii-cloning-order-queues-with-ibm-event-streams"><strong>iii. Cloning order queues with IBM Event Streams</strong></h2>
 <p>Focus Corporation's integration team will now need to create an event stream called <code>Orders</code> using <em>IBM Event Streams</em>. This will serve as the repository where messages, cloned from IBM MQ, are published and made available to other parts of the organization.</p>
 <p>The integration team will need to make decisions about how to replicate the data (with or without modification) and also determine the appropriate retention settings for this data. Given the governance policies in place at Focus Corporation, they will need to retain data for up to 1 week and replicate entries for high availability.</p>
 <div class="admonition note">
@@ -625,7 +625,7 @@
 </li>
 </ol>
 <hr />
-<h2 id="configuring-a-message-bridge-between-ibm-mq-and-ibm-event-streams"><strong>Configuring a message bridge between IBM MQ and IBM Event Streams</strong></h2>
+<h2 id="iv-configuring-a-message-bridge-between-ibm-mq-and-ibm-event-streams"><strong>iv. Configuring a message bridge between IBM MQ and IBM Event Streams</strong></h2>
 <p>Using the Apache Kafka connector framework, Focus Corporation's integration team will now need to configure an "event bridge" using Red Hat OpenShift. The task can be performed programmatically via the OpenShift console. The bridge configuration will include connectivity details for accessing both IBM MQ and IBM Event Streams.</p>
 <p>Once configured and deployed, the bridge will utilize the Apache Kafka connector framework to read messages from the <code>TO.KAFKA</code> <em>message queue</em> and then publish those to the newly-created <code>Orders</code> <em>event stream</em>.</p>
 <hr />
@@ -756,7 +756,7 @@ These fields will be valuable later for the marketing team as they look to perfo
 </li>
 </ol>
 <hr />
-<h2 id="next-steps"><strong>Next steps</strong></h2>
+<h2 id="v-next-steps"><strong>v. Next steps</strong></h2>
 <p>In the following module, the integration team will use <em>IBM Event Endpoint Management</em> to import the event stream data and curate a self-service catalog for the marketing department.</p>
 
 

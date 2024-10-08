@@ -286,43 +286,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#build-a-self-service-catalog-with-event-endpoint-management" class="md-nav__link">
-    Build a self-service catalog with Event Endpoint Management
+  <a href="#i-build-a-self-service-catalog-with-event-endpoint-management" class="md-nav__link">
+    i. Build a self-service catalog with Event Endpoint Management
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#defining-new-topics-within-ibm-event-streams" class="md-nav__link">
-    Defining new Topics within IBM Event Streams
+  <a href="#ii-defining-new-topics-within-ibm-event-streams" class="md-nav__link">
+    ii. Defining new Topics within IBM Event Streams
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#defining-a-data-schema-for-customers" class="md-nav__link">
-    Defining a data schema for Customers
+  <a href="#iii-defining-a-data-schema-for-customers" class="md-nav__link">
+    iii. Defining a data schema for Customers
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#defining-a-data-schema-for-orders" class="md-nav__link">
-    Defining a data schema for Orders
+  <a href="#iv-defining-a-data-schema-for-orders" class="md-nav__link">
+    iv. Defining a data schema for Orders
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#validating-the-configuration-changes-and-generating-access-credentials" class="md-nav__link">
-    Validating the configuration changes and generating access credentials
+  <a href="#v-validating-the-configuration-changes-and-generating-access-credentials" class="md-nav__link">
+    v. Validating the configuration changes and generating access credentials
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    Next steps
+  <a href="#vi-next-steps" class="md-nav__link">
+    vi. Next steps
   </a>
   
 </li>
@@ -392,43 +392,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#build-a-self-service-catalog-with-event-endpoint-management" class="md-nav__link">
-    Build a self-service catalog with Event Endpoint Management
+  <a href="#i-build-a-self-service-catalog-with-event-endpoint-management" class="md-nav__link">
+    i. Build a self-service catalog with Event Endpoint Management
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#defining-new-topics-within-ibm-event-streams" class="md-nav__link">
-    Defining new Topics within IBM Event Streams
+  <a href="#ii-defining-new-topics-within-ibm-event-streams" class="md-nav__link">
+    ii. Defining new Topics within IBM Event Streams
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#defining-a-data-schema-for-customers" class="md-nav__link">
-    Defining a data schema for Customers
+  <a href="#iii-defining-a-data-schema-for-customers" class="md-nav__link">
+    iii. Defining a data schema for Customers
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#defining-a-data-schema-for-orders" class="md-nav__link">
-    Defining a data schema for Orders
+  <a href="#iv-defining-a-data-schema-for-orders" class="md-nav__link">
+    iv. Defining a data schema for Orders
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#validating-the-configuration-changes-and-generating-access-credentials" class="md-nav__link">
-    Validating the configuration changes and generating access credentials
+  <a href="#v-validating-the-configuration-changes-and-generating-access-credentials" class="md-nav__link">
+    v. Validating the configuration changes and generating access credentials
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    Next steps
+  <a href="#vi-next-steps" class="md-nav__link">
+    vi. Next steps
   </a>
   
 </li>
@@ -454,7 +454,7 @@
 <p><strong>Additional ways to watch:</strong> <a href="https://ibm.seismic.com/Link/Content/DCCH9WJ36CWTJG9Bj34WjDFTq9VB" target="_blank">Seismic replay available for download.</a> [9 minutes]</p>
 </div>
 <p><br/></p>
-<h2 id="build-a-self-service-catalog-with-event-endpoint-management"><strong>Build a self-service catalog with Event Endpoint Management</strong></h2>
+<h2 id="i-build-a-self-service-catalog-with-event-endpoint-management"><strong>i. Build a self-service catalog with Event Endpoint Management</strong></h2>
 <p>Having successfully deployed the IBM MQ-Apacha Kafka connector framework, Focus Corporation's integration team have created a bridge between MQ and Event Streams. As new customer order data is processed by the IBM MQ message queue, it is simultaneously cloned into the <code>Orders</code> event stream — awaiting further analysis and action by other users downstream.</p>
 <p>In this module, Focus' integration team will utilize <strong>IBM Event Endpoint Management (EEM)</strong> to import the newly-created event stream into a self-service catalog. EEM supports two use cases: the first is allowing teams (like the integration squad) to publish new event streams; the second is for consumers (such as marketing) to browse the contents of those event streams, without requiring direct intervention from the integration team.</p>
 <div class="admonition note">
@@ -472,7 +472,7 @@
 <p>IBM Event Endpoint Management— a composable service within IBM Event Automation —uses AsyncAPI as the standardized way for describing event-driven messages. It allows clients to quickly "discover" events across their ecosystem, publish those events across the organization according to governance rules that ensure compliance, and create enforceable policies through event gateways. Like enterprises do today with API gateways, an event gateway provides isolation, abstraction, policy enforcement, and decoupling to asynchronous (event-driven) data sources.</p>
 </div>
 <hr />
-<h2 id="defining-new-topics-within-ibm-event-streams"><strong>Defining new Topics within IBM Event Streams</strong></h2>
+<h2 id="ii-defining-new-topics-within-ibm-event-streams"><strong>ii. Defining new Topics within IBM Event Streams</strong></h2>
 <p>Before the event stream data can be browsed as part of a self-service catalog, the integration team must first import into EEM the <code>ORDER</code> and <code>CUSTOMER</code> streams via <em>Topics</em> created earlier within IBM Event Streams.</p>
 <hr />
 <ol>
@@ -601,7 +601,7 @@
 </li>
 </ol>
 <hr />
-<h2 id="defining-a-data-schema-for-customers"><strong>Defining a data schema for <em>Customers</em></strong></h2>
+<h2 id="iii-defining-a-data-schema-for-customers"><strong>iii. Defining a data schema for <em>Customers</em></strong></h2>
 <p>With the connections to IBM Event Streams defined and the Kafka Topics selected for replication, Focus' integration team is ready to create self-service event stream catalogs within EEM. </p>
 <p>The team must provide descriptions of the event streams, including an example of how the data is structured and formatted. This description will be beneficial to other individuals within the company (such as the marketing department), who will want to know at-a-glance whether a particular Topic catalog fits their needs.</p>
 <hr />
@@ -737,7 +737,7 @@
 </li>
 </ol>
 <hr />
-<h2 id="defining-a-data-schema-for-orders"><strong>Defining a data schema for <em>Orders</em></strong></h2>
+<h2 id="iv-defining-a-data-schema-for-orders"><strong>iv. Defining a data schema for <em>Orders</em></strong></h2>
 <p>The process of publishing an event streams Topic within EEM (Steps 9–16) must now be repeated— with some slight modifications —for the <code>ORDERS</code> topic.</p>
 <hr />
 <ol start="17">
@@ -869,7 +869,7 @@
 </li>
 </ol>
 <hr />
-<h2 id="validating-the-configuration-changes-and-generating-access-credentials"><strong>Validating the configuration changes and generating access credentials</strong></h2>
+<h2 id="v-validating-the-configuration-changes-and-generating-access-credentials"><strong>v. Validating the configuration changes and generating access credentials</strong></h2>
 <p>Before handing access over to Focus Corporation's marketing team, the integration squad must first validate that the catalogued event streams are performing as expected. If no issues are detected, they can generate access credentials for users to securely access the catalog.</p>
 <hr />
 <ol start="25">
@@ -956,7 +956,7 @@
 </li>
 </ol>
 <hr />
-<h2 id="next-steps"><strong>Next steps</strong></h2>
+<h2 id="vi-next-steps"><strong>vi. Next steps</strong></h2>
 <p>At this stage, responsibility can shift towards Focus Corporation's marketing team. Thanks to the hard work of the integration squad, the marketing department now has a fully configured, self-service catalog of event stream data available within EEM.</p>
 <p>In the following module, Focus' marketing team will use <em>IBM Event Processing</em> to correlate newly-created customer accounts with orders totaling over $100 within a 24-hour time window.</p>
 
