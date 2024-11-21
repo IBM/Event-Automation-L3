@@ -1,0 +1,843 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="IBM Event Automation for Technical Sales Level 3">
+      
+      
+        <meta name="author" content="Christopher Bienko (cdbienko@us.ibm.com)">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
+    
+    
+      
+        <title>1. Creating an event stream from MQ data using Event Streams - IBM Event Automation for Technical Sales Level 3</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.69437709.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="IBM Event Automation for Technical Sales Level 3" class="md-header__button md-logo" aria-label="IBM Event Automation for Technical Sales Level 3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM Event Automation for Technical Sales Level 3
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Creating an event stream from MQ data using Event Streams
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IBM Event Automation for Technical Sales Level 3" class="md-nav__button md-logo" aria-label="IBM Event Automation for Technical Sales Level 3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    IBM Event Automation for Technical Sales Level 3
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        Setup and Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evaluation/" class="md-nav__link">
+        Evaluation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          1. Creating an event stream from MQ data using Event Streams
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        1. Creating an event stream from MQ data using Event Streams
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-creating-an-event-stream-from-an-ibm-mq-message-queue" class="md-nav__link">
+    i. Creating an event stream from an IBM MQ message queue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-configuring-ibm-mq-to-clone-customer-order-data" class="md-nav__link">
+    ii. Configuring IBM MQ to clone customer order data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-cloning-order-queues-with-ibm-event-streams" class="md-nav__link">
+    iii. Cloning order queues with IBM Event Streams
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-configuring-a-message-bridge-between-ibm-mq-and-ibm-event-streams" class="md-nav__link">
+    iv. Configuring a message bridge between IBM MQ and IBM Event Streams
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-next-steps" class="md-nav__link">
+    v. Next steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2/" class="md-nav__link">
+        2. Building a self-service catalog of events with Event Endpoint Management
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3/" class="md-nav__link">
+        3. Configuring the solution with Event Processing no-code editors
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4/" class="md-nav__link">
+        4. Connecting real-time events to a promotional marketing app
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-creating-an-event-stream-from-an-ibm-mq-message-queue" class="md-nav__link">
+    i. Creating an event stream from an IBM MQ message queue
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-configuring-ibm-mq-to-clone-customer-order-data" class="md-nav__link">
+    ii. Configuring IBM MQ to clone customer order data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-cloning-order-queues-with-ibm-event-streams" class="md-nav__link">
+    iii. Cloning order queues with IBM Event Streams
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-configuring-a-message-bridge-between-ibm-mq-and-ibm-event-streams" class="md-nav__link">
+    iv. Configuring a message bridge between IBM MQ and IBM Event Streams
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-next-steps" class="md-nav__link">
+    v. Next steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="_1"></h1>
+<p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="../_videos/module1.mp4" type="video/mp4" /></video></div></p>
+<div class="admonition quote">
+<p>Christopher Bienko <em>(Principal, IBM Global Sales Enablement)</em> provides a hands-on demonstration of Module 1.</p>
+<p><strong>Additional ways to watch:</strong> <a href="https://ibm.seismic.com/Link/Content/DC4cQH44328qqGFWgD89HPjF9Xgj" target="_blank">Seismic replay available for download.</a> [8 minutes]</p>
+</div>
+<p><br/></p>
+<h2 id="i-creating-an-event-stream-from-an-ibm-mq-message-queue"><strong>i. Creating an event stream from an IBM MQ message queue</strong></h2>
+<p>To take advantage of the message queue data available from IBM MQ, Focus Corporation's integration team will need to make IBM MQ's enterprise data available to a broader set of APIs. This will allow Focus' application developers to subscribe to the data without any risk or impact to the core back-end systems that support the data. Risks will be lowered and the application development process can be decoupled from data retention processes.</p>
+<p>To do so, Focus' integration team will need to expose the IBM MQ enterprise data using "event streams." Specifically, the integration team (and application developers) will need access to the customer order information contained within these streams. This data will be vital for the marketing team's plans to offer high value promotions for newly-acquired customers in a timely manner.</p>
+<hr />
+<h2 id="ii-configuring-ibm-mq-to-clone-customer-order-data"><strong>ii. Configuring IBM MQ to clone customer order data</strong></h2>
+<p>Both the order management system and its payment gateway system are currently using IBM MQ message queues for exchanging customer order data. The integration team will need to tap into this message exchange, clone each of the orders being handled across IBM MQ, and then publish those messages into a new event stream.</p>
+<hr />
+<ol>
+<li>
+<p>Open the <strong>IBM Cloud Pak for Integration Platform Navigator</strong> dashboard with a web browser.</p>
+<ul>
+<li>From the home page, open the <strong>Orders</strong> queue manager</li>
+<li>From the left-hand side interface, drill down into the <strong>Manage</strong><sup>[A]</sup> tab</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/module1.1-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.1-1.png" width="600" /></a>
+<a class="glightbox" href="../_attachments/1-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-1.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Select the <strong>Queues</strong><sup>[A]</sup> tab along the top of the page.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-2.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Scroll down the page until you reach a table, which at this time should show several queues that are already a part of the environment.</p>
+<p>Create a new queue by clicking the blue <strong>Create</strong><sup>[A]</sup> icon in the top-right corner of the table.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-3.png" width="200" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Wait for the Queue creation wizard to load, then select <strong>Local</strong><sup>[A]</sup> from <em>Choose queue type</em>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-4.png" width="500" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>The <strong>Quick create</strong><sup>[A]</sup> option should be selected by default.</p>
+<ul>
+<li>Under the <strong>Queue name</strong><sup>[B]</sup> field, enter <code>TO.KAFKA</code> (all uppercase)</li>
+<li>Leave all other settings configured to their default values</li>
+<li>When ready, click <strong>Create</strong><sup>[C]</sup></li>
+<li>The web browser will refresh back to the <strong>Manage</strong> &gt; <strong>Queues</strong> perspective</li>
+<li>From the Queues table, confirm that the <code>TO.KAFKA</code> queue is now available</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-5.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<p>Next, you need to configure IBM MQ to clone all customer order data that it is exchanging between Focus Corporation's order management system and payment gateway. Messages must be reviewed to verify that they contain the expected payload information.</p>
+<hr />
+<ol start="6">
+<li>
+<p>From the <strong>Manage</strong> &gt; <strong>Queues</strong> table, locate the queue named <code>PAYMENT.REQ</code> and click the <strong>name</strong><sup>[A]</sup> to inspect it in more detail.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-6.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>The queue will already have been populated with multiple <em>Messages</em>. Click on any of the <strong>Timestamp</strong><sup>[A]</sup> names available in the table (something similar to <code>Feb 21, 2024 at 5:12:00 PM</code>) to pull open a <em>Message Details</em> panel.</p>
+<ul>
+<li>Scroll down the <em>Message Details</em> panel until you reach <strong>Application Data</strong><sup>[B]</sup></li>
+<li>Inspect the contents of the packet, which is a series of key-value pairs: you should see details about the order <code>id</code>, <code>customer</code>, <code>customerid</code>, <code>description</code>, <code>price</code>, <code>quantity</code>, <code>region</code>, and <code>ordertime</code></li>
+<li><strong>Close</strong><sup>[C]</sup> the <em>Message Details</em> panel by clicking the <code>X</code> in the top-right corner or the grey <code>Close</code> button</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-7.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>Back on the <code>PAYMENT.REQ</code> orders summary table, locate the <strong>Actions</strong> button in the top-right corner of the page. Click to open a drop-down menu and then select <strong>View configuration</strong><sup>[A]</sup>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-8.png" width="200" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="9">
+<li>
+<p>Multiple attributes of the <code>PAYMENT.REQ</code> order queue can be configured from this page.</p>
+<p>Click the grey <strong>Edit</strong><sup>[A]</sup> button to the right side of the <em>General</em> page.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-9.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="10">
+<li>
+<p>From the tabs on the left side of the page, drill down into <strong>Storage</strong><sup>[A]</sup>.</p>
+<ul>
+<li>Scroll down until you reach the <strong>Streaming queue name</strong><sup>[B]</sup> field and change the value to <code>TO.KAFKA</code></li>
+<li>This will direct IBM MQ to clone messages from the <code>PAYMENT.REQ</code> queue into the <code>TO.KAFKA</code> streaming queue created in <em>Step 5</em></li>
+<li>When satisfied, click the blue <strong>Save</strong><sup>[C]</sup> button in the top-right of the page to confirm the configuration changes</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-10.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="11">
+<li>
+<p>Once confirmed, the new configuration will immediately take effect and cloned order messages will promptly begin filling the <code>TO.KAFKA</code> queue.</p>
+<ul>
+<li>Scroll back up to the top of the page and locate the blue <strong>Manage</strong><sup>[A]</sup> text in the top-left corner of the screen</li>
+<li>Click the text to return back to the <em>Manage</em> page for <code>Orders</code></li>
+<li>From the tabs along the top of the page, click the <strong>Queues</strong> tab</li>
+<li>From the table of queues, drill down into the <strong>TO.KAFKA</strong> queue</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-11a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-11a.png" width="300" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="12">
+<li>Take note of the customer order messages that are now populating the <code>TO.KAFKA</code> message queue table. You can click the circular refresh icon (to the left of the blue <em>Create</em> button) to reload the queue contents.</li>
+</ol>
+<hr />
+<h2 id="iii-cloning-order-queues-with-ibm-event-streams"><strong>iii. Cloning order queues with IBM Event Streams</strong></h2>
+<p>Focus Corporation's integration team will now need to create an event stream called <code>Orders</code> using <em>IBM Event Streams</em>. This will serve as the repository where messages, cloned from IBM MQ, are published and made available to other parts of the organization.</p>
+<p>The integration team will need to make decisions about how to replicate the data (with or without modification) and also determine the appropriate retention settings for this data. Given the governance policies in place at Focus Corporation, they will need to retain data for up to 1 week and replicate entries for high availability.</p>
+<div class="admonition note">
+<p class="admonition-title">MQ-KAFKA CONNECTOR</p>
+<p><strong>IBM MQ</strong> allows applications, systems, services, and files to request and coordinate processing tasks — sending and receiving message data via messaging queues. <strong>IBM Event Automation</strong>'s Kafka integrations makes it possible to capture a continuous stream of events, representing state changes across one or multiple environments, and makes those events persistently available for retrieval.</p>
+<p>In combination, IBM MQ and Event Automation enable business-critical communications originating over MQ to be captured as events within Kafka topics, which can later be shared across the enterprise for fueling more responsive applications. IBM MQ-Kafka connectors support bi-directional connectivity between these two architectures. Clients of IBM Event Automation are fully supported for using MQ-Kafka connectors with the Event Streams capability of the platform. Support for the MQ-Kafka connector is also available for IBM clients with MQ Advanced entitlements.</p>
+</div>
+<hr />
+<ol start="13">
+<li>Open the <strong>IBM Event Streams</strong> tab using your web browser.</li>
+</ol>
+<hr />
+<ol start="14">
+<li>
+<p>From the <em>IBM Event Streams</em> dashboard, click the <strong>Create a topic</strong><sup>[A]</sup> tile.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-13.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="15">
+<li>
+<p>The team must first decide on a <strong>Topic Name</strong><sup>[A]</sup>.</p>
+<p>Set the value to <code>ORDERS</code> and then click the blue <strong>Next</strong><sup>[B]</sup> button to continue.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-15.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="16">
+<li>
+<p>Under the <strong>Patitions</strong> tab, accept the default recommendation of <code>1</code> by clicking <strong>Next</strong><sup>[A]</sup>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-16.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="17">
+<li>
+<p>Under the <strong>Message Retention</strong> tab, accept the default recommendation<sup>[A]</sup> of <code>A week</code> and click <strong>Next</strong><sup>[B]</sup> to continue.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-17.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-17.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="18">
+<li>
+<p>Under the <strong>Replicas</strong> tab, accept the default recommendation<sup>[A]</sup> of <code>Replication factor: 3</code>  and confirm your selections by clicking the <strong>Create Topic</strong><sup>[B]</sup> button.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-18a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-18a.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="iv-configuring-a-message-bridge-between-ibm-mq-and-ibm-event-streams"><strong>iv. Configuring a message bridge between IBM MQ and IBM Event Streams</strong></h2>
+<p>Using the Apache Kafka connector framework, Focus Corporation's integration team will now need to configure an "event bridge" using Red Hat OpenShift. The task can be performed programmatically via the OpenShift console. The bridge configuration will include connectivity details for accessing both IBM MQ and IBM Event Streams.</p>
+<p>Once configured and deployed, the bridge will utilize the Apache Kafka connector framework to read messages from the <code>TO.KAFKA</code> <em>message queue</em> and then publish those to the newly-created <code>Orders</code> <em>event stream</em>.</p>
+<hr />
+<ol start="19">
+<li>
+<p>Return to the OpenShift container platform dashboard.</p>
+<p>From the <strong>Home</strong> page, click the <strong>+</strong><sup>[A]</sup> icon located in the top-right corner of the interface.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-19.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-19.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="20">
+<li>
+<p>The interface will load an <strong>Import YAML</strong> configuration tool, with a black canvas awaiting input. Here you can supply <em>YAML</em> (Yet Another Markup Language) or <em>JSON</em> files to define new deployments on the OpenShift cluster.</p>
+<p>The YAML definition of the Apache Kafka connector "bridge" has been prepared ahead of time. Copy and paste the following YAML <em>exactly</em> as written into the <strong>Import YAML</strong> canvas:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eventstreams.ibm.com/v1beta2</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KafkaConnector</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">metadata</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mq-connector</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tools</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">eventstreams.ibm.com/cluster</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jgr-connect-cluster</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nt">spec</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.ibm.eventstreams.connect.mqsource.MQSourceConnector</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">tasksMax</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span><span class="w"></span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="nt">config</span><span class="p">:</span><span class="w"></span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="c1"># the Kafka topic to produce to</span><span class="w"></span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nt">topic</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ORDERS</span><span class="w"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="c1"># the MQ queue to get messages from</span><span class="w"></span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="nt">mq.queue</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TO.KAFKA</span><span class="w"></span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="c1"># connection details for the queue manager</span><span class="w"></span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="nt">mq.queue.manager</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orders</span><span class="w"></span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="nt">mq.connection.name.list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">orders-ibm-mq(1414)</span><span class="w"></span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="nt">mq.channel.name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SYSTEM.DEF.SVRCONN</span><span class="w"></span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span><span class="c1"># format of the messages to transfer</span><span class="w"></span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="nt">mq.message.body.jms</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="nt">mq.record.builder</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">com.ibm.eventstreams.connect.mqsource.builders.JsonRecordBuilder</span><span class="w"></span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="nt">key.converter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.apache.kafka.connect.storage.StringConverter</span><span class="w"></span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="nt">value.converter</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">org.apache.kafka.connect.json.JsonConverter</span><span class="w"></span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="c1"># whether to send the schema with the messages</span><span class="w"></span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="nt">key.converter.schemas.enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="nt">value.converter.schemas.enable</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+</code></pre></div>
+<p><br/></p>
+<p>When ready, click <strong>Create</strong><sup>[A]</sup>. Full deployment should only take a moment.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/1-20a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/1-20a.png" width="600" /></a></p>
+<hr />
+<ol start="21">
+<li>
+<p>Switch over to the <strong>IBM Event Streams</strong> tab with your web browser. Having configured the streaming queue in IBM MQ (earlier in Step 18), Focus Corporation's integration team now wants to view the orders that have been generated so far.</p>
+<p>From the home dashboard of the IBM Event Streams service, click the <strong>Topic</strong><sup>[A]</sup> tab (left-hand side) and then click on the name <code>ORDERS</code> from the table.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/module1.3-22.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.3-22.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="22">
+<li>
+<p>Granular details about the <code>ORDERS</code> topic will be loaded within the browser. From this page, you can inspect all of the messages (orders) generated from the time you set up the IBM MQ streaming queue configuration earlier.</p>
+<ul>
+<li>Click any one of the orders to pull up additional details on the payload and its contents</li>
+<li>Note that you can inspect details about the <code>quantity</code>, <code>price</code>, <code>customerid</code>, <code>description</code>, <code>id</code>, <code>region</code>, <code>ordertime</code>, and <code>customer</code></li>
+</ul>
+<p><br/>
+These fields will be valuable later for the marketing team as they look to perform outreach on customers meeting certain criteria.</p>
+</li>
+</ol>
+<hr />
+<ol start="23">
+<li>
+<p>Switch back to the <strong>IBM Event Streams</strong> dashboard<sup>[A]</sup> and click <strong>Connect to this cluster</strong><sup>[B]</sup>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/module1.3-23.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.3-23.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="24">
+<li>
+<p>Details about your Kafka cluster, including the URL are authentication details, are summarized on this page.</p>
+<ul>
+<li>Open the <strong>Internal</strong> tab<sup>[A]</sup></li>
+<li>Record the <code>Kafka SCRAM URL</code> to a notepad for reference later<sup>[B]</sup></li>
+<li>Click <strong>Generate SCRAM credentials</strong><sup>[C]</sup></li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/module1.3-24.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.3-24.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="25">
+<li>
+<p>To connect securely to IBM Event Streams, your application needs credentials with permissions set appropriately for accessing cluster resources (such as Topics).</p>
+<ul>
+<li><em>Credential name</em><sup>[A]</sup> should be set to <code>es-demo</code></li>
+<li><em>What do you want your application to do?</em><sup>[B]</sup> set to <code>Produce messages, consume messages and create topics and schemas</code></li>
+<li><strong>Next</strong> <sup>[C]</sup> to continue</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/module1.3-25.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.3-25.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="26">
+<li>Select <em>All Topics</em> and click <strong>Next</strong>.</li>
+</ol>
+<hr />
+<ol start="27">
+<li>Select <em>All consumer groups</em> and click <strong>Next</strong>.</li>
+</ol>
+<hr />
+<ol start="28">
+<li>
+<p>Select <em>No transactional IDs</em><sup>[A]</sup> and click <strong>Generate credentials</strong><sup>[B]</sup> to continue.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/module1.3-28.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.3-28.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="29">
+<li>
+<p>Record the <code>SCRAM username</code><sup>[A]</sup> and <code>SCRAM password</code><sup>[B]</sup> values to a notepad for future reference.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/module1.3-29.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module1.3-29.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="v-next-steps"><strong>v. Next steps</strong></h2>
+<p>In the following module, the integration team will use <em>IBM Event Endpoint Management</em> to import the event stream data and curate a self-service catalog for the marketing department.</p>
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../evaluation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Evaluation" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Evaluation
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../2/" class="md-footer__link md-footer__link--next" aria-label="Next: 2. Building a self-service catalog of events with Event Endpoint Management" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              2. Building a self-service catalog of events with Event Endpoint Management
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 IBM
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.annotate"], "search": "../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

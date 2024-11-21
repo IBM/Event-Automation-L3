@@ -1,0 +1,1655 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="IBM Event Automation for Technical Sales Level 3">
+      
+      
+        <meta name="author" content="Christopher Bienko (cdbienko@us.ibm.com)">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
+    
+    
+      
+        <title>Setup and Troubleshooting - IBM Event Automation for Technical Sales Level 3</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.69437709.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="IBM Event Automation for Technical Sales Level 3" class="md-header__button md-logo" aria-label="IBM Event Automation for Technical Sales Level 3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM Event Automation for Technical Sales Level 3
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Setup and Troubleshooting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IBM Event Automation for Technical Sales Level 3" class="md-nav__button md-logo" aria-label="IBM Event Automation for Technical Sales Level 3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    IBM Event Automation for Technical Sales Level 3
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Setup and Troubleshooting
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Setup and Troubleshooting
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-environment-summary" class="md-nav__link">
+    i. Environment summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-prerequisites" class="md-nav__link">
+    ii. Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-deploying-the-ocp-cluster" class="md-nav__link">
+    iii. Deploying the OCP cluster
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-accessing-the-ocp-cluster" class="md-nav__link">
+    iv. Accessing the OCP cluster
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-cloning-repositories" class="md-nav__link">
+    v. Cloning repositories
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-setting-context" class="md-nav__link">
+    vi. Setting context
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vii-installing-ibm-cloud-pak-foundational-services" class="md-nav__link">
+    vii. Installing IBM Cloud Pak foundational services
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viii-deploying-the-platform-ui" class="md-nav__link">
+    viii. Deploying the Platform UI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ix-deploying-ibm-event-streams" class="md-nav__link">
+    ix. Deploying IBM Event Streams
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x-deploying-ibm-event-endpoint-management" class="md-nav__link">
+    x. Deploying IBM Event Endpoint Management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xi-deploying-the-enterprise-messaging-service" class="md-nav__link">
+    xi. Deploying the Enterprise Messaging service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xii-deploying-the-event-processing-service" class="md-nav__link">
+    xii. Deploying the Event Processing service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xiii-launching-support-scripts" class="md-nav__link">
+    xiii. Launching support scripts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xiv-next-steps" class="md-nav__link">
+    xiv. Next steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evaluation/" class="md-nav__link">
+        Evaluation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1/" class="md-nav__link">
+        1. Creating an event stream from MQ data using Event Streams
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2/" class="md-nav__link">
+        2. Building a self-service catalog of events with Event Endpoint Management
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3/" class="md-nav__link">
+        3. Configuring the solution with Event Processing no-code editors
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4/" class="md-nav__link">
+        4. Connecting real-time events to a promotional marketing app
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-environment-summary" class="md-nav__link">
+    i. Environment summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-prerequisites" class="md-nav__link">
+    ii. Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-deploying-the-ocp-cluster" class="md-nav__link">
+    iii. Deploying the OCP cluster
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-accessing-the-ocp-cluster" class="md-nav__link">
+    iv. Accessing the OCP cluster
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-cloning-repositories" class="md-nav__link">
+    v. Cloning repositories
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-setting-context" class="md-nav__link">
+    vi. Setting context
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vii-installing-ibm-cloud-pak-foundational-services" class="md-nav__link">
+    vii. Installing IBM Cloud Pak foundational services
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#viii-deploying-the-platform-ui" class="md-nav__link">
+    viii. Deploying the Platform UI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ix-deploying-ibm-event-streams" class="md-nav__link">
+    ix. Deploying IBM Event Streams
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#x-deploying-ibm-event-endpoint-management" class="md-nav__link">
+    x. Deploying IBM Event Endpoint Management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xi-deploying-the-enterprise-messaging-service" class="md-nav__link">
+    xi. Deploying the Enterprise Messaging service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xii-deploying-the-event-processing-service" class="md-nav__link">
+    xii. Deploying the Event Processing service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xiii-launching-support-scripts" class="md-nav__link">
+    xiii. Launching support scripts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xiv-next-steps" class="md-nav__link">
+    xiv. Next steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="_1"></h1>
+<div class="admonition warning">
+<p class="admonition-title">TIME ESTIMATES FOR SETUP</p>
+<p>The following section will take approximately <strong>3 to 4 hours</strong> to complete. Budget your time accordingly.</p>
+<ul>
+<li>
+<p>Roughly 1 hour of time to reserve and provision an Red Hat OpenShift (OCP) cluster from IBM Technology Zone</p>
+</li>
+<li>
+<p>An estimated 3 hours of time to manually install and deploy IBM Event Automation (and IBM Cloud Pak for Integration) on to the OCP cluster</p>
+</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">SUPPORT AND TROUBLESHOOTING</p>
+<p>If you require assistance or run into issues with the hands-on lab, help is available.</p>
+<ul>
+<li>
+<p><strong>Environment issues</strong>: The lab environment is managed by IBM Technology Zone. <a href="https://techzone.ibm.com/help" target="_blank">Opening a support case ticket</a> is recommended for issues related to the hands-on environment (provisioning, running, and so on.)</p>
+</li>
+<li>
+<p><strong>Documentation issues</strong>: If there is an error in the lab documentation, or if you require additional support in completing the material, open a thread on the <a href="https://ibm.enterprise.slack.com/archives/C06NY5ZGXPY" target="_blank">#l3-support-app-modernization</a> Slack channel.</p>
+</li>
+</ul>
+</div>
+<p><br/></p>
+<h2 id="i-environment-summary"><strong>i. Environment summary</strong></h2>
+<p><br/>
+<a class="glightbox" href="../_attachments/introduction-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../_attachments/introduction-2.png" /></a></p>
+<hr />
+<p>The hands-on material covered within this lab will focus on <em>event-led integration</em> solutions, specifically the <strong>IBM Event Automation</strong> (EA) suite — as well as elements of the <strong>IBM Cloud Pak for Integration</strong> (CP4I) MQ-Kafka connector.</p>
+<p>IBM Event Automation provides an open, composable set of capabilities that interoperate with the services and tools that are already part of many enterprise IT departments. A fundamental component to IBM Event Automation's architecture is composability, which will be highlighted through the lab as you incrementally add more capabilities and elements to the demo environment.</p>
+<ul>
+<li>
+<p><strong>Event Endpoint Management</strong>: facilitates secured exposure of event streams and unite all event streams (including MQ and Kafka) into a single, comprehensive view. Focus' marketing department can discover, subscribe to, and generate security credentials for colleagues using the self-service catalog.  Manual processes will be automated and onboarding of users can be expedited.</p>
+</li>
+<li>
+<p><strong>Event Processing</strong>: a no-code editor for allowing developers (of any skill level) to construct processing flows, detect situations across multiple events inside a configurable time-window, and validate flow behavior prior to deploying into production (using historical data.)</p>
+</li>
+<li>
+<p><strong>Event Streams</strong> + <strong>Kafka-MQ connector</strong>: part of the <em>IBM Cloud Pak for Integration</em> suite, this connector allows <em>IBM MQ</em> messages to be published into a Kafka-compatible event stream. It provides assurances that all MQ messages are delivered once-and-only-once, without requiring complex or custom code.</p>
+</li>
+</ul>
+<p>Environment templates (images) have been defined ahead of time with the assistance of <strong>IBM Technology Zone</strong> (ITZ), which can be reserved for learning and client demonstration purposes at no-charge. Some further configuration of these environments will be required after deployment.</p>
+<hr />
+<h2 id="ii-prerequisites"><strong>ii. Prerequisites</strong></h2>
+<p>This product is being developed and continuously updated in an agile manner. In addition to adding new capabilities, upgrades to the product are likely to result in changes to the user interface over time. As such, the screenshots used in this lab may not always look exactly like what you see in the latest version of product. These differences should not affect how the lab is executed, and the authoring team will do their best to keep things up to date, but be aware that screenshots or steps may differ slightly with your environment.</p>
+<p>Before reserving an environment with ITZ, first ensure that <strong>all</strong> of the following services and frameworks are available on your local machine. These will be needed to begin deployment and installation of the EA and CP4I suite on top of the OCP cluster.</p>
+<ul>
+<li><a href="https://docs.redhat.com/en/documentation/red_hat_build_of_microshift/4.14/html/cli_tools/microshift-oc-cli-install#cli-installing-cli_cli-oc-installing" target="_blank">oc CLI v4.6+</a></li>
+<li><a href="https://cli.github.com/" target="_blank">GitHub CLI</a></li>
+<li><a href="https://www.oracle.com/br/java/technologies/downloads/" target="_blank">Java v8+</a></li>
+<li><a href="https://www.misterpki.com/install-keytool/" target="_blank">keytool</a></li>
+<li><a href="https://github.com/openssl/openssl" target="_blank">openssl</a></li>
+<li><a href="https://mailtrap.io/" target="_blank">mailtrap</a></li>
+</ul>
+<p>Instructions and resources for prerequisites setup are provided in each of the hyperlinks.</p>
+<p>You will require access to the ITZ in order to reserve your environment and complete the lab. If you do not yet have access or an account with the ITZ, <a href="https://techzone.ibm.com/" target="_blank">you will need to register for one</a>.</p>
+<p>The hands-on environment— a combination of services from <em>IBM Cloud Pak for Integration</em> (CP4I) and <em>IBM Event Automation</em> (EA) —will be running entirely atop of <strong>Red Hat OpenShift</strong>, which will orchestrate containerized deployments of CPI and EA across the OpenShift cluster.</p>
+<p>For more details about CP4I's installation procedure, reference the <a href="https://www.ibm.com/docs/en/cloud-paks/cp-integration/2022.4?topic=installing-overview-installation" target="_blank">product documentation</a>.</p>
+<hr />
+<h2 id="iii-deploying-the-ocp-cluster"><strong>iii. Deploying the OCP cluster</strong></h2>
+<ol>
+<li>
+<p>Reserve a Red Hat OpenShift Container Platform (OCP) cluster via <strong>ITZ</strong>.</p>
+<div class="admonition warning">
+<p><strong>URL:</strong> <strong><a href="https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3" target="_blank">https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3</a></strong></p>
+</div>
+<ul>
+<li>From the <code>Single environment reservation options</code> list, select <strong>Reserve now</strong><sup>[A]</sup></li>
+<li>Configure the following <strong>fields</strong> in the reservation template to the values as described in the table below</li>
+<li>All other fields from the ITZ template, if not listed in the table below, should be kept at their <em>default</em> values</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Purpose</code></td>
+<td>If reserving for L3 or L4 training, select <em>Education</em>. If delivering a PoC, select <em>Pilot</em> and provide a Sales opportunity number.</td>
+</tr>
+<tr>
+<td><code>Purpose Description</code></td>
+<td>If reserving for L3 or L4 training, enter <em>Event-led Integration Training</em>. If delivering a PoC, enter the PoC and client details.</td>
+</tr>
+<tr>
+<td><code>Preferred Geography</code></td>
+<td>Select your preferred geography.</td>
+</tr>
+<tr>
+<td><code>OpenShift Version</code></td>
+<td>4.15</td>
+</tr>
+<tr>
+<td><code>Worker Node Count</code></td>
+<td>5</td>
+</tr>
+<tr>
+<td><code>Worker Node Flavor</code></td>
+<td>16 vCPU x 64 GB - 100 GB ephemeral storage</td>
+</tr>
+<tr>
+<td><code>Storage</code></td>
+<td>ODF – 2TB</td>
+</tr>
+</tbody>
+</table>
+<p><br/></p>
+<div class="admonition note inline end">
+<p class="admonition-title">FULLSCREEN IMAGES</p>
+<p>Click on any of the screenshots within this documentation to enlarge the image.</p>
+</div>
+<p><a class="glightbox" href="../_attachments/setup-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.png" width="400" /></a></p>
+<p><a class="glightbox" href="../_attachments/setup-2.1-1a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.1-1a.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/setup-2.1-1b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.1-1b.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>When satisfied, verify that you agree to the <em>Terms and Conditions</em> for the environment and finalize your reservation request by clicking <strong>Submit</strong>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.1-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.1-2.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>You will receive an ITZ email confirming that the instance is provisioning.</p>
+<p><br/></p>
+<div class="admonition note inline end">
+<p class="admonition-title">PROVISIONING TIMES</p>
+<p>Reservations take approximately <strong>30 to 60 minutes</strong> to complete from the time that you click submit. If you navigate to the <strong><a href="https://techzone.ibm.com/my/reservations" target="_blank">My Reservations</a></strong> tab of the ITZ, you can monitor the progress of the reservation. Wait for the ITZ reservation to be marked as "<em>Ready</em>" before attempting to start the lab — accessing it too soon will lead to issues (or an outright failure) when connecting to OpenShift.</p>
+</div>
+<p><a class="glightbox" href="../_attachments/setup-2.1-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.1-3.png" width="400" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>You will receive a second email once the environment is provisioned and the reservation status will now show as <em>Ready</em>. Click on <strong>Reservation ID</strong> to open the details page for the new OCP environment.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.1-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.1-4.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Save for reference the <em>Cluster Admin Username</em><sup>[A]</sup>, <em>Cluster Admin Password</em><sup>[B]</sup>, and <em>OCP Console</em><sup>[C]</sup> link.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.1-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.1-5.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="iv-accessing-the-ocp-cluster"><strong>iv. Accessing the OCP cluster</strong></h2>
+<p>In this section, access the OpenShift cluster and install the OpenShift command line tool (CLI).</p>
+<ol>
+<li>
+<p>In a web browser, open the OCP Console link and paste the <em>Cluster Admin Username</em><sup>[A]</sup> and <em>Password</em><sup>[B]</sup> from the previous step and click <strong>Log in</strong><sup>[C]</sup>.</p>
+<p><br/></p>
+<div class="admonition warning inline end">
+<p class="admonition-title">THIS CONNECTION IS NOT PRIVATE<p>Depending on your web browser, you may receive a warning about <code>This connection is not private</code> or a similarly phrased message. Disregard these warnings and continue to the intended destination by clicking <em>"visit this website."</em></p>
+</p>
+</div>
+<p><a class="glightbox" href="../_attachments/setup-2.2-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.2-1.png" width="450" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Copy the login command to access the cluster by CLI. In the top right, click your username<sup>[A]</sup> and select <strong>Copy login command</strong><sup>[B]</sup>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.2-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.2-2.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Click <strong>Display Token</strong>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.2-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.2-3.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Copy the <em>Log in with this token</em> command and paste into a Terminal window. Now you are ready for the Cloud Pak for Integration (CP4I) installation. </p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.2-4a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.2-4a.png" width="600" /></a>
+<a class="glightbox" href="../_attachments/setup-2.2-4b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.2-4b.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="v-cloning-repositories"><strong>v. Cloning repositories</strong></h2>
+<p>You will need to clone the demo repository to your workstation.</p>
+<ol>
+<li>
+<p>Open a terminal window and run the command below. It is recommended you do so in a directory like <code>/Desktop</code> so that you can easily locate the files afterwards.</p>
+<ul>
+<li>First, authenticate your Terminal with the IBM GitHub repository with the following command:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>gh auth login --hostname github.ibm.com
+</code></pre></div>
+<ul>
+<li>
+<p>Within the Terminal window, navigate through the following prompts:</p>
+<ol>
+<li><em>What is your preferred protocol for Git operations on this host?</em> : <code>HTTPS</code></li>
+<li><em>Authenticate Git with your GitHub credentials?</em> : <code>Yes</code></li>
+<li><em>How would you like to authenticate GitHub CLI?</em> : <code>Login with a web browser</code></li>
+<li>Terminal will generate a one-time code : copy this to a notepad</li>
+<li>Within your web browser, log in using your GitHub credentials</li>
+<li>Supply the one-time code and approve access to GitHub</li>
+<li>Wait until the Terminal window reports back a successful <code>Logged in as...</code></li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Execute the following within Terminal to clone the demo repository:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>gh repo clone github.ibm.com/joel-gomez/cp4i-demo
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Navigate to the <code>cp4i-demo</code> folder:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span> cp4i-demo
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<h2 id="vi-setting-context"><strong>vi. Setting context</strong></h2>
+<p>Based on where you have deployed the OCP cluster you will need to set up some environment variables to inform the installation script about your environment. </p>
+<ol>
+<li>
+<p>Define an environment variable to set the CP4I version:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">export</span> <span class="nv">CP4I_VER</span><span class="o">=</span><span class="m">16</span>.1.0
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Set the OCP type based on the storage classes in the cluster. If using a ROKS cluster, use <code>export OCP_TYPE=ROKS</code> instead.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span> <span class="nv">OCP_TYPE</span><span class="o">=</span>ODF
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Set <em>mailtap</em> credentials, substituting <code>&lt;my-mailtrap-user&gt;</code> and <code>&lt;my-mailtrap-pwd&gt;</code> with the variables you set during the <strong>1. Prerequisites</strong> section.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">export</span> <span class="nv">MAILTRAP_USER</span><span class="o">=</span>&lt;my-mailtrap-user&gt; 
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">export</span> <span class="nv">MAILTRAP_PWD</span><span class="o">=</span>&lt;my-mailtrap-pwd&gt;
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>If you have provisioned the OCP cluster in Tech Zone you can use the following script to set the proper default storage class.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>scripts/99-odf-tkz-set-scs.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>The cluster will also need access to pull the container software required to deploy the Cloud Pak. Your <em>Entitlement Key</em> is used to grant access. You can download your entitlement key from <a href="https://myibm.ibm.com/products-services/containerlibrary" target="_blank">My IBM</a>.</p>
+<p>Click <strong>Copy</strong> and record the entitlement key to a notepad.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.4-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.4-5.png" width="600" /></a></p>
+<details class="warning">
+<summary>NO ACTIVE ENTITLEMENT KEY</summary>
+<p>If no active entitlement keys are available, you can create one by clicking the <strong>Add new key</strong> button. If you receive an "Operation could not be completed at this time", try clicking the button a second or third time until one is generated.</p>
+</details>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>The IBM Entitled Registry contains software images for the capabilities in IBM Cloud Pak for Integration. To allow the Cloud Pak for Integration operators to automatically pull those software images, you must first obtain your entitlement key, then add your entitlement key in a pull secret. Replace <code>&lt;my-key&gt;</code> with your <em>IBM entitlement key</em> and then execute:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">export</span> <span class="nv">ENT_KEY</span><span class="o">=</span>&lt;my-key&gt;
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Now, you need to define a <em>namespace</em> where you will deploy the different capabilities.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>scripts/02a-cp4i-ns-key-config.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<h2 id="vii-installing-ibm-cloud-pak-foundational-services"><strong>vii. Installing IBM Cloud Pak foundational services</strong></h2>
+<p>The IBM Cloud Pak foundational services operator is no longer installed automatically. Install this operator manually if you need to create an instance that uses identity and access management (IAM). The following steps will walk you through this process.</p>
+<ol>
+<li>
+<p>First you need a certificate manager, otherwise the IBM Cloud Pak foundational services operator installation will not complete.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~1 minute</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>oc apply -f resources/00-cert-manager-namespace.yaml
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>oc apply -f resources/00-cert-manager-operatorgroup.yaml
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>oc apply -f resources/00-cert-manager-subscription.yaml
+</code></pre></div>
+<p>Confirm the subscription has been completed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment cert-manager-operator-controller-manager -n cert-manager-operator --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> -n cert-manager-operator --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of  <code>Succeeded</code>.</p>
+<details class="warning">
+<summary>NO RESPONSE</summary>
+<p>If no response is generated, <strong>wait a couple of minutes</strong> and try again. Do not proceed until receiving the <code>Succeeded</code> prompt.</p>
+</details>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install the Common Services Catalog source.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~1 minute</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/02-common-services-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>oc get catalogsources opencloud-operators -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Create the Common Services namespace.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>oc new-project ibm-common-services
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Install the Foundational Services operator (former Common Services).</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~1 minute</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/00-common-service-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment/ibm-common-service-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<h2 id="viii-deploying-the-platform-ui"><strong>viii. Deploying the Platform UI</strong></h2>
+<p>Deploying the Platform UI allows you to deploy and manage instances from a central location.</p>
+<ol>
+<li>
+<p>Install the Platform UI Catalog source.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~1 minute</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/03-platform-navigator-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>oc get catalogsources ibm-integration-platform-navigator-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install the Platform UI Operator.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~1 minute</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/01-platform-navigator-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-integration-platform-navigator-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Deploy a Platform UI instance.</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~10 minutes</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>scripts/03a-platform-navigator-inst-deploy.sh
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>oc get platformnavigator cp4i-navigator -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.conditions[0].type}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>READY</code>.</p>
+<details class="warning">
+<summary>PENDING</summary>
+<p>You may be seeing a response of <code>PENDING</code> which indicates the deployment is underway but not yet complete. Wait until the <code>READY</code> response is received before continuing.</p>
+</details>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Once the Platform UI instance is up and running, retrieve the access information by executing the following script.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>scripts/03b-cp4i-access-info.sh
+</code></pre></div>
+<p>Record the credentials to a notepad for reference later.</p>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Open the Platform UI URL with a web browser and log in. Note the password is temporary and you will be required to change it. Take note of your new password, as you will use it multiple times throughout the lab.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.6-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.6-5.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="ix-deploying-ibm-event-streams"><strong>ix. Deploying IBM Event Streams</strong></h2>
+<ol>
+<li>
+<p>Install the Event Streams Catalog Source.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~1 minute</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/08-event-streams-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>oc get catalogsources ibm-eventstreams-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install the Event Streams Operator.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~5 minutes</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/05-event-streams-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment eventstreams-cluster-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span> 
+</code></pre></div>
+<p>Wait for a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Deploy the Event Streams instance.</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~5-10 minutes</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>scripts/08a-event-streams-inst-deploy.sh
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>oc get eventstreams es-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>Ready</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Create users.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>oc apply -f resources/02a-es-initial-config-jgr-users.yaml
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<h2 id="x-deploying-ibm-event-endpoint-management"><strong>x. Deploying IBM Event Endpoint Management</strong></h2>
+<ol>
+<li>
+<p>Install the IBM Event Endpoint Management (EEM) Catalog Source.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~1 minute</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/13-eem-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>oc get catalogsources ibm-eventendpointmanagement-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install the EEM Operator.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~5 minutes</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/09-eem-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-eem-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span> 
+</code></pre></div>
+<p>Wait for a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Deploy EEM Manager instance:</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+</div>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>scripts/19a-eem-manager-inst-deploy.sh
+</code></pre></div>
+<br/></p>
+<ul>
+<li>
+<p>Wait for a <code>EEM Manager has been deployed</code> response before continuing.</p>
+</li>
+<li>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command:
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>oc get eventendpointmanagement eem-demo-mgr -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Wait for a response of <code>Running</code>.</p>
+<details class="warning">
+<summary>TROUBLESHOOTING</summary>
+<p>The current version may introduce an issue and instead of a positive response at the end of the script you may get the following message: <code>Something is wrong!</code></p>
+<p><br/>
+<a class="glightbox" href="../_attachments/setup-2.8-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/setup-2.8-4.png" width="600" /></a></p>
+<p>If that is the case, then run the following commands to fix the problem:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>oc <span class="nb">exec</span> -it -n tools eem-demo-mgr-ibm-eem-manager-0 -- rmdir /opt/storage/lost+found
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>oc delete pod -n tools eem-demo-mgr-ibm-eem-manager-0
+</code></pre></div>
+</details>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Now you must <strong>create your own passwords</strong> for EEM administrators and users, then set those to environment variables.</p>
+<p>Replace <code>&lt;eem-admin-pwd&gt;</code> and <code>&lt;es-user-pwd&gt;</code> with new passwords (of your choosing). Record those passwords to a notepad so that you can reference them later.</p>
+<p>Execute the following script, after replacing the variables, to set EEM passwords.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="nb">export</span> <span class="nv">EEM_ADMIN_PWD</span><span class="o">=</span>&lt;eem-admin-pwd&gt;
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a><span class="nb">export</span> <span class="nv">EEM_USER_PWD</span><span class="o">=</span>&lt;es-user-pwd&gt; 
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Configure security for EEM Manager.</p>
+<div class="admonition note">
+<p><strong>Time to configure</strong>: <em>~1 minute</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>scripts/19a-eem-manager-config-sec.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Deploy the EEM Gateway instance.</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>scripts/19b-eem-gateway-inst-deploy.sh
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>oc get eventgateway eem-demo-gw -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>Running</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Integrate EEM and ES instances.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>scripts/19f-eem-es-config.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>Retrieve the connection details for the deployed Event Endpoint Management (EEM) instance by executing the following script. Record these details to a notepad for future reference.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>oc get eem -n tools
+</code></pre></div>
+<div class="admonition warning">
+<p><strong>Username</strong>: <code>eem-admin</code> | <strong>Password</strong>: the value set for <code>&lt;EEM-ADMIN-PWD&gt;</code> earlier in <em>Step 4</em></p>
+</div>
+<ul>
+<li>
+<p>Log in to your Event Endpoint Management UI from a supported web browser</p>
+</li>
+<li>
+<p>Dismiss the welcome and tutorial messages</p>
+</li>
+<li>
+<p>Click the <strong>user icon</strong> in the top-right corner and then click <strong>Profile</strong> from the drop-down</p>
+</li>
+<li>
+<p>Within the <strong>Profile</strong> page, click <strong>Create token</strong></p>
+</li>
+<li>
+<p>Set <em>Token description</em> to a memorable value (<code>EEM Token</code>) and then click <strong>Create</strong></p>
+</li>
+<li>
+<p>Once the new token is generated, click <strong>Copy</strong> and record it to a notepad</p>
+</li>
+<li>
+<p>Click <em>Close</em> to exit the dialog</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="9">
+<li>
+<p>Set the environment variable for EEM token by replacing <code>&lt;my-eem-token&gt;</code> with the token copied in <em>Step 8</em>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="nb">export</span> <span class="nv">EEM_TOKEN</span><span class="o">=</span>&lt;my-eem-token&gt;
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="10">
+<li>
+<p>Populate the EEM Catalog.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>scripts/19e-eem-manager-config.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<h2 id="xi-deploying-the-enterprise-messaging-service"><strong>xi. Deploying the Enterprise Messaging service</strong></h2>
+<ol>
+<li>
+<p>Install the Enterprise Messaging (MQ) Catalog Source.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~1 minute</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/09-mq-catalog-source.yaml 
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>oc get catalogsources ibmmq-operator-catalogsource -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install the MQ Operator.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~1 minute</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/06-mq-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-mq-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Set the MQ namespace environment variable.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a><span class="nb">export</span> <span class="nv">MQ_NAMESPACE</span><span class="o">=</span>cp4i-mq
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Create certificates and extra route.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>scripts/10a-qmgr-pre-config.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Create <code>configmap</code> with MQ configuration.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>oc apply -f resources/03c-qmgr-mqsc-config.yaml
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Deploy the MQ Queue Manager instance.</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>scripts/10b-qmgr-inst-deploy.sh
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>oc get queuemanager qmgr-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>Running</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Create <code>CCDT</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>scripts/10c-qmgr-post-config.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>Deploy the MQ Source Connector.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>oc apply -f resources/02b-es-mq-source.yaml
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="9">
+<li>
+<p>Deploy the MQ Sink Connector.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>oc apply -f resources/02c-es-mq-sink.yaml
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<h2 id="xii-deploying-the-event-processing-service"><strong>xii. Deploying the Event Processing service</strong></h2>
+<ol>
+<li>
+<p>Install Apache Flink Catalog Source.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~1 minute</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/14-ea-flink-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>oc get catalogsources ibm-eventautomation-flink-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Install Apache Flink Operator.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~5 minutes</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/10-ea-flink-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment flink-kubernetes-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Prepare TrustStore for Event Automation.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>scripts/20d-ea-truststore-config.sh
+</code></pre></div>
+<p>Wait for a response of <code>TrustStore for Event Automation has been created.</code></p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Deploy the Apache Flink instance.</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>oc apply -f instances/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/common/21-ea-flink-instance.yaml
+</code></pre></div>
+<p>Confirm the operator has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>oc get flinkdeployment ea-flink-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.jobManagerDeploymentStatus}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Install the Event Processing (EP) Catalog Source.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~1 minute</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a>oc apply -f catalog-sources/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/15-event-processing-catalog-source.yaml
+</code></pre></div>
+<p>Confirm the catalog source has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>oc get catalogsources ibm-eventprocessing-catalog -n openshift-marketplace -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.connectionState.lastObservedState}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>READY</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Install the Event Processing Operator.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~5 minutes</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a>oc apply -f subscriptions/<span class="si">${</span><span class="nv">CP4I_VER</span><span class="si">}</span>/11-event-processing-subscription.yaml
+</code></pre></div>
+<p>Confirm the operator has been installed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment ibm-ep-operator -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Deploy the Event Processing instance.</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a>scripts/20b-ea-ep-inst-deploy.sh
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-69-1" name="__codelineno-69-1" href="#__codelineno-69-1"></a>oc get eventprocessing ep-demo -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>Running</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>Now you must <strong>create your own passwords</strong> for EP administrators and then set that to environment variables.</p>
+<p>Replace <code>&lt;ep-admin-pwd&gt;</code> with a new password (of your choosing). Record that passwords to a notepad so that you can reference it later.</p>
+<p>Execute the following script, after replacing the variable, to set EP password.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-70-1" name="__codelineno-70-1" href="#__codelineno-70-1"></a><span class="nb">export</span> <span class="nv">EP_ADMIN_PWD</span><span class="o">=</span>&lt;ep-admin-pwd&gt;
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="9">
+<li>
+<p>Configure security for Event Processing.</p>
+<div class="admonition note">
+<p><strong>Time to configure</strong>: <em>~1 minute</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-71-1" name="__codelineno-71-1" href="#__codelineno-71-1"></a>scripts/20b-ea-ep-config-sec.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="10">
+<li>
+<p>Install the <code>PGSQL</code> Operator.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~5 minutes</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-72-1" name="__codelineno-72-1" href="#__codelineno-72-1"></a>oc apply -f resources/12a-pgsql-subscription.yaml
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-73-1" name="__codelineno-73-1" href="#__codelineno-73-1"></a><span class="nv">SUB_NAME</span><span class="o">=</span><span class="k">$(</span>oc get deployment pgo -n openshift-operators --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.metadata.labels.olm\.owner}&#39;</span><span class="k">)</span><span class="p">;</span><span class="k">if</span> <span class="o">[</span> ! -z <span class="s2">&quot;</span><span class="nv">$SUB_NAME</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span> oc get csv/<span class="nv">$SUB_NAME</span> --ignore-not-found -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.phase}&#39;</span><span class="p">;</span><span class="k">fi</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>Succeeded</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="11">
+<li>
+<p>Create <code>configmap</code> with database configuration.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a>oc apply -f resources/12b-pgsql-config.yaml
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="12">
+<li>
+<p>Deploy a <code>PGSQL</code> database instance:</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a>oc apply -f resources/12c-pgsql-db.yaml
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a>oc get pods -l <span class="s2">&quot;postgres-operator.crunchydata.com/role=master&quot;</span> -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[0].status.conditions[1].status}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>True</code>.</p>
+<details class="warning">
+<summary>TROUBLESHOOTING</summary>
+<p>If you execute the <code>oc get pods -l...</code> check too soon, the Terminal will return with an error message similar to the one captured below. Wait approximately 5 minutes and then try the command again. Once PGSQL has been deployed, the Terminal should return a value of <code>True</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-77-1" name="__codelineno-77-1" href="#__codelineno-77-1"></a>error: error executing jsonpath &quot;{.items[0].status.conditions[1].status}&quot;: Error executing template: array index out of bounds: index 0, length 0. Printing more information for debugging the template:
+<a id="__codelineno-77-2" name="__codelineno-77-2" href="#__codelineno-77-2"></a>template was:
+<a id="__codelineno-77-3" name="__codelineno-77-3" href="#__codelineno-77-3"></a>    {.items[0].status.conditions[1].status}
+<a id="__codelineno-77-4" name="__codelineno-77-4" href="#__codelineno-77-4"></a>object given to jsonpath engine was:
+<a id="__codelineno-77-5" name="__codelineno-77-5" href="#__codelineno-77-5"></a>    map[string]interface {}{&quot;apiVersion&quot;:&quot;v1&quot;, &quot;items&quot;:[]interface {}{}, &quot;kind&quot;:&quot;List&quot;, &quot;metadata&quot;:map[string]interface {}{&quot;resourceVersion&quot;:&quot;&quot;}}
+</code></pre></div>
+</details>
+</li>
+</ol>
+<hr />
+<ol start="13">
+<li>
+<p>Execute the following command to retrieve connection details for accessing various components of the IBM Event Automation (EA) instance. Record this information into a notepad for future reference.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a>scripts/20c-ea-access-info.sh
+</code></pre></div>
+<p>Terminal will return connection details for:</p>
+<ul>
+<li>IBM Event Streams</li>
+<li>IBM Event Endpoint Management</li>
+<li>IBM Event Processing</li>
+<li>PostgreSQL Database</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="xiii-launching-support-scripts"><strong>xiii. Launching support scripts</strong></h2>
+<p>Additional supporting services are needed to generate results and data for the hands-on lab experience.</p>
+<ol>
+<li>
+<p>Navigate outside of the <code>cp4i-demo</code> directory first so that the support scripts can be cloned in a separate directory:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-79-1" name="__codelineno-79-1" href="#__codelineno-79-1"></a><span class="nb">cd</span> ..
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>Execute the following command to clone (via <code>git</code>) the support script repository (<code>eventautomationl3.git</code>) to your local machine.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-80-1" name="__codelineno-80-1" href="#__codelineno-80-1"></a>git clone https://github.com/ibm-integration/eventautomationL3.git
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Navigate into the <code>eventautomationL3</code> directory.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="nb">cd</span> eventautomationL3
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Execute the script below to install the support script services.</p>
+<div class="admonition note">
+<p><strong>Time to install</strong>: <em>~10 minutes</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-82-1" name="__codelineno-82-1" href="#__codelineno-82-1"></a>./deploy-helpers.sh
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Enable the Kafka Connect base.</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-83-1" name="__codelineno-83-1" href="#__codelineno-83-1"></a>scripts/08c-event-streams-kafka-connect-config.sh
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-84-1" name="__codelineno-84-1" href="#__codelineno-84-1"></a>oc get kafkaconnects jgr-connect-cluster -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.status.conditions[0].type}&#39;</span><span class="p">;</span><span class="nb">echo</span>
+</code></pre></div>
+<p>Wait for a response of <code>Ready</code>.</p>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Enable the Kafka Connector data generator.</p>
+<div class="admonition note">
+<p><strong>Time to deploy</strong>: <em>~1 minute</em></p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-85-1" name="__codelineno-85-1" href="#__codelineno-85-1"></a>scripts/08e-event-streams-kafka-connector-datagen-config.sh
+</code></pre></div>
+<p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-86-1" name="__codelineno-86-1" href="#__codelineno-86-1"></a>oc get kafkaconnector -n tools
+</code></pre></div>
+<p>After several minutes, you should receive the following response:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-87-1" name="__codelineno-87-1" href="#__codelineno-87-1"></a>NAME            CLUSTER          CONNECTOR CLASS                                  MAX TASKS   READY
+<a id="__codelineno-87-2" name="__codelineno-87-2" href="#__codelineno-87-2"></a>kafka-datagen   jgr-connect-cluster     com.ibm.eventautomation.demos.acme.DatagenSourceConnector       1               True
+<a id="__codelineno-87-3" name="__codelineno-87-3" href="#__codelineno-87-3"></a>mq-sink         jgr-connect-cluster     com.ibm.eventstreams.connect.mqsink.MQSinkConnector             1               True
+<a id="__codelineno-87-4" name="__codelineno-87-4" href="#__codelineno-87-4"></a>mq-source       jgr-connect-cluster     com.ibm.eventstreams.connect.mqsource.MQSourceConnector         1               True
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<h2 id="xiv-next-steps"><strong>xiv. Next steps</strong></h2>
+<p>Congratulations — you have successfully deployed <em>IBM Event Automation</em> and <em>IBM Cloud Pak for Integration</em>, as well as the necessary services to run the hands-on lab.</p>
+<p>At this stage, use your web browser to open a new tab for each of the services:</p>
+<ul>
+<li><em>IBM Cloud Pak for Integration</em></li>
+<li><em>Event Streams</em></li>
+<li><em>Event Endpoint Management</em></li>
+<li><em>Event Processing</em></li>
+<li><em>IBM MQ</em></li>
+</ul>
+<p><br/>
+Keep these tabs open. You will be switching between them frequently.</p>
+<p>The following module will outline the Level 3 evaluation criteria for IBM technical sellers and business partners. Follow the accreditation steps appropriate to your job role.</p>
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Introduction
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../evaluation/" class="md-footer__link md-footer__link--next" aria-label="Next: Evaluation" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Evaluation
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 IBM
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.annotate"], "search": "../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

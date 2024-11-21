@@ -1,0 +1,1148 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="IBM Event Automation for Technical Sales Level 3">
+      
+      
+        <meta name="author" content="Christopher Bienko (cdbienko@us.ibm.com)">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
+    
+    
+      
+        <title>3. Configuring the solution with Event Processing no-code editors - IBM Event Automation for Technical Sales Level 3</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.69437709.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="IBM Event Automation for Technical Sales Level 3" class="md-header__button md-logo" aria-label="IBM Event Automation for Technical Sales Level 3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM Event Automation for Technical Sales Level 3
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3. Configuring the solution with Event Processing no-code editors
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IBM Event Automation for Technical Sales Level 3" class="md-nav__button md-logo" aria-label="IBM Event Automation for Technical Sales Level 3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    IBM Event Automation for Technical Sales Level 3
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        Setup and Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evaluation/" class="md-nav__link">
+        Evaluation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1/" class="md-nav__link">
+        1. Creating an event stream from MQ data using Event Streams
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2/" class="md-nav__link">
+        2. Building a self-service catalog of events with Event Endpoint Management
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          3. Configuring the solution with Event Processing no-code editors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        3. Configuring the solution with Event Processing no-code editors
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-using-event-processing-no-code-editors-for-configuration" class="md-nav__link">
+    i. Using Event Processing no-code editors for configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-configuring-an-event-source-for-orders" class="md-nav__link">
+    ii. Configuring an event source for Orders
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-configuring-an-event-source-for-new-customers" class="md-nav__link">
+    iii. Configuring an event source for New Customers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-filtering-event-sources-to-match-specific-criteria" class="md-nav__link">
+    iv. Filtering event sources to match specific criteria
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-performing-a-join-across-two-event-sources" class="md-nav__link">
+    v. Performing a JOIN across two event sources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-next-steps" class="md-nav__link">
+    vi. Next steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4/" class="md-nav__link">
+        4. Connecting real-time events to a promotional marketing app
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-using-event-processing-no-code-editors-for-configuration" class="md-nav__link">
+    i. Using Event Processing no-code editors for configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-configuring-an-event-source-for-orders" class="md-nav__link">
+    ii. Configuring an event source for Orders
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-configuring-an-event-source-for-new-customers" class="md-nav__link">
+    iii. Configuring an event source for New Customers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-filtering-event-sources-to-match-specific-criteria" class="md-nav__link">
+    iv. Filtering event sources to match specific criteria
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-performing-a-join-across-two-event-sources" class="md-nav__link">
+    v. Performing a JOIN across two event sources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-next-steps" class="md-nav__link">
+    vi. Next steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="_1"></h1>
+<p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="../_videos/module3.mp4" type="video/mp4" /></video></div></p>
+<div class="admonition quote">
+<p>Christopher Bienko <em>(Principal, IBM Global Sales Enablement)</em> provides a hands-on demonstration of Module 3.</p>
+<p><strong>Additional ways to watch:</strong> <a href="https://ibm.seismic.com/Link/Content/DCjdpcfpj2DC68qT3Hppp34MPRQj" target="_blank">Seismic replay available for download.</a> [14 minutes]</p>
+</div>
+<p><br/></p>
+<h2 id="i-using-event-processing-no-code-editors-for-configuration"><strong>i. Using Event Processing no-code editors for configuration</strong></h2>
+<p>Focus Corporation's marketing department now has a fully configured, self-service catalog of event stream data available within <strong>IBM Event Endpoint Management (EEM)</strong>.</p>
+<p>At this stage, work will transition from the integration team to the domain of the marketing team. Focus' marketing team will utilize <strong>IBM Event Processing (EP)</strong> to correlate any newly-created customer accounts with first-time purchase orders that total over $100 USD in value. Furthermore, these correlated transactions will need to be identified within a 24-hour window of when they occur.</p>
+<p>If these conditions can be met, the marketing team will be able to create an actionable plan for putting high-value promotional offers in front of first-time customers in a timely manner — which should translate to more sales revenue through Focus' digital storefront.</p>
+<hr />
+<ol>
+<li>
+<p>With your web browser, access the <strong>IBM Event Processing</strong> dashboard.</p>
+<p>Dismiss any welcome screens or tutorials that are prompted after first logging in by clicking the <strong>Hide Welcome</strong><sup>[A]</sup> text in the bottom-left corner of the interface.</p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>In the bottom-right corner of the page, click the blue <strong>Create</strong><sup>[B]</sup> to begin defining a new <em>flow</em>.</p>
+<p><br/></p>
+<div class="admonition note inline">
+<p class="admonition-title">EVENT PROCESSING FLOWS</p>
+<p>An event processing flow ingests a stream of events, analyzes that input, and takes automatic actions (defined by the user) in response to those conditions.</p>
+<p>A flow begins with one or multiple event sources which represent inbound events. For the purposes of this demonstration, you will leverage the <code>ORDERS</code> event stream that was defined in the previous module. You will do so using EP's intuitive, no-code authoring canvas.</p>
+</div>
+<p><a class="glightbox" href="../_attachments/3-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-1.png" width="400" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>For <strong>Name</strong><sup>[A]</sup>, specify <code>NewCustomerLargeOrder</code> and then click <strong>Create</strong><sup>[B]</sup>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-3.png" width="300" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="ii-configuring-an-event-source-for-orders"><strong>ii. Configuring an event source for Orders</strong></h2>
+<p>Before the inbound events can be captured, connectivity details for the event source node (<code>ORDERS</code>) must be configured within the authoring canvas.</p>
+<hr />
+<ol start="4">
+<li>
+<p>Wait until the page has refreshed to display the no-code environment.</p>
+<ul>
+<li>
+<p>Along the left side are tools and actions that can be dragged into the authoring canvas on the right</p>
+</li>
+<li>
+<p>Within the canvas, you will see an <strong>Event source</strong><sup>[A]</sup> node with default name of <code>source_1</code></p>
+</li>
+<li>
+<p>With your cursor, hover over the <code>source_1</code> node and then click the <strong>Edit</strong><sup>[B]</sup> (pencil) icon in the top-right corner of the tile to begin modifying the node</p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-4.png" width="300" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>The <strong>Configure event source</strong> wizard will load within your browser.</p>
+<ul>
+<li>
+<p>Under the <em>Add an event source or pick a recent one</em> header, select <strong>Add event source</strong><sup>[A]</sup></p>
+</li>
+<li>
+<p>Click <strong>Next</strong><sup>[B]</sup></p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-5.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Switch back to the <strong>Event Endpoint Management</strong> tab and click <strong>Catalog</strong>.</p>
+<ul>
+<li>
+<p>Drill down into the <code>ORDERS</code><sup>[A]</sup> topic by clicking on the name</p>
+</li>
+<li>
+<p>Scroll down the topic summary page until you reach the <strong>Access Information</strong> section</p>
+</li>
+<li>
+<p>Just below, within the <em>Servers</em> table, is the full address of the <code>ORDERS</code> event topic</p>
+</li>
+<li>
+<p>Copy the <em>full</em> address<sup>[B]</sup> to your notepad for reference later</p>
+</li>
+<li>
+<p>When ready, switch back to the <strong>IBM Event Processing</strong> tab with your web browser</p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-6a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-6a.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/3-6b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-6b.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>Back within <strong>IBM Event Processing</strong> service, the <em>Cluster Connection</em> tab will ask for details about the Kafka cluster and topic to connect to.</p>
+<ul>
+<li>
+<p><em>Server</em>: supply the URL recorded in the previous step (<em>Step 6</em>)</p>
+</li>
+<li>
+<p>Click <strong>Next</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>The <em>Access Credentials</em> tab will ask for connection details to the Kafka topic.</p>
+<ul>
+<li>
+<p>Keep the <strong>Select security mechanism</strong> variable as its default value: <code>PLAIN</code></p>
+</li>
+<li>
+<p>For <strong>Username</strong><sup>[A]</sup> and <strong>Password</strong><sup>[B]</sup>, supply the credentials for the <code>ORDERS</code> topic (<em>Module 2 - Step 32</em>)</p>
+</li>
+<li>
+<p>Click <strong>Next</strong><sup>[C]</sup></p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-9.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="9">
+<li>
+<p>The <em>Topic Selection</em> tab needs additional information to configure the node.</p>
+<ul>
+<li>
+<p>Available topics will already be displayed within the configuration tool</p>
+</li>
+<li>
+<p>Under the <em>Topic selection</em> header, click the button next to the <code>ORDERS</code><sup>[A]</sup> topic to select it</p>
+</li>
+<li>
+<p>Click <strong>Next</strong><sup>[B]</sup></p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-10.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="10">
+<li>
+<p>The <em>Message Format</em> needs details about the event formatting.</p>
+<ul>
+<li>
+<p><em>Message format</em>: set to <code>JSON</code></p>
+</li>
+<li>
+<p>Set the <em>JSON sample message</em> field to the value stored below:</p>
+</li>
+</ul>
+<div class="admonition note inline end">
+<p>Note that this is the same sample schema you supplied when configuring the event source within EEM in Module 2.</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">197.09</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">&quot;customerid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a7d1586b-ced1-462f-9e44-14e9e5013540&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Composite Oversize 28in Tennis Racket&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1eba7af9-b748-4754-b750-3459e589dccf&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nt">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EMEA&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nt">&quot;ordertime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-10-24 19:26:04.839&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nt">&quot;customer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Reed McKenzie DDS&quot;</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p><br/></p>
+<ul>
+<li>When ready, click <strong>Next</strong> to proceed</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/event-source-format-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/event-source-format-1.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="11">
+<li>
+<p>From the <em>Key and Headers</em> tab, you will <strong>NOT</strong> need to map <code>key</code> and <code>headers</code> to event fields.</p>
+<p>Click <strong>Next</strong> to continue.</p>
+</li>
+</ol>
+<hr />
+<ol start="12">
+<li>
+<p>You will have a final opportunity to review and confirm the event source configuration.</p>
+<ul>
+<li>Set the <strong>Node name</strong><sup>[A]</sup> to <code>Orders</code></li>
+<li>Click <strong>Configure</strong><sup>[B]</sup> to finalize the configuration of the <code>Orders</code> event source</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/module3-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module3-12.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="iii-configuring-an-event-source-for-new-customers"><strong>iii. Configuring an event source for New Customers</strong></h2>
+<p>The configurations performed for the <code>ORDERS</code> topic now (Steps 4 – 12) must now be repeated for the <code>CUSTOMERS</code> topic.</p>
+<hr />
+<ol start="13">
+<li>
+<p>Return to the <code>NewCustomerLargeOrder</code><sup>[A]</sup> canvas and drag a new <strong>Event Source</strong><sup>[B]</sup> (from the left-hand interface) into the canvas, placing it just below the <code>Orders</code> source.</p>
+<p>With your cursor, hover over the new <code>source_1</code> node and then click the <strong>Edit</strong> (pencil) icon in the top-right corner of the tile to begin modifying the node.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-13.png" width="400" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="14">
+<li>
+<p>The <strong>Configure event source</strong> wizard will load within your browser.</p>
+<ul>
+<li>
+<p>Under the <em>Add an event source or pick a recent one</em> header, select <strong>Add event source</strong><sup>[A]</sup></p>
+</li>
+<li>
+<p>Click <strong>Next</strong><sup>[B]</sup></p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-14.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="15">
+<li>
+<p>Switch back to the <strong>Event Endpoint Management</strong> tab and click <strong>Catalog</strong>.</p>
+<ul>
+<li>
+<p>Drill down into the <code>CUSTOMERS</code> topic by clicking on the name</p>
+</li>
+<li>
+<p>Scroll down the topic summary page until you reach the <strong>Access Information</strong> section</p>
+</li>
+<li>
+<p>Just below, within the <em>Servers</em> table, is the full address of the <code>CUSTOMERS</code> event topic</p>
+</li>
+<li>
+<p>Copy the <em>full</em> address to your notepad for reference later</p>
+</li>
+<li>
+<p>When ready, switch back to the <strong>IBM Event Processing</strong> tab with your web browser</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="16">
+<li>
+<p>Back within <strong>IBM Event Processing</strong> service, the <em>Cluster Connection</em> tab will ask for details about the Kafka cluster and topic to connect to.</p>
+<ul>
+<li>
+<p><em>Server</em>: supply the URL recorded in the previous step (<em>Step 15</em>)</p>
+</li>
+<li>
+<p>Click <strong>Next</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="17">
+<li>
+<p>The <em>Access Credentials</em> tab will ask for connection details to the Kafka topic.</p>
+<ul>
+<li>
+<p>Keep the <strong>Select security mechanism</strong> variable as its default value: <code>PLAIN</code></p>
+</li>
+<li>
+<p>For <strong>Username</strong><sup>[A]</sup> and <strong>Password</strong><sup>[B]</sup>, supply the credentials for the <code>CUSTOMERS</code> topic (<em>Module 2 - Step 28</em>)</p>
+</li>
+<li>
+<p>Click <strong>Next</strong><sup>[C]</sup></p>
+</li>
+</ul>
+</li>
+</ol>
+<p><br/>
+    <a class="glightbox" href="../_attachments/3-16.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-16.png" width="600" /></a></p>
+<hr />
+<ol start="18">
+<li>
+<p>The <em>Topic Selection</em> tab needs additional information to configure the node.</p>
+<ul>
+<li>
+<p>Available topics will already be displayed within the configuration tool</p>
+</li>
+<li>
+<p>Under the <em>Topic selection</em> header, click the button next to the <code>CUSTOMERS</code><sup>[A]</sup> topic to select it</p>
+</li>
+<li>
+<p>Click <strong>Next</strong><sup>[B]</sup></p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-19.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-19.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="19">
+<li>
+<p>The <em>Message Format</em> needs details about the event formatting.</p>
+<ul>
+<li>
+<p><em>Message format</em>: set to <code>JSON</code></p>
+</li>
+<li>
+<p>Set the <em>JSON sample message</em> field to the value stored below:</p>
+</li>
+</ul>
+<div class="admonition note inline end">
+<p>Note that this is the same sample schema you supplied when configuring the event source within EEM in Module 2.</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">&quot;customerid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;acb3eb65-98a1-45c2-84d4-f5df157862b4&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">&quot;customername&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Emilio Quitzon&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">&quot;registered&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-10-24 19:20:35.638&quot;</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p><br/></p>
+<ul>
+<li>When ready, click <strong>Next</strong> to proceed</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="20">
+<li>
+<p>From the <em>Key and Headers</em> tab, you will <strong>NOT</strong> need to map <code>key</code> and <code>headers</code> to event fields.</p>
+<p>Click <strong>Next</strong> to continue.</p>
+</li>
+</ol>
+<hr />
+<ol start="21">
+<li>
+<p>You will have a final opportunity to review and confirm the event source configuration.</p>
+<ul>
+<li>
+<p>Set the <strong>Node name</strong><sup>[A]</sup> to <code>New Customers</code></p>
+</li>
+<li>
+<p>Click <strong>Configure</strong><sup>[B]</sup> to finalize the configuration of the <code>New Customers</code> event source</p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/module3-21.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module3-21.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/3-21b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-21b.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="iv-filtering-event-sources-to-match-specific-criteria"><strong>iv. Filtering event sources to match specific criteria</strong></h2>
+<p>With the event source fully configured within EP, you can now begin tailoring the event processing flow to filter on orders where the value exceeds $100 USD.</p>
+<hr />
+<ol start="22">
+<li>
+<p>Scroll down within the list of nodes and actions on the left-side interface until you locate the <strong>Filter</strong> node.</p>
+<ul>
+<li>
+<p>Click and hold the <strong>Filter</strong><sup>[A]</sup> node, then drag it to the authoring canvas on the right</p>
+</li>
+<li>
+<p>Position it to the right side of the <code>Orders</code> node</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="23">
+<li>
+<p>The output terminal for <code>Orders</code> needs to be connected as input to the <code>filter_1</code> node.</p>
+<ul>
+<li>
+<p>With your mouse pointer, hover over the <code>Orders</code> node and take note of the grey dot (labelled <em>Output Port</em><sup>[B]</sup>) at the right edge of the tile</p>
+</li>
+<li>
+<p>Click and hold the <em>Output Port</em> (right-most) of <code>Orders</code> and <strong>drag</strong> it to the <em>Input Port</em><sup>[C]</sup> (left-most edge) of <code>filter_1</code>, then release your hold to complete the circuit</p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-23.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-23.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="24">
+<li>
+<p>With the <code>Orders</code> event source node connected to the <code>filter_1</code> operation node, you must utilize the Filter node's expression builder to remove orders that are <em>less than</em> $100 USD in value. This will allow the marketing team's application to target only first-time customers with spending patterns of $100 USD or more.</p>
+<p>Hover over the <code>filter_1</code> node with your mouse pointer and click the <strong>Edit</strong><sup>[D]</sup> (pencil) icon.</p>
+</li>
+</ol>
+<hr />
+<ol start="25">
+<li>
+<p>Within the <em>Details</em> tab, specify the value of <strong>Node name</strong> as <code>FilterLargeOrders</code></p>
+<p>When ready, click <strong>Next</strong>.</p>
+</li>
+</ol>
+<hr />
+<ol start="26">
+<li>
+<p>The <em>Define filter</em> tab will load next. To the right of the <strong>Filter expression</strong> field, click the <strong>Assistant</strong><sup>[A]</sup> drop-down menu to expose additional options.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-27a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-27a.png" width="300" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="27">
+<li>
+<p>Event Processing's expression builder will guide you in defining the filter.</p>
+<ul>
+<li>
+<p>Property to filter on: <code>price</code></p>
+</li>
+<li>
+<p>Condition: <code>Is greater than</code></p>
+</li>
+<li>
+<p>Value: <code>100</code></p>
+</li>
+<li>
+<p>Click the <strong>Add to expression</strong> button</p>
+</li>
+<li>
+<p>The expression builder will automatically translate your statements into a syntactically-correct filter statement: <code>'price' &gt; 100</code></p>
+</li>
+<li>
+<p>Click the <strong>Configure</strong><sup>[B]</sup> button at the bottom of the panel to finalize the filter configuration</p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-27b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-27b.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="v-performing-a-join-across-two-event-sources"><strong>v. Performing a JOIN across two event sources</strong></h2>
+<p>The marketing team needs to "JOIN" the filtered <code>Order</code> stream data to records of <code>New Customers</code> in order to correctly identify first-time purchasers that placed an order for over $100 USD in the last 24 hours. Use EP's authoring canvas to carry out the necessary JOIN operation.</p>
+<hr />
+<ol start="28">
+<li>
+<p>Back on the canvas for <code>NewCustomerLargeOrders</code>, scroll down along the left-hand interface until you locate the <strong>Interval Join</strong><sup>[A]</sup> node.</p>
+<p>Drag and drop this node<sup>[B]</sup> to the far right-hand edge of the authoring canvas.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-28.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-28.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="29">
+<li>
+<p>With your cursor, hover over the <code>New Customers</code> output terminal and locate the <em>Output Port</em> (grey) button.</p>
+<ul>
+<li>
+<p>Click and hold the <code>New Customers</code> <em>Output Port</em><sup>[A]</sup> edge and <strong>drag</strong> this to the <em>Input Port</em><sup>[B]</sup> edge of the newly-created <code>intervalJoin_1</code> node</p>
+</li>
+<li>
+<p>Release your cursor to finalize the circuit</p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-29.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-29.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="30">
+<li>
+<p>Repeat the process, this time connecting the <code>FilterLargeOrders</code> node's <em>Output Port</em><sup>[A]</sup> to the <code>intervalJoin_1</code> node's <em>Input Port</em><sup>[B]</sup>.</p>
+<p>At this stage, the input of <code>intervalJoin_1</code> should be connected to the outputs of <em>both</em> the <code>FilterLargeOrders</code> and <code>New Customers</code> nodes.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-30.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-30.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="31">
+<li>
+<p>The JOIN node must now be configured to correlate events based on a shared <code>customerid</code> field within the two event streams (<code>New Customers</code> and pre-filtered <code>Orders</code>).</p>
+<p>With your cursor, hover over the <code>intervalJoin_1</code> node and click the <strong>Edit</strong> (pencil) icon.</p>
+</li>
+</ol>
+<hr />
+<ol start="32">
+<li>
+<p>Within the <em>Details</em> tab, set <strong>Node name</strong><sup>[A]</sup> equal to <code>DetectNewCustomerLargeOrders</code></p>
+<p>When ready, click <strong>Next</strong><sup>[B]</sup>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-32.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-32.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="33">
+<li>
+<p>Within the <em>Join conditions</em> tab, activate the expression builder by click the <strong>Assistant</strong><sup>[A]</sup> drop-down menu. Set the following properties:</p>
+<ul>
+<li>
+<p>Specify property from 'New Customers': <code>customerid</code></p>
+</li>
+<li>
+<p>Specify property from 'FilterLargeOrders': <code>customerid</code></p>
+</li>
+<li>
+<p>When ready, click <strong>Add to expression</strong><sup>[B]</sup></p>
+</li>
+<li>
+<p>The syntactically-correct JOIN expression will be expressed under the <em>Define events</em> field: <code>'New Customers'.'customerid' = 'FilterLargeOrders'.'customerid'</code></p>
+</li>
+<li>
+<p>After you have reviewed the JOIN condition, click <strong>Next</strong><sup>[C]</sup></p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-33a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-33a.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/3-33b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-33b.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<div class="admonition note">
+<p class="admonition-title">TRIGGERING EVENTS AND DETECTED EVENTS</p>
+<p>Two concepts are important to understand at this time: <em>Triggering events</em> and <em>Detected events</em>.</p>
+<ul>
+<li>
+<p>Since the <code>New Customer</code> sign-up event must logically occur before a purchase, it is considered a <em>triggering event</em></p>
+</li>
+<li>
+<p>Therefore, when a signal for an <code>Order</code> purchase of over $100 (the <em>detected event</em>) is received, the JOIN logic condition will be triggered for the two event streams</p>
+</li>
+</ul>
+</div>
+<ol start="34">
+<li>
+<p>Under the <em>Time window condition</em>, you can define the time interval "window" where detected events are considered viable for a promotional offer from the marketing team. To meet the criteria, a purchase of over $100 USD must be made by a first-time customer within a 24 hour window of creating an account.</p>
+<ul>
+<li>
+<p>Look for the <strong>Event to detect</strong><sup>[A]</sup> field and select the <code>FilterLargeOrders (event_time)</code> option from the drop-down menu</p>
+</li>
+<li>
+<p>A <em>Preview</em> visualization of the time window interval is rendered within the panel — for now, with no adjustments made, this will appear as a vertical bar at 0 (on the X-axis)</p>
+</li>
+<li>
+<p>Scroll down further to reveal additional attributes to edit</p>
+</li>
+<li>
+<p><em>Event to set the time window</em>: <code>New Customers (event-time)</code></p>
+</li>
+<li>
+<p><em>Offset from event to start the time window</em>: <code>0</code> <code>HOUR(S)</code></p>
+</li>
+<li>
+<p><em>Offset from event to end the time window</em><sup>[B]</sup>: <code>24</code> <code>HOUR(S)</code></p>
+</li>
+<li>
+<p>When ready, click <strong>Next</strong><sup>[C]</sup></p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-34.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-34.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<p>The JOIN node's output will be a combination of fields from both the filtered <code>Orders</code> and <code>New Customers</code> events streams.</p>
+<p>Before finalizing the interval join, you need to clean up the output so that duplicate fields (like <code>customerid</code> and <code>event_time</code>) are not included from the JOIN operation. You have the option of renaming or removing the duplicate fields — but for the sake of this demonstration, you will be removing the fields.</p>
+<hr />
+<ol start="35">
+<li>
+<p>Within the <em>Output properties</em> tab, locate the <code>customerid</code><sup>[A]</sup> field. There are <strong>two</strong> (duplicate) copies of the same field at this time. Your objective will be to delete <strong>ONE</strong> of the two duplicate records, where the <em>Source</em> is labelled as <code>New Customers</code>. Preserve the record where <em>Source</em> is labelled as <code>FilterLargeOrders</code>.</p>
+<ul>
+<li>
+<p>Click the round <code>—</code> sign to the left of the first <code>customerid</code> row, where the <em>Source</em> is labelled as "New Customers", to remove the duplicate</p>
+</li>
+<li>
+<p>The result will be only one copy of the <code>customerid</code> field in the table</p>
+</li>
+<li>
+<p>The red text (<em>Must be unique</em>) underlining the field will disappear from the table</p>
+</li>
+</ul>
+<p><br/></p>
+<div class="admonition warning inline end">
+<p class="admonition-title">ONLY REMOVE DUPLICATES WHERE SOURCE == NEW CUSTOMERS</p>
+<p>When reviewing <em>Output properties</em> for duplicate fields, take note of the table's <strong>Source</strong> column. Duplicates will be produced by both the <code>New Customers</code> and <code>FilterLargeOrders</code> nodes. Only remove duplicates where the <strong>Source</strong> is listed as <code>New Customers</code>.</p>
+</div>
+<p><a class="glightbox" href="../_attachments/3-35a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-35a.png" width="400" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="36">
+<li>
+<p>Repeat the procedure for the <code>event_time</code> field, which is also duplicated by the JOIN:</p>
+<ul>
+<li>
+<p>Delete the <code>event_time</code> row where the <em>Source</em> column is labelled as "New Customers"</p>
+</li>
+<li>
+<p>With all duplicates removed from the table, the <strong>Configure</strong><sup>[A]</sup> button will now be highlighted in blue and selectable</p>
+</li>
+<li>
+<p>Click the <strong>Configure</strong> button to finalize the interval join configuration</p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/3-36a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-36a.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/3-36b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/3-36b.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="vi-next-steps"><strong>vi. Next steps</strong></h2>
+<p>With filtering and processing steps now in place for incoming event streams, Focus Corporation's marketing team is able to detect valid promotional opportunities and emit those detected events to their customer loyalty application. In the following section, you will create those linkages and validate its effectiveness using "live" data feeds.</p>
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2. Building a self-service catalog of events with Event Endpoint Management" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              2. Building a self-service catalog of events with Event Endpoint Management
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../4/" class="md-footer__link md-footer__link--next" aria-label="Next: 4. Connecting real-time events to a promotional marketing app" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              4. Connecting real-time events to a promotional marketing app
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 IBM
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.annotate"], "search": "../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

@@ -1,0 +1,1044 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="IBM Event Automation for Technical Sales Level 3">
+      
+      
+        <meta name="author" content="Christopher Bienko (cdbienko@us.ibm.com)">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.4.1">
+    
+    
+      
+        <title>2. Building a self-service catalog of events with Event Endpoint Management - IBM Event Automation for Technical Sales Level 3</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.69437709.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="IBM Event Automation for Technical Sales Level 3" class="md-header__button md-logo" aria-label="IBM Event Automation for Technical Sales Level 3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            IBM Event Automation for Technical Sales Level 3
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Building a self-service catalog of events with Event Endpoint Management
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="IBM Event Automation for Technical Sales Level 3" class="md-nav__button md-logo" aria-label="IBM Event Automation for Technical Sales Level 3" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    IBM Event Automation for Technical Sales Level 3
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setup/" class="md-nav__link">
+        Setup and Troubleshooting
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evaluation/" class="md-nav__link">
+        Evaluation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1/" class="md-nav__link">
+        1. Creating an event stream from MQ data using Event Streams
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          2. Building a self-service catalog of events with Event Endpoint Management
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        2. Building a self-service catalog of events with Event Endpoint Management
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-build-a-self-service-catalog-with-event-endpoint-management" class="md-nav__link">
+    i. Build a self-service catalog with Event Endpoint Management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-defining-new-topics-within-ibm-event-streams" class="md-nav__link">
+    ii. Defining new Topics within IBM Event Streams
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-defining-a-data-schema-for-customers" class="md-nav__link">
+    iii. Defining a data schema for Customers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-defining-a-data-schema-for-orders" class="md-nav__link">
+    iv. Defining a data schema for Orders
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-validating-the-configuration-changes-and-generating-access-credentials" class="md-nav__link">
+    v. Validating the configuration changes and generating access credentials
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-next-steps" class="md-nav__link">
+    vi. Next steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3/" class="md-nav__link">
+        3. Configuring the solution with Event Processing no-code editors
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4/" class="md-nav__link">
+        4. Connecting real-time events to a promotional marketing app
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#i-build-a-self-service-catalog-with-event-endpoint-management" class="md-nav__link">
+    i. Build a self-service catalog with Event Endpoint Management
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ii-defining-new-topics-within-ibm-event-streams" class="md-nav__link">
+    ii. Defining new Topics within IBM Event Streams
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iii-defining-a-data-schema-for-customers" class="md-nav__link">
+    iii. Defining a data schema for Customers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#iv-defining-a-data-schema-for-orders" class="md-nav__link">
+    iv. Defining a data schema for Orders
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#v-validating-the-configuration-changes-and-generating-access-credentials" class="md-nav__link">
+    v. Validating the configuration changes and generating access credentials
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vi-next-steps" class="md-nav__link">
+    vi. Next steps
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="_1"></h1>
+<p><div class="video-container"><video style="position: relative; width: 100%; height: 22.172vw" controls  ><source src="../_videos/module2.mp4" type="video/mp4" /></video></div></p>
+<div class="admonition quote">
+<p>Christopher Bienko <em>(Principal, IBM Global Sales Enablement)</em> provides a hands-on demonstration of Module 2.</p>
+<p><strong>Additional ways to watch:</strong> <a href="https://ibm.seismic.com/Link/Content/DCCH9WJ36CWTJG9Bj34WjDFTq9VB" target="_blank">Seismic replay available for download.</a> [9 minutes]</p>
+</div>
+<p><br/></p>
+<h2 id="i-build-a-self-service-catalog-with-event-endpoint-management"><strong>i. Build a self-service catalog with Event Endpoint Management</strong></h2>
+<p>Having successfully deployed the IBM MQ-Apacha Kafka connector framework, Focus Corporation's integration team have created a bridge between MQ and Event Streams. As new customer order data is processed by the IBM MQ message queue, it is simultaneously cloned into the <code>Orders</code> event stream — awaiting further analysis and action by other users downstream.</p>
+<p>In this module, Focus' integration team will utilize <strong>IBM Event Endpoint Management (EEM)</strong> to import the newly-created event stream into a self-service catalog. EEM supports two use cases: the first is allowing teams (like the integration squad) to publish new event streams; the second is for consumers (such as marketing) to browse the contents of those event streams, without requiring direct intervention from the integration team.</p>
+<div class="admonition note">
+<p class="admonition-title">WHAT IS THE DIFFERENCE BETWEEN OpenAPI and AsyncAPI?</p>
+<p>OpenAPI and AsyncAPI both represent formalized specifications for describing APIs, but the data source feeding these APIs and the style in which that data is communicated differs between the two. <strong>This is important in the context of IBM Event Endpoint Management.</strong></p>
+<ul>
+<li>
+<p><strong>OpenAPI</strong> is designed for describing RESTful API endpoints, focusing on synchronous client-server communication: a client sends a request and waits for a direct response from a server. Therefore, OpenAPI is well-suited for standard web services where a client interacts with a server in a request-response model.</p>
+</li>
+<li>
+<p><strong>AsyncAPI</strong> is built for working with event-driven, asynchronous APIs that rely on asynchronous communication patterns: publish and subscribe, event streaming, and message-driven APIs. It is well-suited for Internet of Things (IoT) applications, real-time data processing use cases, or other scenarios where communication doesn't follow the typical direct request-response (synchronous and RESTful) API pattern.</p>
+</li>
+</ul>
+<p>Put simply, the key difference between the two is their differing communication patterns. OpenAPI is designed for synchronous messaging (following the request-response pattern) and AsyncAPI is intended for asynchronous communication (event-driven) patterns.</p>
+<p>IBM Event Endpoint Management— a composable service within IBM Event Automation —uses AsyncAPI as the standardized way for describing event-driven messages. It allows clients to quickly "discover" events across their ecosystem, publish those events across the organization according to governance rules that ensure compliance, and create enforceable policies through event gateways. Like enterprises do today with API gateways, an event gateway provides isolation, abstraction, policy enforcement, and decoupling to asynchronous (event-driven) data sources.</p>
+</div>
+<hr />
+<h2 id="ii-defining-new-topics-within-ibm-event-streams"><strong>ii. Defining new Topics within IBM Event Streams</strong></h2>
+<p>Before the event stream data can be browsed as part of a self-service catalog, the integration team must first import into EEM the <code>ORDER</code> and <code>CUSTOMER</code> streams via <em>Topics</em> created earlier within IBM Event Streams.</p>
+<hr />
+<ol>
+<li>
+<p>Since this is the first time that the integration team has needed to import Topics from IBM Event Streams, they must first register the cluster within IBM Event Endpoint Manager (EEM):</p>
+<ul>
+<li>
+<p>Switch over to the EEM tab within your web browser</p>
+</li>
+<li>
+<p>Click the <em>Hide Welcome</em><sup>[A]</sup> text to collapse the tutorials at the top of the page</p>
+</li>
+<li>
+<p>From the left-hand side of the interface, click <strong>Topic</strong><sup>[B]</sup></p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/module2-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module2-1.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="2">
+<li>
+<p>From the right side of the interface, click the blue <strong>Add Topic</strong> button. A configuration tool for importing a Topic into EEM will load.</p>
+<ul>
+<li>
+<p><em>Interaction</em> settings: Click the <strong>Consume events</strong><sup>[A]</sup> and then <strong>Next</strong> to proceed</p>
+</li>
+<li>
+<p><em>Cluster connection</em> settings: Click the <strong>Add new cluster</strong><sup>[B]</sup> button</p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/eem-topic-creation.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/eem-topic-creation.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/2-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-2.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="3">
+<li>
+<p>Set the <em>Cluster Name</em><sup>[A]</sup> variable to <code>IBM Event Streams</code> and click <strong>Next</strong><sup>[B]</sup> to continue.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-3.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="4">
+<li>
+<p>Additional details about the connection are required: the endpoint address, certificates required for secure communication with the cluster, and authentication credentials.</p>
+<ul>
+<li>
+<p>Set the <em>Servers</em><sup>[A]</sup> variable to the <code>Kafka SCRAM URL</code> that you copied in <em>Module 1 - Step 24</em> (likely <code>es-demo-kafka-bootstrap.tools.svc:9095</code>)</p>
+</li>
+<li>
+<p>Click <strong>Next</strong><sup>[B]</sup> to continue</p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/module2-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module2-4.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="5">
+<li>
+<p>Click (to add a checkmark) on the <strong>Accept all certificates</strong><sup>[A]</sup> toggle, then click <strong>Next</strong><sup>[B]</sup>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-5a.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-5a.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/2-5b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-5b.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="6">
+<li>
+<p>Next, configure details regarding <em>Credentials</em>.</p>
+<ul>
+<li>
+<p>The <em>Security Protocol</em> field should remain at the default value of <code>SCRAM-SHA-512</code></p>
+</li>
+<li>
+<p><em>Username</em><sup>[A]</sup> should be set to <code>es-demo</code> (<em>Module 1 - Step 29</em>)</p>
+</li>
+<li>
+<p><em>Password</em><sup>[B]</sup> must match the value recorded in <em>Module 1 - Step 29</em></p>
+</li>
+<li>
+<p>When ready, click <strong>Add Cluster</strong><sup>[C]</sup></p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/module2-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module2-6.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="7">
+<li>
+<p>The web browser will return to the <em>Add Topic</em> configuration page from Step 2.</p>
+<ul>
+<li>
+<p>Under the <em>Cluster connection</em><sup>[A]</sup> header, select the <code>IBM Event Streams</code> connection defined earlier</p>
+</li>
+<li>
+<p>When ready, click <strong>Next</strong><sup>[B]</sup></p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-7.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="8">
+<li>
+<p>Now select the Topics that will be made available for browsing within the Event Endpoint Management catalog.</p>
+<ul>
+<li>
+<p>Toggle (select) <em>both</em> the <code>CUSTOMERS</code><sup>[A]</sup> and <code>ORDERS</code><sup>[B]</sup> topics</p>
+</li>
+<li>
+<p>Keep the alias values set to their recommended defaults</p>
+</li>
+<li>
+<p>When ready, click <strong>Add Topic</strong><sup>[C]</sup></p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/module2-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module2-8.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="iii-defining-a-data-schema-for-customers"><strong>iii. Defining a data schema for <em>Customers</em></strong></h2>
+<p>With the connections to IBM Event Streams defined and the Kafka Topics selected for replication, Focus' integration team is ready to create self-service event stream catalogs within EEM. </p>
+<p>The team must provide descriptions of the event streams, including an example of how the data is structured and formatted. This description will be beneficial to other individuals within the company (such as the marketing department), who will want to know at-a-glance whether a particular Topic catalog fits their needs.</p>
+<hr />
+<ol start="9">
+<li>
+<p>From the EEM dashboad, drill down into <strong>Topics</strong><sup>[A]</sup> as before and click the name of the <code>CUSTOMERS</code><sup>[B]</sup> topic.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-9.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="10">
+<li>
+<p>Click the blue <strong>Edit information</strong><sup>[A]</sup> on the right-hand side of the page.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-10.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="11">
+<li>
+<p>Within the <em>Overview information</em> tab:</p>
+<ul>
+<li>
+<p>Scroll down until you reach the <strong>Description</strong><sup>[A]</sup> field and enter the following text: <code>Events generated by the customer management system. A new event is created for each new user registration.</code></p>
+</li>
+<li>
+<p>Scroll further down until you reach the <strong>Tags</strong><sup>[B]</sup> field and enter <code>customer</code></p>
+</li>
+<li>
+<p>For the <strong>Contact Email</strong><sup>[C]</sup> field, enter <code>customerservice@focus.corp</code></p>
+</li>
+<li>
+<p>Click the <strong>Event Information</strong><sup>[D]</sup> tab from the left side of the interface</p>
+</li>
+<li>
+<p><strong>DO NOT CLICK <em>SAVE</em></strong> — if you <em>did</em> click save, return to the previous screen by clicking the <strong>Edit information</strong> button again</p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-11.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="12">
+<li>
+<p>Within the <em>Event information</em><sup>[A]</sup> tab, scroll down until you locate the <strong>Sample message</strong><sup>[B]</sup> field. Here you will provide a representation of a typical message on the <code>CUSTOMERS</code> event stream.</p>
+<ul>
+<li>
+<p>Set the <em>Message Format</em> type to <code>JSON</code></p>
+</li>
+<li>
+<p>Copy and paste the following JSON into the <em>Sample message</em> field:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">&quot;customerid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;acb3eb65-98a1-45c2-84d4-f5df157862b4&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">&quot;customername&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Emilio Quitzon&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nt">&quot;registered&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-10-24 19:20:35.638&quot;</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p><br/></p>
+<ul>
+<li>When ready, click <strong>Save</strong><sup>[C]</sup> to finalize both the <em>Overview Information</em> and <em>Event Information</em> configuration settings</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-12.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-12.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="13">
+<li>
+<p>The web browser will return to the <code>CUSTOMERS</code> Topic overview.</p>
+<ul>
+<li>
+<p>From the three tabs at the top of the screen, click <strong>Options</strong><sup>[A]</sup></p>
+</li>
+<li>
+<p>Click the blue <strong>Create Options</strong><sup>[B]</sup> button</p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-13.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-13.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="14">
+<li>
+<p>Within the <em>Details</em> tab, provide the following customizations:</p>
+<ul>
+<li>
+<p><strong>Order name</strong><sup>[A]</sup>: <code>Customer Access</code></p>
+</li>
+<li>
+<p><strong>Alias</strong><sup>[B]</sup>: <code>CUSTOMERS</code></p>
+</li>
+<li>
+<p><strong>Description</strong><sup>[C]</sup>: <code>Self-service access to the customer event stream</code></p>
+</li>
+</ul>
+<p>When ready, click <strong>Next</strong><sup>[D]</sup>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-14.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-14.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="15">
+<li>
+<p>Leave the <em>Controls</em> tab empty (<code>No data</code>) and click <strong>Save</strong><sup>[A]</sup>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-15.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-15.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="16">
+<li>
+<p>The <em>Publish option</em> tab will give you a final opportunity to review the <code>CUSTOMERS</code> topic before publishing for other users of EEM.</p>
+<ul>
+<li>
+<p>Within the blue <em>Option Status</em> field, click the <strong>Publish</strong><sup>[A]</sup> button</p>
+</li>
+<li>
+<p>Further down the panel, under the <em>Available gateways</em><sup>[B]</sup> field, verify that the <code>egw-group</code> option is pre-selected</p>
+</li>
+<li>
+<p>When ready, click <strong>Publish</strong><sup>[C]</sup> to finalize publication of the <code>CUSTOMERS</code> topic</p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/eem-topic-publish-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/eem-topic-publish-1.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/eem-topic-publish-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/eem-topic-publish-2.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/2-16c.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-16c.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="iv-defining-a-data-schema-for-orders"><strong>iv. Defining a data schema for <em>Orders</em></strong></h2>
+<p>The process of publishing an event streams Topic within EEM (Steps 9–16) must now be repeated— with some slight modifications —for the <code>ORDERS</code> topic.</p>
+<hr />
+<ol start="17">
+<li>
+<p>From the EEM dashboard, drill down into <strong>Topics</strong><sup>[A]</sup> and then click the name <code>ORDERS</code><sup>[B]</sup>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-17.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-17.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="18">
+<li>Click on the <strong>Edit information</strong> button.</li>
+</ol>
+<hr />
+<ol start="19">
+<li>
+<p>Within the <em>Overview information</em> tab:</p>
+<ul>
+<li>
+<p>Scroll down until you reach the <strong>Description</strong><sup>[A]</sup> field and enter the following text: <code>Events generated by the customer management system. An event will be emitted for every new order that is made.</code></p>
+</li>
+<li>
+<p>Scroll further down until you reach the <strong>Tags</strong><sup>[B]</sup> field and enter <code>orders</code></p>
+</li>
+<li>
+<p>For the <strong>Contact Email</strong><sup>[C]</sup> field, enter <code>orders@focus.corp</code></p>
+</li>
+<li>
+<p>Click the <strong>Event Information</strong><sup>[D]</sup> tab from the left side of the interface</p>
+</li>
+<li>
+<p><strong>DO NOT CLICK <em>SAVE</em></strong> — if you <em>did</em> click save, return to the previous screen by clicking the <strong>Edit information</strong> button again</p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-19.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-19.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="20">
+<li>
+<p>Within the <em>Event information</em> tab, scroll down until you locate the <strong>Sample message</strong><sup>[A]</sup> field. Here you will provide a representation of a typical message on the <code>ORDERS</code> event stream.</p>
+<ul>
+<li>
+<p>Set the <em>Message Format</em> field to <code>JSON</code></p>
+</li>
+<li>
+<p>Copy and paste the following JSON into the <em>Sample Message</em> field:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">&quot;quantity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">&quot;price&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">197.09</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nt">&quot;customerid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a7d1586b-ced1-462f-9e44-14e9e5013540&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Composite Oversize 28in Tennis Racket&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1eba7af9-b748-4754-b750-3459e589dccf&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nt">&quot;region&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EMEA&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nt">&quot;ordertime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-10-24 19:26:04.839&quot;</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nt">&quot;customer&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Reed McKenzie DDS&quot;</span><span class="w"></span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p><br/></p>
+<ul>
+<li>When ready, click <strong>Save</strong><sup>[B]</sup> to finalize both the <em>Overview Information</em> and <em>Event Information</em> configuration settings</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-20.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-20.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="21">
+<li>
+<p>The web browser will return to the <code>ORDERS</code> Topic overview.</p>
+<ul>
+<li>
+<p>From the three tabs at the top of the screen, click <strong>Options</strong><sup>[A]</sup></p>
+</li>
+<li>
+<p>Click the blue <strong>Create Options</strong><sup>[B]</sup> button</p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-21.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-21.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="22">
+<li>
+<p>Within the <em>Details</em> tab, provide the following customizations:</p>
+<ul>
+<li>
+<p><strong>Order name</strong><sup>[A]</sup>: <code>Order Access</code></p>
+</li>
+<li>
+<p><strong>Alias</strong><sup>[B]</sup>: <code>ORDERS</code></p>
+</li>
+<li>
+<p><strong>Description</strong><sup>[C]</sup>: <code>Self-service access to the order event stream</code></p>
+</li>
+</ul>
+<p>When ready, click <strong>Next</strong><sup>[D]</sup>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-22.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-22.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="23">
+<li>Leave the <em>Controls</em> tab empty (<code>No data</code>) and click <strong>Save</strong> to proceed.</li>
+</ol>
+<hr />
+<ol start="24">
+<li>
+<p>The <em>Publish option</em> tab will give you a final opportunity to review the <code>ORDERS</code> topic before publishing for other users of EEM.</p>
+<ul>
+<li>
+<p>Within the blue <em>Option Status</em> field, click the <strong>Publish</strong><sup>[A]</sup> button</p>
+</li>
+<li>
+<p>Further down the panel, under the <em>Available gateways</em><sup>[B]</sup> field, verify that the <code>egw-group</code> option is pre-selected</p>
+</li>
+<li>
+<p>When ready, click <strong>Publish</strong><sup>[C]</sup> to finalize publication of the <code>ORDERS</code> topic</p>
+</li>
+</ul>
+<p><br/>
+<a class="glightbox" href="../_attachments/eem-topic-publish-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/eem-topic-publish-1.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/eem-topic-publish-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/eem-topic-publish-2.png" width="600" /></a></p>
+<p><a class="glightbox" href="../_attachments/2-24b.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-24b.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<h2 id="v-validating-the-configuration-changes-and-generating-access-credentials"><strong>v. Validating the configuration changes and generating access credentials</strong></h2>
+<p>Before handing access over to Focus Corporation's marketing team, the integration squad must first validate that the catalogued event streams are performing as expected. If no issues are detected, they can generate access credentials for users to securely access the catalog.</p>
+<hr />
+<ol start="25">
+<li>
+<p>Return to the EEM dashboard and drill down into <strong>Catalog</strong><sup>[A]</sup>, then click the name <code>CUSTOMERS</code><sup>[B]</sup> from the table.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/module2-25.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/module2-25.png" width="600" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="26">
+<li>
+<p>Click the <strong>Generate access credentials</strong><sup>[A]</sup> button in the top-right corner of the page.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-26.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-26.png" width="300" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="27">
+<li>
+<p>Provide an email address for the <em>Contact details</em> field: <code>marketing@focus.corp</code></p>
+<p>When ready, click <strong>Generate</strong>.</p>
+<p><br/>
+<a class="glightbox" href="../_attachments/2-27.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-27.png" width="300" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="28">
+<li>
+<p>Access credentials for <code>CUSTOMERS</code> will be generated immediately and displayed within the web browser.</p>
+<ul>
+<li>
+<p>Record the <code>Username</code><sup>[A]</sup> and <code>Password</code><sup>[B]</sup> values to a notepad for reference later</p>
+</li>
+<li>
+<p>Alternatively, save the credentials as a JSON file (using the <strong>Download as JSON</strong> button) on your local machine</p>
+</li>
+</ul>
+<p><br/></p>
+<div class="admonition warning inline end">
+<p class="admonition-title">RECORD THE ACCESS CREDENTIALS</p>
+<p>Don't proceed with the lab guide instructions before recording the <code>CUSTOMERS</code> access credentials. These values cannot be referenced again once this window is closed. You can always generate new credentials again later, but it will require repeating Steps 25-27.</p>
+</div>
+<p><a class="glightbox" href="../_attachments/2-28.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" loading="lazy" src="../_attachments/2-28.png" width="400" /></a></p>
+</li>
+</ol>
+<hr />
+<ol start="29">
+<li>
+<p>Generate access credentials for the <code>ORDERS</code> catalog in the same way done for <code>CUSTOMERS</code>:</p>
+<ul>
+<li>
+<p>Return to the EEM dashboard</p>
+</li>
+<li>
+<p>Drill down into <strong>Catalog</strong> and then click <code>ORDERS</code></p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<ol start="30">
+<li>Click the <strong>Generate access credentials</strong> button.</li>
+</ol>
+<hr />
+<ol start="31">
+<li>
+<p>Provide an email address for the <em>Contact details</em> field: <code>marketing@focus.corp</code></p>
+<p>When ready, click <strong>Generate</strong>.</p>
+</li>
+</ol>
+<hr />
+<ol start="32">
+<li>
+<p>Access credentials for <code>ORDERS</code> will be generated immediately within the web browser:</p>
+<ul>
+<li>
+<p>Record the <code>Username</code> and <code>Password</code> values to a notepad for reference later</p>
+</li>
+<li>
+<p>Alternatively, save the credentials as a JSON file (using the <strong>Download as JSON</strong> button) on your local machine</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="vi-next-steps"><strong>vi. Next steps</strong></h2>
+<p>At this stage, responsibility can shift towards Focus Corporation's marketing team. Thanks to the hard work of the integration squad, the marketing department now has a fully configured, self-service catalog of event stream data available within EEM.</p>
+<p>In the following module, Focus' marketing team will use <em>IBM Event Processing</em> to correlate newly-created customer accounts with orders totaling over $100 within a 24-hour time window.</p>
+
+
+
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../1/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 1. Creating an event stream from MQ data using Event Streams" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              1. Creating an event stream from MQ data using Event Streams
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../3/" class="md-footer__link md-footer__link--next" aria-label="Next: 3. Configuring the solution with Event Processing no-code editors" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              3. Configuring the solution with Event Processing no-code editors
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 IBM
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "content.code.annotate"], "search": "../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.9c69f0bc.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
