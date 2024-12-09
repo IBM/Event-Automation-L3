@@ -490,7 +490,7 @@ Deploying the Platform UI allows you to deploy and manage instances from a centr
 4. Create users.
 
     ``` shell
-    oc apply -f resources/02a-es-initial-config-jgr-users.yaml
+    oc apply -f resources/02a-es-initial-config-jgr-users.yaml -n tools
     ```
 
 ---
@@ -720,8 +720,14 @@ Deploying the Platform UI allows you to deploy and manage instances from a centr
 5. Create `configmap` with MQ configuration.
 
     ``` shell
-    oc apply -f resources/03c-qmgr-mqsc-config.yaml
+    oc apply -f resources/03c-qmgr-mqsc-config.yaml -n tools
     ```
+
+    Afterwards, follow-up by executing the following instruction:
+
+    ``` shell
+     oc apply -f resources/03e-qmgr-mqsc-config-ea.yaml -n tools
+     ```
 
 ---
 
@@ -939,7 +945,7 @@ Deploying the Platform UI allows you to deploy and manage instances from a centr
 11. Create `configmap` with database configuration.
 
     ``` shell
-    oc apply -f resources/12b-pgsql-config.yaml
+    oc apply -f resources/12b-pgsql-config.yaml -n tools
     ```
 
 ---
@@ -950,7 +956,7 @@ Deploying the Platform UI allows you to deploy and manage instances from a centr
         **Time to deploy**: *~5 minutes*
 
     ``` shell
-    oc apply -f resources/12c-pgsql-db.yaml
+    oc apply -f resources/12c-pgsql-db.yaml -n tools
     ```
 
     Confirm the instance has been deployed successfully before moving to the next step running the following command.

@@ -1041,7 +1041,7 @@
 <ol start="4">
 <li>
 <p>Create users.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>oc apply -f resources/02a-es-initial-config-jgr-users.yaml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>oc apply -f resources/02a-es-initial-config-jgr-users.yaml -n tools
 </code></pre></div>
 </li>
 </ol>
@@ -1257,8 +1257,11 @@
 <ol start="5">
 <li>
 <p>Create <code>configmap</code> with MQ configuration.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>oc apply -f resources/03c-qmgr-mqsc-config.yaml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>oc apply -f resources/03c-qmgr-mqsc-config.yaml -n tools
 </code></pre></div>
+<p>Afterwards, follow-up by executing the following instruction:</p>
+<p><code>shell
+ oc apply -f resources/03e-qmgr-mqsc-config-ea.yaml -n tools</code></p>
 </li>
 </ol>
 <hr />
@@ -1440,7 +1443,7 @@
 <ol start="11">
 <li>
 <p>Create <code>configmap</code> with database configuration.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a>oc apply -f resources/12b-pgsql-config.yaml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-74-1" name="__codelineno-74-1" href="#__codelineno-74-1"></a>oc apply -f resources/12b-pgsql-config.yaml -n tools
 </code></pre></div>
 </li>
 </ol>
@@ -1451,7 +1454,7 @@
 <div class="admonition note">
 <p><strong>Time to deploy</strong>: <em>~5 minutes</em></p>
 </div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a>oc apply -f resources/12c-pgsql-db.yaml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-75-1" name="__codelineno-75-1" href="#__codelineno-75-1"></a>oc apply -f resources/12c-pgsql-db.yaml -n tools
 </code></pre></div>
 <p>Confirm the instance has been deployed successfully before moving to the next step running the following command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-76-1" name="__codelineno-76-1" href="#__codelineno-76-1"></a>oc get pods -l <span class="s2">&quot;postgres-operator.crunchydata.com/role=master&quot;</span> -n tools -o <span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[0].status.conditions[1].status}&#39;</span><span class="p">;</span><span class="nb">echo</span>
